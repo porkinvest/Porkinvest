@@ -1,50 +1,370 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PorkInvest - Crowdfunding de Cerdos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PorkInvest | Crowdfunding porcino en Colombia – Invierte desde $500.000 COP</title>
+
+  <!-- SEO -->
+  <meta name="description" content="PorkInvest: invierte desde $500.000 COP en ciclos porcinos en Santa Rosa del Sur (Bolívar) con rentabilidad objetivo del 15% pagada cada 6 meses. Contratos, trazabilidad y reportes mensuales.">
+  <meta name="keywords" content="inversiones, crowdfunding, porcicultura, agro, rentabilidad 15, Colombia, Santa Rosa del Sur, Bolívar, PorkInvest">
+  <link rel="canonical" href="https://porkinvest.github.io/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PorkInvest | Crowdfunding porcino en Colombia – Invierte desde $500.000 COP">
+  <meta property="og:description" content="Rentabilidad objetivo del 15% semestral. Contratos y trazabilidad por lote.">
+  <meta property="og:url" content="https://porkinvest.github.io/">
+  <meta property="og:site_name" content="PorkInvest">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1545464333-9c828bd9f2fc?q=80&w=1200&auto=format&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PorkInvest | Crowdfunding porcino – 15% semestral">
+  <meta name="twitter:description" content="Invierte desde $500.000 COP. Santa Rosa del Sur (Bolívar).">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1545464333-9c828bd9f2fc?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Favicons (opcionales, puedes agregar tus propios archivos) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' x='10' font-size='70'%3E🐖%3C/text%3E%3C/svg%3E">
+
+  <!-- Estilos: ligeros, performantes, sin dependencias -->
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #e63946; color: white; padding: 20px; text-align: center; }
-    section { padding: 20px; max-width: 900px; margin: auto; }
-    h1, h2 { color: #333; }
-    .cta { display: inline-block; background: #e63946; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
-    footer { background: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; }
+    :root{
+      --brand:#e63946; --brand-hover:#c32f3a; --ink:#111827; --muted:#6b7280;
+      --bg:#f8fafc; --card:#ffffff; --ring:#e5e7eb; --ok:#16a34a; --warn:#f59e0b;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:auto;padding:0 16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-hover)}
+    .btn-ghost{background:#fff;border:1px solid var(--ring)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#fef3c7;border:1px dashed var(--warn);color:#92400e;padding:6px 12px;border-radius:999px;font-weight:700}
+
+    /* Topbar */
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff 0%,#fde68a 45%,#fca5a5 100%);font-weight:800}
+    .navlinks{display:none;gap:14px}
+    @media(min-width:860px){.navlinks{display:flex}}
+    .navlinks a{font-weight:600;text-decoration:none}
+
+    /* Hero */
+    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #fecaca44 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #fde68a66 0, transparent 60%);}
+    .hero-inner{display:grid;grid-template-columns:1fr;gap:22px;padding:56px 0}
+    @media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:40px;padding:84px 0}}
+    h1{font-size:38px;line-height:1.1;margin:0}
+    @media(min-width:960px){h1{font-size:54px}}
+    .muted{color:var(--muted)} .pill{background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
+    .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .hero-img{border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.12);overflow:hidden}
+    .hero-img img{width:100%;height:auto;display:block}
+
+    /* Secciones */
+    section{padding:56px 0}
+    .grid-3{display:grid;gap:16px;grid-template-columns:1fr}
+    .grid-2{display:grid;gap:16px;grid-template-columns:1fr}
+    @media(min-width:880px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:22px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
+    .card h3{margin-top:0}
+
+    /* Calculadora */
+    .calc input,.calc select{width:100%;padding:12px;border:1px solid var(--ring);border-radius:12px}
+    .calc .row{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:720px){.calc .row{grid-template-columns:1fr 1fr}}
+    .result{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .result .box{background:#f8fafc;border:1px solid var(--ring);border-radius:12px;padding:14px;text-align:center}
+    .result .big{font-size:22px;font-weight:800}
+
+    /* FAQ */
+    .faq details{border:1px solid var(--ring);border-radius:12px;background:#fff;padding:14px}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq p{margin:10px 0 0}
+
+    /* Footer */
+    footer{background:#0f172a;color:#e2e8f0;padding:40px 0;margin-top:40px}
+    footer a{color:#e2e8f0;text-decoration:none}
+    .foot{display:grid;gap:18px;grid-template-columns:1fr}
+    @media(min-width:840px){.foot{grid-template-columns:2fr 1fr}}
+    .tiny{font-size:12px;color:#94a3b8}
   </style>
+
+  <!-- Schema.org: Organization + WebSite (SearchAction) + FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Organization",
+        "name":"PorkInvest",
+        "url":"https://porkinvest.github.io/",
+        "logo":"https://porkinvest.github.io/favicon.png",
+        "address":{"@type":"PostalAddress","addressCountry":"CO","addressRegion":"Bolívar","addressLocality":"Santa Rosa del Sur"}
+      },
+      {
+        "@type":"WebSite",
+        "name":"PorkInvest",
+        "url":"https://porkinvest.github.io/",
+        "potentialAction":{
+          "@type":"SearchAction",
+          "target":"https://porkinvest.github.io/?q={search_term_string}",
+          "query-input":"required name=search_term_string"
+        }
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {"@type":"Question","name":"¿Cuál es el monto mínimo de inversión?","acceptedAnswer":{"@type":"Answer","text":"Desde $500.000 COP por inversor."}},
+          {"@type":"Question","name":"¿Cuál es la rentabilidad objetivo?","acceptedAnswer":{"@type":"Answer","text":"Objetivo del 15% pagado cada 6 meses. No es garantizado; depende de variables operativas y de mercado."}},
+          {"@type":"Question","name":"¿Dónde se ubica el criadero?","acceptedAnswer":{"@type":"Answer","text":"Santa Rosa del Sur, departamento de Bolívar, Colombia."}},
+          {"@type":"Question","name":"¿Qué datos debo suministrar para invertir?","acceptedAnswer":{"@type":"Answer","text":"Nombre, cédula, correo, número de celular y cuenta bancaria para pagos de rentabilidad."}}
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <header>
-    <h1>🐖 Bienvenido a PorkInvest</h1>
-    <p>El primer crowdfunding de porcicultura en Colombia</p>
+
+  <!-- NAV -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#inicio" aria-label="PorkInvest, inicio">
+          <div class="logo">🐖</div><strong>PorkInvest</strong>
+        </a>
+        <nav class="navlinks" aria-label="Navegación principal">
+          <a href="#como">Cómo funciona</a>
+          <a href="#oferta">Propuesta</a>
+          <a href="#faq">Preguntas</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="btn btn-primary" href="https://wa.me/573002333356?text=Hola%20PorkInvest%2C%20quiero%20invertir" target="_blank" rel="noopener">Invertir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="inicio" class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="badge">Nueva ronda · Ciclo vigente</span>
+        <h1>Invierte desde <span style="color:var(--brand)">$500.000 COP</span> en porcicultura con <span style="color:var(--brand)">15% de rentabilidad objetivo</span> pagada cada 6 meses</h1>
+        <p class="muted">Operación en <strong>Santa Rosa del Sur (Bolívar)</strong>. Contratos claros, trazabilidad por lote y reportes mensuales. Tú eliges el monto; nosotros ejecutamos el ciclo productivo.</p>
+        <div class="kpis">
+          <span class="pill">✔ Contratos y custodia</span>
+          <span class="pill">📊 Reportes mensuales</span>
+          <span class="pill">🔎 Transparencia de costos</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#oferta">Ver propuesta</a>
+          <a class="btn btn-ghost" href="#form">Quiero aplicar</a>
+        </div>
+      </div>
+      <figure class="hero-img">
+        <img src="https://images.unsplash.com/photo-1545464333-9c828bd9f2fc?q=80&w=1200&auto=format&fit=crop" alt="Granja porcina en Colombia" fetchpriority="high" loading="eager">
+      </figure>
+    </div>
   </header>
 
-  <section>
-    <h2>¿Qué es PorkInvest?</h2>
-    <p>PorkInvest conecta a pequeños inversionistas con proyectos de cría y engorde de cerdos, ofreciendo rentabilidad segura y trazabilidad en cada ciclo productivo.</p>
+  <!-- CÓMO FUNCIONA -->
+  <section id="como">
+    <div class="wrap">
+      <h2>Cómo funciona</h2>
+      <div class="grid-3">
+        <article class="card">
+          <h3>1) Selección y due diligence</h3>
+          <p class="muted">Ficha del lote: número de animales, costos, supuestos y riesgos. Transparencia total antes de invertir.</p>
+        </article>
+        <article class="card">
+          <h3>2) Inversión mínima $500.000</h3>
+          <p class="muted">Firma electrónica del contrato y confirmación de aporte. Custodia y uso exclusivo en insumos del ciclo.</p>
+        </article>
+        <article class="card">
+          <h3>3) Seguimiento + pago 6M</h3>
+          <p class="muted">Reporte mensual. Al cierre de 6 meses se liquida y se paga la rentabilidad objetivo <strong>15%</strong> (no garantizada) a tu cuenta.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>¿Cómo funciona?</h2>
-    <ol>
-      <li>Selecciona un proyecto disponible.</li>
-      <li>Invierte desde $500.000 COP.</li>
-      <li>Recibe retornos entre 12% - 22% en 4 a 6 meses.</li>
-    </ol>
-    <a href="#contacto" class="cta">Quiero Invertir</a>
+  <!-- OFERTA + CALCULADORA + FORM WhatsApp -->
+  <section id="oferta">
+    <div class="wrap grid-2">
+      <div class="card">
+        <h2>Propuesta de inversión</h2>
+        <ul>
+          <li>🎯 Lote objetivo: 150–200 cerdos</li>
+          <li>💵 Ticket mínimo: <strong>$500.000 COP</strong></li>
+          <li>⏱️ Horizonte: <strong>6 meses</strong></li>
+          <li>📍 Ubicación: <strong>Santa Rosa del Sur, Bolívar</strong></li>
+          <li>🧾 Contrato + trazabilidad por lote</li>
+        </ul>
+        <div class="card calc" style="margin-top:12px">
+          <h3>Calcula tu retorno objetivo</h3>
+          <div class="row">
+            <div>
+              <label for="monto" class="muted">Monto (COP)</label>
+              <input id="monto" type="number" min="500000" step="50000" value="1000000" inputmode="numeric">
+            </div>
+            <div>
+              <label for="tasa" class="muted">Tasa objetivo</label>
+              <select id="tasa">
+                <option value="0.15" selected>15% (semestral)</option>
+                <option value="0.12">12% conservador</option>
+                <option value="0.18">18% optimista</option>
+              </select>
+            </div>
+          </div>
+          <div class="result">
+            <div class="box"><div class="muted">Utilidad objetivo</div><div id="utilidad" class="big">—</div></div>
+            <div class="box"><div class="muted">Total al pago (6M)</div><div id="total" class="big">—</div></div>
+            <div class="box"><div class="muted">Duración</div><div class="big">6 meses</div></div>
+          </div>
+          <p class="tiny" style="margin-top:8px">*Estimaciones no garantizadas. El rendimiento real depende de precios de alimento, conversión (FCR), sanidad y mercado.</p>
+        </div>
+      </div>
+
+      <div class="card" id="form">
+        <h3>Aplica para invertir (sin compromiso)</h3>
+        <p class="muted">Completa tus datos. Te contactamos por WhatsApp y correo con el dossier, contrato modelo y próximos pasos.</p>
+        <form id="applyForm" autocomplete="on">
+          <input name="nombre" type="text" placeholder="Nombre completo" required aria-label="Nombre completo">
+          <input name="cedula" type="text" placeholder="Cédula" required aria-label="Cédula">
+          <input name="correo" type="email" placeholder="Correo electrónico" required aria-label="Correo electrónico">
+          <input name="celular" type="tel" placeholder="Número de celular" required aria-label="Número de celular">
+          <input name="cuenta" type="text" placeholder="Número de cuenta bancaria" required aria-label="Número de cuenta bancaria">
+          <input name="monto" type="number" min="500000" step="50000" placeholder="Monto estimado (COP)" aria-label="Monto estimado">
+          <textarea name="mensaje" rows="3" placeholder="Objetivo de inversión (opcional)"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
+            <a class="btn btn-ghost" href="https://wa.me/573002333356?text=Hola%20PorkInvest%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">Chatear ahora</a>
+          </div>
+          <p class="tiny" style="margin-top:8px">Solo solicitamos estos datos para evaluar tu solicitud y realizar pagos de rentabilidad. Conservamos la confidencialidad.</p>
+        </form>
+      </div>
+    </div>
   </section>
 
+  <!-- PROCESO / TIMELINE -->
+  <section>
+    <div class="wrap">
+      <h2>Proceso del ciclo</h2>
+      <div class="grid-3">
+        <div class="card"><h3>Semana 0</h3><p class="muted">Compra de lechones, alimento y bioseguridad.</p></div>
+        <div class="card"><h3>Semanas 1–8</h3><p class="muted">Crecimiento y control veterinario. Reporte mensual.</p></div>
+        <div class="card"><h3>Semanas 9–16</h3><p class="muted">Engorde final y programación de venta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <h2>Preguntas frecuentes</h2>
+      <div class="grid-2 faq">
+        <details open class="card">
+          <summary>¿Cuál es el ticket mínimo?</summary>
+          <p>Desde <strong>$500.000 COP</strong> por inversor.</p>
+        </details>
+        <details class="card">
+          <summary>¿La rentabilidad está garantizada?</summary>
+          <p>No. Es un <em>objetivo</em> del 15% a 6 meses según condiciones de mercado y desempeño operativo.</p>
+        </details>
+        <details class="card">
+          <summary>¿Cómo reducen el riesgo?</summary>
+          <p>Diversificación por lotes, protocolos de bioseguridad, seguimiento técnico y compras eficientes de alimento.</p>
+        </details>
+        <details class="card">
+          <summary>¿Cómo y cuándo pagan?</summary>
+          <p>Se liquida al cierre del ciclo (6 meses) y se transfiere a la <strong>cuenta bancaria registrada</strong>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
   <section id="contacto">
-    <h2>Contáctanos</h2>
-    <p>Si quieres más información, déjanos tu correo:</p>
-    <form name="contacto" method="POST" data-netlify="true">
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <button type="submit">Enviar</button>
-    </form>
+    <div class="wrap grid-2">
+      <div class="card">
+        <h2>Contacto directo</h2>
+        <p>📍 <strong>Santa Rosa del Sur, Bolívar – Colombia</strong></p>
+        <p>📞 WhatsApp: <a href="https://wa.me/573002333356" target="_blank" rel="noopener">+57 300 233 3356</a></p>
+        <p>📧 Correo: <a href="mailto:inversion@porkinvest.com">inversion@porkinvest.com</a></p>
+        <div class="card" style="margin-top:12px;background:#fef2f2;border-color:#fecaca">
+          <strong>Disclaimer:</strong>
+          <p class="tiny">PorkInvest no es entidad vigilada por la SFC. Las inversiones agropecuarias implican riesgos. Lee el dossier y el contrato antes de invertir.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Transparencia</h3>
+        <ul>
+          <li>📑 Contrato privado por lote.</li>
+          <li>🧾 Soportes de gastos relevantes.</li>
+          <li>🔍 Auditoría interna por ciclo.</li>
+          <li>🤝 Visita a granja con cita.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 PorkInvest - Todos los derechos reservados.</p>
+    <div class="wrap foot">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="logo">🐖</div><strong>PorkInvest</strong>
+        </div>
+        <p class="tiny" style="margin-top:8px">© 2025 PorkInvest. Todos los derechos reservados.</p>
+      </div>
+      <div>
+        <a class="tiny" href="#faq">Preguntas frecuentes</a><br>
+        <a class="tiny" href="#contacto">Contacto</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Formatea COP
+    const fmt = n => (isFinite(n)? n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}) : '—');
+
+    // Calculadora
+    function calc(){
+      const monto = Math.max(0, Number(document.getElementById('monto').value||0));
+      const r = Number(document.getElementById('tasa').value||0.15);
+      const utilidad = monto * r;
+      const total = monto + utilidad;
+      document.getElementById('utilidad').textContent = fmt(utilidad);
+      document.getElementById('total').textContent = fmt(total);
+    }
+    document.getElementById('monto').addEventListener('input', calc);
+    document.getElementById('tasa').addEventListener('change', calc);
+    calc();
+
+    // Envío a WhatsApp con datos del formulario (sin backend)
+    document.getElementById('applyForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      const msg =
+        `Solicitud de inversión%0A`+
+        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
+        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
+        `Correo: ${encodeURIComponent(data.correo||'')}%0A`+
+        `Celular: ${encodeURIComponent(data.celular||'')}%0A`+
+        `Cuenta bancaria: ${encodeURIComponent(data.cuenta||'')}%0A`+
+        `Monto estimado: ${encodeURIComponent(data.monto||'')}%0A`+
+        `Mensaje: ${encodeURIComponent(data.mensaje||'')}`;
+      const url = `https://wa.me/573002333356?text=${msg}`;
+      window.open(url, '_blank','noopener');
+    });
+
+    // UX: abrir solo un FAQ a la vez
+    document.querySelectorAll('#faq details').forEach(d=>{
+      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ if(x!==d) x.open=false; }); }});
+    });
+  </script>
 </body>
-</html>
+  </html>
