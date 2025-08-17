@@ -251,30 +251,6 @@
     </div>
   </section>
 
-  <section id="quienes-somos">
-    <div class="wrap">
-      <h2>El equipo detrás de PorkInvest</h2>
-      <p class="muted" style="max-width:700px;margin:auto;text-align:center">Somos un equipo de profesionales con experiencia en el sector agropecuario y financiero, dedicados a ofrecer una oportunidad de inversión transparente y segura.</p>
-      <div class="grid-3" style="margin-top:2rem">
-        <div class="card" style="text-align:center">
-          <img src="https://via.placeholder.com/150" alt="Foto de perfil de Juan P. Gómez" style="border-radius:50%;width:100px;height:100px;margin-bottom:12px">
-          <h3>Juan P. Gómez</h3>
-          <p class="muted">Rol: Gerente de Operaciones</p>
-        </div>
-        <div class="card" style="text-align:center">
-          <img src="https://via.placeholder.com/150" alt="Foto de perfil de María C. Restrepo" style="border-radius:50%;width:100px;height:100px;margin-bottom:12px">
-          <h3>María C. Restrepo</h3>
-          <p class="muted">Rol: Gerente Financiera</p>
-        </div>
-        <div class="card" style="text-align:center">
-          <img src="https://via.placeholder.com/150" alt="Foto de perfil de Carlos A. Torres" style="border-radius:50%;width:100px;height:100px;margin-bottom:12px">
-          <h3>Carlos A. Torres</h3>
-          <p class="muted">Rol: Asesor Técnico Agrónomo</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section>
     <div class="wrap">
       <h2>Proceso del ciclo</h2>
@@ -358,4 +334,32 @@
       const monto = Math.max(0, Number(document.getElementById('monto').value||0));
       const r = Number(document.getElementById('tasa').value||0.15);
       const utilidad = monto * r;
-      const total = mon
+      const total = monto + utilidad;
+      document.getElementById('utilidad').textContent = fmt(utilidad);
+      document.getElementById('total').textContent = fmt(total);
+    }
+    document.getElementById('monto').addEventListener('input', calc);
+    document.getElementById('tasa').addEventListener('change', calc);
+    calc();
+
+    // Envío a WhatsApp con datos del formulario (sin backend)
+    document.getElementById('applyForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      const msg =
+        `*¡Nueva solicitud de inversión de PorkInvest!*%0A`+
+        `_Recibida desde la página web._%0A%0A`+
+        `*Datos del interesado:*%0A`+
+        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
+        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
+        `Correo: ${encodeURIComponent(data.correo||'')}%0A`+
+        `Celular: ${encodeURIComponent(data.celular||'')}%0A`+
+        `Monto estimado: ${encodeURIComponent(data.monto||'')}%0A`+
+        `Mensaje: ${encodeURIComponent(data.mensaje||'')}`;
+      const url = `https://wa.me/573002333356?text=${msg}`;
+      window.open(url, '_blank','noopener');
+    });
+
+    // UX: abrir solo un FAQ a la vez
+    document.querySelectorAll('#faq details').forEach(d=>{
+      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ 
