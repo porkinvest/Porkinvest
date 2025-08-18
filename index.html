@@ -348,4 +348,20 @@
       const msg =
         `*¡Nueva solicitud de inversión de PorkInvest!*%0A`+
         `_Recibida desde la página web._%0A%0A`+
-        `*Datos del intere
+        `*Datos del interesado:*%0A`+
+        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
+        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
+        `Correo: ${encodeURIComponent(data.correo||'')}%0A`+
+        `Celular: ${encodeURIComponent(data.celular||'')}%0A`+
+        `Monto estimado: ${encodeURIComponent(data.monto||'')}%0A`+
+        `Mensaje: ${encodeURIComponent(data.mensaje||'')}`;
+      const url = `https://wa.me/573002333356?text=${msg}`;
+      window.open(url, '_blank','noopener');
+    });
+
+    document.querySelectorAll('#faq details').forEach(d=>{
+      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ if(x!==d) x.open=false; }); }});
+    });
+  </script>
+</body>
+</html>
