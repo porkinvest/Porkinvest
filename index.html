@@ -7,8 +7,8 @@
 
   <title>PorkInvest | Crowdfunding porcino en Colombia – Invierte desde $500.000 COP</title>
 
-  <meta name="description" content="PorkInvest: invierte desde $500.000 COP en ciclos porcinos en Santa Rosa del Sur (Bolívar) con rentabilidad objetivo del 15% pagada cada 6 meses. Contratos, trazabilidad y reportes mensuales.">
-  <meta name="keywords" content="inversiones, crowdfunding, porcicultura, agro, rentabilidad 15%, Colombia, Santa Rosa del Sur, Bolívar, PorkInvest, invertir en agricultura, inversión en cerdos, proyectos de inversión">
+  <meta name="description" content="PorkInvest: invierte desde $500.000 COP en ciclos porcinos en Santa Rosa del Sur (Bolívar) con rentabilidad objetivo del 10% pagada cada 6 meses. Contratos, trazabilidad y reportes mensuales.">
+  <meta name="keywords" content="inversiones, crowdfunding, porcicultura, agro, rentabilidad 10%, Colombia, Santa Rosa del Sur, Bolívar, PorkInvest, invertir en agricultura, inversión en cerdos, proyectos de inversión">
   <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,12 +16,12 @@
   <meta property="og:locale" content="es_CO">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PorkInvest | Crowdfunding porcino en Colombia – Invierte desde $500.000 COP">
-  <meta property="og:description" content="Rentabilidad objetivo del 15% semestral. Contratos y trazabilidad por lote.">
+  <meta property="og:description" content="Rentabilidad objetivo del 10% semestral. Contratos y trazabilidad por lote.">
   <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
   <meta property="og:site_name" content="PorkInvest">
   <meta property="og:image" content="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1200&auto=format&fit=crop">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PorkInvest | Crowdfunding porcino – 15% semestral">
+  <meta name="twitter:title" content="PorkInvest | Crowdfunding porcino – 10% semestral">
   <meta name="twitter:description" content="Invierte desde $500.000 COP. Santa Rosa del Sur (Bolívar).">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1200&auto=format&fit=crop">
 
@@ -107,7 +107,7 @@
         "@type":"FAQPage",
         "mainEntity":[
           {"@type":"Question","name":"¿Cuál es el monto mínimo de inversión?","acceptedAnswer":{"@type":"Answer","text":"Desde $500.000 COP por inversor."}},
-          {"@type":"Question","name":"¿Cuál es la rentabilidad objetivo?","acceptedAnswer":{"@type":"Answer","text":"Objetivo del 15% pagado cada 6 meses. No es garantizado; depende de variables operativas y de mercado."}},
+          {"@type":"Question","name":"¿Cuál es la rentabilidad objetivo?","acceptedAnswer":{"@type":"Answer","text":"Objetivo del 10% pagado cada 6 meses. No es garantizado; depende de variables operativas y de mercado."}},
           {"@type":"Question","name":"¿Dónde se ubica el criadero?","acceptedAnswer":{"@type":"Answer","text":"Santa Rosa del Sur, departamento de Bolívar, Colombia."}},
           {"@type":"Question","name":"¿Qué datos debo suministrar para invertir?","acceptedAnswer":{"@type":"Answer","text":"Nombre, cédula, correo, número de celular y cuenta bancaria para pagos de rentabilidad."}}
         ]
@@ -140,7 +140,7 @@
     <div class="wrap hero-inner">
       <div>
         <span class="badge">Meta de ronda: 50% alcanzado!</span>
-        <h1>Invierte desde <span style="color:var(--brand)">$500.000 COP</span> en porcicultura con <span style="color:var(--brand)">15% de rentabilidad objetivo</span> pagada cada 6 meses</h1>
+        <h1>Invierte desde <span style="color:var(--brand)">$500.000 COP</span> en porcicultura con <span style="color:var(--brand)">10% de rentabilidad objetivo</span> pagada cada 6 meses</h1>
         <p class="muted">Operación en <strong>Santa Rosa del Sur (Bolívar)</strong>. Contratos claros, trazabilidad por lote y reportes mensuales. Tú eliges el monto; nosotros ejecutamos el ciclo productivo.</p>
         <div class="kpis">
           <span class="pill">✔ Contratos y custodia</span>
@@ -149,7 +149,7 @@
         </div>
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#oferta">Ver propuesta</a>
-          <a class="btn btn-ghost" href="dossier-porkinvest-2025.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
+          <a class="btn btn-ghost" href="dossier-porkinvest.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
         </div>
       </div>
       <figure class="hero-img">
@@ -188,7 +188,7 @@
         </article>
         <article class="card">
           <h3>3) Seguimiento y pago</h3>
-          <p class="muted">Recibe reportes mensuales del progreso. Al cierre de 6 meses se liquida el ciclo y se paga la rentabilidad objetivo del <strong>15%</strong> (no garantizada) a tu cuenta bancaria.</p>
+          <p class="muted">Recibe reportes mensuales del progreso. Al cierre de 6 meses se liquida el ciclo y se paga la rentabilidad objetivo del <strong>10%</strong> (no garantizada) a tu cuenta bancaria.</p>
         </article>
       </div>
     </div>
@@ -214,11 +214,7 @@
             </div>
             <div>
               <label for="tasa" class="muted">Tasa objetivo</label>
-              <select id="tasa">
-                <option value="0.15" selected>15% (semestral)</option>
-                <option value="0.12">12% conservador</option>
-                <option value="0.18">18% optimista</option>
-              </select>
+              <input id="tasa" type="text" value="10% (semestral)" readonly>
             </div>
           </div>
           <div class="result">
@@ -272,7 +268,7 @@
         </details>
         <details class="card">
           <summary>¿La rentabilidad está garantizada?</summary>
-          <p>No. Es un <em>objetivo</em> del 15% a 6 meses según condiciones de mercado y desempeño operativo.</p>
+          <p>No. Es un <em>objetivo</em> del 10% a 6 meses según condiciones de mercado y desempeño operativo.</p>
         </details>
         <details class="card">
           <summary>¿Cómo reducen el riesgo?</summary>
@@ -332,14 +328,13 @@
     // Calculadora
     function calc(){
       const monto = Math.max(0, Number(document.getElementById('monto').value||0));
-      const r = Number(document.getElementById('tasa').value||0.15);
+      const r = 0.10; // Tasa fija del 10%
       const utilidad = monto * r;
       const total = monto + utilidad;
       document.getElementById('utilidad').textContent = fmt(utilidad);
       document.getElementById('total').textContent = fmt(total);
     }
     document.getElementById('monto').addEventListener('input', calc);
-    document.getElementById('tasa').addEventListener('change', calc);
     calc();
 
     // Envío a WhatsApp con datos del formulario (sin backend)
@@ -362,4 +357,9 @@
 
     // UX: abrir solo un FAQ a la vez
     document.querySelectorAll('#faq details').forEach(d=>{
-      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ 
+      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ if(x!==d) x.open=false; }); }});
+    });
+  </script>
+</body>
+      </html>
+  
