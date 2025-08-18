@@ -49,9 +49,9 @@
     .navlinks{display:none;gap:14px}
     @media(min-width:860px){.navlinks{display:flex}}
     .navlinks a{font-weight:600;text-decoration:none}
-    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #c4e0ff 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #a4d0ff 0, transparent 60%);}
+    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #c4e0ff 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #a4d0ff 0, transparent 60%); display:flex; align-items:center; min-height: 80vh;}
     .hero-inner{display:grid;grid-template-columns:1fr;gap:22px;padding:56px 0}
-    @media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:40px;padding:84px 0}}
+    @media(min-width:960px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:84px 0}}
     h1{font-size:38px;line-height:1.1;margin:0}
     @media(min-width:960px){h1{font-size:54px}}
     .muted{color:var(--muted)} .pill{background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
@@ -174,9 +174,6 @@
           <a class="btn btn-ghost" href="#documentos">Ver Documentación</a>
         </div>
       </div>
-      <figure class="hero-img">
-        <img src="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1200&auto=format&fit=crop" alt="Vista de granja porcina" fetchpriority="high" loading="eager" style="display:block;">
-      </figure>
     </div>
   </header>
 
@@ -217,12 +214,12 @@
         <article class="card">
           <h3>Transparencia de Costos</h3>
           <p class="muted">Implementamos un sistema de total transparencia de costos, documentando cada gasto y recurso utilizado.</p>
-          <a href="https://drive.google.com/file/d/1HE1hS6_Nlc2JrdqfX_MJVzfnS99_oh_-/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://drive.google.com/file/d/1wsbCDxkAbilGq4HoQShLzV6mYcTnuL9j/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
         <article class="card">
           <h3>Reportes Mensuales</h3>
           <p class="muted">Recibe reportes mensuales con el avance del proyecto, estado financiero y fotos de los animales, garantizando total transparencia.</p>
-          <a href="https://drive.google.com/file/d/1wsbCDxkAbilGq4HoQShLzV6mYcTnuL9j/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://drive.google.com/file/d/1HE1hS6_Nlc2JrdqfX_MJVzfnS99_oh_-/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
       </div>
     </div>
@@ -348,4 +345,7 @@
       const msg =
         `*¡Nueva solicitud de inversión de PorkInvest!*%0A`+
         `_Recibida desde la página web._%0A%0A`+
-   
+        `*Datos del interesado:*%0A`+
+        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
+        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
+        `Correo: ${encodeURIComponent(data.correo|
