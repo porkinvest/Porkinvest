@@ -231,7 +231,6 @@
       <div class="grid-2">
         <article class="card">
           <p class="testimony">"Invertir con PorkInvest fue una excelente decisión. El equipo es muy profesional y los reportes mensuales me dan total tranquilidad."</p>
-          <p class="author">— Juan P., Inversor desde 2024</p>
         </article>
         <article class="card">
           <p class="testimony">"El proceso es muy transparente. Pude entender los costos y la operación. Recomiendo esta inversión a cualquiera que busque diversificar en el sector agro."</p>
@@ -323,20 +322,31 @@
 
   <script>
     const fmt = n => (isFinite(n)? n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}) : '—');
+
     function calc(){
-      const monto = Math.max(0, Number(document.getElementById('monto').value||0));
+      const montoInput = document.getElementById('monto');
+      const utilidadElement = document.getElementById('utilidad');
+      const totalElement = document.getElementById('total');
+
+      const monto = Number(montoInput.value.replace(/[^0-9]/g, ''));
       if (monto < 500000) {
-        document.getElementById('utilidad').textContent = fmt(0);
-        document.getElementById('total').textContent = fmt(0);
+        utilidadElement.textContent = fmt(0);
+        totalElement.textContent = fmt(0);
         return;
       }
+      
       const r = 0.10;
       const utilidad = monto * r;
       const total = monto + utilidad;
-      document.getElementById('utilidad').textContent = fmt(utilidad);
-      document.getElementById('total').textContent = fmt(total);
+
+      utilidadElement.textContent = fmt(utilidad);
+      totalElement.textContent = fmt(total);
     }
-    document.getElementById('monto').addEventListener('input', calc);
+    
+    const montoInput = document.getElementById('monto');
+    montoInput.addEventListener('input', calc);
+
+    // Inicializa el cálculo al cargar la página
     calc();
 
     document.getElementById('applyForm').addEventListener('submit', function(e){
@@ -346,6 +356,4 @@
         `*¡Nueva solicitud de inversión de PorkInvest!*%0A`+
         `_Recibida desde la página web._%0A%0A`+
         `*Datos del interesado:*%0A`+
-        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
-        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
-        `Correo: ${encodeURIComponent(data
+        `Nombre: ${encodeURICompone
