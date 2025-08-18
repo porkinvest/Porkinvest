@@ -29,7 +29,7 @@
 
   <style>
     :root{
-      --brand:#e63946; --brand-hover:#c32f3a; --ink:#111827; --muted:#6b7280;
+      --brand:#2c74d8; --brand-hover:#245eb0; --ink:#111827; --muted:#6b7280;
       --bg:#f8fafc; --card:#ffffff; --ring:#e5e7eb; --ok:#16a34a; --warn:#f59e0b;
     }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
@@ -39,17 +39,17 @@
     .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none;cursor:pointer;transition:.2s}
     .btn-primary{background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-hover)}
     .btn-ghost{background:#fff;border:1px solid var(--ring)}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:#fef3c7;border:1px dashed var(--warn);color:#92400e;padding:6px 12px;border-radius:999px;font-weight:700}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#e3f4ff;border:1px dashed var(--brand);color:var(--brand);padding:6px 12px;border-radius:999px;font-weight:700}
     .progress-bar{height:12px;width:100%;background-color:var(--ring);border-radius:999px;overflow:hidden;margin-top:12px}
     .progress{height:100%;background-color:var(--ok);width:50%}
     .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff 0%,#fde68a 45%,#fca5a5 100%);font-weight:800}
+    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff 0%,#d1eaff 45%,#99c6f2 100%);font-weight:800}
     .navlinks{display:none;gap:14px}
     @media(min-width:860px){.navlinks{display:flex}}
     .navlinks a{font-weight:600;text-decoration:none}
-    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #fecaca44 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #fde68a66 0, transparent 60%);}
+    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #c4e0ff 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #a4d0ff 0, transparent 60%);}
     .hero-inner{display:grid;grid-template-columns:1fr;gap:22px;padding:56px 0}
     @media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:40px;padding:84px 0}}
     h1{font-size:38px;line-height:1.1;margin:0}
@@ -127,6 +127,7 @@
         <nav class="navlinks" aria-label="Navegación principal">
           <a href="#como">Cómo funciona</a>
           <a href="#oferta">Propuesta</a>
+          <a href="#documentos">Documentación</a>
           <a href="#faq">Preguntas</a>
           <a href="#testimonios">Testimonios</a>
           <a href="#contacto">Contacto</a>
@@ -149,11 +150,11 @@
         </div>
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#oferta">Ver propuesta</a>
-          <a class="btn btn-ghost" href="dossier-porkinvest.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
+          <a class="btn btn-ghost" href="DOC-20250817-WA0027.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
         </div>
       </div>
       <figure class="hero-img">
-        <img src="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1200&auto=format&fit=crop" alt="Vista de granja porcina moderna, sana y productiva para inversión en PorkInvest" fetchpriority="high" loading="eager">
+        <img src="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1200&auto=format&fit=crop" alt="Vista de granja porcina" fetchpriority="high" loading="eager">
       </figure>
     </div>
   </header>
@@ -247,13 +248,30 @@
     </div>
   </section>
 
-  <section>
+  <section id="documentos">
     <div class="wrap">
-      <h2>Proceso del ciclo</h2>
+      <h2>Documentación y transparencia</h2>
       <div class="grid-3">
-        <div class="card"><h3>Semana 0</h3><p class="muted">Compra de lechones, alimento y bioseguridad.</p></div>
-        <div class="card"><h3>Semanas 1–8</h3><p class="muted">Crecimiento y control veterinario. Reporte mensual.</p></div>
-        <div class="card"><h3>Semanas 9–16</h3><p class="muted">Engorde final y programación de venta.</p></div>
+        <article class="card">
+          <h3>Dossier de Inversión</h3>
+          <p class="muted">Tu guía completa. Describe el proyecto, la ubicación de la granja, rentabilidad objetivo, y el plan financiero.</p>
+          <a href="DOC-20250817-WA0027.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+        </article>
+        <article class="card">
+          <h3>Contratos y Custodia</h3>
+          <p class="muted">Cada inversión se formaliza con un contrato privado, que detalla monto, plazo, derechos y obligaciones, cumpliendo la ley colombiana.</p>
+          <a href="DOC-20250817-WA0030.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+        </article>
+        <article class="card">
+          <h3>Transparencia de Costos</h3>
+          <p class="muted">Implementamos un sistema de total transparencia de costos, documentando cada gasto y recurso utilizado.</p>
+          <a href="DOC-20250817-WA0029.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+        </article>
+        <article class="card">
+          <h3>Reportes Mensuales</h3>
+          <p class="muted">Recibe reportes mensuales con el avance del proyecto, estado financiero y fotos de los animales, garantizando total transparencia.</p>
+          <a href="DOC-20250817-WA0028.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+        </article>
       </div>
     </div>
   </section>
@@ -340,26 +358,4 @@
     // Envío a WhatsApp con datos del formulario (sin backend)
     document.getElementById('applyForm').addEventListener('submit', function(e){
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(this).entries());
-      const msg =
-        `*¡Nueva solicitud de inversión de PorkInvest!*%0A`+
-        `_Recibida desde la página web._%0A%0A`+
-        `*Datos del interesado:*%0A`+
-        `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
-        `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
-        `Correo: ${encodeURIComponent(data.correo||'')}%0A`+
-        `Celular: ${encodeURIComponent(data.celular||'')}%0A`+
-        `Monto estimado: ${encodeURIComponent(data.monto||'')}%0A`+
-        `Mensaje: ${encodeURIComponent(data.mensaje||'')}`;
-      const url = `https://wa.me/573002333356?text=${msg}`;
-      window.open(url, '_blank','noopener');
-    });
-
-    // UX: abrir solo un FAQ a la vez
-    document.querySelectorAll('#faq details').forEach(d=>{
-      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ if(x!==d) x.open=false; }); }});
-    });
-  </script>
-</body>
-      </html>
-  
+      const data = Objec
