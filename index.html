@@ -150,7 +150,7 @@
         </div>
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#oferta">Ver propuesta</a>
-          <a class="btn btn-ghost" href="DOC-20250817-WA0027.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
+          <a class="btn btn-ghost" href="https://raw.githubusercontent.com/porkinvest/Porkinvest/main/DOC-20250817-WA0027.pdf" target="_blank" rel="noopener">Descargar Dossier de Inversión</a>
         </div>
       </div>
       <figure class="hero-img">
@@ -255,22 +255,22 @@
         <article class="card">
           <h3>Dossier de Inversión</h3>
           <p class="muted">Tu guía completa. Describe el proyecto, la ubicación de la granja, rentabilidad objetivo, y el plan financiero.</p>
-          <a href="DOC-20250817-WA0027.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://raw.githubusercontent.com/porkinvest/Porkinvest/main/DOC-20250817-WA0027.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
         <article class="card">
           <h3>Contratos y Custodia</h3>
           <p class="muted">Cada inversión se formaliza con un contrato privado, que detalla monto, plazo, derechos y obligaciones, cumpliendo la ley colombiana.</p>
-          <a href="DOC-20250817-WA0030.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://raw.githubusercontent.com/porkinvest/Porkinvest/main/DOC-20250817-WA0030.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
         <article class="card">
           <h3>Transparencia de Costos</h3>
           <p class="muted">Implementamos un sistema de total transparencia de costos, documentando cada gasto y recurso utilizado.</p>
-          <a href="DOC-20250817-WA0029.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://raw.githubusercontent.com/porkinvest/Porkinvest/main/DOC-20250817-WA0029.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
         <article class="card">
           <h3>Reportes Mensuales</h3>
           <p class="muted">Recibe reportes mensuales con el avance del proyecto, estado financiero y fotos de los animales, garantizando total transparencia.</p>
-          <a href="DOC-20250817-WA0028.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://raw.githubusercontent.com/porkinvest/Porkinvest/main/DOC-20250817-WA0028.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
       </div>
     </div>
@@ -350,12 +350,4 @@
       const utilidad = monto * r;
       const total = monto + utilidad;
       document.getElementById('utilidad').textContent = fmt(utilidad);
-      document.getElementById('total').textContent = fmt(total);
-    }
-    document.getElementById('monto').addEventListener('input', calc);
-    calc();
-
-    // Envío a WhatsApp con datos del formulario (sin backend)
-    document.getElementById('applyForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = Objec
+      document.getElementById('total').text
