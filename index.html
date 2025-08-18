@@ -162,8 +162,8 @@
             </div>
           </div>
           <div class="result">
-            <div class="box"><div class="muted">Utilidad objetivo</div><div id="utilidad" class="big">—</div></div>
-            <div class="box"><div class="muted">Total al pago (6M)</div><div id="total" class="big">—</div></div>
+            <div class="box"><div class="muted">Utilidad objetivo</div><div id="utilidad" class="big"></div></div>
+            <div class="box"><div class="muted">Total al pago (6M)</div><div id="total" class="big"></div></div>
             <div class="box"><div class="muted">Duración</div><div class="big">6 meses</div></div>
           </div>
           <p class="tiny" style="margin-top:8px">*Estimaciones no garantizadas. El rendimiento real depende de precios de alimento, conversión (FCR), sanidad y mercado.</p>
@@ -214,12 +214,12 @@
         <article class="card">
           <h3>Transparencia de Costos</h3>
           <p class="muted">Implementamos un sistema de total transparencia de costos, documentando cada gasto y recurso utilizado.</p>
-          <a href="https://drive.google.com/file/d/1wsbCDxkAbilGq4HoQShLzV6mYcTnuL9j/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://drive.google.com/file/d/1HE1hS6_Nlc2JrdqfX_MJVzfnS99_oh_-/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
         <article class="card">
           <h3>Reportes Mensuales</h3>
           <p class="muted">Recibe reportes mensuales con el avance del proyecto, estado financiero y fotos de los animales, garantizando total transparencia.</p>
-          <a href="https://drive.google.com/file/d/1HE1hS6_Nlc2JrdqfX_MJVzfnS99_oh_-/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
+          <a href="https://drive.google.com/file/d/1wsbCDxkAbilGq4HoQShLzV6mYcTnuL9j/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-top: 12px;">Ver PDF</a>
         </article>
       </div>
     </div>
@@ -348,4 +348,17 @@
         `*Datos del interesado:*%0A`+
         `Nombre: ${encodeURIComponent(data.nombre||'')}%0A`+
         `Cédula: ${encodeURIComponent(data.cedula||'')}%0A`+
-        `Correo: ${encodeURIComponent(data.correo|
+        `Correo: ${encodeURIComponent(data.correo||'')}%0A`+
+        `Celular: ${encodeURIComponent(data.celular||'')}%0A`+
+        `Monto estimado: ${encodeURIComponent(data.monto||'')}%0A`+
+        `Mensaje: ${encodeURIComponent(data.mensaje||'')}`;
+      const url = `https://wa.me/573002333356?text=${msg}`;
+      window.open(url, '_blank','noopener');
+    });
+
+    document.querySelectorAll('#faq details').forEach(d=>{
+      d.addEventListener('toggle', ()=>{ if(d.open){ document.querySelectorAll('#faq details').forEach(x=>{ if(x!==d) x.open=false; }); }});
+    });
+  </script>
+</body>
+</html>
