@@ -7,6 +7,15 @@
 <meta name="description" content="Descubre PorkInvest: crowdfunding agro en porcicultura. Invierte desde $500,000 COP con transparencia y contratos claros.">
 <meta name="keywords" content="invertir en Colombia, inversiones seguras y rentables, inversión en porcicultura, crowdfunding agro, PorkInvest">
 
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKZR3XB9');
+</script>
+
 <style>
 :root{
   --primary:#004225;
@@ -47,11 +56,18 @@ form button:hover{background:#008a4a}
 footer{background:var(--dark);color:#fff;text-align:center;padding:24px;font-size:.9rem;margin-top:40px}
 .flex{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .small{font-size:.9rem;color:#666}
+#chart{display:flex;justify-content:space-around;align-items:flex-end;height:200px;margin-top:20px;background:#f0f0f0;border-radius:var(--radius);padding:12px}
+.bar{width:30%;background:var(--accent);color:#111;text-align:center;border-radius:var(--radius) var(--radius) 0 0;display:flex;flex-direction:column;justify-content:flex-end}
+.bar span{padding:4px;font-size:.8rem}
 @media(max-width:768px){.hero h1{font-size:1.8rem} nav{flex-direction:column}}
 :target::before { content: ""; display:block; height:84px; margin-top:-84px; visibility:hidden; }
 </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZR3XB9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
   <nav>
@@ -95,6 +111,7 @@ footer{background:var(--dark);color:#fff;text-align:center;padding:24px;font-siz
       </tbody>
     </table>
   </div>
+
   <div class="card calc">
     <h3>Simulador de Ganancias</h3>
     <input id="monto" type="number" min="500000" step="50000" value="1500000" placeholder="Monto a invertir (COP)">
@@ -106,6 +123,11 @@ footer{background:var(--dark);color:#fff;text-align:center;padding:24px;font-siz
       <div><span>Utilidad (6 meses):</span><span id="utilidad">—</span></div>
       <div><span>Total (6 meses):</span><span id="total">—</span></div>
       <div><span>Proyección 12 meses:</span><span id="total12">—</span></div>
+    </div>
+    <div id="chart">
+      <div class="bar" id="barMonto"><span>Monto</span></div>
+      <div class="bar" id="barUtilidad"><span>Utilidad 6m</span></div>
+      <div class="bar" id="barProy"><span>Proyección 12m</span></div>
     </div>
   </div>
 </section>
@@ -149,9 +171,20 @@ footer{background:var(--dark);color:#fff;text-align:center;padding:24px;font-siz
 
 <script>
 function formatCOP(n){return isFinite(n)?n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}):'—'}
+
+function updateChart(monto,u6,t12){
+  const max=Math.max(monto,u6,t12);
+  document.getElementById('barMonto').style.height=(monto/max*100)+'%';
+  document.getElementById('barUtilidad').style.height=(u6/max*100)+'%';
+  document.getElementById('barProy').style.height=(t12/max*100)+'%';
+  document.getElementById('barMonto').querySelector('span').textContent='Monto\n'+formatCOP(monto);
+  document.getElementById('barUtilidad').querySelector('span').textContent='Utilidad 6m\n'+formatCOP(u6);
+  document.getElementById('barProy').querySelector('span').textContent='Proyección 12m\n'+formatCOP(t12);
+}
+
 function recalc(){
   const monto=Number(document.getElementById('monto').value)||0;
-  const reinv=(document.getElementById('reinversion').value==='si');
+  const reinv=document.getElementById('reinversion').value==='si';
   const r=0.10;
   const u6=monto>=500000?monto*r:0;
   const t6=monto+u6;
@@ -160,7 +193,9 @@ function recalc(){
   document.getElementById('total').textContent=formatCOP(t6);
   document.getElementById('total12').textContent=formatCOP(t12);
   document.getElementById('montoForm').value=monto;
+  updateChart(monto,u6,t12);
 }
+
 window.addEventListener('DOMContentLoaded',()=>{
   recalc();
   document.getElementById('monto').addEventListener('input',recalc);
@@ -172,12 +207,12 @@ window.addEventListener('DOMContentLoaded',()=>{
     const whatsapp=document.getElementById('whatsapp').value;
     const monto=document.getElementById('montoForm').value;
     const mensaje=document.getElementById('mensaje').value;
-    const text=`Hola, soy ${nombre}. Quiero invertir ${formatCOP(monto)}. Mi correo es ${email}, WhatsApp: ${whatsapp}. Mensaje: ${mensaje}`;
-    const finalUrl=(whatsapp.replace(/\D/g,'').length>=7)?`https://wa.me/57${whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(text)}`:`https://wa.me/573002333356?text=${encodeURIComponent(text)}`;
+    const text=`Hola, soy ${nombre}. Quiero invertir ${formatCOP(monto)}. Mi correo es ${email}, mi WhatsApp es ${whatsapp}. Mensaje: ${mensaje}`;
+    const url=`https://wa.me/57${whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(text)}`;
+    const finalUrl=(whatsapp && whatsapp.replace(/\D/g,'').length>=7)?url:'https://wa.me/573002333356?text='+encodeURIComponent(text);
     window.open(finalUrl,'_blank');
-  })
-})
+  });
+});
 </script>
-
 </body>
 </html>
