@@ -1,337 +1,155 @@
-<!DOCTYPE html><html lang="es-CO">
+<!DOCTYPE html>
+<html lang="es-CO">
 <head>
-  <!--
-    PORKINVEST — LANDING V3 (Full-Stack SEO + CRO + Perf)
-    Fecha: 2025-08-19
-    Objetivo: Código único (HTML+CSS+JS) listo para GitHub Pages, enfocado en
-    - SEO (on-page + schema + i18n es_CO)
-    - CRO (CTA claros, prueba social, confianza, comparador)
-    - Performance (<1s TTI en móviles modernos; JS mínimo, CSS inline)
-    - Escalabilidad (estructura modular para nuevos proyectos sin reescribir todo)Principales mejoras vs versión anterior:
-- Títulos/Metas con keywords: invertir en Colombia, inversiones seguras, crowdfunding agro, etc.
-- OG/Twitter listo; og:image propio en el repo
-- Datos estructurados: Organization + WebSite(SearchAction) + FAQPage
-- Header accesible, navegación con anclas consistentes
-- Calculadora mejorada: simple/compuesto (6/12 meses), validaciones, ARIA live
-- Comparador con tabla semántica, filas destacadas, copy alineado a búsqueda transaccional
-- Form a WhatsApp con fallback mailto + honeypot + consentimiento
-- Sticky CTA móvil, toast, modal de aviso legal
-- Código comentado y ordenado para escalar (nuevos proyectos)
-
--->
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#2563eb">
-  <meta property="og:locale" content="es_CO">  <title>Invertir en Colombia 2025 | PorkInvest: Inversiones Seguras en Crowdfunding Agro</title>  <!-- SEO principal -->  <meta name="description" content="¿Dónde invertir en Colombia? Invierte desde $500.000 COP en porcicultura con contratos, custodia y reportes mensuales. Rentabilidad objetivo 10% semestral (no garantizada). Crowdfunding agro con transparencia total.">
-  <meta name="keywords" content="invertir en Colombia, inversiones seguras Colombia, negocios rentables en Colombia, inversiones en agricultura, crowdfunding agro, inversión con poco dinero, dónde invertir dinero en Colombia, PorkInvest, inversión porcicultura">
-  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/">
-  <meta name="robots" content="index,follow,max-image-preview:large">  <!-- Open Graph / Twitter -->  <meta property="og:title" content="PorkInvest | Crowdfunding agro en Colombia – Invierte desde $500.000">
-  <meta property="og:description" content="Contrato, custodia y reportes mensuales. Rentabilidad objetivo 10% semestral (no garantizada).">
-  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
-  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/og-image.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest | Invertir en Colombia</title>
+  <meta name="description" content="PorkInvest te permite invertir en Colombia en proyectos agropecuarios rentables, seguros y con transparencia.">
+  <meta name="keywords" content="invertir en Colombia, inversiones seguras Colombia, negocios rentables Colombia, inversiones en agricultura, crowdfunding agro, inversión con poco dinero, PorkInvest">
+  <meta property="og:title" content="PorkInvest | Inversiones en Colombia">
+  <meta property="og:description" content="Invierte en proyectos de porcicultura en Colombia con transparencia, confianza y rentabilidad.">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">  <!-- Verificaciones (rellena al habilitar campañas/SEO) -->  <meta name="facebook-domain-verification" content="TU_CODIGO_DE_VERIFICACION_DE_FACEBOOK_ADS">
-  <!-- <meta name="google-site-verification" content="TU_CODIGO_DE_SEARCH_CONSOLE"> -->  <!-- Perf: conexiones anticipadas & LCP -->  <link rel="preconnect" href="https://wa.me" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1600&auto=format&fit=crop">  <!-- Favicon emoji (ligero y compatible) -->  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' x='10' font-size='70'%3E🐖%3C/text%3E%3C/svg%3E">  <style>
-    :root{
-      --brand:#2563eb; --brand-2:#0ea5e9; --brand-hover:#1d4ed8; --ink:#0f172a; --muted:#64748b;
-      --bg:#f8fafc; --card:#ffffff; --ring:#e2e8f0; --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto}
-
-    /* Layout base */
-    .wrap{max-width:1120px;margin:auto;padding:0 16px}
-    .section-title{text-align:center;margin:0 0 40px}
-
-    /* Controles/CTAs */
-    .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;transition:.2s}
-    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff}
-    .btn-primary:hover{filter:brightness(0.95)}
-    .btn-ghost{background:#fff;border:1px solid var(--ring)}
-    .pill{background:#fff;border:1px solid var(--ring);border-radius:999px;padding:8px 12px;font-weight:600}
-
-    /* Topbar */
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--ring)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff 0%,#d1eaff 45%,#99c6f2 100%);font-weight:800}
-    .navlinks{display:none;gap:14px}
-    @media(min-width:860px){.navlinks{display:flex}}
-
-    /* Hero */
-    header.hero{background:radial-gradient(1000px 300px at 15% -10%, #c4e0ff 0, transparent 60%), radial-gradient(900px 300px at 120% 0%, #a4d0ff 0, transparent 60%);display:flex;align-items:center;min-height:80vh}
-    .hero-inner{display:grid;grid-template-columns:1fr;gap:22px;padding:56px 0}
-    @media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:40px;padding:84px 0}}
-    h1{font-size:38px;line-height:1.1;margin:0}
-    @media(min-width:960px){h1{font-size:54px}}
-
-    /* Grids & Cards */
-    section{padding:56px 0}
-    .grid-3{display:grid;gap:16px;grid-template-columns:1fr}
-    .grid-2{display:grid;gap:16px;grid-template-columns:1fr}
-    @media(min-width:880px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}}
-    .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:22px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
-    .card h3{margin-top:0}
-
-    /* KPI & Trust */
-    .kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:#e3f4ff;border:1px dashed var(--brand);color:var(--brand);padding:6px 12px;border-radius:999px;font-weight:700}
-    .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .trust .tag{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--ring);padding:8px 12px;border-radius:999px;background:#fff}
-
-    /* Calculadora */
-    .calc input,.calc select{width:100%;padding:12px;border:1px solid var(--ring);border-radius:12px}
-    .calc .row{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:720px){.calc .row{grid-template-columns:1fr 1fr}}
-    .result{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-    .result .box{background:#f8fafc;border:1px solid var(--ring);border-radius:12px;padding:14px;text-align:center}
-    .result .big{font-size:22px;font-weight:800}
-
-    /* Tabla comparador */
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border:1px solid var(--ring);padding:12px;text-align:left}
-    .table th{background:#f1f5f9}
-    .table tr.highlight{outline:2px solid var(--brand)}
-
-    /* FAQ */
-    .faq details{border:1px solid var(--ring);border-radius:12px;background:#fff;padding:14px}
-    .faq summary{cursor:pointer;font-weight:700}
-    .faq p{margin:10px 0 0}
-
-    /* Footer */
-    footer{background:#0f172a;color:#e2e8f0;padding:40px 0;margin-top:40px}
-    footer a{color:#e2e8f0}
-    .foot{display:grid;gap:18px;grid-template-columns:1fr}
-    @media(min-width:840px){.foot{grid-template-columns:2fr 1fr}}
-    .tiny{font-size:12px;color:#94a3b8}
-
-    /* Sticky CTA móvil */
-    .sticky-cta{position:fixed;bottom:16px;left:16px;right:16px;z-index:60;display:flex;gap:10px}
-    @media(min-width:860px){.sticky-cta{display:none}}
-
-    /* Accesibilidad */
-    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:#111827;color:#fff;padding:8px 12px;border-radius:8px}
-
-    /* Toast + Modal */
-    #toast{position:fixed;right:16px;bottom:16px;background:#111827;color:#fff;padding:12px 14px;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(8px);transition:.25s}
-    #toast.show{opacity:1;transform:translateY(0)}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px}
-    .modal.open{display:flex}
-    .modal > div{background:#fff;border-radius:16px;max-width:560px;padding:22px;border:1px solid var(--ring)}
-  </style>  <!-- JSON-LD: Organization + WebSite(SearchAction) + FAQPage -->  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "name":"PorkInvest",
-        "url":"https://porkinvest.github.io/Porkinvest/",
-        "logo":"https://porkinvest.github.io/Porkinvest/IMG-20250817-WA0020.jpg",
-        "contactPoint":{
-          "@type":"ContactPoint",
-          "telephone":"+57-300-233-3356",
-          "contactType":"Ventas",
-          "areaServed":"CO",
-          "availableLanguage":"es"
-        },
-        "address":{
-          "@type":"PostalAddress",
-          "addressCountry":"CO",
-          "addressRegion":"Bolívar",
-          "addressLocality":"Santa Rosa del Sur"
-        }
-      },
-      {
-        "@type":"WebSite",
-        "name":"PorkInvest",
-        "url":"https://porkinvest.github.io/Porkinvest/",
-        "potentialAction":{
-          "@type":"SearchAction",
-          "target":"https://porkinvest.github.io/Porkinvest/?q={search_term_string}",
-          "query-input":"required name=search_term_string"
-        }
-      },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {"@type":"Question","name":"¿Cuál es el monto mínimo para invertir en PorkInvest?","acceptedAnswer":{"@type":"Answer","text":"Desde $500.000 COP. Ideal para inversión con poco dinero en Colombia."}},
-          {"@type":"Question","name":"¿La rentabilidad está garantizada?","acceptedAnswer":{"@type":"Answer","text":"No. El objetivo es 10% semestral; el resultado real depende del mercado y la operación."}},
-          {"@type":"Question","name":"¿Cómo se respalda la seguridad?","acceptedAnswer":{"@type":"Answer","text":"Contrato privado, reporte mensual y trazabilidad por lote. Documentación clara y auditable."}},
-          {"@type":"Question","name":"¿Qué tipo de inversión es?","acceptedAnswer":{"@type":"Answer","text":"Crowdfunding agro en porcicultura. Inversión en el campo colombiano."}}
-        ]
-      }
-    ]
-  }
-  </script></head>
+  <meta property="og:locale" content="es_CO">
+  <link rel="preconnect" href="https://wa.me">
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.5;color:#222;background:#fff}
+    header{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #ddd;z-index:1000}
+    nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:12px 16px}
+    nav a{margin:0 8px;text-decoration:none;color:#333;font-weight:600}
+    nav a:hover{color:#008000}
+    .hero{margin-top:60px;text-align:center;padding:60px 20px;background:#f5f5f5}
+    .hero h1{font-size:2.2rem;margin-bottom:12px;color:#111}
+    .hero p{font-size:1.1rem;margin-bottom:20px}
+    .hero .cta{display:inline-block;background:#008000;color:#fff;padding:12px 24px;border-radius:6px;font-size:1rem;text-decoration:none}
+    .hero .cta:hover{background:#006400}
+    section{max-width:1100px;margin:0 auto;padding:60px 20px}
+    h2{text-align:center;font-size:1.8rem;margin-bottom:32px;color:#111}
+    .card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:24px;margin-bottom:24px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+    .calc input,.calc select{width:100%;padding:8px;margin-top:6px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px}
+    .calc .result{margin-top:16px}
+    .calc .result div{display:flex;justify-content:space-between;padding:4px 0}
+    .faq details{border:1px solid #ddd;border-radius:6px;margin-bottom:10px;padding:12px;background:#fafafa}
+    .faq summary{font-weight:600;cursor:pointer}
+    form input,form textarea,form select{width:100%;padding:10px;margin-bottom:12px;border:1px solid #ccc;border-radius:6px}
+    form button{background:#008000;color:#fff;padding:12px 20px;border:none;border-radius:6px;cursor:pointer;font-size:1rem}
+    form button:hover{background:#006400}
+    footer{background:#111;color:#fff;text-align:center;padding:20px;margin-top:40px;font-size:.9rem}
+    @media(max-width:768px){nav{flex-direction:column} .hero h1{font-size:1.8rem}}
+  </style>
+</head>
 <body>
-  <a class="skip-link" href="#inicio">Saltar a contenido</a>  <!-- Topbar accesible -->  <div class="topbar" role="navigation" aria-label="Barra de navegación">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <img src="https://porkinvest.github.io/Porkinvest/IMG-20250817-WA0020.jpg" alt="Logo de PorkInvest" class="logo" width="36" height="36" loading="eager">
-          <strong>PorkInvest</strong>
-        </a>
-        <nav class="navlinks" aria-label="Secciones del sitio">
-          <a href="#proyectos">Proyectos</a>
-          <a href="#comparador">Comparador</a>
-          <a href="#confianza">Confianza</a>
-          <a href="#faq">Preguntas</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-        <a class="btn btn-primary" href="#contacto" aria-label="Ir a invertir">Invierte Ahora</a>
-      </div>
+<header>
+  <nav>
+    <div><strong>PorkInvest</strong></div>
+    <div>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#comparador">Comparador</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
     </div>
-  </div>  <!-- HERO con calculadora -->  <header id="inicio" class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <span class="badge" aria-label="Oportunidad de inversión">Inversiones seguras en Colombia</span>
-        <h1>Invierte en porcicultura desde $500.000 COP — crowdfunding agro con contratos y reportes mensuales</h1>
-        <p class="muted">Tu capital trabaja en el <strong>campo colombiano</strong> con <strong>transparencia</strong>, <strong>custodia</strong> y <strong>trazabilidad</strong>. Rentabilidad <strong>objetivo 10% semestral</strong> (no garantizada). Ideal si buscas <em>invertir en Colombia</em>, <em>inversiones seguras Colombia</em> o <em>negocios rentables en Colombia</em>.</p>
-        <div class="kpis" role="list">
-          <span class="pill" role="listitem">✔ Contrato y Custodia</span>
-          <span class="pill" role="listitem">💰 10% objetivo / 6 meses</span>
-          <span class="pill" role="listitem">📊 Transparencia Total</span>
-        </div><!-- Calculadora CRO -->
-    <div class="card calc" style="margin-top:24px;max-width:640px" aria-label="Calculadora de inversión">
-      <h3>Calcula tu proyección</h3>
-      <div class="row">
-        <div>
-          <label for="monto" class="muted">Monto a invertir (COP)</label>
-          <input id="monto" type="number" min="500000" step="50000" value="1500000" inputmode="numeric" aria-describedby="montoHelp" required>
-          <small id="montoHelp" class="muted">Mínimo $500.000 COP</small>
-        </div>
-        <div>
-          <label for="reinversion" class="muted">¿Reinvertir al siguiente ciclo?</label>
-          <select id="reinversion" aria-label="Elegir reinversión">
-            <option value="no">No (retirar utilidades)</option>
-            <option value="si">Sí (capitaliza utilidades)</option>
-          </select>
-        </div>
-      </div>
-      <div class="result" aria-live="polite">
-        <div class="box"><div class="muted">Utilidad Objetivo (6 meses)</div><div id="utilidad" class="big">—</div></div>
-        <div class="box"><div class="muted">Total Proyectado (6 meses)</div><div id="total" class="big">—</div></div>
-        <div class="box"><div class="muted">Proyección 12 meses</div><div id="total12" class="big">—</div></div>
-      </div>
-      <p class="tiny">Estimaciones no garantizadas. El rendimiento real depende del mercado y de la eficiencia operativa. Revisa el Dossier para más detalles.</p>
-    </div>
+  </nav>
+</header>
 
-    <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
-      <a class="btn btn-primary" href="#contacto">Quiero Invertir Ahora</a>
-      <a class="btn btn-ghost" href="#proyectos">Ver Proyectos</a>
-    </div>
-    <div class="trust" aria-label="Sellos de confianza">
-      <span class="tag">📃 Contrato privado</span>
-      <span class="tag">🔍 Trazabilidad por lote</span>
-      <span class="tag">🗓️ Reporte mensual</span>
-      <span class="tag">🛡️ Riesgo controlado (no garantizado)</span>
+<section class="hero">
+  <h1>Invierte en proyectos agropecuarios en Colombia</h1>
+  <p>Rentabilidad proyectada del 10% por ciclo de 6 meses. Transparencia, contratos y reportes mensuales.</p>
+  <a href="#contacto" class="cta">Quiero Invertir Ahora</a>
+</section>
+
+<section id="proyectos">
+  <h2>Proyectos Disponibles</h2>
+  <div class="card">
+    <h3>Inversión en porcicultura</h3>
+    <p>Participa en proyectos de producción porcina con respaldo de contratos claros y reportes periódicos. Inicia desde $500,000 COP.</p>
+  </div>
+</section>
+
+<section id="comparador">
+  <h2>Comparador de Inversiones</h2>
+  <div class="card">
+    <table style="width:100%;border-collapse:collapse;text-align:left">
+      <thead>
+        <tr><th>Opción</th><th>Rentabilidad</th><th>Liquidez</th><th>Accesibilidad</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CDT Bancario</td><td>~7% anual</td><td>Baja</td><td>Alta</td></tr>
+        <tr><td>Fondo de Inversión</td><td>~8% anual</td><td>Media</td><td>Media</td></tr>
+        <tr><td>PorkInvest</td><td>~10% cada 6 meses</td><td>Media</td><td>Alta (desde $500k)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card calc">
+    <h3>Calcula tu proyección</h3>
+    <label for="monto">Monto a invertir (COP)</label>
+    <input id="monto" type="number" min="500000" step="50000" value="1500000">
+    <label for="reinversion">¿Reinvertir al siguiente ciclo?</label>
+    <select id="reinversion">
+      <option value="no">No (retirar utilidades)</option>
+      <option value="si">Sí (capitalizar utilidades)</option>
+    </select>
+    <div class="result">
+      <div><span>Utilidad (6 meses):</span><span id="utilidad">—</span></div>
+      <div><span>Total (6 meses):</span><span id="total">—</span></div>
+      <div><span>Proyección 12 meses:</span><span id="total12">—</span></div>
     </div>
   </div>
-  <figure class="hero-img" aria-label="Imagen del proyecto">
-    <img src="https://images.unsplash.com/photo-1579294241517-73d7890e1f7f?q=80&w=1600&auto=format&fit=crop" alt="Granja porcícola moderna en Colombia" width="1600" height="1200" loading="eager">
-  </figure>
-</div>
+</section>
 
-  </header>  <!-- PROYECTOS (estructura escalable) -->  <section id="proyectos" aria-labelledby="titulo-proyectos">
-    <div class="wrap">
-      <h2 id="titulo-proyectos" class="section-title">Proyectos de inversión en el campo colombiano</h2>
-      <div class="grid-3" id="projectGrid">
-        <!-- Proyecto 1: Porcicultura -->
-        <article class="card" data-project="porcicultura">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--brand)">🐖</div>
-          <h3>Crowdfunding Porcino – Santa Rosa del Sur</h3>
-          <p class="muted">Participa en <strong>inversiones en agricultura</strong> a través de <strong>porcicultura</strong>. Procesos estandarizados: precría, levante y ceba. Alternativa a <em>CDT</em> para quienes buscan <strong>inversiones seguras en Colombia</strong>.</p>
-          <ul>
-            <li>Ticket mínimo: $500.000 COP</li>
-            <li>Horizonte: 6 meses por ciclo</li>
-            <li>Objetivo: 10% semestral</li>
-          </ul>
-          <a href="#contacto" class="btn btn-primary" style="margin-top:12px">Quiero participar</a>
-        </article>
-        <!-- Placeholder futuro: Ganado / Apicultura / Café (ejemplo de escalabilidad) -->
-        <article class="card" data-project="ganaderia">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--brand)">🐄</div>
-          <h3>Próximamente: Ganadería (piloto)</h3>
-          <p class="muted">Estructura lista para incorporar <strong>crowdfunding agro</strong> en ganadería: ticket accesible, control de costos, y trazabilidad. (Registro de interesados)</p>
-          <a href="#contacto" class="btn btn-ghost" style="margin-top:12px">Quiero enterarme</a>
-        </article>
-        <article class="card" data-project="caficultura">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--brand)">☕</div>
-          <h3>Próximamente: Caficultura (piloto)</h3>
-          <p class="muted">Diseño modular para sumar <strong>inversiones en agricultura</strong> (café). Mantén el contacto para cupos de prueba.</p>
-          <a href="#contacto" class="btn btn-ghost" style="margin-top:12px">Notificarme</a>
-        </article>
-      </div>
-    </div>
-  </section>  <!-- COMPARADOR (CRO + SEO) -->  <section id="comparador" aria-labelledby="titulo-comparador">
-    <div class="wrap">
-      <h2 id="titulo-comparador" class="section-title">¿Dónde invertir dinero en Colombia? Comparador rápido</h2>
-      <div class="card">
-        <p class="muted">Tabla comparativa con fines informativos. No constituye asesoría financiera. Las cifras son referenciales.</p>
-        <div style="overflow:auto">
-          <table class="table" aria-label="Comparador de inversiones en Colombia">
-            <thead>
-              <tr>
-                <th>Alternativa</th>
-                <th>Ticket mínimo típico</th>
-                <th>Liquidez</th>
-                <th>Horizonte</th>
-                <th>Riesgo estimado*</th>
-                <th>Objetivo / Referencia</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>CDT bancario</td>
-                <td>$100.000 – $1.000.000</td>
-                <td>Media</td>
-                <td>3–12 meses</td>
-                <td>Bajo</td>
-                <td>Tasa fija (según banco)</td>
-              </tr>
-              <tr>
-                <td>Fondos de inversión colectiva</td>
-                <td>$100.000+</td>
-                <td>Alta</td>
-                <td>Corto/Medio</td>
-                <td>Medio</td>
-                <td>Variable (mercado)</td>
-              </tr>
-              <tr>
-                <td>Inmobiliario (crowdfunding)</td>
-                <td>$1.000.000+</td>
-                <td>Baja</td>
-                <td>Medio/Largo</td>
-                <td>Medio</td>
-                <td>Rentas + valorización</td>
-              </tr>
-              <tr class="highlight">
-                <td><strong>PorkInvest (porcicultura)</strong></td>
-                <td><strong>$500.000</strong></td>
-                <td>Media</td>
-                <td>6 meses por ciclo</td>
-                <td>Medio</td>
-                <td><strong>Objetivo 10% semestral</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="tiny">*El riesgo nunca es nulo. PorkInvest no garantiza rendimientos ni es una entidad vigilada por la Superintendencia Financiera de Colombia.</p>
-      </div>
-    </div>
-  </section>  <!-- CONFIANZA -->  <section id="confianza" aria-labelledby="titulo-confianza">
-    <div class="wrap">
-      <h2 id="titulo-confianza" class="section-title">Confianza y transparencia para invertir con seguridad</h2>
-      <div class="grid-2" style="margin-top:16px">
-        <article class="card">
-          <h3>✅ Seguridad jurídica y contratos</h3>
-          <p>Tu inversión se respalda con <strong>contratos claros</strong> y anexos de custodia. Términ
+<section id="faq" class="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <details><summary>¿Es seguro invertir?</summary><p>Sí, usamos contratos claros, reportes mensuales y total transparencia.</p></details>
+  <details><summary>¿Cuál es el monto mínimo?</summary><p>Puedes empezar desde $500,000 COP.</p></details>
+  <details><summary>¿Cómo recibo mis ganancias?</summary><p>Las utilidades se transfieren directamente a tu cuenta bancaria al cierre del ciclo.</p></details>
+</section>
+
+<section id="contacto">
+  <h2>Contáctanos</h2>
+  <div class="card">
+    <form id="contactForm">
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" id="email" name="email" placeholder="Tu correo" required>
+      <input type="tel" id="whatsapp" name="whatsapp" placeholder="Tu WhatsApp">
+      <input type="hidden" id="montoForm" name="montoForm">
+      <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" rows="4"></textarea>
+      <button type="submit">Enviar a WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>PorkInvest © 2025 | Invertir en Colombia con transparencia</p>
+</footer>
+
+<script>
+  function formatCOP(n){return isFinite(n)?n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}):'—'}
+  function recalc(){
+    const monto=Number(document.getElementById('monto').value)||0
+    const reinv=(document.getElementById('reinversion').value==='si')
+    const r=0.10
+    const u6=monto>=500000?monto*r:0
+    const t6=monto+u6
+    const t12=reinv?t6*(1+r):monto+u6*2
+    document.getElementById('utilidad').textContent=formatCOP(u6)
+    document.getElementById('total').textContent=formatCOP(t6)
+    document.getElementById('total12').textContent=formatCOP(t12)
+    document.getElementById('montoForm').value=monto
+  }
+  window.addEventListener('DOMContentLoaded',()=>{
+    recalc()
+    document.getElementById('monto').addEventListener('input',recalc)
+    document.getElementById('reinversion').addEventListener('change',recalc)
+    document.getElementById('contactForm').addEventListener('submit',e=>{
+      e.preventDefault()
+      const nombre=document.getElementById('nombre').value
+      const email=document.getElementById('email').value
+      const whatsapp=document.getElementById('whatsapp').value
+      const monto=document.getElementById('montoForm').value
+      const mensaje=document.getElementById('mensaje').value
+      const text=`Hola, soy ${nombre}. Quiero invertir ${formatCOP(monto)}. Mi correo es ${email}, mi WhatsApp es ${whatsapp}. Mensaje: ${mensaje}`
+      const url=`https://wa.me/573002333356?text=${encodeURIComponent(text)}`
+      window.open(url,'_blank')
+    })
+  })
+</script>
+</body>
+</html>
