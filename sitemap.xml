@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Página principal -->
   <url>
-    <loc>https://porkinvest.github.io/Porkinvest/</loc>
+    <loc>https://porkinvest.github.io/</loc>
+    <lastmod>2025-08-22</lastmod>
+    <priority>1.0</priority>
   </url>
+
+  <!-- Secciones internas (anclas) -->
+  <url>
+    <loc>https://porkinvest.github.io/Porkinvest/#escenarios</loc>
+    <lastmod>2025-08-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://porkinvest.github.io/Porkinvest/#contacto</loc>
+    <lastmod>2025-08-22</lastmod>
+    <priority>0.8</priority>
   </url>
+
 </urlset>
