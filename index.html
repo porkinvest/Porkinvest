@@ -3,64 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PorkInvest - Inversión en Cerdos</title>
 
-  <!-- ✅ Meta verificación de Google -->
+  <!-- SEO -->
+  <title>PorkInvest - Inversión en Cerdos con Rentabilidad Segura</title>
+  <meta name="description" content="Invierte en el negocio porcino con PorkInvest. Obtén hasta un 10% de rentabilidad en solo 6 meses, respaldado por producción real y transparente.">
+  <meta name="keywords" content="inversión en cerdos, rentabilidad agropecuaria, inversión rentable Colombia, PorkInvest, porcicultura, inversión agro, cerdos rentables">
+  <meta name="author" content="PorkInvest" />
+
+  <!-- Verificación Google -->
   <meta name="google-site-verification" content="IRT_fqDjlZkLYLAkqeac1sLu1z5HKJFJgLWbGmpNzyQ" />
 
-  <!-- Descripción SEO -->
-  <meta name="description" content="Invierte en la porcicultura colombiana con PorkInvest. Obtén rendimientos seguros respaldados en lotes de cerdos en crecimiento. Inversión fácil, rentable y confiable." />
+  <!-- Open Graph (para redes sociales) -->
+  <meta property="og:title" content="PorkInvest - Invierte en el negocio porcino">
+  <meta property="og:description" content="Invierte de manera segura en cerdos y recibe hasta un 10% de rentabilidad en 6 meses. Transparencia, confianza y respaldo real.">
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/assets/logo.png">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:type" content="website">
 
-  <!-- Palabras clave SEO -->
-  <meta name="keywords" content="inversión en cerdos, porcicultura Colombia, PorkInvest, rentabilidad agropecuaria, agronegocios, invertir en animales, producción porcina" />
+  <!-- Schema.org (Google Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PorkInvest",
+    "url": "https://porkinvest.github.io/Porkinvest/",
+    "logo": "https://porkinvest.github.io/Porkinvest/assets/logo.png",
+    "sameAs": [
+      "https://facebook.com/porkinvest",
+      "https://instagram.com/porkinvest"
+    ],
+    "description": "Invierte en el negocio porcino con PorkInvest y recibe hasta un 10% de rentabilidad en 6 meses, con respaldo de producción real."
+  }
+  </script>
 
-  <!-- Open Graph para compartir en redes -->
-  <meta property="og:title" content="PorkInvest - Invierte en Cerdos con Rentabilidad Segura" />
-  <meta property="og:description" content="Participa en lotes de cerdos y gana un 10% en 6 meses. Inversión respaldada en activos reales." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://porkinvest.github.io/" />
-  <meta property="og:image" content="https://porkinvest.github.io/img/porkinvest-banner.png" />
-
-  <!-- Estilos -->
+  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>🐷 PorkInvest</h1>
-    <p>Invierte en la porcicultura colombiana y gana un <strong>10% en 6 meses</strong>.</p>
+    <h1>PorkInvest</h1>
+    <p>Invierte en el futuro de la porcicultura con rentabilidad segura.</p>
+    <nav>
+      <ul>
+        <li><a href="#modelo">Modelo de inversión</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#escenarios">Escenarios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-    <section id="como-funciona">
-      <h2>¿Cómo funciona?</h2>
-      <p>Tu inversión no se destina a uno o dos animales, sino a un <strong>lote completo de cerdos</strong>. Al final del ciclo (6 meses), recibes tu inversión inicial más un <strong>rendimiento del 10%</strong>.</p>
+    <section id="modelo">
+      <h2>Modelo de inversión</h2>
+      <p>En <strong>PorkInvest</strong> tu dinero se suma a un lote completo de cerdos. 
+      A los 6 meses, cuando los animales alcanzan su peso de mercado, recuperas tu inversión inicial más un rendimiento del <strong>10%</strong>.</p>
     </section>
 
-    <section id="simulador">
-      <h2>Simulador de Inversión</h2>
-      <label for="monto">Monto a invertir (COP):</label>
-      <input type="number" id="monto" placeholder="Ejemplo: 1.000.000" />
-      <button onclick="calcular()">Calcular</button>
-      <p id="resultado"></p>
+    <section id="beneficios">
+      <h2>Beneficios de invertir con nosotros</h2>
+      <ul>
+        <li>Rentabilidad fija y clara: 10% en 6 meses.</li>
+        <li>Inversión respaldada en producción real.</li>
+        <li>Transparencia y confianza en cada ciclo.</li>
+        <li>Oportunidad de diversificación agropecuaria.</li>
+      </ul>
+    </section>
+
+    <section id="escenarios">
+      <h2>Escenarios de inversión</h2>
+      <p>El inversionista participa en un <strong>lote completo</strong> de cerdos, no en animales individuales. 
+      Al cierre del ciclo (6 meses), se liquida el lote y se entrega la inversión inicial + utilidad pactada.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>¿Quieres invertir o recibir más información?</p>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="_replyto" required>
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 PorkInvest - Inversión en Cerdos en Colombia</p>
+    <p>© 2025 PorkInvest - Todos los derechos reservados</p>
   </footer>
-
-  <script>
-    function calcular() {
-      const monto = document.getElementById("monto").value;
-      if (monto && monto > 0) {
-        const ganancia = monto * 0.10;
-        const total = parseInt(monto) + ganancia;
-        document.getElementById("resultado").innerText =
-          `En 6 meses recibirás $${total.toLocaleString("es-CO")} COP (incluye $${ganancia.toLocaleString("es-CO")} de ganancia).`;
-      } else {
-        document.getElementById("resultado").innerText = "Por favor ingresa un monto válido.";
-      }
-    }
-  </script>
 </body>
 </html>
