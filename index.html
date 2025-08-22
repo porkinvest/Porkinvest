@@ -85,7 +85,7 @@
     .result{display:grid;gap:8px;margin-top:12px}
     .result .row{display:flex;justify-content:space-between;padding:8px;border-radius:8px;background:#fbfcfb;border:1px dashed #eef3ee}
     .bars{display:flex;gap:10px;align-items:flex-end;height:140px;margin-top:12px;background:#f3f6f3;padding:10px;border-radius:10px}
-    .bar{flex:1;border-radius:8px 8px 0 0;background:var(--accent);display:flex;align-items:flex-end;justify-content:center;padding:6px;font-weight:700;color:#111}
+    .bar{flex:1;border-radius:8px 8px 0 0;background:var(--accent);display:flex;align-items:flex-end;justify-content:center;padding:6px;font-weight:700;color:#111;min-height:6px}
 
     /* Footer */
     footer{background:#07130e;color:#dff5e7;padding:20px 0;margin-top:20px}
@@ -99,7 +99,7 @@
     .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
   </style>
 
-  <!-- JSON-LD: Organization / WebSite / FAQ -->
+  <!-- Structured data (Organization / WebSite / FAQ) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -118,12 +118,7 @@
     "@context":"https://schema.org",
     "@type":"WebSite",
     "url":"https://porkinvest.github.io/Porkinvest/",
-    "name":"PorkInvest",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://porkinvest.github.io/Porkinvest/?q={search_term_string}",
-      "query-input":"required name=search_term_string"
-    }
+    "name":"PorkInvest"
   }
   </script>
 
@@ -133,11 +128,11 @@
     "@type":"FAQPage",
     "mainEntity":[
       {"@type":"Question","name":"¿PorkInvest realiza captación de dinero del público?",
-        "acceptedAnswer":{"@type":"Answer","text":"No. Este sitio es informativo y educativo. Cualquier relación comercial se estructura mediante acuerdos privados y documentados; no se realiza captación pública habitual de recursos."}},
-      {"@type":"Question","name":"¿Cuánto dura el ciclo y cuándo se paga?",
-        "acceptedAnswer":{"@type":"Answer","text":"El ciclo operativo es de 6 meses y el pago estimado (ejemplo ilustrativo) de hasta 10% se calcula al cierre del ciclo una vez realizada la comercialización del lote."}},
+        "acceptedAnswer":{"@type":"Answer","text":"No. Esta página es informativa y educativa. Cualquier relación se evalúa de forma privada y documentada; no constituye oferta pública ni captación masiva y habitual de recursos del público."}},
+      {"@type":"Question","name":"¿Cuándo ocurre el pago estimado?",
+        "acceptedAnswer":{"@type":"Answer","text":"El ciclo operativo es de 6 meses y el pago estimado (ejemplo ilustrativo) de hasta 10% se calcula al cierre del ciclo, una vez realizada la comercialización del lote."}},
       {"@type":"Question","name":"¿Cómo se usan los aportes?",
-        "acceptedAnswer":{"@type":"Answer","text":"Los aportes se destinan al lote productivo general (no a animales individuales). Al cierre del ciclo se procesa la venta del lote y se procede a la liquidación según acuerdos privados."}}
+        "acceptedAnswer":{"@type":"Answer","text":"Los aportes se destinan al lote productivo general (no a animales individuales). Tras la venta del lote se procede a la liquidación según acuerdos privados."}}
     ]
   }
   </script>
@@ -166,7 +161,7 @@
   <!-- HERO -->
   <section class="hero" role="banner">
     <h1>Participación agroproductiva responsable en porcicultura</h1>
-    <p class="lead">Ciclo operativo estándar de <strong>6 meses</strong>. Al cierre del ciclo se comercializa el lote y, como ejemplo ilustrativo, se calcula un pago estimado de hasta <strong>10%</strong>. Esta información es educativa; no constituye una oferta pública ni captación masiva.</p>
+    <p class="lead">Ciclo operativo estándar de <strong>6 meses</strong>. Al cierre del ciclo se comercializa el lote y, como ejemplo ilustrativo, se calcula un pago estimado de hasta <strong>10%</strong>. Esta información es educativa; no constituye oferta pública ni captación masiva.</p>
     <div class="cta-row">
       <a href="#contacto" class="btn btn-primary" id="ctaInfo">Solicitar información</a>
       <a href="#escenarios" class="btn btn-secondary" id="ctaSimular">Ver simulador</a>
@@ -184,13 +179,13 @@
     <section id="modelo" class="card" aria-labelledby="t-modelo">
       <h2 id="t-modelo">Cómo funciona nuestro modelo (resumen)</h2>
       <ol>
-        <li><strong>Destino de los aportes:</strong> Los fondos recibidos se integran al <em>lote productivo general</em>, no se asignan a un animal individual. Esto permite una administración más eficiente y mitigación de riesgos operativos.</li>
-        <li><strong>Ciclo operativo:</strong> El ciclo estándar dura <strong>6 meses</strong>. Durante ese tiempo se realiza la crianza, cuidados sanitarios y control de costos.</li>
-        <li><strong>Comercialización:</strong> Al cierre del ciclo el lote se comercializa. Sobre la venta se calcula la liquidación.</li>
-        <li><strong>Liquidación estimada:</strong> Como ejemplo ilustrativo, al cierre del ciclo se podría pagar hasta un <strong>10%</strong> sobre el monto aportado. Esto es un <em>escenario</em>, no una promesa contractual.</li>
+        <li><strong>Destino de los aportes:</strong> Los fondos recibidos se integran al <em>lote productivo general</em>, no se asignan a un animal individual.</li>
+        <li><strong>Ciclo operativo:</strong> El ciclo estándar dura <strong>6 meses</strong>.</li>
+        <li><strong>Comercialización:</strong> Al cierre del ciclo el lote se comercializa y se procede a la liquidación correspondiente.</li>
+        <li><strong>Liquidación estimada:</strong> Como ejemplo ilustrativo, al cierre del ciclo se podría pagar hasta un <strong>10%</strong> sobre el monto aportado. No es una promesa contractual.</li>
         <li><strong>Documentación:</strong> Todas las relaciones se formalizan mediante acuerdos privados y reportes operativos bajo solicitud.</li>
       </ol>
-      <p class="muted">Transparencia: si quieres revisar el proceso en detalle, pedimos agendar una charla para compartir documentos y resolver tus dudas.</p>
+      <p class="muted">Transparencia: si quieres revisar procesos/documentos, agendamos una charla y te compartimos la información necesaria.</p>
     </section>
 
     <!-- EVIDENCIA -->
@@ -198,7 +193,7 @@
       <h2 id="t-evidencia">Evidencia operativa (resumen)</h2>
       <details>
         <summary>Flujo del ciclo (compra → engorde → venta)</summary>
-        <p>Se mantiene registro de insumos, alimentación, peso promedio y protocoles sanitarios. La documentación ampliada se comparte bajo acuerdo.</p>
+        <p>Registro de insumos, alimentación, peso promedio y protocolos sanitarios. Documentación ampliada bajo solicitud.</p>
       </details>
       <details>
         <summary>Controles y mitigación de riesgos</summary>
@@ -206,14 +201,14 @@
       </details>
       <details>
         <summary>Reportes periódicos</summary>
-        <p>Reportes operativos y financieros con hitos clave; disponibles para participantes según acuerdos privados.</p>
+        <p>Reportes operativos y financieros con hitos clave; disponibles para participantes según acuerdo.</p>
       </details>
     </section>
 
     <!-- ESCENARIOS / SIMULADOR -->
     <section id="escenarios" class="card" aria-labelledby="t-escenarios">
       <h2 id="t-escenarios">Simulador de escenarios (ilustrativo)</h2>
-      <p class="muted">Herramienta orientativa. Los cálculos no constituyen garantía de rendimiento. El tope ejemplar por ciclo (6 meses) es 10%.</p>
+      <p class="muted">Herramienta orientativa. Los cálculos no constituyen garantía de rendimiento. Tope ejemplar por ciclo (6 meses): <strong>10%</strong>.</p>
 
       <div class="sim-grid" role="group" aria-label="Simulador">
         <label>
@@ -230,7 +225,7 @@
         </label>
 
         <label>
-          <span class="sr-only">Comportamiento en 2do ciclo</span>
+          <span class="sr-only">Comportamiento</span>
           <select id="comportamiento" aria-label="Comportamiento en 2do ciclo">
             <option value="retirar" selected>Retirar pago 10% a 6M</option>
             <option value="reaplicar">Reaplicar 10% para 2º ciclo</option>
@@ -245,9 +240,9 @@
       </div>
 
       <div class="bars" aria-hidden="true">
-        <div class="bar" id="barMonto">Monto</div>
-        <div class="bar" id="barPago">Pago 6M</div>
-        <div class="bar" id="bar12">12M</div>
+        <div class="bar" id="barMonto" style="height:6%;">Monto</div>
+        <div class="bar" id="barPago" style="height:6%;">Pago 6M</div>
+        <div class="bar" id="bar12" style="height:6%;">12M</div>
       </div>
 
       <div class="cta-row" style="margin-top:12px">
@@ -264,7 +259,7 @@
       </details>
       <details>
         <summary>¿El pago del 10% está garantizado?</summary>
-        <p>No. Es un ejemplo ilustrativo para facilitar la comprensión del modelo. Las condiciones reales dependen del desempeño del lote y del mercado.</p>
+        <p>No. Es un ejemplo ilustrativo para facilitar comprensión del modelo. Las condiciones reales dependen del desempeño del lote y del mercado.</p>
       </details>
       <details>
         <summary>¿A qué se destinan los aportes?</summary>
@@ -313,93 +308,109 @@
   </footer>
 
   <script>
-    // NAV TOGGLE
-    (function(){
-      const btn = document.getElementById('menuBtn');
-      const menu = document.getElementById('menu');
-      btn.addEventListener('click', ()=>{
-        const open = menu.classList.toggle('show');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        // push event
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:'nav_toggle', open});
-      });
-    })();
-
-    // HELPERS
+    // --- Helpers ---
     const $ = id => document.getElementById(id);
     const fmtCOP = n => isFinite(n) ? n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}) : '—';
+    const safeAddEvent = (el, ev, fn)=> el && el.addEventListener(ev, fn);
 
-    // SIMULATOR: cycle 6 months, 10% per cycle (fixed)
-    function recalc(){
-      const monto = Number($('monto').value) || 0;
-      const horizonte = Number($('horizonte').value) || 6;
-      const comportamiento = $('comportamiento').value; // retirar | reaplicar
-      const r = 0.10; // 10% per 6-month cycle
-
-      const pago6 = monto >= 500000 ? monto * r : 0;
-      const total6 = monto + pago6;
-
-      let total12 = total6;
-      if(horizonte === 12){
-        if(comportamiento === 'reaplicar'){
-          // compound: (monto * 1.1) * 1.1
-          total12 = parseFloat((total6 * (1 + r)).toFixed(0));
-        } else {
-          // retirar: pay 10% at 6M, and again 10% on original capital at 12M
-          total12 = parseFloat((monto + pago6 + (monto * r)).toFixed(0));
-        }
+    // --- Nav toggle ---
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const menuBtn = $('menuBtn');
+      const menu = $('menu');
+      if(menuBtn && menu){
+        menuBtn.addEventListener('click', ()=>{
+          const isOpen = menu.classList.toggle('show');
+          menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({event:'nav_toggle', open:isOpen});
+        });
       }
 
-      $('pago6').textContent = fmtCOP(pago6);
-      $('total6').textContent = fmtCOP(total6);
-      $('total12').textContent = fmtCOP(total12);
+      // --- SIMULATOR ---
+      function recalc(){
+        const montoEl = $('monto');
+        const horizonteEl = $('horizonte');
+        const comportamientoEl = $('comportamiento');
 
-      const max = Math.max(monto, pago6, total12, 1);
-      $('barMonto').style.height = (monto/max*100)+'%';
-      $('barPago').style.height = (pago6/max*100)+'%';
-      $('bar12').style.height = (total12/max*100)+'%';
+        const monto = montoEl ? Number(montoEl.value) : 0;
+        const horizonte = horizonteEl ? Number(horizonteEl.value) : 6;
+        const comportamiento = comportamientoEl ? comportamientoEl.value : 'retirar';
+        const r = 0.10; // 10% por ciclo de 6 meses
 
-      // simple labels
-      $('barMonto').textContent = 'Monto';
-      $('barPago').textContent = 'Pago 6M';
-      $('bar12').textContent = horizonte===12 ? 'Total 12M' : 'Total 6M';
-    }
-
-    // initial and listeners
-    document.addEventListener('DOMContentLoaded', ()=>{
-      ['monto','horizonte','comportamiento'].forEach(id => {
-        $(id).addEventListener('input', recalc);
-      });
-      recalc();
-
-      // CTA tracking
-      const push = (evtName)=> {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:evtName});
-      };
-      $('ctaInfo').addEventListener('click', ()=>{ push('cta_info_click'); });
-      $('ctaSimular').addEventListener('click', ()=>{ push('cta_simular_click'); });
-      $('ctaHablar').addEventListener('click', ()=>{ push('cta_agendar_click'); });
-      $('mailBtn').addEventListener('click', ()=>{ push('cta_mail_click'); });
-      $('waBtn').addEventListener('click', ()=>{ push('cta_wa_click'); });
-
-      // FORM SUBMIT -> open WhatsApp with prefilled message + dataLayer event
-      $('contactForm').addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const nombre = $('nombre').value.trim();
-        const correo = $('email').value.trim();
-        const whats = $('whats').value.trim();
-        const mensaje = $('mensaje').value.trim();
-
-        if(!nombre || !correo || !mensaje){
-          alert('Por favor completa nombre, correo y mensaje.');
+        // Minimum amount validation
+        if(monto < 500000){
+          $('pago6').textContent = 'Monto mínimo $500.000';
+          $('total6').textContent = '—';
+          $('total12').textContent = '—';
+          // set small visible bars
+          $('barMonto').style.height = '6%';
+          $('barPago').style.height = '6%';
+          $('bar12').style.height = '6%';
           return;
         }
 
-        // push dataLayer event
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:'contact_form_submit', nombre, correo, hasWhats: !!whats});
+        const pago6 = Math.round(monto * r);
+        const total6 = monto + pago6;
 
-        // prepare WhatsApp
-        const text = `Hola, soy ${nom
+        let total12 = total6;
+        if(horizonte === 12){
+          if(comportamiento === 'reaplicar'){
+            total12 = Math.round(total6 * (1 + r)); // compound
+          } else {
+            // retirar: pago1 + pago2 (on original capital)
+            const pago2 = Math.round(monto * r);
+            total12 = monto + pago6 + pago2;
+          }
+        }
+
+        $('pago6').textContent = fmtCOP(pago6);
+        $('total6').textContent = fmtCOP(total6);
+        $('total12').textContent = fmtCOP(total12);
+
+        const max = Math.max(monto, pago6, total12, 1);
+        const hMonto = Math.max(6, Math.round((monto / max) * 100));
+        const hPago = Math.max(6, Math.round((pago6 / max) * 100));
+        const h12 = Math.max(6, Math.round((total12 / max) * 100));
+
+        $('barMonto').style.height = hMonto + '%';
+        $('barPago').style.height = hPago + '%';
+        $('bar12').style.height = h12 + '%';
+
+        $('barMonto').textContent = 'Monto';
+        $('barPago').textContent = 'Pago 6M';
+        $('bar12').textContent = horizonte === 12 ? 'Total 12M' : 'Total 6M';
+      }
+
+      // attach listeners (input & change & keyup for instant feedback)
+      ['monto'].forEach(id=>{
+        const el = $(id);
+        if(el){
+          ['input','change','keyup'].forEach(ev=>el.addEventListener(ev, recalc));
+        }
+      });
+      ['horizonte','comportamiento'].forEach(id=>{
+        const el = $(id);
+        if(el) safeAddEvent(el,'change', recalc);
+      });
+
+      // run initial calc
+      recalc();
+
+      // --- CTA tracking (safe) ---
+      ['ctaInfo','ctaSimular','ctaHablar','mailBtn','waBtn'].forEach(id=>{
+        const el = $(id);
+        if(el) safeAddEvent(el,'click', ()=> {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({event: id + '_click'});
+        });
+      });
+
+      // --- Contact form submit -> WhatsApp ---
+      const form = $('contactForm');
+      if(form){
+        form.addEventListener('submit',(e)=>{
+          e.preventDefault();
+          const nombre = $('nombre').value.trim();
+          const correo = $('email').value.trim();
+          const whats = $('whats').value.trim();
+          const mensaje = $('men
