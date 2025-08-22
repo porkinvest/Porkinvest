@@ -1,98 +1,138 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO -->
-  <title>PorkInvest - Inversión en Cerdos con Rentabilidad Segura</title>
-  <meta name="description" content="Invierte en el negocio porcino con PorkInvest. Obtén hasta un 10% de rentabilidad en solo 6 meses, respaldado por producción real y transparente.">
-  <meta name="keywords" content="inversión en cerdos, rentabilidad agropecuaria, inversión rentable Colombia, PorkInvest, porcicultura, inversión agro, cerdos rentables">
-  <meta name="author" content="PorkInvest" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PorkInvest | Participación en proyectos agropecuarios rentables</title>
 
   <!-- Verificación Google -->
   <meta name="google-site-verification" content="IRT_fqDjlZkLYLAkqeac1sLu1z5HKJFJgLWbGmpNzyQ" />
 
-  <!-- Open Graph (para redes sociales) -->
-  <meta property="og:title" content="PorkInvest - Invierte en el negocio porcino">
-  <meta property="og:description" content="Invierte de manera segura en cerdos y recibe hasta un 10% de rentabilidad en 6 meses. Transparencia, confianza y respaldo real.">
-  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/assets/logo.png">
-  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
-  <meta property="og:type" content="website">
+  <!-- SEO -->
+  <meta name="description" content="PorkInvest conecta inversionistas con proyectos reales en porcicultura. Participa desde $500.000 COP con respaldo en activos tangibles, contratos claros y reportes periódicos. Rentabilidad estimada por ciclo: ~10%." />
+  <meta name="keywords" content="inversión porcicultura, invertir en cerdos, PorkInvest, inversión agro Colombia, crowdfunding agro" />
+  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/" />
 
-  <!-- Schema.org (Google Rich Results) -->
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="PorkInvest" />
+  <meta property="og:title" content="PorkInvest — Invierte en proyectos reales de porcicultura" />
+  <meta property="og:description" content="Participa desde $500.000 COP en lotes de cerdos con transparencia, contratos y reportes. Retornos estimados por ciclo: ~10%." />
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PorkInvest — Inversión en porcicultura" />
+  <meta name="twitter:description" content="Invierte en lotes de cerdos desde $500.000 COP. Plataforma transparente, contratos claros y reportes periódicos." />
+  <meta name="twitter:image" content="https://porkinvest.github.io/Porkinvest/assets/og-image.png" />
+
+  <!-- Structured data (Organization + WebSite) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "PorkInvest",
-    "url": "https://porkinvest.github.io/Porkinvest/",
-    "logo": "https://porkinvest.github.io/Porkinvest/assets/logo.png",
-    "sameAs": [
-      "https://facebook.com/porkinvest",
-      "https://instagram.com/porkinvest"
-    ],
-    "description": "Invierte en el negocio porcino con PorkInvest y recibe hasta un 10% de rentabilidad en 6 meses, con respaldo de producción real."
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "PorkInvest",
+        "url": "https://porkinvest.github.io/Porkinvest/",
+        "logo": "https://porkinvest.github.io/Porkinvest/assets/logo.png",
+        "sameAs": [
+          "https://facebook.com/porkinvest",
+          "https://instagram.com/porkinvest"
+        ],
+        "description": "PorkInvest conecta inversionistas con proyectos reales en porcicultura en Colombia."
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://porkinvest.github.io/Porkinvest/",
+        "name": "PorkInvest",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://porkinvest.github.io/Porkinvest/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
   }
   </script>
 
-  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS (inline minimal to ensure fast render; add styles.css if quieres más) -->
+  <style>
+    :root{
+      --primary:#004225; --secondary:#00a859; --accent:#ffd700; --bg:#f9f9f9; --text:#222;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, "Segoe UI", Arial, sans-serif; margin:0; color:var(--text); background:var(--bg); line-height:1.5}
+    header{position:fixed;left:0;right:0;top:0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);z-index:30}
+    nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .logo{font-weight:800;color:var(--primary);font-size:1.15rem}
+    .navlinks{display:flex;gap:14px;align-items:center}
+    .navlinks a{text-decoration:none;color:var(--text);font-weight:600}
+    .hero{margin-top:72px;padding:72px 20px;text-align:center;background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff}
+    .hero h1{font-size:2rem;margin-bottom:12px}
+    .hero p{max-width:920px;margin:0 auto 18px}
+    .btn{display:inline-block;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-primary{background:var(--accent);color:#111}
+    main{max-width:1100px;margin:36px auto;padding:0 20px}
+    section{margin-bottom:28px}
+    h2{color:var(--primary);text-align:center;margin-bottom:18px}
+    .card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:12px;border-bottom:1px solid #eee;text-align:left}
+    th{background:var(--primary);color:#fff}
+    .flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .small{font-size:.95rem;color:#666}
+    footer{background:#111;color:#fff;padding:24px;text-align:center;margin-top:24px}
+    /* responsive */
+    @media(max-width:820px){.navlinks{display:none} .hero h1{font-size:1.5rem}}
+  </style>
+
+  <!-- Google Ads / Analytics placeholder (preserve your existing ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17492753327"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17492753327');
+  </script>
+
 </head>
 <body>
   <header>
-    <h1>PorkInvest</h1>
-    <p>Invierte en el futuro de la porcicultura con rentabilidad segura.</p>
-    <nav>
-      <ul>
-        <li><a href="#modelo">Modelo de inversión</a></li>
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="#escenarios">Escenarios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+    <nav role="navigation" aria-label="Navegación principal">
+      <div class="logo">PorkInvest</div>
+      <div class="navlinks" aria-hidden="false">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#comparador">Escenarios</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#terminos">Términos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </nav>
   </header>
 
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Participa en proyectos reales del campo colombiano</h1>
+    <p>Invierte desde <strong>$500.000 COP</strong> en lotes de porcicultura con contratos claros, reportes periódicos y administración profesional. Retorno estimado por ciclo (6 meses): <strong>~10%</strong>.</p>
+    <a class="btn btn-primary" href="#comparador">Simula tu participación</a>
+  </section>
+
   <main>
-    <section id="modelo">
-      <h2>Modelo de inversión</h2>
-      <p>En <strong>PorkInvest</strong> tu dinero se suma a un lote completo de cerdos. 
-      A los 6 meses, cuando los animales alcanzan su peso de mercado, recuperas tu inversión inicial más un rendimiento del <strong>10%</strong>.</p>
+    <!-- Proyectos -->
+    <section id="proyectos" aria-labelledby="proyectos-title">
+      <h2 id="proyectos-title">Proyectos Disponibles</h2>
+      <div class="card" role="article" aria-label="Participación en porcicultura">
+        <h3>Participación en porcicultura</h3>
+        <p>Sumamos aportes para ejecutar ciclos productivos completos. Tu capital se integra al lote — no a cerdos aislados — y al cierre del ciclo se liquida la venta del lote, así se distribuyen utilidades proporcionales a cada aportante.</p>
+        <ul>
+          <li>Duración por ciclo: 6 meses</li>
+          <li>Rendimiento estimado por ciclo: ~10%</li>
+          <li>Monto mínimo: $500.000 COP</li>
+        </ul>
+        <a class="btn" href="#contacto">Quiero participar</a>
+      </div>
     </section>
 
-    <section id="beneficios">
-      <h2>Beneficios de invertir con nosotros</h2>
-      <ul>
-        <li>Rentabilidad fija y clara: 10% en 6 meses.</li>
-        <li>Inversión respaldada en producción real.</li>
-        <li>Transparencia y confianza en cada ciclo.</li>
-        <li>Oportunidad de diversificación agropecuaria.</li>
-      </ul>
-    </section>
-
-    <section id="escenarios">
-      <h2>Escenarios de inversión</h2>
-      <p>El inversionista participa en un <strong>lote completo</strong> de cerdos, no en animales individuales. 
-      Al cierre del ciclo (6 meses), se liquida el lote y se entrega la inversión inicial + utilidad pactada.</p>
-    </section>
-
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>¿Quieres invertir o recibir más información?</p>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="_replyto" required>
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 PorkInvest - Todos los derechos reservados</p>
-  </footer>
-</body>
-</html>
+    <!-- Comparador / Escenarios
