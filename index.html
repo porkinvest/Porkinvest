@@ -1,370 +1,416 @@
-<!DOCTYPE html><html lang="es-CO">
+<!DOCTYPE html>
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PorkInvest | Participación agropecuaria seria y transparente</title>
-  <meta name="description" content="PorkInvest conecta personas con proyectos reales de porcicultura. Participa desde $500.000 COP en esquemas respaldados con activos tangibles y contratos claros." />
-  <meta name="keywords" content="PorkInvest, porcicultura, agro, participación, proyectos agropecuarios, Colombia" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PorkInvest | Participación agroproductiva responsable (ciclo 6 meses, pago estimado 10%)</title>
+  <meta name="description" content="Modelo de participación agroproductiva responsable en porcicultura. Ciclos de 6 meses con pago estimado del 10% al cierre. Información educativa y contacto directo. No es captación ni oferta pública.">
+  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#004225">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PorkInvest | Participación agroproductiva responsable">
+  <meta property="og:description" content="Ciclo de 6 meses con pago estimado del 10% al cierre. Información educativa; no es captación.">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:type" content="website">
+
+  <!-- Google Tag Manager (usa tu contenedor real: GTM-PKZR3XB9) -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PKZR3XB9');
+  </script>
+  <!-- Fin GTM -->
+
   <style>
     :root{
-      --primary:#004225;--secondary:#00a859;--accent:#ffd700;--light:#f7f7f7;--dark:#111;--text:#333;--radius:12px
+      --primary:#004225; --primary-2:#0a6b41; --bg:#f7f8f8; --card:#fff;
+      --text:#222; --muted:#667; --accent:#ffd75a; --radius:14px; --focus:#99d5b5;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--light);color:var(--text);line-height:1.6}
-    header{position:sticky;top:0;z-index:1000;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-    nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
-    .logo{font-weight:800;color:var(--primary);letter-spacing:.2px}
-    .nav-links a{margin:0 10px;text-decoration:none;color:var(--dark);font-weight:600}
-    .nav-links a:hover{color:var(--secondary)}.hero{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;text-align:center;padding:84px 18px}
-.hero h1{font-size:clamp(1.6rem,4vw,2.6rem);margin-bottom:10px}
-.hero p{max-width:900px;margin:0 auto 18px}
-.btn{display:inline-block;padding:12px 20px;border-radius:var(--radius);font-weight:700;text-decoration:none;transition:.25s}
-.btn-primary{background:var(--accent);color:#111}
-.btn-primary:hover{filter:brightness(.95)}
-.btn-outline{border:2px solid #fff;color:#fff}
-.btn-outline:hover{background:#fff;color:var(--primary)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 
-main{max-width:1100px;margin:0 auto;padding:36px 18px}
-section{margin:32px 0}
-h2{color:var(--primary);text-align:center;margin-bottom:14px}
-.lead{text-align:center;color:#555;margin-bottom:16px}
-.grid{display:grid;gap:16px}
-.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    /* Header / Nav */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eaeaea;z-index:1000}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    .brand{font-weight:800;color:var(--primary);letter-spacing:.3px}
+    .nav a{color:#111;text-decoration:none;font-weight:700;padding:.5rem .6rem;border-radius:10px}
+    .nav a:hover,.nav a:focus{background:#f2f5f3;outline:none}
+    .menu{display:flex;gap:6px}
+    .toggle{display:none;font-size:28px;cursor:pointer;border:none;background:transparent}
+    .toggle:focus{outline:3px solid var(--focus);border-radius:10px}
+    @media(max-width:840px){
+      .menu{display:none;position:absolute;right:10px;top:60px;background:#fff;border:1px solid #e7e7e7;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.08);flex-direction:column;width:min(85vw,340px);padding:8px}
+      .menu.show{display:flex}
+      .toggle{display:block}
+    }
 
-.card{background:#fff;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,.06);padding:20px}
-.muted{color:#666}
+    /* Hero */
+    .hero{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#fff;text-align:center;padding:70px 16px}
+    .hero h1{margin:0 0 10px;font-size:clamp(1.6rem,4vw,2.4rem)}
+    .hero p{margin:0 auto;max-width:860px;opacity:.95}
+    .cta-row{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-secondary{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+    .btn:focus{outline:3px solid var(--focus)}
 
-/* Tabla y simulador */
-table{width:100%;border-collapse:collapse}
-th,td{padding:12px;border-bottom:1px solid #e9e9e9;text-align:left}
-th{background:var(--primary);color:#fff}
+    /* Sections */
+    section{max-width:1100px;margin:24px auto;padding:0 16px}
+    .card{background:var(--card);border:1px solid #ececec;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,.04);padding:20px}
+    h2{color:var(--primary);margin:4px 0 10px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:860px){.grid.cols-3{grid-template-columns:repeat(3,1fr)} .grid.cols-2{grid-template-columns:repeat(2,1fr)}}
 
-.simulador input,.simulador select{width:100%;padding:12px;border:1px solid #d6d6d6;border-radius:10px;margin-top:6px}
-.simulador .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.note{font-size:.9rem;color:#555;background:#fafafa;border-left:4px solid var(--secondary);padding:10px;border-radius:10px;margin-top:10px}
-#chart{display:flex;justify-content:space-around;align-items:flex-end;height:200px;margin-top:14px;background:#f2f2f2;border-radius:10px;padding:10px}
-.bar{width:30%;background:var(--accent);border-radius:10px 10px 0 0;display:flex;align-items:flex-end;justify-content:center}
-.bar span{padding:6px;font-size:.85rem;white-space:pre-line;color:#111}
+    /* Accordion */
+    details{border:1px solid #e9e9e9;border-radius:12px;background:#fff;padding:12px}
+    details+details{margin-top:10px}
+    summary{font-weight:800;cursor:pointer;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details[open]{box-shadow:0 6px 20px rgba(0,0,0,.04)}
 
-details{background:#fff;border-radius:10px;border:1px solid #e6e6e6;padding:12px;margin-bottom:10px}
-details summary{cursor:pointer;font-weight:700}
+    /* Simulator */
+    .sim-inputs{display:grid;gap:10px}
+    @media(min-width:700px){.sim-inputs{grid-template-columns:repeat(4,1fr)}}
+    input[type="number"], select{width:100%;padding:10px;border:1px solid #d9d9d9;border-radius:10px}
+    .result{display:grid;gap:8px;margin-top:8px}
+    .result div{display:flex;justify-content:space-between;border:1px dashed #e6e6e6;border-radius:10px;padding:8px;background:#fafafa}
+    .barwrap{display:flex;gap:10px;align-items:flex-end;height:160px;background:#f3f3f3;border-radius:12px;padding:10px;margin-top:10px}
+    .bar{flex:1;background:var(--accent);border-radius:10px 10px 0 0;display:flex;justify-content:center;align-items:flex-end;font-size:.85rem;padding:6px;color:#111}
 
-footer{margin-top:40px;background:#0e1513;color:#fff}
-.footer-inner{max-width:1100px;margin:auto;padding:20px 18px;font-size:.95rem}
-.small{font-size:.9rem;color:#777}
+    /* Footer */
+    footer{margin-top:32px;background:#0d1a14;color:#e8f3ec}
+    .foot{max-width:1100px;margin:auto;padding:22px 16px;font-size:.95rem}
+    .foot a{color:#a8e6c2;text-decoration:none}
+    .foot a:hover{text-decoration:underline}
 
-@media (max-width:820px){
-  .grid-2{grid-template-columns:1fr}
-  .simulador .row{grid-template-columns:1fr}
-}
-/* Anclas con header sticky */
-:target::before{content:"";display:block;height:78px;margin-top:-78px;visibility:hidden}
-
+    /* Accessibility */
+    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    a:focus,button:focus,input:focus,textarea:focus,select:focus{outline:3px solid var(--focus);outline-offset:2px}
   </style>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"PorkInvest",
+    "url":"https://porkinvest.github.io/Porkinvest/",
+    "email":"mailto:inversionporkinvest@gmail.com",
+    "telephone":"+57 3002333356",
+    "founder":"Yercistenblainer Moreno Guerrero",
+    "address":{"@type":"PostalAddress","addressCountry":"CO"}
+  }
+  </script>
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://porkinvest.github.io/Porkinvest/",
+    "name":"PorkInvest",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://porkinvest.github.io/Porkinvest/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+  <!-- JSON-LD: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"¿PorkInvest realiza captación de dinero del público?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. Esta página es informativa y educativa. Cualquier relación se evalúa de forma privada y documentada. No constituye oferta pública ni captación masiva y habitual de recursos del público."}},
+      {"@type":"Question","name":"¿Cuándo ocurre el pago estimado?",
+        "acceptedAnswer":{"@type":"Answer","text":"El ciclo operativo es de 6 meses y el pago estimado del 10% sucede al cierre del ciclo, de forma ilustrativa y no vinculante."}},
+      {"@type":"Question","name":"¿Puedo continuar a 12 meses?",
+        "acceptedAnswer":{"@type":"Answer","text":"Sí. A modo ilustrativo puedes optar por recibir el pago a los 6 meses o reaplicarlo para un segundo ciclo (12 meses en total)."}}
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!-- GTM (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKZR3XB9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Header -->
   <header>
-    <nav>
-      <div class="logo">PorkInvest</div>
-      <div class="nav-links">
-        <a href="#proyectos">Proyectos</a>
+    <nav class="nav" aria-label="Principal">
+      <div class="brand" aria-label="PorkInvest">PorkInvest</div>
+      <button class="toggle" aria-expanded="false" aria-controls="menu" id="menuBtn" title="Abrir menú">☰</button>
+      <div class="menu" id="menu" role="navigation">
+        <a href="#proposito">Propósito</a>
         <a href="#modelo">Modelo</a>
+        <a href="#evidencia">Evidencia</a>
         <a href="#escenarios">Escenarios</a>
-        <a href="#confianza">Confianza</a>
         <a href="#faq">Preguntas</a>
-        <a href="#terminos">Términos</a>
         <a href="#contacto">Contacto</a>
       </div>
     </nav>
-  </header>  <section class="hero">
-    <h1>Participación agropecuaria seria y transparente</h1>
-    <p>Accede a proyectos reales de porcicultura con respaldo en activos tangibles y contratos claros. Desde $500.000 COP.</p>
-    <div style="margin-top:10px">
-      <a class="btn btn-primary" href="#escenarios">Simular participación</a>
-      <a class="btn btn-outline" href="#modelo" style="margin-left:8px">Cómo funciona</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" role="banner">
+    <h1>Participación agroproductiva responsable en porcicultura</h1>
+    <p>Ciclo operativo de <strong>6 meses</strong> con <strong>pago estimado del 10%</strong> al cierre del ciclo. Contenido educativo; no es captación de dinero del público ni oferta pública.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contacto" id="ctaInfo">Solicitar información</a>
+      <a class="btn btn-secondary" href="#escenarios" id="ctaSimular">Ver escenarios ilustrativos</a>
     </div>
-  </section>  <main>
-    <!-- PROYECTOS -->
-    <section id="proyectos">
-      <h2>Proyectos disponibles</h2>
-      <p class="lead">Ciclos de 6 meses con gestión operativa, sanitaria y comercial documentada.</p>
+  </section>
+
+  <!-- Propósito -->
+  <section id="proposito" class="card" aria-labelledby="t-proposito">
+    <h2 id="t-proposito">Nuestro propósito</h2>
+    <p>Acercar a las personas al sector real mostrando cómo se crea valor en la cadena porcina con disciplina operativa, control de costos y trazabilidad.</p>
+  </section>
+
+  <!-- Modelo -->
+  <section id="modelo" class="card" aria-labelledby="t-modelo">
+    <h2 id="t-modelo">Modelo operativo (resumen)</h2>
+    <div class="grid cols-3">
       <div class="card">
-        <h3>Participación en porcicultura</h3>
-        <p class="muted">Tu participación se asocia a animales reales (cerdo completo o fracción proporcional del lote). La utilidad se liquida al cierre del ciclo según precio de mercado, peso final y costos.</p>
-        <div style="margin-top:10px">
-          <a class="btn btn-primary" href="#contacto">Quiero participar</a>
-        </div>
+        <h3>Operación real</h3>
+        <p>Producción porcina estandarizada, bioseguridad y seguimiento de indicadores clave.</p>
       </div>
-    </section><!-- MODELO -->
-<section id="modelo">
-  <h2>Modelo de operación (paso a paso)</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <ol>
-        <li><strong>Vinculación:</strong> registro y firma de contrato de participación agropecuaria.</li>
-        <li><strong>Asignación:</strong> identificación del lote/animal con ficha (peso inicial, fecha, código interno).</li>
-        <li><strong>Gestión:</strong> alimentación, sanidad, manejo y seguimiento documentado.</li>
-        <li><strong>Venta:</strong> comercialización al mejor postor según mercado.</li>
-        <li><strong>Liquidación:</strong> cálculo de utilidad neta y transferencia bancaria.</li>
-      </ol>
-      <p class="note">No es un producto financiero ni se prometen intereses fijos. Las utilidades son variables y dependen del mercado y desempeño productivo.</p>
-    </div>
-    <div class="card">
-      <h3>Valores y principios</h3>
-      <ul>
-        <li>Transparencia y trazabilidad operativa.</li>
-        <li>Respaldo en activos tangibles.</li>
-        <li>Gestión sanitaria responsable.</li>
-        <li>Comunicación clara y oportuna.</li>
-      </ul>
-      <div style="margin-top:10px">
-        <h4>Misión</h4>
-        <p>Conectar personas con proyectos agropecuarios reales, generando valor compartido y desarrollo local.</p>
-        <h4 style="margin-top:8px">Visión</h4>
-        <p>Ser referente en participación agropecuaria transparente en Colombia.</p>
-        <h4 style="margin-top:8px">Fundador</h4>
-        <p><strong>Yercistenblainer Moreno Guerrero</strong></p>
+      <div class="card">
+        <h3>Trazabilidad</h3>
+        <p>Registros operativos y financieros con reportes periódicos. Transparencia como principio.</p>
+      </div>
+      <div class="card">
+        <h3>Acuerdos privados</h3>
+        <p>Vinculación mediante acuerdos privados. Esta web es informativa y no constituye oferta pública.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ESCENARIOS -->
-<section id="escenarios">
-  <h2>Escenarios y simulador</h2>
-  <p class="lead">Comparación informativa y simulador referencial (no constituye garantía de retorno).</p>
-  <div class="card" style="overflow:auto">
-    <table>
-      <thead>
-        <tr>
-          <th>Opción</th>
-          <th>Escenario de utilidad</th>
-          <th>Liquidez</th>
-          <th>Monto mínimo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CDT Bancario</td>
-          <td>~6%–9% anual</td>
-          <td>Baja</td>
-          <td>$1.000.000</td>
-        </tr>
-        <tr>
-          <td>Fondo de Inversión</td>
-          <td>~6%–10% anual</td>
-          <td>Media</td>
-          <td>$2.000.000</td>
-        </tr>
-        <tr>
-          <td>PorkInvest (participación)</td>
-          <td>Variable según mercado y desempeño</td>
-          <td>Media (ciclo 6 meses)</td>
-          <td>$500.000</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="small" style="margin-top:8px">Los datos son orientativos y pueden variar con el tiempo y el mercado.</p>
-  </div>
+  <!-- Evidencia operativa -->
+  <section id="evidencia" class="card" aria-labelledby="t-evidencia">
+    <h2 id="t-evidencia">Evidencia operativa</h2>
+    <details>
+      <summary>Flujo: compra → engorde → salida</summary>
+      <p>Descripción del ciclo de 6 meses, costos, control sanitario y salida. Documentación ampliada bajo solicitud.</p>
+    </details>
+    <details>
+      <summary>Controles y riesgos</summary>
+      <p>Bioseguridad, coberturas de precio, protocolos de contingencia. Se mitigan riesgos; no se eliminan.</p>
+    </details>
+    <details>
+      <summary>Reportes y trazabilidad</summary>
+      <p>Reportes periódicos de operación/finanzas con hitos y variaciones explicadas. Acceso bajo acuerdo privado.</p>
+    </details>
+  </section>
 
-  <div class="card simulador">
-    <h3>Simulador referencial</h3>
-    <div class="row">
-      <div>
-        <label for="monto">Monto (COP)</label>
-        <input id="monto" type="number" min="500000" step="50000" value="1500000" placeholder="Ej: 1.500.000" />
-      </div>
-      <div>
-        <label for="reinversion">Reinversión</label>
-        <select id="reinversion">
-          <option value="no">Retirar utilidades</option>
-          <option value="si">Reinvertir utilidades</option>
+  <!-- Escenarios ilustrativos -->
+  <section id="escenarios" class="card" aria-labelledby="t-escenarios">
+    <h2 id="t-escenarios">Escenarios ilustrativos (no vinculantes)</h2>
+    <p style="color:var(--muted)">El ciclo es fijo de 6 meses con <strong>10%</strong> estimado de pago al cierre. Para 12 meses se considera un segundo ciclo opcional (con o sin reaplicación del pago recibido).</p>
+
+    <div class="sim-inputs" role="group" aria-label="Parámetros de simulación">
+      <label>
+        <span class="sr-only">Monto (COP)</span>
+        <input id="monto" type="number" min="500000" step="50000" value="1500000" placeholder="Monto (COP)">
+      </label>
+      <label>
+        <span class="sr-only">Pago al cierre (6 meses)</span>
+        <select id="pago" aria-label="Pago al cierre del ciclo">
+          <option value="retirar" selected>Recibir pago 10% a 6 meses</option>
+          <option value="reaplicar">Reaplicar 10% al segundo ciclo</option>
         </select>
-      </div>
-    </div>
-    <div class="row" style="margin-top:8px">
-      <div>
-        <label for="tasa">Tasa estimada 6m (editable)</label>
-        <input id="tasa" type="number" min="1" max="30" step="0.5" value="10" />
-      </div>
-      <div>
-        <label for="ciclos">Horizonte (meses)</label>
-        <select id="ciclos">
-          <option value="6" selected>6</option>
-          <option value="12">12</option>
+      </label>
+      <label>
+        <span class="sr-only">Horizonte</span>
+        <select id="horizonte" aria-label="Horizonte">
+          <option value="6" selected>6 meses (1 ciclo)</option>
+          <option value="12">12 meses (2 ciclos)</option>
         </select>
-      </div>
+      </label>
+      <label>
+        <span class="sr-only">Tasa por ciclo (fija 10%)</span>
+        <input id="tasa" type="number" min="10" max="10" step="0.1" value="10" disabled>
+      </label>
     </div>
-    <div class="grid" style="margin-top:10px">
-      <div class="card" style="background:#fafafa">
-        <div class="grid" style="grid-template-columns:1fr auto;gap:8px">
-          <div>Proyección 6 meses</div><div id="utilidad">—</div>
-          <div>Total 6 meses</div><div id="total">—</div>
-          <div>Proyección 12 meses</div><div id="total12">—</div>
-        </div>
-      </div>
-      <div id="chart">
-        <div class="bar" id="barMonto"><span>Monto</span></div>
-        <div class="bar" id="barUtilidad"><span>Escenario 6m</span></div>
-        <div class="bar" id="barProy"><span>Escenario 12m</span></div>
-      </div>
+
+    <div class="result" aria-live="polite">
+      <div><span>Pago estimado (6M):</span><strong id="pago6">—</strong></div>
+      <div><span>Total al cierre 6M:</span><strong id="total6">—</strong></div>
+      <div><span>Proyección 12M:</span><strong id="total12">—</strong></div>
     </div>
-    <p class="note">Este simulador es referencial. Las utilidades son variables; no se prometen rentabilidades fijas ni pagos de interés.</p>
-  </div>
-</section>
 
-<!-- CONFIANZA -->
-<section id="confianza">
-  <h2>Compromiso de confianza</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h3>Lo que somos</h3>
-      <ul>
-        <li>Esquema de participación en proyectos agropecuarios reales.</li>
-        <li>Respaldo en activos tangibles (animales en engorde).</li>
-        <li>Contratos claros y liquidaciones documentadas.</li>
-      </ul>
+    <div class="barwrap" aria-hidden="true">
+      <div class="bar" id="barMonto">Monto</div>
+      <div class="bar" id="barPago">Pago 6M</div>
+      <div class="bar" id="bar12">12M</div>
     </div>
-    <div class="card">
-      <h3>Lo que NO somos</h3>
-      <ul>
-        <li>No somos banco ni fondo de inversión.</li>
-        <li>No captamos dinero del público ni prometemos intereses fijos.</li>
-        <li>No operamos esquemas piramidales.</li>
-      </ul>
+
+    <div class="cta-row" style="margin-top:14px">
+      <a class="btn btn-secondary" href="#contacto" id="ctaHablar">Agendar una charla</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <h2>Preguntas frecuentes</h2>
-  <details>
-    <summary>¿Es un producto financiero?</summary>
-    <p>No. Es participación en un proyecto agropecuario con utilidad variable según el mercado y desempeño productivo.</p>
-  </details>
-  <details>
-    <summary>¿Cuál es el monto mínimo?</summary>
-    <p>Desde $500.000 COP, asociado a un animal o fracción proporcional del lote.</p>
-  </details>
-  <details>
-    <summary>¿Cómo recibo mi utilidad?</summary>
-    <p>Al cierre del ciclo (aprox. 6 meses) se liquida y se transfiere a tu cuenta bancaria.</p>
-  </details>
-  <details>
-    <summary>¿Puedo conocer el estado del lote?</summary>
-    <p>Sí, se comparten reportes operativos resumidos durante el ciclo.</p>
-  </details>
-  <details>
-    <summary>¿Qué riesgos existen?</summary>
-    <p>Riesgo de variación de precios, desempeño productivo y costos. Se gestionan con buenas prácticas, pero no pueden eliminarse.</p>
-  </details>
-</section>
+  <!-- FAQ -->
+  <section id="faq" class="card" aria-labelledby="t-faq">
+    <h2 id="t-faq">Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Esto es una invitación a invertir?</summary>
+      <p>No. Es información educativa sobre un modelo operativo. Cualquier relación se evalúa de forma privada y documentada, sin oferta pública ni captación.</p>
+    </details>
+    <details>
+      <summary>¿El pago del 10% está garantizado?</summary>
+      <p>No. Es un escenario estimado y prudente para fines ilustrativos, no una promesa.</p>
+    </details>
+    <details>
+      <summary>¿Cómo solicito más información?</summary>
+      <p>Escríbenos por WhatsApp o correo desde la sección de contacto para agendar una conversación.</p>
+    </details>
+  </section>
 
-<!-- TÉRMINOS -->
-<section id="terminos">
-  <h2>Términos y consideraciones</h2>
-  <div class="card">
-    <p>PorkInvest S.A.S. promueve participación en proyectos agropecuarios reales. Las utilidades son variables; este sitio no constituye oferta pública de valores ni promesa de rentabilidad fija. Toda decisión debe evaluarse según el perfil y criterio del interesado.</p>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto">
-  <h2>Contacto</h2>
-  <div class="card">
-    <form id="contactForm">
-      <div class="grid grid-2">
-        <div>
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" required />
-        </div>
-        <div>
-          <label for="email">Correo</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-      </div>
-      <div class="grid grid-2">
-        <div>
-          <label for="whatsapp">WhatsApp</label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 3001234567" />
-        </div>
-        <div>
-          <label for="montoForm">Monto referencial (COP)</label>
-          <input type="number" id="montoForm" name="montoForm" min="500000" step="50000" />
-        </div>
-      </div>
+  <!-- Contacto -->
+  <section id="contacto" class="card" aria-labelledby="t-contacto">
+    <h2 id="t-contacto">Contacto directo</h2>
+    <p>Cuéntanos tus objetivos y agenda una charla. Respuesta humana (no bots).</p>
+    <form id="contactForm" novalidate>
+      <label for="nombre">Nombre completo</label>
+      <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre">
+      <label for="correo">Correo electrónico</label>
+      <input id="correo" name="correo" type="email" required placeholder="tucorreo@ejemplo.com">
+      <label for="whats">WhatsApp (opcional)</label>
+      <input id="whats" name="whats" type="tel" inputmode="numeric" placeholder="3002333356">
       <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu interés"></textarea>
-      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px">Enviar a WhatsApp</button>
+      <textarea id="mensaje" name="mensaje" rows="4" required placeholder="¿Cuál es tu interés o pregunta?"></textarea>
+      <button type="submit" class="btn btn-primary">Enviar y hablar por WhatsApp</button>
+      <p id="ok" class="sr-only" aria-live="polite">Mensaje enviado. Abriendo WhatsApp…</p>
     </form>
-    <p class="small" style="margin-top:10px"><strong>Correo:</strong> inversionporkinvest@gmail.com &nbsp; | &nbsp; <strong>WhatsApp:</strong> 300 233 3356</p>
-  </div>
-</section>
 
-  </main>  <footer>
-    <div class="footer-inner">
-      <p>PorkInvest © 2025 · Transparencia y participación agropecuaria responsable.</p>
-      <p class="small">Fundador: <strong>Yercistenblainer Moreno Guerrero</strong></p>
+    <div class="cta-row" style="margin-top:12px">
+      <a class="btn btn-secondary" href="mailto:inversionporkinvest@gmail.com" id="ctaMail">Escribir por correo</a>
+      <a class="btn btn-secondary" href="https://wa.me/573002333356" target="_blank" rel="noopener" id="ctaWa">Abrir WhatsApp</a>
     </div>
-  </footer>  <script>
-    function formatCOP(n){return isFinite(n)?n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}):'—'}
 
-    function updateChart(monto,u6,t12){
-      const max=Math.max(monto||0,u6||0,t12||0,1);
-      const bm=document.getElementById('barMonto');
-      const bu=document.getElementById('barUtilidad');
-      const bp=document.getElementById('barProy');
-      bm.style.height=(monto/max*100)+'%';
-      bu.style.height=(u6/max*100)+'%';
-      bp.style.height=(t12/max*100)+'%';
-      bm.querySelector('span').textContent='Monto\n'+formatCOP(monto);
-      bu.querySelector('span').textContent='Escenario 6m\n'+formatCOP(u6);
-      bp.querySelector('span').textContent='Escenario 12m\n'+formatCOP(t12);
-    }
+    <p style="font-size:.9rem;color:var(--muted);margin-top:10px">
+      Al continuar aceptas el tratamiento responsable de tus datos con fines de contacto. No solicitamos consignaciones por este sitio.
+    </p>
+  </section>
 
-    function recalc(){
-      const monto=Number(document.getElementById('monto').value)||0;
-      const reinv=document.getElementById('reinversion').value==='si';
-      const tasa=(Number(document.getElementById('tasa').value)||10)/100; // tasa editable referencial
-      const u6=monto>=500000?monto*tasa:0;
-      const t6=monto+u6;
-      const horizon=document.getElementById('ciclos').value==='12';
-      const t12=reinv? t6*(1+tasa) : monto + u6*2;
-      document.getElementById('utilidad').textContent=formatCOP(u6);
-      document.getElementById('total').textContent=formatCOP(t6);
-      document.getElementById('total12').textContent=horizon?formatCOP(t12):'—';
-      updateChart(monto,u6,horizon?t12:0);
-    }
+  <!-- Footer -->
+  <footer>
+    <div class="foot">
+      <p><strong>Aviso</strong>: Esta página es informativa y educativa. <em>No constituye oferta pública ni captación de dinero del público</em>. Los escenarios mostrados son ilustrativos y no garantizados.</p>
+      <p>Contacto: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a> · WhatsApp: <a target="_blank" rel="noopener" href="https://wa.me/573002333356">+57 300 233 3356</a></p>
+      <p>© 2025 PorkInvest — Desarrollado por Yercistenblainer Moreno Guerrero</p>
+    </div>
+  </footer>
 
-    window.addEventListener('DOMContentLoaded',()=>{
-      const montoEl=document.getElementById('monto');
-      if(montoEl){
-        recalc();
-        ['input','change'].forEach(evt=>{
-          document.getElementById('monto').addEventListener(evt,recalc);
-          document.getElementById('reinversion').addEventListener(evt,recalc);
-          document.getElementById('tasa').addEventListener(evt,recalc);
-          document.getElementById('ciclos').addEventListener(evt,recalc);
-        });
-      }
-
-      const form=document.getElementById('contactForm');
-      if(form){
-        form.addEventListener('submit',e=>{
-          e.preventDefault();
-          const nombre=document.getElementById('nombre').value.trim();
-          const email=document.getElementById('email').value.trim();
-          const whatsapp=(document.getElementById('whatsapp').value||'').replace(/\D/g,'');
-          const montoRef=document.getElementById('montoForm').value||'';
-          const mensaje=document.getElementById('mensaje').value||'';
-          const text=`Hola, soy ${nombre}. Me interesa participar en PorkInvest con un monto referencial de ${formatCOP(Number(montoRef)||0)}. Mi correo es ${email}. WhatsApp: ${whatsapp}. Mensaje: ${mensaje}`;
-          const target = whatsapp && whatsapp.length>=7 ? `57${whatsapp}` : '573002333356';
-          const url=`https://wa.me/${target}?text=${encodeURIComponent(text)}`;
-          window.open(url,'_blank');
-        });
-      }
+  <script>
+    // ---------- NAV ----------
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', ()=>{
+      const isOpen = menu.classList.toggle('show');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  </script></body>
-  </html>
+
+    // ---------- HELPERS ----------
+    const $ = (id)=>document.getElementById(id);
+    const fmtCOP = (n)=> isFinite(n) ? n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}) : '—';
+
+    // ---------- SIMULADOR (ciclo 6M, pago 10%) ----------
+    function recalc(){
+      const monto = Number($('monto').value)||0;
+      const pago = $('pago').value; // retirar | reaplicar
+      const horizonte = Number($('horizonte').value)||6;
+      const rCiclo = 0.10; // 10% por ciclo de 6 meses (fijo y tope)
+
+      const pagoCiclo = monto>=500000 ? monto * rCiclo : 0;  // pago al cierre 6M
+      const total6 = monto + pagoCiclo;                      // capital + pago (si se mantiene capital)
+      let total12;
+
+      if(horizonte === 12){
+        if(pago === 'reaplicar'){
+          // reaplicar: capital para el segundo ciclo = capital + pago del primer ciclo
+          const base2 = total6;
+          const pago2 = base2 * rCiclo;
+          total12 = base2 + pago2; // fin de 12M (2 ciclos)
+        }else{
+          // retirar: se retira el 10% al mes 6; capital continúa igual al segundo ciclo
+          const pago2 = monto * rCiclo;
+          total12 = monto + pagoCiclo + pago2; // capital + pago1 + pago2
+        }
+      }else{
+        total12 = total6; // si usuario deja 6M seleccionado
+      }
+
+      $('pago6').textContent = fmtCOP(pagoCiclo);
+      $('total6').textContent = fmtCOP(total6);
+      $('total12').textContent = fmtCOP(total12);
+
+      const max = Math.max(monto, pagoCiclo, total12, 1);
+      $('barMonto').style.height = (monto/max*100)+'%';
+      $('barPago').style.height = (pagoCiclo/max*100)+'%';
+      $('bar12').style.height = (total12/max*100)+'%';
+
+      $('barMonto').textContent='Monto';
+      $('barPago').textContent='Pago 6M';
+      $('bar12').textContent= horizonte===12 ? 'Total 12M' : 'Total 6M';
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // init simulator
+      ['monto','pago','horizonte'].forEach(id=>$(id).addEventListener('input', recalc));
+      recalc();
+
+      // dataLayer tracking para GTM
+      const track = (name, extra={})=>{
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({event:'cta_click', cta:name}, extra));
+      };
+      $('ctaInfo').addEventListener('click', ()=>track('cta_info'));
+      $('ctaSimular').addEventListener('click', ()=>track('cta_simular'));
+      document.getElementById('ctaHablar').addEventListener('click', ()=>track('cta_hablar'));
+      document.getElementById('ctaMail').addEventListener('click', ()=>track('cta_mail'));
+      document.getElementById('ctaWa').addEventListener('click', ()=>track('cta_whatsapp'));
+
+      // ---------- CONTACTO / WHATSAPP ----------
+      function sendWhatsApp(payload){
+        const base = 'https://wa.me/573002333356?text=';
+        const texto = `Hola, soy ${payload.nombre}. Mi correo es ${payload.correo}.`+
+          (payload.whats?` Mi WhatsApp es ${payload.whats}.`:'')+
+          ` Mensaje: ${payload.mensaje}`;
+        const url = base + encodeURIComponent(texto);
+        window.open(url, '_blank');
+      }
+
+      $('contactForm').addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const nombre = $('nombre').value.trim();
+        const correo = $('correo').value.trim();
+        const whats = $('whats').value.trim();
+        const mensaje = $('mensaje').value.trim();
+
+        if(!nombre || !correo || !mensaje){
+          alert('Por favor completa nombre, correo y mensaje.');
+          return;
+        }
+
+        // evento para GTM (lo recogerá GA4 dentro del contenedor)
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({event:'form_submit', form:'contacto', correo, hasWhats: !!whats});
+
+        // confirmación en pantalla
+        const ok = $('ok');
+        ok.classList.remove('sr-only');
+        ok.textContent = '✅ Gracias. Abriremos WhatsApp para continuar.';
+
+        // abrir WhatsApp
+        sendWhatsApp({nombre, correo, whats, mensaje});
+
+        // reset y ocultar confirmación
+        $('contactForm').reset();
+        set
