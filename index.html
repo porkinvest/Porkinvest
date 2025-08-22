@@ -1,69 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PorkInvest - Inversión en Porcicultura Rentable</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PorkInvest - Inversión en Cerdos</title>
 
-  <!-- Verificación de Google Search Console -->
+  <!-- ✅ Meta verificación de Google -->
   <meta name="google-site-verification" content="IRT_fqDjlZkLYLAkqeac1sLu1z5HKJFJgLWbGmpNzyQ" />
 
-  <!-- SEO Básico -->
-  <meta name="description" content="Invierte de manera segura y rentable en porcicultura con PorkInvest. Obtén un 10% de rentabilidad en cada ciclo de cerdos de 6 meses.">
-  <meta name="keywords" content="inversión en cerdos, porcicultura, PorkInvest, inversión rentable, agronegocios, inversión agropecuaria">
-  <meta name="author" content="PorkInvest">
+  <!-- Descripción SEO -->
+  <meta name="description" content="Invierte en la porcicultura colombiana con PorkInvest. Obtén rendimientos seguros respaldados en lotes de cerdos en crecimiento. Inversión fácil, rentable y confiable." />
 
-  <!-- Open Graph para redes sociales -->
-  <meta property="og:title" content="PorkInvest - Invierte en Porcicultura Rentable">
-  <meta property="og:description" content="Invierte en el lote de cerdos con PorkInvest y recibe una rentabilidad garantizada del 10% en 6 meses.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://porkinvest.github.io/">
-  <meta property="og:image" content="https://porkinvest.github.io/img/preview.jpg">
+  <!-- Palabras clave SEO -->
+  <meta name="keywords" content="inversión en cerdos, porcicultura Colombia, PorkInvest, rentabilidad agropecuaria, agronegocios, invertir en animales, producción porcina" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="img/favicon.png" type="image/png">
+  <!-- Open Graph para compartir en redes -->
+  <meta property="og:title" content="PorkInvest - Invierte en Cerdos con Rentabilidad Segura" />
+  <meta property="og:description" content="Participa en lotes de cerdos y gana un 10% en 6 meses. Inversión respaldada en activos reales." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://porkinvest.github.io/" />
+  <meta property="og:image" content="https://porkinvest.github.io/img/porkinvest-banner.png" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>PorkInvest</h1>
-    <h2>Invierte en porcicultura con rentabilidad segura</h2>
+    <h1>🐷 PorkInvest</h1>
+    <p>Invierte en la porcicultura colombiana y gana un <strong>10% en 6 meses</strong>.</p>
   </header>
 
   <main>
-    <section>
-      <h3>¿Cómo funciona?</h3>
-      <p>Tu inversión no se asigna a 1 o 2 cerdos, sino al lote completo de animales. 
-      Al finalizar el ciclo de 6 meses, recibes tu capital inicial más un rendimiento del 10%.</p>
+    <section id="como-funciona">
+      <h2>¿Cómo funciona?</h2>
+      <p>Tu inversión no se destina a uno o dos animales, sino a un <strong>lote completo de cerdos</strong>. Al final del ciclo (6 meses), recibes tu inversión inicial más un <strong>rendimiento del 10%</strong>.</p>
     </section>
 
-    <section>
-      <h3>Ventajas</h3>
-      <ul>
-        <li>Rentabilidad garantizada: 10% en 6 meses.</li>
-        <li>Modelo transparente y seguro.</li>
-        <li>Participación en un sector agropecuario en crecimiento.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h3>Simulador de Inversión</h3>
-      <label for="monto">Monto a invertir:</label>
-      <input type="number" id="monto" placeholder="Ej: 1,000,000">
+    <section id="simulador">
+      <h2>Simulador de Inversión</h2>
+      <label for="monto">Monto a invertir (COP):</label>
+      <input type="number" id="monto" placeholder="Ejemplo: 1.000.000" />
       <button onclick="calcular()">Calcular</button>
       <p id="resultado"></p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+    <p>© 2025 PorkInvest - Inversión en Cerdos en Colombia</p>
   </footer>
 
   <script>
     function calcular() {
-      let monto = document.getElementById("monto").value;
-      if(monto > 0){
-        let retorno = monto * 1.10;
-        document.getElementById("resultado").innerText = "En 6 meses recibirás: $" + retorno.toLocaleString("es-CO");
+      const monto = document.getElementById("monto").value;
+      if (monto && monto > 0) {
+        const ganancia = monto * 0.10;
+        const total = parseInt(monto) + ganancia;
+        document.getElementById("resultado").innerText =
+          `En 6 meses recibirás $${total.toLocaleString("es-CO")} COP (incluye $${ganancia.toLocaleString("es-CO")} de ganancia).`;
       } else {
         document.getElementById("resultado").innerText = "Por favor ingresa un monto válido.";
       }
