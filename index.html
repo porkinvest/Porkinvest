@@ -1,446 +1,79 @@
-!DOCTYPE html>  <html lang="es-CO">  <head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>PorkInvest | Inversiones seguras y rentables en Colombia</title>  
-  <meta name="description" content="Descubre PorkInvest: crowdfunding agro en porcicultura. Invierte desde $500,000 COP con transparencia y contratos claros.">  
-  <meta name="keywords" content="invertir en Colombia, inversiones seguras y rentables, inversión en porcicultura, crowdfunding agro, PorkInvest">    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17492753327"></script>    <script>  
-    window.dataLayer = window.dataLayer || [];  
-    function gtag(){dataLayer.push(arguments);}  
-    gtag('js', new Date());  
-  
-    gtag('config', 'AW-17492753327');  
-  </script>    <style>  
-    :root {  
-      --primary: #004225;  
-      --secondary: #00a859;  
-      --accent: #ffd700;  
-      --light: #f9f9f9;  
-      --dark: #111;  
-      --text: #333;  
-      --radius: 10px;  
-    }  
-  
-    * {  
-      margin: 0;  
-      padding: 0;  
-      box-sizing: border-box  
-    }  
-  
-    body {  
-      font-family: "Segoe UI", Arial, sans-serif;  
-      color: var(--text);  
-      background: var(--light);  
-      line-height: 1.6  
-    }  
-  
-    header {  
-      position: fixed;  
-      top: 0;  
-      left: 0;  
-      right: 0;  
-      background: #fff;  
-      box-shadow: 0 2px 6px rgba(0, 0, 0, .1);  
-      z-index: 1000  
-    }  
-  
-    nav {  
-      max-width: 1200px;  
-      margin: auto;  
-      display: flex;  
-      justify-content: space-between;  
-      align-items: center;  
-      padding: 14px 20px  
-    }  
-  
-    nav .logo {  
-      font-weight: 700;  
-      font-size: 1.2rem;  
-      color: var(--primary)  
-    }  
-  
-    nav a {  
-      text-decoration: none;  
-      color: var(--dark);  
-      margin: 0 10px;  
-      font-weight: 600  
-    }  
-  
-    nav a:hover {  
-      color: var(--secondary)  
-    }  
-  
-    .hero {  
-      margin-top: 70px;  
-      padding: 80px 20px;  
-      text-align: center;  
-      background: linear-gradient(to right, var(--primary), var(--secondary));  
-      color: #fff  
-    }  
-  
-    .hero h1 {  
-      font-size: 2.5rem;  
-      margin-bottom: 15px  
-    }  
-  
-    .hero p {  
-      font-size: 1.1rem;  
-      margin-bottom: 25px;  
-      max-width: 900px;  
-      margin: auto  
-    }  
-  
-    .btn {  
-      display: inline-block;  
-      padding: 14px 28px;  
-      border-radius: var(--radius);  
-      font-size: 1rem;  
-      font-weight: 600;  
-      text-decoration: none;  
-      text-align: center;  
-      transition: .3s  
-    }  
-  
-    .btn-primary {  
-      background: var(--accent);  
-      color: var(--dark)  
-    }  
-  
-    .btn-primary:hover {  
-      background: #e6c200  
-    }  
-  
-    .btn-secondary {  
-      background: #fff;  
-      color: var(--primary);  
-      border: 2px solid var(--primary)  
-    }  
-  
-    .btn-secondary:hover {  
-      background: var(--primary);  
-      color: #fff  
-    }  
-  
-    section {  
-      max-width: 1100px;  
-      margin: auto;  
-      padding: 60px 20px  
-    }  
-  
-    h2 {  
-      text-align: center;  
-      font-size: 2rem;  
-      margin-bottom: 30px;  
-      color: var(--primary)  
-    }  
-  
-    .card {  
-      background: #fff;  
-      border-radius: var(--radius);  
-      padding: 24px;  
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);  
-      margin-bottom: 24px  
-    }  
-  
-    table {  
-      width: 100%;  
-      border-collapse: collapse  
-    }  
-  
-    th,  
-    td {  
-      padding: 12px;  
-      border-bottom: 1px solid #ddd;  
-      text-align: left  
-    }  
-  
-    th {  
-      background: var(--primary);  
-      color: #fff  
-    }  
-  
-    .calc input,  
-    .calc select,  
-    form input,  
-    form textarea {  
-      width: 100%;  
-      padding: 12px;  
-      margin: 10px 0;  
-      border: 1px solid #ccc;  
-      border-radius: var(--radius)  
-    }  
-  
-    .calc .result div {  
-      display: flex;  
-      justify-content: space-between;  
-      margin-top: 8px  
-    }  
-  
-    form button {  
-      background: var(--secondary);  
-      color: #fff;  
-      border: none;  
-      padding: 14px;  
-      border-radius: var(--radius);  
-      cursor: pointer;  
-      font-size: 1rem;  
-      width: 100%  
-    }  
-  
-    form button:hover {  
-      background: #008a4a  
-    }  
-  
-    .faq details {  
-      margin-bottom: 12px;  
-      border: 1px solid #ddd;  
-      border-radius: var(--radius);  
-      padding: 14px;  
-      background: #fff  
-    }  
-  
-    .faq summary {  
-      font-weight: 600;  
-      cursor: pointer  
-    }  
-  
-    footer {  
-      background: var(--dark);  
-      color: #fff;  
-      text-align: center;  
-      padding: 24px;  
-      font-size: .9rem;  
-      margin-top: 40px  
-    }  
-  
-    .flex {  
-      display: flex;  
-      gap: 16px;  
-      align-items: center;  
-      flex-wrap: wrap  
-    }  
-  
-    .small {  
-      font-size: .9rem;  
-      color: #666  
-    }  
-  
-    #chart {  
-      display: flex;  
-      justify-content: space-around;  
-      align-items: flex-end;  
-      height: 200px;  
-      margin-top: 20px;  
-      background: #f0f0f0;  
-      border-radius: var(--radius);  
-      padding: 12px  
-    }  
-  
-    .bar {  
-      width: 30%;  
-      background: var(--accent);  
-      color: #111;  
-      text-align: center;  
-      border-radius: var(--radius) var(--radius) 0 0;  
-      display: flex;  
-      flex-direction: column;  
-      justify-content: flex-end  
-    }  
-  
-    .bar span {  
-      padding: 4px;  
-      font-size: .8rem  
-    }  
-  
-    @media(max-width:768px) {  
-      .hero h1 {  
-        font-size: 1.8rem  
-      }  
-  
-      nav {  
-        flex-direction: column  
-      }  
-    }  
-  
-    :target::before {  
-      content: "";  
-      display: block;  
-      height: 84px;  
-      margin-top: -84px;  
-      visibility: hidden;  
-    }  
-  </style>  </head>  <body>  
-  <header>  
-    <nav>  
-      <div class="logo">PorkInvest</div>  
-      <div>  
-        <a href="#proyectos">Proyectos</a>  
-        <a href="#comparador">Comparador</a>  
-        <a href="#faq">Preguntas</a>  
-        <a href="#terminos">Términos</a>  
-        <a href="#contacto">Contacto</a>  
-      </div>  
-    </nav>  
-  </header>  
-  <section class="hero">  
-    <h1>Invierte en el futuro del campo colombiano</h1>  
-    <p>Con PorkInvest, accede a <strong>inversiones transparentes y rentables</strong> desde $500,000 COP en porcicultura. Contratos claros, reportes periódicos y pagos por transferencia al cierre de cada ciclo.</p>  
-    <a href="#comparador" class="btn btn-primary">Calcula tu Rentabilidad Ahora</a>  
-  </section>  
-  <section id="proyectos">  
-    <h2>Proyectos Disponibles</h2>  
-    <div class="card">  
-      <h3>Inversión en Porcicultura</h3>  
-      <p>Invierte en el sector agropecuario con acuerdos privados y claridad en la administración de recursos. Cada ciclo de 6 meses proyecta una rentabilidad estimada entre el 8% y 12%.</p>  
-      <a href="#contacto" class="btn btn-secondary">Quiero Invertir</a>  
-    </div>  
-  </section>  
-  <section id="comparador">  
-    <h2>Comparador de Inversiones</h2>  
-    <div class="card">  
-      <table>  
-        <thead>  
-          <tr>  
-            <th>Opción</th>  
-            <th>Rentabilidad</th>  
-            <th>Liquidez</th>  
-            <th>Monto mínimo</th>  
-          </tr>  
-        </thead>  
-        <tbody>  
-          <tr>  
-            <td>CDT Bancario</td>  
-            <td>~7% anual</td>  
-            <td>Baja</td>  
-            <td>$1,000,000</td>  
-          </tr>  
-          <tr>  
-            <td>Fondo de Inversión</td>  
-            <td>~8% anual</td>  
-            <td>Media</td>  
-            <td>$2,000,000</td>  
-          </tr>  
-          <tr>  
-            <td>PorkInvest</td>  
-            <td>~8–12% por ciclo</td>  
-            <td>Media</td>  
-            <td>$500,000</td>  
-          </tr>  
-        </tbody>  
-      </table>  
-    </div>  
-    <div class="card calc">  
-      <h3>Simulador de Ganancias</h3>  
-      <input id="monto" type="number" min="500000" step="50000" value="1500000" placeholder="Monto a invertir (COP)">  
-      <select id="reinversion">  
-        <option value="no">Retirar utilidades</option>  
-        <option value="si">Reinvertir utilidades</option>  
-      </select>  
-      <div class="result">  
-        <div><span>Utilidad (6 meses):</span><span id="utilidad">—</span></div>  
-        <div><span>Total (6 meses):</span><span id="total">—</span></div>  
-        <div><span>Proyección 12 meses:</span><span id="total12">—</span></div>  
-      </div>  
-      <div id="chart">  
-        <div class="bar" id="barMonto"><span>Monto</span></div>  
-        <div class="bar" id="barUtilidad"><span>Utilidad 6m</span></div>  
-        <div class="bar" id="barProy"><span>Proyección 12m</span></div>  
-      </div>  
-    </div>  
-  </section>  
-  <section id="faq" class="faq">  
-    <h2>Preguntas Frecuentes</h2>  
-    <details>  
-      <summary>¿Es seguro invertir en PorkInvest?</summary>  
-      <p>Sí, contamos con contratos legales, auditoría constante y reportes mensuales.</p>  
-    </details>  
-    <details>  
-      <summary>¿Cuál es el monto mínimo?</summary>  
-      <p>Puedes empezar desde $500,000 COP.</p>  
-    </details>  
-    <details>  
-      <summary>¿Cómo recibo mis ganancias?</summary>  
-      <p>Transferimos tus utilidades al terminar el ciclo directamente a tu cuenta bancaria.</p>  
-    </details>  
-  </section>  
-  <section id="terminos">  
-    <h2>Términos y Condiciones</h2>  
-    <div class="card">  
-      <p>PorkInvest S.A.S. promueve la inversión colaborativa en porcicultura. Toda inversión tiene riesgos y las rentabilidades son proyecciones, no garantías.</p>  
-      <p><a href="https://drive.google.com/file/d/1KpJq0uEZztBoegZQRGCcERLrWly5bjxE/view?usp=drivesdk" target="_blank" rel="noopener" class="btn btn-secondary">Descargar Términos (PDF)</a></p>  
-    </div>  
-  </section>  
-  <section id="contacto">  
-    <h2>Contáctanos</h2>  
-    <div class="card">  
-      <form id="contactForm">  
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>  
-        <input type="email" id="email" name="email" placeholder="Tu correo" required>  
-        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Tu WhatsApp">  
-        <input type="hidden" id="montoForm" name="montoForm">  
-        <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" rows="4"></textarea>  
-        <button type="submit">Enviar a WhatsApp</button>  
-      </form>  
-      <div style="margin-top:18px" class="small flex">  
-        <div><strong>Correo:</strong> inversionporkinvest@gmail.com</div>  
-        <div><strong>WhatsApp:</strong> 300 233 3356</div>  
-      </div>  
-    </div>  
-  </section>  
-  <footer>  
-    <p>PorkInvest © 2025 | Confianza en el campo colombiano</p>  
-  </footer>  
-  <script>  
-    function formatCOP(n) {  
-      return isFinite(n) ? n.toLocaleString('es-CO', {  
-        style: 'currency',  
-        currency: 'COP',  
-        maximumFractionDigits: 0  
-      }) : '—'  
-    }  function updateChart(monto, u6, t12) {  
-  const max = Math.max(monto, u6, t12);  
-  document.getElementById('barMonto').style.height = (monto / max * 100) + '%';  
-  document.getElementById('barUtilidad').style.height = (u6 / max * 100) + '%';  
-  document.getElementById('barProy').style.height = (t12 / max * 100) + '%';  
-  document.getElementById('barMonto').querySelector('span').textContent = 'Monto\n' + formatCOP(monto);  
-  document.getElementById('barUtilidad').querySelector('span').textContent = 'Utilidad 6m\n' + formatCOP(u6);  
-  document.getElementById('barProy').querySelector('span').textContent = 'Proyección 12m\n' + formatCOP(t12);  
-}  
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest | Inversiones seguras y rentables en porcicultura en Colombia</title>
+  <meta name="description" content="Invierte en porcicultura en Colombia con PorkInvest. Crowdfunding agro con transparencia, contratos claros y rentabilidad asegurada desde $500,000 COP.">
+  <meta name="robots" content="index, follow">
 
-function recalc() {  
-  const monto = Number(document.getElementById('monto').value) || 0;  
-  const reinv = document.getElementById('reinversion').value === 'si';  
-  const r = 0.10;  
-  const u6 = monto >= 500000 ? monto * r : 0;  
-  const t6 = monto + u6;  
-  const t12 = reinv ? t6 * (1 + r) : monto + u6 * 2;  
-  document.getElementById('utilidad').textContent = formatCOP(u6);  
-  document.getElementById('total').textContent = formatCOP(t6);  
-  document.getElementById('total12').textContent = formatCOP(t12);  
-  document.getElementById('montoForm').value = monto;  
-  updateChart(monto, u6, t12);  
-}  
+  <!-- Open Graph (Facebook/WhatsApp) -->
+  <meta property="og:title" content="PorkInvest | Inversiones en porcicultura en Colombia">
+  <meta property="og:description" content="Invierte en porcicultura desde $500,000 COP con transparencia y contratos claros. Crowdfunding agro fácil y seguro.">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:type" content="website">
 
-window.addEventListener('DOMContentLoaded', () => {  
-  recalc();  
-  document.getElementById('monto').addEventListener('input', recalc);  
-  document.getElementById('reinversion').addEventListener('change', recalc);  
-  document.getElementById('contactForm').addEventListener('submit', e => {  
-    e.preventDefault();  
-    const nombre = document.getElementById('nombre').value;  
-    const email = document.getElementById('email').value;  
-    const whatsapp = document.getElementById('whatsapp').value;  
-    const monto = document.getElementById('montoForm').value;  
-    const mensaje = document.getElementById('mensaje').value;  
-    const text = `Hola, soy ${nombre}. Quiero invertir ${formatCOP(monto)}. Mi correo es ${email}, mi WhatsApp es ${whatsapp}. Mensaje: ${mensaje}`;  
-    const url = `https://wa.me/57${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(text)}`;  
-    const finalUrl = (whatsapp && whatsapp.replace(/\D/g, '').length >= 7) ? url : 'https://wa.me/573002333356?text=' + encodeURIComponent(text);  
-      
-    // Disparo del evento de conversión de Google Ads  
-    gtag('event', 'conversion', {'send_to': 'AW-17492753327/tu_etiqueta_de_conversion'});  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PorkInvest | Inversiones en porcicultura">
+  <meta name="twitter:description" content="Invierte en porcicultura en Colombia desde $500,000 COP. Rentabilidad transparente y segura.">
 
-    window.open(finalUrl, '_blank');  
-  });  
-});
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #f44336; color: white; padding: 1rem; text-align: center; }
+    section { padding: 2rem; }
+    h1, h2, h3 { color: #333; }
+    footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a PorkInvest</h1>
+    <p>Invierte en porcicultura con confianza</p>
+  </header>
 
-  </script>  
-</body>  </html>
+  <section>
+    <h2>¿Qué es PorkInvest?</h2>
+    <p>
+      PorkInvest es una plataforma de crowdfunding agro especializada en porcicultura en Colombia.
+      Te ofrecemos la oportunidad de invertir en lotes de cerdos desde <strong>$500,000 COP</strong>
+      con transparencia, contratos claros y un modelo probado.
+    </p>
+  </section>
+
+  <section>
+    <h2>Ventajas de invertir con nosotros</h2>
+    <ul>
+      <li>Rentabilidad del 10% por ciclo (6 meses).</li>
+      <li>Inversión diversificada en lotes completos de cerdos.</li>
+      <li>Transparencia total y contratos firmados.</li>
+      <li>Acceso a información de costos y resultados.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Simulador de inversión</h2>
+    <p>Calcula tu inversión y ganancias aproximadas:</p>
+    <input type="number" id="inversion" placeholder="Monto en COP">
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PorkInvest - Inversiones en porcicultura en Colombia</p>
+  </footer>
+
+  <script>
+    function calcular() {
+      const inversion = parseFloat(document.getElementById("inversion").value);
+      if (isNaN(inversion) || inversion <= 0) {
+        document.getElementById("resultado").innerText = "Por favor ingresa un monto válido.";
+        return;
+      }
+      const ganancia = inversion * 0.10;
+      document.getElementById("resultado").innerText = 
+        "En 6 meses recibirás tu inversión (" + inversion.toLocaleString() + " COP) más una ganancia de " + ganancia.toLocaleString() + " COP.";
+    }
+  </script>
+</body>
+</html>
