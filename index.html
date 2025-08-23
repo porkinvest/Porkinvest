@@ -3,216 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PorkInvest - Invierte de forma segura y rentable en el sector porcino colombiano. Confianza, respaldo y transparencia.">
-  <meta name="keywords" content="inversión, porcicultura, rentabilidad, PorkInvest, agronegocios, Colombia">
-  <meta property="og:title" content="PorkInvest - Inversiones confiables en porcicultura">
-  <meta property="og:description" content="Invierte de manera segura en la porcicultura con PorkInvest. Genera rentabilidad y apoya el campo colombiano.">
-  <meta property="og:type" content="website">
-  <title>PorkInvest | Inversiones Seguras en Porcicultura</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <title>PorkInvest - Inversiones Inteligentes</title>
+  <meta name="description" content="Invierte de manera segura en PorkInvest desde $500.000 y obtén rendimientos reales en el sector porcicultor colombiano.">
+  <meta name="author" content="PorkInvest" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
+    body { scroll-behavior: smooth; }
+    .fade-in { animation: fadeIn 2s ease-in-out; }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
-    header {
-      background: linear-gradient(90deg, #2563eb, #10b981);
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
-    section {
-      padding: 80px 20px;
-    }
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .benefit-card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      padding: 30px;
-      transition: transform .3s;
-    }
-    .benefit-card:hover {
-      transform: translateY(-10px);
-    }
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      text-decoration: none;
-    }
-    footer {
-      background: #1f2937;
-      color: #9ca3af;
-      text-align: center;
-      padding: 30px 10px;
-    }
+    .counter { font-size: 2rem; font-weight: bold; color: #16a34a; }
   </style>
 </head>
-<body>
-  <!-- Header -->
-  <header data-aos="fade-down">
-    <h1>🐖 PorkInvest</h1>
-    <p>Tu aliado en inversiones seguras y rentables en el sector porcino colombiano</p>
-    <a href="#planes" class="btn btn-light btn-lg mt-3">Conoce Nuestros Planes</a>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-extrabold text-green-600">PorkInvest</h1>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#beneficios" class="hover:text-green-600">Beneficios</a>
+        <a href="#seguridad" class="hover:text-green-600">Seguridad</a>
+        <a href="#contacto" class="hover:text-green-600">Contacto</a>
+      </div>
+      <a href="https://wa.me/573002333356" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-green-700 to-green-500 text-white relative overflow-hidden">
+    <div class="absolute inset-0">
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="0.5" style="width:100%; height:100%;" loop autoplay></lottie-player>
+    </div>
+    <div class="relative z-10">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Invierte en el Futuro con <span class="text-yellow-300">PorkInvest</span></h2>
+      <p id="typed" class="text-xl md:text-2xl"></p>
+      <a href="#beneficios" class="mt-6 inline-block bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-500">Conoce más</a>
+    </div>
   </header>
 
-  <!-- Visión & Misión -->
-  <section id="vision" data-aos="fade-up">
-    <h2 class="section-title">Visión & Misión</h2>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-6">
-          <h4>Visión</h4>
-          <p>Convertirnos en la plataforma líder de inversión agropecuaria en Colombia, generando oportunidades de crecimiento seguro y sostenible.</p>
+  <!-- BENEFICIOS -->
+  <section id="beneficios" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12 text-gray-800">Beneficios de Invertir con Nosotros</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
+          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
+          <h4 class="text-xl font-semibold mt-4">Inversión Accesible</h4>
+          <p class="mt-2">Desde $500.000 puedes iniciar tu inversión en un sector real y productivo.</p>
         </div>
-        <div class="col-md-6">
-          <h4>Misión</h4>
-          <p>Ofrecer a nuestros inversionistas transparencia, respaldo y rentabilidad, apoyando al mismo tiempo el desarrollo del campo colombiano.</p>
+        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
+          <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_touohxv0.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
+          <h4 class="text-xl font-semibold mt-4">Rendimiento Estable</h4>
+          <p class="mt-2">Tus recursos trabajan en ciclos de producción porcina con alta demanda nacional.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Beneficios -->
-  <section id="beneficios" data-aos="fade-up">
-    <h2 class="section-title">Beneficios de Invertir</h2>
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <h5>Confianza & Transparencia</h5>
-            <p>Procesos claros y seguimiento constante de tu inversión.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <h5>Rentabilidad Estable</h5>
-            <p>Participa en un mercado sólido con retornos constantes.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <h5>Impacto Social</h5>
-            <p>Apoyas el desarrollo rural y la economía del campo colombiano.</p>
-          </div>
+        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
+          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_3rwasyjy.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
+          <h4 class="text-xl font-semibold mt-4">Transparencia</h4>
+          <p class="mt-2">Recibe información clara, sin letras pequeñas ni compromisos ocultos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cómo Funciona -->
-  <section id="funciona" data-aos="fade-up" style="background:#f0fdf4;">
-    <h2 class="section-title">¿Cómo Funciona?</h2>
-    <div class="container text-center">
-      <p>Tu inversión se destina a la producción porcina. Al finalizar el ciclo productivo, recibes tu capital inicial más la rentabilidad acordada.</p>
-    </div>
-  </section>
-
-  <!-- Planes -->
-  <section id="planes" data-aos="fade-up">
-    <h2 class="section-title">Planes de Inversión</h2>
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="benefit-card text-center">
-            <h4>Plan Básico</h4>
-            <p>Ideal para iniciar en el mundo de la inversión agropecuaria.</p>
-            <button class="btn btn-success">Invertir Ahora</button>
-          </div>
+  <!-- SEGURIDAD -->
+  <section id="seguridad" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12">Confianza y Seguridad</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold">Sector Real</h4>
+          <p class="mt-2">Tu inversión está respaldada por producción porcina tangible y creciente.</p>
         </div>
-        <div class="col-md-4">
-          <div class="benefit-card text-center">
-            <h4>Plan Estándar</h4>
-            <p>Perfecto para quienes buscan un equilibrio entre riesgo y rentabilidad.</p>
-            <button class="btn btn-success">Invertir Ahora</button>
-          </div>
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold">Control y Seguimiento</h4>
+          <p class="mt-2">Recibe reportes periódicos de cómo avanza tu inversión.</p>
         </div>
-        <div class="col-md-4">
-          <div class="benefit-card text-center">
-            <h4>Plan Premium</h4>
-            <p>Maximiza tus retornos con el respaldo de un modelo sólido.</p>
-            <button class="btn btn-success">Invertir Ahora</button>
-          </div>
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold">Confianza</h4>
+          <p class="mt-2">Construimos relaciones duraderas con cada inversionista.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonios -->
-  <section id="testimonios" data-aos="fade-up" style="background:#f9fafb;">
-    <h2 class="section-title">Lo Que Dicen Nuestros Inversionistas</h2>
-    <div class="container">
-      <div class="row g-4 text-center">
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <p>"Una experiencia transparente y rentable. Estoy feliz de apoyar al campo colombiano."</p>
-            <strong>- María G.</strong>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <p>"Confianza total. Siempre recibí información clara de mi inversión."</p>
-            <strong>- Juan P.</strong>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="benefit-card">
-            <p>"Un modelo seguro que une rentabilidad y apoyo social."</p>
-            <strong>- Carolina R.</strong>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 bg-green-700 text-white text-center">
+    <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
+    <p class="mb-4">📧 inversionporkinvest@gmail.com</p>
+    <a href="https://wa.me/573002333356" target="_blank" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-500">Escríbenos por WhatsApp</a>
   </section>
 
-  <!-- Contacto -->
-  <section id="contacto" data-aos="fade-up">
-    <h2 class="section-title">Contáctanos</h2>
-    <div class="container text-center">
-      <p>¿Tienes preguntas? Escríbenos a través de WhatsApp o nuestro correo oficial.</p>
-      <p>Email: contacto@porkinvest.com</p>
-      <a href="https://wa.me/573002333356" target="_blank" class="btn btn-success">💬 WhatsApp</a>
-    </div>
-  </section>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/573002333356" class="whatsapp-float" target="_blank">💬</a>
-
-  <!-- Footer -->
-  <footer>
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 text-center py-6">
     <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Scripts -->
   <script>
-    AOS.init();
+    new Typed("#typed", {
+      strings: ["Invierte desde $500.000", "Apoya el campo colombiano", "Obtén rendimientos confiables"],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
   </script>
+
 </body>
 </html>
