@@ -3,56 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest Premium - Crowdfunding porcicola seguro</title>
-<meta name="description" content="Invierte de manera legal y transparente en proyectos porcicolas en Colombia desde $500.000 COP.">
+<title>PorkInvest - Crowdfunding Porcicola</title>
+<meta name="description" content="Invierte en proyectos porcicolas en Colombia desde $500.000 COP y participa en el crecimiento del sector.">
+<meta name="keywords" content="PorkInvest, crowdfunding porcicola, inversión porcicola, Colombia, proyectos rurales, inversión accesible">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- Favicon vacío para no requerir archivo -->
 
 <style>
 /* Reset y tipografía */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;scroll-behavior:smooth;}
-body{background:#0a0a1a;color:#e0e0e0;line-height:1.6;overflow-x:hidden;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+body{background:#050518;color:#e0e0e0;line-height:1.6;overflow-x:hidden;scroll-behavior:smooth;}
 a{color:#ff9f1c;text-decoration:none;transition:0.3s;}
 a:hover{color:#fff;}
-header{background:linear-gradient(90deg,#0a0a1a,#1a1a2e);padding:25px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 10px rgba(0,0,0,0.6);}
-header h1{font-size:2.8em;color:#ff9f1c;letter-spacing:2px;text-shadow:0 0 10px #ff9f1c;}
+header{background:linear-gradient(90deg,#050518,#1a1a2e);padding:25px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.7);}
+header h1{font-size:3em;color:#ff9f1c;text-shadow:0 0 15px #ff9f1c;letter-spacing:2px;transition:0.5s;}
 nav{margin-top:15px;}
 nav a{margin:0 20px;font-weight:bold;position:relative;}
 nav a::after{content:'';position:absolute;width:0;height:2px;background:#ff9f1c;bottom:-5px;left:0;transition:0.3s;}
 nav a:hover::after{width:100%;}
-section{padding:80px 20px;max-width:1200px;margin:auto;position:relative;z-index:1;}
-h2{margin-bottom:30px;color:#ff9f1c;font-size:2.2em;text-align:center;position:relative;}
-h2::after{content:'';display:block;width:80px;height:3px;background:#ff9f1c;margin:10px auto;border-radius:2px;box-shadow:0 0 10px #ff9f1c;}
-p{margin-bottom:15px;font-size:1.1em;}
 
-/* Tarjetas y animaciones holograma */
-.card{background:linear-gradient(145deg,#1a1a2e,#11111f);padding:25px;border-radius:20px;box-shadow:0 10px 30px rgba(255,159,28,0.5);flex:1 1 calc(33% - 25px);min-width:280px;transition:transform 0.5s, box-shadow 0.5s;}
-.card:hover{transform:translateY(-15px) scale(1.07);box-shadow:0 20px 50px rgba(255,159,28,0.9);}
+section{padding:100px 20px;max-width:1200px;margin:auto;position:relative;z-index:1;}
+h2{margin-bottom:40px;color:#ff9f1c;font-size:2.4em;text-align:center;position:relative;}
+h2::after{content:'';display:block;width:100px;height:4px;background:#ff9f1c;margin:10px auto;border-radius:2px;box-shadow:0 0 20px #ff9f1c;}
+h3{margin-bottom:15px;color:#ff9f1c;}
+
+.card{
+  background:linear-gradient(145deg,#1a1a2e,#11111f);
+  padding:30px;
+  border-radius:25px;
+  box-shadow:0 0 25px rgba(255,159,28,0.7);
+  flex:1 1 calc(33% - 25px);
+  min-width:280px;
+  transition:transform 0.6s, box-shadow 0.6s, opacity 0.6s;
+  opacity:0;
+  transform: translateY(30px);
+}
+.card.visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
 .benefits,.faqs{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
 
-/* Botones futuristas */
-button{background:linear-gradient(45deg,#ff9f1c,#ffb84c);color:#0a0a1a;border:none;padding:15px 30px;border-radius:12px;font-weight:bold;font-size:1.1em;cursor:pointer;box-shadow:0 0 15px #ff9f1c;transition:0.4s;}
-button:hover{transform:scale(1.1);box-shadow:0 0 25px #ffb84c;}
+button{
+  background:linear-gradient(45deg,#ff9f1c,#ffb84c);
+  color:#050518;
+  border:none;
+  padding:15px 35px;
+  border-radius:15px;
+  font-weight:bold;
+  font-size:1.1em;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff9f1c;
+  transition:0.5s;
+}
+button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 40px #ffb84c;
+}
+button:active{
+  transform:scale(0.95);
+}
 
-/* Simulador futurista con barra de progreso */
-.simulator{background:linear-gradient(145deg,#1a1a2e,#11111f);padding:30px;border-radius:20px;box-shadow:0 10px 30px rgba(255,159,28,0.5);text-align:center;margin-top:30px;}
-.simulator input{padding:15px;border-radius:12px;border:1px solid #555;margin-right:10px;width:150px;background:#0a0a1a;color:#e0e0e0;font-size:1.1em;}
-#resultado{margin-top:20px;font-weight:bold;font-size:1.2em;color:#ff9f1c;}
+.simulator{
+  background:linear-gradient(145deg,#1a1a2e,#11111f);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 0 30px rgba(255,159,28,0.7);
+  text-align:center;
+  margin-top:40px;
+  position:relative;
+  overflow:hidden;
+}
+.simulator input{
+  padding:15px;
+  border-radius:12px;
+  border:1px solid #555;
+  margin-right:15px;
+  width:160px;
+  background:#050518;
+  color:#e0e0e0;
+  font-size:1.1em;
+}
 
-/* Barra de progreso */
-.progress-container{background:#11111f;border-radius:15px;margin-top:20px;height:25px;width:100%;overflow:hidden;box-shadow:0 0 10px rgba(255,159,28,0.4);}
-.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#ff9f1c,#ffb84c);border-radius:15px;transition:width 1s ease-in-out;}
+.progress-container{
+  background:#11111f;
+  border-radius:25px;
+  margin-top:30px;
+  height:30px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 0 15px rgba(255,159,28,0.5);
+}
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff9f1c,#ffb84c);
+  border-radius:25px;
+  transition:width 1.5s ease-in-out;
+  box-shadow:0 0 20px #ff9f1c inset;
+}
 
-/* Footer */
-footer{background:#11111f;color:#aaa;text-align:center;padding:25px;}
-footer p{font-size:0.9em;}
-
-/* Media queries */
+footer{background:#11111f;color:#aaa;text-align:center;padding:30px;font-size:0.9em;}
 @media(max-width:900px){.benefits,.faqs{flex-direction:column;}}
 </style>
-</head>
 <body>
 
 <header>
-  <h1>PorkInvest Premium</h1>
+  <h1>PorkInvest</h1>
   <nav>
     <a href="#mision">Misión & Visión</a>
     <a href="#beneficios">Beneficios</a>
@@ -64,37 +122,19 @@ footer p{font-size:0.9em;}
 
 <section id="mision">
   <h2>Misión & Visión</h2>
-  <p><strong>Misión:</strong> Democratizar la inversión en porcicultura legal en Colombia mediante crowdfunding ético, transparente y responsable. Buscamos que cada inversión tenga impacto real en la economía local, fomentando empleos rurales y desarrollo sostenible del sector porcicola.</p>
-  <p><strong>Visión:</strong> Ser la plataforma futurista líder en crowdfunding porcicola en Colombia, combinando tecnología innovadora con responsabilidad social y financiera. Aspiramos a que cada inversionista confíe plenamente en la transparencia y seguridad de sus recursos.</p>
+  <p><strong>Misión:</strong> Facilitar la participación en proyectos porcicolas en Colombia mediante crowdfunding, promoviendo crecimiento del sector y generación de empleos locales.</p>
+  <p><strong>Visión:</strong> Ser la plataforma de referencia para quienes quieren invertir en porcicultura, ofreciendo claridad, seguimiento y retorno transparente.</p>
 </section>
 
 <section id="beneficios">
   <h2>Beneficios de invertir con nosotros</h2>
   <div class="benefits">
-    <div class="card">
-      <h3>Inversión 100% Legal</h3>
-      <p>Proyectos auditados y contratos claros que cumplen con la normativa colombiana.</p>
-    </div>
-    <div class="card">
-      <h3>Transparencia Total</h3>
-      <p>Accede a reportes periódicos y seguimiento completo de la producción y uso de recursos.</p>
-    </div>
-    <div class="card">
-      <h3>Retornos Responsables</h3>
-      <p>Ganancias proyectadas según producción real, sin promesas exageradas ni riesgos ocultos.</p>
-    </div>
-    <div class="card">
-      <h3>Impacto Social Positivo</h3>
-      <p>Apoya comunidades rurales, empleo local y desarrollo sostenible del sector porcicola.</p>
-    </div>
-    <div class="card">
-      <h3>Monto Inicial Accesible</h3>
-      <p>Participa desde $500.000 COP sin necesidad de grandes capitales.</p>
-    </div>
-    <div class="card">
-      <h3>Simulador Integrado</h3>
-      <p>Calcula tu posible retorno y visualiza tus ganancias de manera intuitiva y transparente.</p>
-    </div>
+    <div class="card"><h3>Inversión clara</h3><p>Proyectos con información detallada y seguimiento constante.</p></div>
+    <div class="card"><h3>Retornos reales</h3><p>Ganancias basadas en producción y resultados comprobables.</p></div>
+    <div class="card"><h3>Impacto positivo</h3><p>Contribuye al desarrollo de comunidades rurales y empleo local.</p></div>
+    <div class="card"><h3>Monto accesible</h3><p>Participa desde $500.000 COP sin necesidad de grandes capitales.</p></div>
+    <div class="card"><h3>Simulador</h3><p>Visualiza tu posible retorno y planifica tu inversión fácilmente.</p></div>
+    <div class="card"><h3>Plataforma profesional</h3><p>Diseño moderno, ágil y confiable que inspira seguridad.</p></div>
   </div>
 </section>
 
@@ -109,47 +149,15 @@ footer p{font-size:0.9em;}
       <div class="progress-bar" id="progress"></div>
     </div>
   </div>
-
-  <script>
-    function calcularRetorno(){
-      let monto = parseFloat(document.getElementById('monto').value);
-      let progress = document.getElementById('progress');
-      if(isNaN(monto) || monto < 500000){
-        document.getElementById('resultado']='El monto mínimo es $500.000 COP';
-        progress.style.width = '0%';
-        return;
-      }
-      let retorno = monto * 0.10; 
-      document.getElementById('resultado') = 'Ganancia estimada en 6 meses: $' + retorno.toLocaleString('es-CO');
-      progress.style.width = '100%';
-      setTimeout(()=>{progress.style.width='0%';},3000);
-    }
-  </script>
 </section>
 
 <section id="faqs">
   <h2>Preguntas Frecuentes</h2>
   <div class="faqs">
-    <div class="card">
-      <h3>¿Es legal invertir aquí?</h3>
-      <p>Todos los proyectos cumplen la normatividad colombiana con contratos transparentes.</p>
-    </div>
-    <div class="card">
-      <h3>¿Cuál es el monto mínimo?</h3>
-      <p>$500.000 COP por proyecto. Puedes realizar múltiples inversiones.</p>
-    </div>
-    <div class="card">
-      <h3>¿Cómo recibo mis ganancias?</h3>
-      <p>Transferencia directa a tu cuenta bancaria cada 6 meses según desempeño del proyecto.</p>
-    </div>
-    <div class="card">
-      <h3>¿Qué garantías tengo?</h3>
-      <p>Auditorías internas, reportes periódicos y seguimiento transparente de cada proyecto.</p>
-    </div>
-    <div class="card">
-      <h3>¿Puedo reinvertir?</h3>
-      <p>Sí, tus ganancias pueden reinvertirse en nuevos proyectos, aumentando tu participación y retorno.</p>
-    </div>
+    <div class="card"><h3>¿Cuál es el monto mínimo?</h3><p>$500.000 COP por proyecto, puedes participar en varios proyectos.</p></div>
+    <div class="card"><h3>¿Cómo recibo mis ganancias?</h3><p>Transferencia directa según desempeño de la inversión.</p></div>
+    <div class="card"><h3>¿Puedo reinvertir?</h3><p>Sí, puedes reinvertir tus ganancias en nuevos proyectos y aumentar tu participación.</p></div>
+    <div class="card"><h3>¿Cómo hago seguimiento?</h3><p>La plataforma permite ver resultados y reportes de cada proyecto en tiempo real.</p></div>
   </div>
 </section>
 
@@ -160,8 +168,46 @@ footer p{font-size:0.9em;}
 </section>
 
 <footer>
-  <p>&copy; 2025 PorkInvest Premium - Crowdfunding porcicola legal y seguro en Colombia</p>
+  <p>&copy; 2025 PorkInvest - Plataforma de crowdfunding porcicola</p>
 </footer>
+
+<script>
+// Función del simulador de inversión con barra animada
+function calcularRetorno(){
+  let monto = parseFloat(document.getElementById('monto').value);
+  let progress = document.getElementById('progress');
+  if(isNaN(monto) || monto < 500000){
+    document.getElementById('resultado').innerText = 'El monto mínimo es $500.000 COP';
+    progress.style.width = '0%';
+    return;
+  }
+  let retorno = monto * 0.10; // Retorno estimado 10%
+  document.getElementById('resultado').innerText = 'Ganancia estimada en 6 meses: $' + retorno.toLocaleString('es-CO');
+  
+  // Animación de barra
+  progress.style.width = '0%';
+  setTimeout(()=>{ progress.style.width = '100%'; }, 50);
+}
+
+// Animación de tarjetas al hacer scroll
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{ threshold: 0.2 });
+
+cards.forEach(card => { observer.observe(card); });
+
+// Microefecto botones
+const buttons = document.querySelectorAll('button');
+buttons.forEach(btn => {
+  btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.95)'; });
+  btn.addEventListener('mouseup', () => { btn.style.transform = 'scale(1.05)'; });
+});
+</script>
 
 </body>
 </html>
