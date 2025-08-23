@@ -3,185 +3,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest - Inversiones Inteligentes</title>
-<meta name="description" content="PorkInvest: alternativa segura y transparente en el sector porcicultor. Invierte en proyectos reales con respaldo productivo.">
-<meta name="keywords" content="inversiones, porcicultura, agronegocios, porkinvest, inversión segura, ganadería, agro">
+<title>PorkInvest - Inversiones que Dan Vida al Campo</title>
+<meta name="description" content="PorkInvest: Tu portal a inversiones productivas en el sector porcicultor. Respaldo tangible, rentabilidad atractiva y seguridad legal. Descubre el potencial de los agronegocios.">
+<meta name="keywords" content="inversiones, porcicultura, agronegocios, inversión segura, ganadería, impacto social, PorkInvest, rentabilidad, Colombia, inversión en agro">
 <meta name="author" content="PorkInvest">
+<link rel="icon" type="image/png" href="https://ejemplo.com/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
+/* Colores y tipografía personalizados */
 :root {
-  --azul: #1b263b;
-  --verde: #2ecc71;
-  --dorado: #f1c40f;
-  --gris: #f5f6fa;
-  --blanco: #ffffff;
+    --color-primary: #1b263b; /* Azul oscuro */
+    --color-secondary: #2ecc71; /* Verde esmeralda */
+    --color-accent: #f1c40f; /* Dorado */
+    --color-bg: #f5f6fa; /* Gris claro */
+    --color-text: #333333;
+    --font-family: 'Montserrat', sans-serif;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: var(--gris); color: var(--azul); overflow-x:hidden; scroll-behavior:smooth; }
-header { background: var(--azul); color: var(--blanco); padding:1rem 2rem; display:flex; justify-content: space-between; align-items:center; position: sticky; top:0; z-index:999; box-shadow:0 2px 10px rgba(0,0,0,0.3); }
-header .logo { display:flex; align-items:center; gap:.5rem; }
-header .logo svg { width:40px; height:40px; fill: var(--dorado); }
-nav a { color: var(--blanco); text-decoration:none; margin:0 1rem; font-weight:600; transition: color 0.3s; }
-nav a:hover { color: var(--verde); }
-section { padding:4rem 1.5rem; max-width:1100px; margin:auto; position:relative; }
-h1,h2 { text-align:center; margin-bottom:1rem; }
-.hero { background: linear-gradient(to right,var(--azul),var(--verde)); color: var(--blanco); padding:6rem 2rem; text-align:center; border-radius:0 0 50px 50px; overflow:hidden; position:relative; }
-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
-.hero-content { position:relative; z-index:2; }
-.benefits { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; margin-top:2rem; }
-.card { background:var(--blanco); padding:1.5rem; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition: transform .3s ease, box-shadow .3s ease; cursor:pointer; perspective:1000px; }
-.card:hover { transform: rotateY(10deg) rotateX(10deg) translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
-.simulador { text-align:center; background: var(--blanco); padding:2rem; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-.simulador:hover { transform: scale(1.02); }
-input, select { padding:.7rem; border-radius:8px; border:1px solid #ccc; margin:.5rem; width:220px; font-size:1rem; }
-button { padding:.7rem 1.5rem; border:none; border-radius:10px; background: var(--verde); color: var(--blanco); font-weight:bold; cursor:pointer; margin-top:1rem; transition: 0.3s; font-size:1rem; }
-button:hover { background: var(--dorado); color: var(--azul); }
-.faq-card { cursor:pointer; transition:all .3s ease; overflow:hidden; padding:1rem; background:#fff; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:1rem; }
-.faq-card:hover { box-shadow:0 10px 20px rgba(0,0,0,0.2); }
-.faq-answer { max-height:0; opacity:0; transition:max-height .5s ease, opacity .5s ease; }
-.faq-card.open .faq-answer { max-height:200px; opacity:1; }
-.fade-in { opacity:0; transform:translateY(20px); transition:all 1s ease; }
-.fade-in-visible { opacity:1; transform:translateY(0); }
-footer { text-align:center; background: var(--azul); color: var(--blanco); padding:2rem; margin-top:2rem; }
-footer small { display:block; margin-top:.5rem; font-size:0.8rem; }
-.whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; border-radius:50%; padding:15px; box-shadow:0 4px 10px rgba(0,0,0,0.3); animation:bounce 2s infinite; z-index:1000; }
-.whatsapp img { width:40px; height:40px; }
-@keyframes bounce { 0%,100%{ transform:translateY(0);} 50%{transform:translateY(-10px);} }
-#progressBar { width:0%; height:10px; background:var(--verde); margin-top:10px; border-radius:5px; }
+
+/* Base global */
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+.header-sticky {
+    transition: all 0.4s ease;
+}
+.header-sticky.scrolled {
+    background-color: rgba(27, 38, 59, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Animaciones */
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efecto de carta 3D */
+.card-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+    will-change: transform;
+}
+.card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Simulador */
+.simulador-card {
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.simulador-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+#progress-bar-fill {
+    transition: width 1s ease-in-out;
+}
 </style>
 </head>
-<body>
 
-<header>
-  <div class="logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
-    <span><strong>PorkInvest</strong></span>
-  </div>
-  <nav>
-    <a href="#vision">Visión</a>
-    <a href="#mision">Misión</a>
-    <a href="#beneficios">Beneficios</a>
-    <a href="#simulador">Simulador</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+<body class="bg-gray-100 text-gray-800">
+
+<header class="header-sticky fixed w-full top-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-500 bg-primary-dark shadow-lg"
+    style="--tw-bg-opacity: 0.95; background-color: var(--color-primary);">
+    <div class="logo flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-accent" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
+        <span class="text-white text-2xl font-bold">PorkInvest</span>
+    </div>
+    <nav class="hidden md:flex space-x-8">
+        <a href="#vision" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Nuestra Visión</a>
+        <a href="#beneficios" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Beneficios Clave</a>
+        <a href="#simulador" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Simulador</a>
+        <a href="#faq" class="text-white font-semibold hover:text-secondary transition-colors duration-300">FAQ</a>
+        <a href="#contacto" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Contacto</a>
+    </nav>
+    <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    </button>
 </header>
 
-<section class="hero">
-  <canvas id="heroCanvas"></canvas>
-  <div class="hero-content">
-    <h1 id="heroText">Invierte con Confianza en Proyectos Reales</h1>
-    <p>Tu capital se transforma en impacto tangible y medible, respaldado por proyectos productivos y legales.</p>
-  </div>
+<div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-primary-dark z-40 flex flex-col items-center justify-center space-y-8 text-2xl transition-all duration-500 transform -translate-x-full">
+    <a href="#vision" class="text-white hover:text-secondary" onclick="closeMenu()">Visión</a>
+    <a href="#beneficios" class="text-white hover:text-secondary" onclick="closeMenu()">Beneficios</a>
+    <a href="#simulador" class="text-white hover:text-secondary" onclick="closeMenu()">Simulador</a>
+    <a href="#faq" class="text-white hover:text-secondary" onclick="closeMenu()">FAQ</a>
+    <a href="#contacto" class="text-white hover:text-secondary" onclick="closeMenu()">Contacto</a>
+    <button class="absolute top-8 right-8 text-white text-4xl" onclick="closeMenu()">&times;</button>
+</div>
+
+<section class="relative h-screen flex items-center justify-center text-white text-center p-6 md:p-12 overflow-hidden" 
+    style="background: linear-gradient(to right, var(--color-primary), #1e7049);">
+    <div class="absolute inset-0 z-0">
+        <canvas id="hero-canvas" class="w-full h-full"></canvas>
+    </div>
+    <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-pulse" id="hero-title">
+            Tu Capital Crece en Tierra Firme.
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl font-light max-w-2xl mx-auto opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
+            Invierte en proyectos productivos y legales, donde cada centavo se transforma en un **impacto tangible** y un futuro más sólido.
+        </p>
+        <a href="#simulador" class="inline-block mt-8 px-8 py-4 bg-accent text-primary-dark font-bold rounded-full text-lg shadow-lg hover:bg-white hover:scale-105 transition-all duration-300 transform-gpu opacity-0 animate-fadeIn" style="animation-delay: 1s;">
+            Simula Tu Inversión Hoy
+        </a>
+    </div>
 </section>
 
-<section id="vision" class="fade-in">
-  <h2>Visión</h2>
-  <p>Ser la plataforma líder en inversión agropecuaria de Latinoamérica, uniendo capitales con proyectos reales que generan <span style="color:var(--dorado)">crecimiento</span>, <span style="color:var(--dorado)">sostenibilidad</span> y confianza para cada inversionista.</p>
+<section id="vision" class="fade-in-section py-20 px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-primary-dark mb-4">Nuestra Visión & Misión</h2>
+    <div class="flex flex-col md:flex-row gap-8 mt-12">
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-secondary text-center space-y-4 card-3d">
+            <h3 class="text-2xl font-bold text-primary-dark">Visión: El Futuro del Agro</h3>
+            <p class="text-lg text-gray-600">
+                Ser la **puerta de entrada** a un futuro financiero y sostenible, uniendo capitales con proyectos del sector agropecuario que generen **crecimiento, seguridad y prosperidad** para nuestros inversionistas y las comunidades rurales.
+            </p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-accent text-center space-y-4 card-3d">
+            <h3 class="text-2xl font-bold text-primary-dark">Misión: Invertir con Propósito</h3>
+            <p class="text-lg text-gray-600">
+                Empoderar a cada persona para que su inversión se convierta en un **acto de propósito**. Transformamos tu capital en **impacto real y medible**, construyendo un puente de confianza entre el inversionista y la tierra que produce.
+            </p>
+        </div>
+    </div>
 </section>
 
-<section id="mision" class="fade-in">
-  <h2>Misión</h2>
-  <p>Empoderar a cada persona para que invierta con propósito, respaldada por proyectos reales y sostenibles, transformando su capital en <span style="color:var(--dorado)">impacto tangible</span> y medible.</p>
+---
+
+<section id="beneficios" class="fade-in-section py-20 px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-primary-dark mb-12">Beneficios que te Hacen Sentir Seguro</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-secondary card-3d">
+            <div class="flex items-center gap-4 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-secondary" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
+                <h3 class="text-xl font-bold text-primary-dark">Seguridad & Legalidad</h3>
+            </div>
+            <p class="text-gray-600">Cada inversión está respaldada por un contrato legal y transparente, ofreciendo un marco de total confianza y protección.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-accent card-3d">
+            <div class="flex items-center gap-4 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 16h2a2 2 0 1 0 0 -4h-2v-4h4m-2 4h-2" /><path d="M12 21a9 9 0 1 1 0 -18 9 9 0 0 1 0 18z" /></svg>
+                <h3 class="text-xl font-bold text-primary-dark">Rentabilidad Sostenible</h3>
+            </div>
+            <p class="text-gray-600">Obtén retornos atractivos del 10% en ciclos de 6 meses, basados en la productividad real y auditada del sector.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-secondary card-3d">
+            <div class="flex items-center gap-4 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-secondary" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
+                <h3 class="text-xl font-bold text-primary-dark">Inversión Tangible</h3>
+            </div>
+            <p class="text-gray-600">Tu capital no está en un "esquema". Está vinculado directamente a proyectos productivos auditables y reales. No es papel, ¡es vida!</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-accent card-3d">
+            <div class="flex items-center gap-4 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M12 8a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /><path d="M12 16a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /></svg>
+                <h3 class="text-xl font-bold text-primary-dark">Impacto Real</h3>
+            </div>
+            <p class="text-gray-600">Contribuye al desarrollo rural, genera empleo y fortalece la economía local. ¡Invierte con propósito y ve el cambio!</p>
+        </div>
+    </div>
 </section>
 
-<section id="beneficios" class="fade-in">
-  <h2>Beneficios para Inversionistas</h2>
-  <div class="benefits">
-    <div class="card"><h3>Transparencia</h3><p>Acceso a reportes periódicos y trazabilidad en cada etapa de la inversión.</p></div>
-    <div class="card"><h3>Respaldo Productivo</h3><p>Tu inversión está vinculada a proyectos reales y auditables, con resultados comprobables.</p></div>
-    <div class="card"><h3>Rentabilidad Estimada</h3><p>Proyecciones claras y retornos atractivos del 10% en ciclos de 6 meses.</p></div>
-    <div class="card"><h3>Seguridad Legal</h3><p>Modelo basado en contratos transparentes, garantizando la legalidad y protección del inversionista.</p></div>
-    <div class="card"><h3>Impacto Social</h3><p>Contribuye al desarrollo rural y al fortalecimiento de la economía local.</p></div>
-  </div>
+---
+
+<section id="simulador" class="fade-in-section py-20 px-6 max-w-3xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-primary-dark mb-4">Simulador de Inversión</h2>
+    <p class="text-center text-gray-600 mb-8">Descubre el potencial de tu capital en solo segundos. ¡Un futuro rentable te espera!</p>
+    <div class="simulador-card bg-white p-8 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1 space-y-4">
+            <div class="flex flex-col">
+                <label for="monto" class="text-lg font-semibold mb-2">Monto a Invertir (COP)</label>
+                <input type="number" id="monto" placeholder="Ej: 5.000.000" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
+            </div>
+            <button onclick="calcularSimulacion()" class="w-full py-4 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300 transform-gpu hover:scale-105">
+                Calcular
+            </button>
+        </div>
+        <div class="flex-1 w-full space-y-4 text-center">
+            <div id="resultado" class="text-2xl font-bold text-primary-dark opacity-0 transition-opacity duration-500"></div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progress-bar-fill" class="bg-secondary h-2.5 rounded-full" style="width: 0%;"></div>
+            </div>
+            <canvas id="miniGraph" class="mt-4 w-full" style="display:none;"></canvas>
+        </div>
+    </div>
 </section>
 
-<section id="simulador" class="fade-in">
-  <h2>Simulador de Inversión</h2>
-  <div class="simulador">
-    <p>Ingresa un monto y estima tu retorno en un ciclo de 6 meses.</p>
-    <input type="number" id="monto" placeholder="Monto en COP">
-    <br>
-    <button onclick="calcular()">Calcular</button>
-    <p id="resultado"></p>
-    <div id="progressBar"></div>
-    <canvas id="miniGraph" width="300" height="150" style="margin-top:20px;"></canvas>
-  </div>
+---
+
+<section id="faq" class="fade-in-section py-20 px-6 max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-primary-dark mb-12">Preguntas Frecuentes</h2>
+    <div class="space-y-4">
+        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-primary-dark">¿Cómo se respalda mi inversión?</h3>
+                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+            </div>
+            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                Tu aporte se vincula a proyectos productivos auditables y se formaliza mediante un contrato de colaboración con respaldo legal.
+            </p>
+        </div>
+        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-primary-dark">¿Qué pasa si hay riesgos en el mercado?</h3>
+                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+            </div>
+            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                Contamos con estrategias de mitigación y un modelo de inversión tangible que reduce la exposición a la volatilidad del mercado, garantizando transparencia constante.
+            </p>
+        </div>
+        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-primary-dark">¿Es un esquema de captación de dinero?</h3>
+                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+            </div>
+            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                No. Nuestro modelo es 100% de inversión productiva, basado en proyectos reales y auditables, operando bajo un marco legal establecido en Colombia.
+            </p>
+        </div>
+    </div>
 </section>
 
-<section id="faq" class="fade-in">
-  <h2>Preguntas Frecuentes</h2>
-  <div class="benefits">
-    <div class="faq-card" onclick="toggleFAQ(this)"><h3>¿Cómo se respalda mi inversión?</h3><p class="faq-answer">Tu aporte se asocia a proyectos reales y se formaliza mediante contratos privados y legales.</p></div>
-    <div class="faq-card" onclick="toggleFAQ(this)"><h3>¿Qué pasa si hay riesgos en el mercado?</h3><p class="faq-answer">Contamos con estrategias de mitigación y transparencia constante para reducir cualquier impacto.</p></div>
-    <div class="faq-card" onclick="toggleFAQ(this)"><h3>¿Es un esquema de captación?</h3><p class="faq-answer">No. Este es un modelo de inversión productiva, basado en proyectos tangibles bajo la legislación colombiana.</p></div>
-  </div>
+---
+
+<section id="contacto" class="fade-in-section py-20 px-6 bg-primary-dark text-white text-center">
+    <div class="max-w-4xl mx-auto space-y-6">
+        <h2 class="text-4xl font-bold">¿Listo para Ver tu Dinero Crecer?</h2>
+        <p class="text-lg font-light">Contáctanos directamente y transforma tu visión en acción. Estamos aquí para resolver todas tus dudas.</p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-xl font-semibold">
+            <a href="mailto:inversionporkinvest@gmail.com" class="flex items-center gap-2 hover:text-secondary transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M3 7l9 6 9 -6" /></svg>
+                inversionporkinvest@gmail.com
+            </a>
+            <a href="tel:+573002333356" class="flex items-center gap-2 hover:text-secondary transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5 5 2v4a2 2 0 0 1 -2 2h-13a4 4 0 0 1 -4 -4v-13a2 2 0 0 1 2 -2z" /></svg>
+                +57 300 233 3356
+            </a>
+        </div>
+    </div>
 </section>
 
-<section id="contacto" class="fade-in">
-  <h2>Contacto</h2>
-  <p style="text-align:center;">¿Tienes dudas o quieres más información? Contáctanos directamente:</p>
-  <p style="text-align:center;"><strong>Email:</strong> inversionporkinvest@gmail.com</p>
-  <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 233 3356</p>
-</section>
-
-<footer>
-  <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-  <small>Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
+<footer class="bg-primary-dark py-8 px-6 text-center text-gray-400 border-t border-gray-700">
+    <div class="max-w-6xl mx-auto">
+        <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+        <small class="mt-2 block">Inversión con Propósito. Creciendo Juntos.</small>
+    </div>
 </footer>
 
-<a href="https://wa.me/573002333356" class="whatsapp" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<a href="https://wa.me/573002333356" target="_blank" class="fixed bottom-6 right-6 z-50 p-3 bg-green-500 rounded-full shadow-lg transform transition-transform hover:scale-110 active:scale-95 animate-bounce-slow" title="Chatea con nosotros en WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-white" viewBox="0 0 448 512"><path d="M380.9 97.4C339.4 53.9 283.4 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L1 416l103.1-30.1c-15.1-16.1-26.6-34.9-33.8-54.3L15.3 416 1 416l31.7-92.2C10.2 284.7 0 246.5 0 207.4c0-123.7 100.3-224 224-224s224 100.3 224 224c0 39.1-10.2 77.3-29.6 111L447 416l-103.1-30.1c15.1 16.1 26.6 34.9 33.8 54.3L447 416 415.3 323.8C436.8 285.3 448 246.1 448 207.4c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 39.1 10.2 77.3 29.6 111L1 416l103.1-30.1c-15.1-16.1-26.6-34.9-33.8-54.3L15.3 416 1 416l31.7-92.2C10.2 284.7 0 246.5 0 207.4c0-123.7 100.3-224 224-224s224 100.3 224 224c0 39.1-10.2 77.3-29.6 111L447 416l-103.1-30.1c15.1 16.1 26.6 34.9 33.8 54.3L447 416 415.3 323.8C436.8 285.3 448 246.1 448 207.4z" /></svg>
 </a>
+<style>
+@keyframes bounce-slow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 4s infinite;
+}
+</style>
 
 <script>
-// Hero partículas
-const canvas = document.getElementById('heroCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = document.querySelector('.hero').offsetHeight;
-const particles = [];
-for(let i=0;i<150;i++){ particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.5, dy:(Math.random()-0.5)*0.5}); }
-function animateParticles(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    p.x+=p.dx; p.y+=p.dy;
-    if(p.x<0||p.x>canvas.width) p.dx*=-1;
-    if(p.y<0||p.y>canvas.height) p.dy*=-1;
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fill();
-  });
-  requestAnimationFrame(animateParticles);
+// JavaScript para el menú móvil
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+    setTimeout(() => {
+        mobileMenu.classList.add('transform', 'translate-x-0');
+    }, 10);
+});
+
+function closeMenu() {
+    mobileMenu.classList.remove('transform', 'translate-x-0');
+    setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+    }, 500);
 }
-animateParticles();
 
-// Scroll fade
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold:0.2, rootMargin:"0px 0px -50px 0px" };
-const appearOnScroll = new IntersectionObserver((entries,observer)=>{
-  entries.forEach(entry=>{
-    if(!entry.isIntersecting) return;
-    entry.target.classList.add('fade-in-visible');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-faders.forEach(fader=>appearOnScroll.observe(fader));
+// JavaScript para animar la barra de progreso
+function animateProgressBar(progress) {
+    const progressBar = document.getElementById('progress-bar-fill');
+    progressBar.style.width = '0%';
+    setTimeout(() => {
+        progressBar.style.width = progress + '%';
+    }, 100);
+}
 
-// FAQ toggle
-function toggleFAQ(card){ card.classList.toggle('open'); }
+// JavaScript para la simulación y gráfico
+function calcularSimulacion() {
+    const montoInput = document.getElementById('monto');
+    const resultadoDiv = document.getElementById('resultado');
+    const miniGraph = document.getElementById('miniGraph');
+    
+    let monto = parseFloat(montoInput.value);
 
-// Simulador
-function calcular(){
-  const monto = document.getElementById('monto').value;
-  const result = document.getElementById('resultado');
-  const bar = document.getElementById('progressBar');
-  const graph = document.getElementById('miniGraph');
-  const gctx = graph.getContext('2d');
-  if(monto && monto>0){
-    const total = monto*1.1;
-    result.innerText = "Tu retorno estimado en 6 meses será: $" + total.toLocaleString();
-    bar.style.width="100%";
-    gctx.clearRect(0,0,graph.width,graph.height);
-    gctx.beginPath();
-    gctx.moveTo(0,graph.height-0);
-    gctx.lineTo(graph.width,graph.height-graph.height*0.1);
-    gctx.strokeStyle="green"; gctx.lineWidth=3; gctx.stroke();
-  } else { result.innerText="Por favor ing
+    if (isNaN(monto) || monto <= 0) {
+        resultadoDiv.textContent = 'Por favor, ingresa un monto válido.';
+        resultadoDiv.style.color = '#e74c3c';
+        resultadoDiv.style.opacity = '1';
+        animateProgressBar(0);
+        return;
+    }
+
+    const rentabilidad = 0.10; // 10%
+    const
