@@ -1,371 +1,347 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest - Inversiones con Respaldo Real</title>
-<meta name="description" content="Invierte con respaldo real en proyectos productivos. Transparencia, seguridad y claridad para los inversionistas.">
-<meta name="keywords" content="inversiones, porkinvest, agro, inversión segura, proyecto real, transparencia">
-<meta name="author" content="PorkInvest">
-<style>
-:root {
-  --azul: #0f1c2e;
-  --verde: #2ecc71;
-  --dorado: #f1c40f;
-  --gris: #0a0a0a;
-  --blanco: #ffffff;
-  --neon: #00ffe0;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest - Inversiones Inteligentes</title>
+  <meta name="description" content="PorkInvest: una alternativa segura y transparente en el sector porcicultor. Invierte en un modelo real con respaldo productivo.">
+  <meta name="keywords" content="inversiones, porcicultura, agronegocios, porkinvest, inversión segura, ganadería, agro">
+  <meta name="author" content="PorkInvest">
+  <!-- Open Graph -->
+  <meta property="og:title" content="PorkInvest - Inversiones Inteligentes">
+  <meta property="og:description" content="Invierte en el sector porcicultor con confianza, transparencia y respaldo productivo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/logo.png">
 
-body{
-  margin:0;
-  font-family:'Segoe UI', Roboto, Arial, sans-serif;
-  background: var(--gris);
-  color: var(--blanco);
-  overflow-x:hidden;
-}
+  <style>
+    :root {
+      --azul: #1b263b;
+      --verde: #2ecc71;
+      --dorado: #f1c40f;
+      --gris: #f5f6fa;
+      --blanco: #ffffff;
+      --rosa: #ff6f61;
+    }
 
-header{
-  background: rgba(15,28,46,0.95);
-  color: var(--blanco);
-  padding:1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:999;
-  backdrop-filter: blur(10px);
-}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--gris);
+      color: var(--azul);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-header .logo{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-}
-header .logo svg{
-  width:45px;
-  height:45px;
-  fill: var(--dorado);
-}
+    header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    header .logo svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--dorado);
+    }
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: var(--verde);
+    }
 
-nav a{
-  color: var(--blanco);
-  text-decoration:none;
-  margin:0 1rem;
-  font-weight:600;
-  position:relative;
-}
-nav a::after{
-  content:'';
-  position:absolute;
-  width:0;
-  height:2px;
-  display:block;
-  background: var(--neon);
-  transition: width .3s;
-  bottom:-3px;
-  left:0;
-}
-nav a:hover::after{
-  width:100%;
-}
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-.hero{
-  position:relative;
-  background: linear-gradient(270deg,#0f1c2e,#002233,#004466,#0f1c2e);
-  background-size: 400% 400%;
-  color: var(--blanco);
-  padding:6rem 2rem;
-  text-align:center;
-  overflow:hidden;
-  animation: gradientMove 15s ease infinite;
-}
-@keyframes gradientMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
+    .hero {
+      background: linear-gradient(to right, var(--azul), var(--verde));
+      color: var(--blanco);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-radius: 0 0 50px 50px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.hero h1{
-  font-size:3rem;
-  margin-bottom:1rem;
-  text-shadow:0 0 10px var(--neon);
-}
-.hero p{
-  font-size:1.2rem;
-  text-shadow:0 0 8px #00ffe0;
-}
+    /* Animación de cerdos flotantes */
+    .cerdo {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url('https://i.ibb.co/4ZP7rD0/pig-icon.png') no-repeat center/contain;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
 
-.pig{
-  position:absolute;
-  width:60px;
-  pointer-events:none;
-  transition: transform .1s linear;
-}
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--blanco);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.5s, box-shadow 0.5s;
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    .card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
 
-section{
-  padding:3rem 1.5rem;
-  max-width:1100px;
-  margin:auto;
-  position:relative;
-  z-index:1;
-}
+    .simulador {
+      text-align: center;
+      background: var(--blanco);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    input, select {
+      padding: .5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin: .5rem;
+      width: 200px;
+    }
+    button {
+      padding: .7rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--verde);
+      color: var(--blanco);
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: var(--dorado);
+      color: var(--azul);
+    }
 
-h2{
-  text-align:center;
-  margin-bottom:1rem;
-  font-size:2rem;
-  color: var(--neon);
-  text-shadow:0 0 10px var(--neon);
-}
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+    .whatsapp img {
+      width: 40px;
+      height: 40px;
+    }
 
-.benefits{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1.5rem;
-  margin-top:2rem;
-}
-.card{
-  background: rgba(15,28,46,0.8);
-  padding:1.5rem;
-  border-radius:15px;
-  box-shadow:0 0 20px rgba(0,255,224,0.3);
-  transition: transform .4s ease, box-shadow .4s ease, opacity .6s;
-  cursor:pointer;
-  opacity:0;
-  transform: translateY(50px);
-}
-.card.visible{
-  opacity:1;
-  transform: translateY(0);
-}
-.card:hover{
-  transform: translateY(-10px) scale(1.05);
-  box-shadow:0 0 30px var(--neon);
-}
-.card h3::before{
-  content:"🐷 ";
-}
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
 
-.simulador{
-  text-align:center;
-  background: rgba(0,0,0,0.7);
-  padding:2rem;
-  border-radius:20px;
-  box-shadow:0 0 25px rgba(0,255,224,0.4);
-  transition: transform .3s;
-}
-.simulador:hover{
-  transform: translateY(-5px);
-}
+    footer {
+      text-align: center;
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    footer small {
+      display: block;
+      margin-top: .5rem;
+      font-size: 0.8rem;
+    }
 
-input{
-  padding:.5rem;
-  border-radius:8px;
-  border:1px solid var(--neon);
-  margin:.5rem;
-  width:200px;
-  background:#111;
-  color: var(--blanco);
-}
-input:focus{
-  outline:none;
-  border-color: var(--verde);
-  box-shadow:0 0 10px var(--verde);
-}
-
-button{
-  padding:.7rem 1.5rem;
-  border:none;
-  border-radius:10px;
-  background: var(--verde);
-  color: var(--blanco);
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:1rem;
-  transition:.3s;
-  box-shadow:0 0 10px var(--verde);
-}
-button:hover{
-  background: var(--dorado);
-  color: var(--azul);
-  box-shadow:0 0 20px var(--dorado);
-}
-
-#resultado{
-  font-weight:bold;
-  font-size:1.2rem;
-  margin-top:1rem;
-  transition: color .3s, transform .3s;
-}
-
-.whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background: var(--verde);
-  border-radius:50%;
-  padding:15px;
-  box-shadow:0 0 15px var(--verde);
-  animation: neonBounce 2s infinite;
-  z-index:1000;
-}
-.whatsapp img{
-  width:45px;
-  height:45px;
-}
-@keyframes neonBounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
-}
-
-footer{
-  text-align:center;
-  background: rgba(15,28,46,0.95);
-  color: var(--blanco);
-  padding:2rem;
-  margin-top:2rem;
-  text-shadow:0 0 5px var(--neon);
-}
-footer small{
-  display:block;
-  margin-top:.5rem;
-  font-size:.8rem;
-}
-
-/* Parallax simple */
-[data-parallax]{
-  transform: translateY(0);
-  transition: transform .2s;
-}
-</style>
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
-    <span><strong>PorkInvest</strong></span>
-  </div>
-  <nav>
-    <a href="#vision">Visión</a>
-    <a href="#mision">Misión</a>
-    <a href="#beneficios">Beneficios</a>
-    <a href="#simulador">Simulador</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 
+        224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 
+        80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/>
+      </svg>
+      <span><strong>PorkInvest</strong></span>
+    </div>
+    <nav>
+      <a href="#vision">Visión</a>
+      <a href="#mision">Misión</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>Invierte con Respaldo Real</h1>
-  <p>Proyectos claros, transparentes y respaldados por resultados tangibles.</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig1" style="top:20%; left:10%;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig2" style="top:50%; left:20%;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig3" style="top:30%; left:70%;">
-</section>
+  <section class="hero">
+    <h1>Invierte con Confianza en el Futuro del Agro</h1>
+    <p>Un modelo claro, respaldado y sostenible para que tu inversión crezca junto a la producción real.</p>
+    <div id="cerdos-container"></div>
+  </section>
 
-<section id="vision" data-parallax>
-  <h2>Visión</h2>
-  <p>Ser un referente de inversión segura y transparente en proyectos productivos reales, conectando a los inversionistas con resultados tangibles.</p>
-</section>
+  <section id="vision">
+    <h2>Visión</h2>
+    <p>Convertirnos en la plataforma líder de inversión agropecuaria en Colombia y Latinoamérica, siendo un puente transparente entre el campo productivo y los inversionistas que buscan seguridad, confianza y crecimiento sostenible.</p>
+  </section>
 
-<section id="mision" data-parallax>
-  <h2>Misión</h2>
-  <p>Brindar oportunidades de participación claras y legales, fomentando confianza y transparencia en cada paso del proceso de inversión.</p>
-</section>
+  <section id="mision">
+    <h2>Misión</h2>
+    <p>Nuestra misión es democratizar la inversión en el sector porcicultor, brindando oportunidades de participación en proyectos reales, con procesos claros, legales y orientados al bienestar animal y el desarrollo del agro.</p>
+  </section>
 
-<section id="beneficios" data-parallax>
-  <h2>Beneficios para Inversionistas</h2>
-  <div class="benefits">
-    <div class="card"><h3>Transparencia</h3><p>Reportes claros y trazabilidad en cada etapa del proyecto.</p></div>
-    <div class="card"><h3>Respaldo Real</h3><p>Tu inversión se asocia a proyectos concretos y verificables.</p></div>
-    <div class="card"><h3>Rentabilidad Estimada</h3><p>Retorno estimado del 10% en ciclos definidos, sin promesas exageradas.</p></div>
-    <div class="card"><h3>Seguridad Legal</h3><p>Operamos bajo contratos claros, sin captación masiva ni esquemas ilegales.</p></div>
-    <div class="card"><h3>Impacto Positivo</h3><p>Contribución a proyectos productivos que generan valor real.</p></div>
-  </div>
-</section>
+  <section id="beneficios">
+    <h2>Beneficios para Inversionistas</h2>
+    <div class="benefits">
+      <div class="card">
+        <h3>✔ Transparencia</h3>
+        <p>Acceso a reportes periódicos y trazabilidad en cada etapa del proceso.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Respaldo Productivo</h3>
+        <p>Tu inversión está vinculada a lotes reales de producción.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Rentabilidad Estimada</h3>
+        <p>Proyecciones claras y retornos atractivos en ciclos de 6 meses.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Seguridad Legal</h3>
+        <p>Modelo basado en contratos transparentes, evitando esquemas de captación.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Impacto Social</h3>
+        <p>Impulso al desarrollo rural y fortalecimiento de la economía agropecuaria.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="simulador" data-parallax>
-  <h2>Simulador de Inversión</h2>
-  <div class="simulador">
-    <p>Ingresa un monto para estimar el retorno en un ciclo.</p>
-    <input type="number" id="monto" placeholder="Monto en COP">
-    <br>
-    <button onclick="calcular()">Calcular</button>
-    <p id="resultado"></p>
-  </div>
-</section>
+  <section id="simulador">
+    <h2>Simulador de Inversión</h2>
+    <div class="simulador">
+      <p>Ingresa un monto y estima tu retorno en un ciclo de 6 meses.</p>
+      <input type="number" id="monto" placeholder="Monto en COP">
+      <select id="rendimiento">
+        <option value="0.1">10% (Estándar)</option>
+      </select>
+      <br>
+      <button onclick="calcular()">Calcular</button>
+      <p id="resultado"></p>
+    </div>
+  </section>
 
-<section id="faq" data-parallax>
-  <h2>Preguntas Frecuentes</h2>
-  <div class="benefits">
-    <div class="card"><h3>¿Cómo se respalda mi inversión?</h3><p>Se vincula a proyectos reales y se formaliza mediante contratos claros.</p></div>
-    <div class="card"><h3>¿Hay riesgos?</h3><p>Como toda inversión, existen riesgos; nuestro modelo busca transparencia y mitigación realista.</p></div>
-    <div class="card"><h3>¿Es un esquema de captación?</h3><p>No. Se trata de inversión en proyectos productivos bajo la ley.</p></div>
-  </div>
-</section>
+  <section id="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="benefits">
+      <div class="card">
+        <h3>¿Cómo se respalda mi inversión?</h3>
+        <p>Tu aporte se asocia a proyectos reales de producción y se formaliza mediante contrato.</p>
+      </div>
+      <div class="card">
+        <h3>¿Qué pasa si hay riesgos en el mercado?</h3>
+        <p>Contamos con seguros y estrategias de mitigación que reducen el impacto en el rendimiento.</p>
+      </div>
+      <div class="card">
+        <h3>¿Es un esquema de captación?</h3>
+        <p>No. Es un modelo de inversión productiva, basado en proyectos tangibles, bajo la normatividad colombiana.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="contacto" data-parallax>
-  <h2>Contacto</h2>
-  <p style="text-align:center;">Para información, contáctanos directamente:</p>
-  <p style="text-align:center;"><strong>Email:</strong> inversionporkinvest@gmail.com</p>
-  <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 123 4567</p>
-</section>
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p style="text-align:center;">¿Tienes dudas o quieres más información? Contáctanos directamente:</p>
+    <p style="text-align:center;"><strong>Email:</strong> inversionporkinvest@gmail.com</p>
+    <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 000 0000</p>
+  </section>
 
-<footer>
-  <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-  <small>Contacto: inversionporkinvest@gmail.com | Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
-</footer>
+  <footer>
+    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+    <small>Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
+  </footer>
 
-<a href="https://wa.me/573001234567" class="whatsapp" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/573000000000" class="whatsapp" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
-<script>
-function calcular(){
-  const monto = document.getElementById('monto').value;
-  const resultadoEl = document.getElementById('resultado');
-  if(monto && monto > 0){
-    const total = monto * 1.1; // 10% fijo
-    resultadoEl.innerText = "Retorno estimado en ciclo: $" + total.toLocaleString();
-    resultadoEl.style.color = "#2ecc71";
-    resultadoEl.style.transform="scale(1.1)";
-    setTimeout(()=>resultadoEl.style.transform="scale(1)",300);
-  } else {
-    resultadoEl.innerText = "Por favor ingresa un monto válido.";
-    resultadoEl.style.color="#e74c3c";
-  }
-}
-
-// Cerdos siguen cursor
-const pigs = [document.getElementById('pig1'),document.getElementById('pig2'),document.getElementById('pig3')];
-document.addEventListener('mousemove',(e)=>{
-  pigs.forEach((pig,i)=>{
-    const offsetX = (e.clientX/window.innerWidth - 0.5)*(50*(i+1));
-    const offsetY = (e.clientY/window.innerHeight - 0.5)*(30*(i+1));
-    pig.style.transform = `translate(${offsetX}px,${offsetY}px)`;
-  });
-});
-
-// Cards animadas al scroll
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
+  <script>
+    // Simulador
+    function calcular() {
+      const monto = document.getElementById('monto').value;
+      const rendimiento = document.getElementById('rendimiento').value;
+      if(monto && monto > 0){
+        const total = monto * (1 + parseFloat(rendimiento));
+        document.getElementById('resultado').innerText = 
+          "Tu retorno estimado en 6 meses será de: $" + total.toLocaleString();
+      } else {
+        document.getElementById('resultado').innerText = "Por favor ingresa un monto válido.";
+      }
     }
-  });
-},{threshold:0.2});
-document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 
-// Parallax simple
-window.addEventListener('scroll',()=>{
-  document.querySelectorAll('[data-parallax]').forEach(section=>{
-    const offset = window.scrollY*0.1;
-    section.style.transform = `translateY(${offset}px)`;
-  });
-});
-</script>
+    // Animación tarjetas
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Cerdos que siguen el mouse
+    const cerdoCount = 5;
+    const cerdoContainer = document.getElementById('cerdos-container');
+    const cerdos = [];
+    for(let i=0;i<cerdoCount;i++){
+      const cerdo = document.createElement('div');
+      cerdo.className = 'cerdo';
+      cerdo.style.left = Math.random()*80+'%';
+      cerdo.style.top = Math.random()*80+'%';
+      cerdoContainer.appendChild(cerdo);
+      cerdos.push(cerdo);
+    }
+
+    document.addEventListener('mousemove', e=>{
+      cerdos.forEach((c,i)=>{
+        const speed = 0.05*(i+1);
+        c.style.transform = `translate(${(e.clientX - window.innerWidth/2)*speed}px, ${(e.clientY - window.innerHeight/2)*speed}px)`;
+      });
+    });
+  </script>
+
 </body>
   </html>
