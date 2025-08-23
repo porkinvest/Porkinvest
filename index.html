@@ -3,15 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest - Inversiones Agropecuarias Seguras</title>
-<meta name="description" content="Invierte de forma tangible y segura en el sector agropecuario colombiano. Retorno del 10% en ciclos de 6 meses.">
+<title>PorkInvest - Inversión tangible en porcicultura colombiana</title>
+<meta name="description" content="Invierte de forma tangible en proyectos porcícolas en Colombia. Genera retornos reales y apoya la economía agropecuaria.">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
     --color-primary: #f59e0b;
     --color-secondary: #22d3ee;
     --color-bg: #0f172a;
     --color-text: #e5e7eb;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Roboto', sans-serif;
+    --color-success: #16a34a;
+    --color-danger: #e74c3c;
+    --color-card-bg: rgba(31,41,55,0.85);
 }
 * { margin:0; padding:0; box-sizing:border-box; font-family:var(--font-family); }
 body { background:var(--color-bg); color:var(--color-text); line-height:1.6; }
@@ -37,20 +41,34 @@ body { background:var(--color-bg); color:var(--color-text); line-height:1.6; }
 .hero-cta { padding:1rem 2rem; background:var(--color-primary); color:#000; font-weight:bold; text-decoration:none; border-radius:8px; transition:0.3s; }
 .hero-cta:hover { background:var(--color-secondary); }
 
-/* PROMESA */
+/* SECCIONES */
 section { padding:5rem 2rem; }
+.section-title { text-align:center; margin-bottom:1rem; }
+.section-subtitle { text-align:center; color:#6b7280; margin-bottom:3rem; font-size:1.125rem; }
+
+/* PROYECTOS */
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; max-width:1000px; margin:2rem auto; }
+.project-card { background:var(--color-card-bg); border-radius:12px; padding:2rem; box-shadow:0 4px 8px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:0.3s; }
+.project-card:hover { transform:translateY(-5px); box-shadow:0 6px 12px rgba(0,0,0,0.15); }
+.project-icon { font-size:3rem; margin-bottom:1rem; }
+.project-card h3 { margin-bottom:0.5rem; }
+.project-card p { margin-bottom:1rem; text-align:center; color:#94a3b8; }
+.project-card button { background:var(--color-primary); color:#000; border:none; padding:0.8rem 1.5rem; border-radius:8px; font-weight:700; transition:0.3s; }
+.project-card button:hover { background:var(--color-secondary); }
+
+/* VISIÓN Y MISIÓN */
 .vision-mision-grid { display:flex; flex-wrap:wrap; gap:2rem; max-width:900px; margin:2rem auto 0; }
 .vision-mision-card { background:rgba(31,41,55,0.85); padding:2rem; border-radius:12px; flex:1 1 40%; transition:0.3s; }
 .vision-mision-card.accent { background:rgba(34,211,238,0.1); border:1px solid var(--color-secondary); }
 
 /* BENEFICIOS */
 .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; max-width:1000px; margin:2rem auto; }
-.benefit-card { background:rgba(31,41,55,0.85); padding:2rem; border-radius:12px; transition:0.3s; }
+.benefit-card { background:var(--color-card-bg); padding:2rem; border-radius:12px; transition:0.3s; }
 .benefit-card.accent { border:2px solid var(--color-secondary); }
 
 /* SIMULADOR */
 .simulador-container { max-width:900px; margin:0 auto; }
-.simulador-card { display:flex; flex-wrap:wrap; gap:2rem; background:rgba(31,41,55,0.85); padding:2rem; border-radius:12px; justify-content:space-between; }
+.simulador-card { display:flex; flex-wrap:wrap; gap:2rem; background:var(--color-card-bg); padding:2rem; border-radius:12px; justify-content:space-between; }
 .simulador-card input, .simulador-card button { width:100%; padding:0.75rem; margin-top:0.5rem; border-radius:8px; border:none; }
 .simulador-card button { background:var(--color-primary); color:#000; cursor:pointer; transition:0.3s; }
 .simulador-card button:hover { background:var(--color-secondary); }
@@ -58,13 +76,15 @@ section { padding:5rem 2rem; }
 .progress-bar-fill { height:100%; width:0; background:var(--color-primary); border-radius:5px; transition:0.5s; }
 
 /* FAQ */
-.faq-card { background:rgba(31,41,55,0.85); padding:1.5rem; border-radius:12px; cursor:pointer; transition:0.3s; margin-bottom:1rem; }
+.faq-container { max-width:900px; margin:0 auto; }
+.faq-card { background:var(--color-card-bg); padding:1.5rem; border-radius:12px; cursor:pointer; transition:0.3s; margin-bottom:1rem; }
 .faq-card .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s ease; margin-top:1rem; }
 .faq-card.open .faq-answer { max-height:200px; }
 .faq-card .faq-icon { transition:0.3s; }
 
 /* CONTACTO */
-.contact-section a { text-decoration:none; color:var(--color-secondary); display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+.contact-section { text-align:center; }
+.contact-info a { text-decoration:none; color:var(--color-secondary); display:flex; align-items:center; justify-content:center; gap:0.5rem; }
 
 /* FOOTER */
 .footer { padding:2rem; text-align:center; background:#111827; }
@@ -83,10 +103,11 @@ section { padding:5rem 2rem; }
 <body>
 <header class="header-sticky animate-on-scroll">
     <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" fill="currentColor"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
         <span>PorkInvest</span>
     </div>
     <nav class="header-nav">
+        <a href="#proyectos">Proyectos</a>
         <a href="#promesa">Nuestra Promesa</a>
         <a href="#beneficios">Lo que te Ofrecemos</a>
         <a href="#simulador">Simulador</a>
@@ -99,6 +120,7 @@ section { padding:5rem 2rem; }
 </header>
 
 <div id="mobile-menu" class="mobile-menu">
+    <a href="#proyectos" onclick="closeMenu()">Proyectos</a>
     <a href="#promesa" onclick="closeMenu()">Nuestra Promesa</a>
     <a href="#beneficios" onclick="closeMenu()">Lo que te Ofrecemos</a>
     <a href="#simulador" onclick="closeMenu()">Simulador</a>
@@ -110,16 +132,43 @@ section { padding:5rem 2rem; }
     <div class="hero-content">
         <h1 class="hero-title">Invierte en lo Real. Tu Dinero Sembrado en el Campo.</h1>
         <p class="hero-text">
-            Te damos la oportunidad de invertir de forma <strong>tangible y segura</strong> en el sector agropecuario de Colombia. Deja atrás los miedos y haz que tu capital crezca con propósito.
+            Te damos la oportunidad de invertir de forma **tangible y segura** en el sector porcícola colombiano. Deja atrás los miedos y haz que tu capital crezca con propósito.
         </p>
-        <a href="#simulador" class="hero-cta">Calcula Tu Futuro</a>
+        <a href="#proyectos" class="hero-cta">Ver Proyectos Disponibles 🐷</a>
+    </div>
+</section>
+
+<section id="proyectos" class="animate-on-scroll">
+    <h2 class="section-title">Proyectos de Inversión</h2>
+    <p class="section-subtitle">
+        Descubre nuestras oportunidades de crowdfunding y elige el proyecto que más te inspire.
+    </p>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-icon">🐖</div>
+            <h3>Granja Valle Verde</h3>
+            <p>Proyecto de engorde de cerdos para producción sostenible. Retorno del 10% en 6 meses.</p>
+            <button onclick="location.href='https://wa.me/573002333356?text=Hola,%20quiero%20invertir%20en%20PorkInvest:%20Granja%20Valle%20Verde%20-%20Monto:%20$500000'">Invertir desde $500.000</button>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">🐷</div>
+            <h3>Criadero Los Andes</h3>
+            <p>Inversión en la reproducción y cría de cerdos de alta genética. Retorno del 10% en 6 meses.</p>
+            <button onclick="location.href='https://wa.me/573002333356?text=Hola,%20quiero%20invertir%20en%20PorkInvest:%20Criadero%20Los%20Andes%20-%20Monto:%20$500000'">Invertir desde $500.000</button>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">🐽</div>
+            <h3>Producción Orgánica Porcícola</h3>
+            <p>Proyecto de cerdos alimentados con productos naturales para mercados premium. Retorno del 10% en 6 meses.</p>
+            <button onclick="location.href='https://wa.me/573002333356?text=Hola,%20quiero%20invertir%20en%20PorkInvest:%20Producción%20Orgánica%20Porcícola%20-%20Monto:%20$500000'">Invertir desde $500.000</button>
+        </div>
     </div>
 </section>
 
 <section id="promesa" class="animate-on-scroll">
-    <h2 style="text-align:center;">Nuestra Promesa: Invertir con Propósito</h2>
-    <p style="text-align:center; color:#6b7280; margin-bottom:3rem; font-size:1.125rem;">
-        Hemos creado el puente que une tu capital con el sector más productivo de nuestra tierra. Nuestro compromiso es simple: <strong>hacer que tu inversión trabaje por un futuro mejor y más seguro para todos.</strong>
+    <h2 class="section-title">Nuestra Promesa: Invertir con Propósito</h2>
+    <p class="section-subtitle">
+        Hemos creado el puente que une tu capital con el sector más productivo de nuestra tierra. Nuestro compromiso es simple: **hacer que tu inversión trabaje por un futuro mejor y más seguro para todos.**
     </p>
     <div class="vision-mision-grid">
         <div class="vision-mision-card">
@@ -138,37 +187,30 @@ section { padding:5rem 2rem; }
 </section>
 
 <section id="beneficios" class="animate-on-scroll">
-    <h2 style="text-align:center;">Lo que te Ofrecemos: Beneficios que Hacen la Diferencia</h2>
+    <h2 class="section-title">Lo que te Ofrecemos: Beneficios que Hacen la Diferencia</h2>
     <div class="benefits-grid">
         <div class="benefit-card">
-            <div class="benefit-card-header">
-                <h3>Tranquilidad Total: Respaldo Legal</h3>
-            </div>
+            <h3>Tranquilidad Total: Respaldo Legal</h3>
             <p>Tu inversión está protegida. Cada centavo se formaliza con un contrato legal y transparente, diseñado para darte confianza y total protección. Sin letras pequeñas.</p>
         </div>
         <div class="benefit-card accent">
-            <div class="benefit-card-header">
-                <h3>Crecimiento de Raíz: Rentabilidad del 10%</h3>
-            </div>
+            <h3>Crecimiento de Raíz: Rentabilidad del 10%</h3>
             <p>Te ofrecemos un retorno fijo y claro. Un 10% sobre tu inversión en ciclos de 6 meses, proveniente de la productividad auditada del sector porcicultor.</p>
         </div>
         <div class="benefit-card">
-            <div class="benefit-card-header">
-                <h3>Tu Inversión, un Activo Vivo</h3>
-            </div>
+            <h3>Tu Inversión, un Activo Vivo</h3>
             <p>Tu capital no está en un "esquema" intangible. Está directamente vinculado a animales, granjas y un proceso productivo que puedes verificar. ¡No es papel, es vida!</p>
         </div>
         <div class="benefit-card accent">
-            <div class="benefit-card-header">
-                <h3>Un Futuro Compartido: Impacto Social</h3>
-            </div>
+            <h3>Un Futuro Compartido: Impacto Social</h3>
             <p>Cada inversión contribuye al crecimiento de la economía local, genera empleo y fortalece el sector agropecuario. Estás invirtiendo en ti y en la comunidad.</p>
         </div>
     </div>
 </section>
+
 <section id="simulador" class="simulador-container animate-on-scroll">
-    <h2 style="text-align:center;">Calcula el Crecimiento de tu Futuro</h2>
-    <p style="text-align:center; color:#6b7280; margin-bottom:2rem;">Descubre el potencial de tu capital en solo segundos. ¡Un futuro tangible te espera!</p>
+    <h2 class="section-title">Calcula el Crecimiento de tu Futuro</h2>
+    <p class="section-subtitle">Descubre el potencial de tu capital en solo segundos. ¡Un futuro tangible te espera!</p>
     <div class="simulador-card">
         <div style="flex:1; width:100%;">
             <label for="monto" style="display:block; margin-bottom:0.5rem;">Monto a Invertir (COP)</label>
@@ -186,17 +228,15 @@ section { padding:5rem 2rem; }
 </section>
 
 <section id="faq" class="faq-container animate-on-scroll">
-    <h2 style="text-align:center;">Nuestras Respuestas a Tus Dudas</h2>
-    <p style="text-align:center; color:#6b7280; margin-bottom:3rem; font-size:1.125rem;">
-        La transparencia es nuestro mejor activo. Aquí te respondemos lo que más nos preguntan.
-    </p>
+    <h2 class="section-title">Nuestras Respuestas a Tus Dudas</h2>
+    <p class="section-subtitle">La transparencia es nuestro mejor activo. Aquí te respondemos lo que más nos preguntan.</p>
     <div style="margin-bottom:1rem;">
         <div class="faq-card" onclick="toggleFAQ(this)">
             <div class="faq-header">
                 <h3>¿Cómo se garantiza la seguridad de mi inversión?</h3>
                 <span class="faq-icon">+</span>
             </div>
-            <p class="faq-answer">Tu aporte no es un simple depósito. Se formaliza a través de un <strong>contrato legal</strong> que te vincula directamente con un proyecto productivo. Esto te da total claridad y tranquilidad, ya que sabes exactamente en qué estás invirtiendo.</p>
+            <p class="faq-answer">Tu aporte no es un simple depósito. Se formaliza a través de un **contrato legal** que te vincula directamente con un proyecto productivo. Esto te da total claridad y tranquilidad, ya que sabes exactamente en qué estás invirtiendo.</p>
         </div>
         <div class="faq-card" onclick="toggleFAQ(this)">
             <div class="faq-header">
@@ -210,14 +250,14 @@ section { padding:5rem 2rem; }
                 <h3>¿Esto es un "esquema" de captación de dinero?</h3>
                 <span class="faq-icon">+</span>
             </div>
-            <p class="faq-answer">Rotundamente, no. Nuestro modelo es 100% de <strong>inversión productiva</strong>. Tu capital se destina a proyectos auditables, verificables y físicos. No es un esquema piramidal ni un sistema de captación, es una oportunidad real de negocio con un respaldo real.</p>
+            <p class="faq-answer">Rotundamente, no. Nuestro modelo es 100% de **inversión productiva**. Tu capital se destina a proyectos auditables, verificables y físicos. No es un esquema piramidal ni un sistema de captación, es una oportunidad real de negocio con un respaldo real.</p>
         </div>
     </div>
 </section>
 
 <section id="contacto" class="contact-section animate-on-scroll">
-    <div class="contact-container" style="text-align:center;">
-        <h2>¿Listo para Dar el Primer Paso?</h2>
+    <div class="contact-container">
+        <h2 class="section-title">¿Listo para Dar el Primer Paso?</h2>
         <p style="font-weight:300;">Invierte en un futuro que puedes ver, tocar y del que puedes sentirte orgulloso. Estamos aquí para resolver todas tus dudas y acompañarte en el proceso.</p>
         <div class="contact-info" style="display:flex; flex-direction:column; gap:1rem; justify-content:center; align-items:center; margin-top:2rem;">
             <a href="mailto:inversionporkinvest@gmail.com">
@@ -229,13 +269,13 @@ section { padding:5rem 2rem; }
         </div>
     </div>
 </section>
-<footer class="footer animate-on-scroll" style="text-align:center; padding:2rem 1rem; background:#111; color:#fff;">
+
+<footer class="footer animate-on-scroll">
     <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
     <small>Inversión con Propósito. Creciendo Juntos.</small>
 </footer>
 
-<a href="https://wa.me/573002333356" target="_blank" class="whatsapp-button" title="Chatea con nosotros en WhatsApp" 
-   style="position:fixed; bottom:20px; right:20px; background:#25D366; width:60px; height:60px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:999;">
+<a href="https://wa.me/573002333356" target="_blank" class="whatsapp-button" title="Chatea con nosotros en WhatsApp" >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="#fff">
         <path d="M380.9 97.4C339.4 53.9 283.4 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L1 416l103.1-30.1c-15.1-16.1-26.6-34.9-33.8-54.3L15.3 416 1 416l31.7-92.2C10.2 284.7 0 246.5 0 207.4c0-123.7 100.3-224 224-224s224 100.3 224 224c0 39.1-10.2 77.3-29.6 111L447 416l-103.1-30.1c15.1 16.1 26.6 34.9 33.8 54.3L447 416 415.3 323.8C436.8 285.3 448 246.1 448 207.4z"/>
     </svg>
@@ -259,25 +299,25 @@ function calcularSimulacion() {
     const montoInput = document.getElementById('monto');
     const resultadoDiv = document.getElementById('resultado');
     const miniGraph = document.getElementById('miniGraph');
-    
+
     let monto = parseFloat(montoInput.value);
 
     if (isNaN(monto) || monto <= 0) {
         resultadoDiv.textContent = 'Por favor, ingresa un monto válido.';
-        resultadoDiv.style.color = '#e74c3c';
+        resultadoDiv.style.color = 'var(--color-danger)';
         return;
     }
 
-    const rentabilidad = 0.10; // 10%
+    const rentabilidad = 0.10;
     const retorno = monto * rentabilidad;
     const total = monto + retorno;
 
     resultadoDiv.textContent = `Tu retorno estimado en 6 meses es: $${retorno.toLocaleString('es-CO')} COP`;
-    resultadoDiv.style.color = '#4caf50';
-    
+    resultadoDiv.style.color = 'var(--color-success)';
+
     const progressBar = document.getElementById('progress-bar-fill');
     progressBar.style.width = '100%';
-    
+
     drawGraph(monto, total);
 }
 
@@ -298,7 +338,6 @@ function drawGraph(initial, final) {
     const maxBarHeight = height - margin * 2;
     const scaleFactor = maxBarHeight / final;
 
-    // Columna inicial
     ctx.fillStyle = '#1e3a8a';
     ctx.fillRect(margin, height - margin - initial * scaleFactor, barWidth, initial * scaleFactor);
     ctx.fillStyle = '#111';
@@ -307,7 +346,6 @@ function drawGraph(initial, final) {
     ctx.fillText('Inicial', margin + barWidth / 2, height - margin + 15);
     ctx.fillText(`$${initial.toLocaleString('es-CO')}`, margin + barWidth / 2, height - margin - initial * scaleFactor - 5);
 
-    // Columna final
     ctx.fillStyle = '#16a34a';
     ctx.fillRect(width - margin - barWidth, height - margin - final * scaleFactor, barWidth, final * scaleFactor);
     ctx.fillStyle = '#111';
@@ -335,13 +373,4 @@ const animatedElements = document.querySelectorAll('.animate-on-scroll');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.2 });
-
-animatedElements.forEach(el => observer.observe(el));
-</script>
-</body>
-    </html>
-    
+     
