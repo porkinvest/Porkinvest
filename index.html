@@ -1,107 +1,293 @@
-<!-- ===== BENEFICIOS / TRUST PANEL (mejorado) ===== -->
-<section id="beneficios" style="padding:36px 18px;max-width:1100px;margin:0 auto;">
-  <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:stretch;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest - Inversiones Inteligentes</title>
+  <meta name="description" content="PorkInvest: una alternativa segura y transparente en el sector porcicultor. Invierte en un modelo real con respaldo productivo.">
+  <meta name="keywords" content="inversiones, porcicultura, agronegocios, porkinvest, inversión segura, ganadería, agro">
+  <meta name="author" content="PorkInvest">
+  <!-- Open Graph -->
+  <meta property="og:title" content="PorkInvest - Inversiones Inteligentes">
+  <meta property="og:description" content="Invierte en el sector porcicultor con confianza, transparencia y respaldo productivo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/logo.png">
 
-    <!-- Left: Value propositions -->
-    <div style="flex:1;min-width:300px;">
-      <h2 style="color:#0f172a;margin-bottom:8px">Por qué invertir con PorkInvest</h2>
-      <p style="color:#475569;margin-bottom:18px;max-width:60ch">
-        Proyectos respaldados en activos reales (lotes porcinos), con reportes operativos periódicos, contratos privados y medidas de custodia para reducir riesgos. Aquí explicamos, con total transparencia, cómo trabajamos y qué recibe el inversionista.
-      </p>
+  <style>
+    /* Paleta corporativa */
+    :root {
+      --azul: #1b263b;
+      --verde: #2ecc71;
+      --dorado: #f1c40f;
+      --gris: #f5f6fa;
+      --blanco: #ffffff;
+    }
 
-      <ul style="list-style:none;padding:0;margin:0 0 18px 0;display:grid;gap:10px;">
-        <li style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:44px;height:44px;border-radius:10px;background:#ECFDF5;display:grid;place-items:center;color:#059669;font-weight:700">✓</div>
-          <div>
-            <strong>Activos reales y trazables</strong>
-            <div style="color:#6B7280;font-size:14px">Cada ciclo está respaldado por documentación del lote y seguimiento fotográfico/registro sanitario.</div>
-          </div>
-        </li>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--gris);
+      color: var(--azul);
+      line-height: 1.6;
+    }
 
-        <li style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:44px;height:44px;border-radius:10px;background:#EFF6FF;display:grid;place-items:center;color:#1E3A8A;font-weight:700">⚖</div>
-          <div>
-            <strong>Custodia y seguridad financiera</strong>
-            <div style="color:#6B7280;font-size:14px">Sugerimos uso de cuentas fiduciarias / escrow para cualquier recaudo — práctica recomendada en crowdfunding e inversiones. (Si se va a recaudar fondos, estructurar legalmente).</div>
-          </div>
-        </li>
+    header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
 
-        <li style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:44px;height:44px;border-radius:10px;background:#FFF7ED;display:grid;place-items:center;color:#C2410C;font-weight:700">📄</div>
-          <div>
-            <strong>Documentación descargable</strong>
-            <div style="color:#6B7280;font-size:14px">Modelo de contrato, tear-sheet del proyecto y políticas (KYC/AML) disponibles para revisar antes de decidir.</div>
-          </div>
-        </li>
-      </ul>
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    header .logo svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--dorado);
+    }
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn" href="#contact" style="background:#059669;padding:10px 16px;border-radius:8px;color:white;text-decoration:none;font-weight:700">Solicitar dossier</a>
-        <a href="/assets/tear-sheet-porkinvest.pdf" download style="background:transparent;border:1px solid #CBD5E1;padding:10px 16px;border-radius:8px;color:#0F172A;text-decoration:none;font-weight:600">Descargar tear-sheet (PDF)</a>
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: var(--verde);
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero {
+      background: linear-gradient(to right, var(--azul), var(--verde));
+      color: var(--blanco);
+      padding: 5rem 2rem;
+      text-align: center;
+      border-radius: 0 0 50px 50px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--blanco);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Simulador */
+    .simulador {
+      text-align: center;
+      background: var(--blanco);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    input, select {
+      padding: .5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin: .5rem;
+      width: 200px;
+    }
+    button {
+      padding: .7rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--verde);
+      color: var(--blanco);
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: var(--dorado);
+      color: var(--azul);
+    }
+
+    /* WhatsApp flotante */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .whatsapp img {
+      width: 40px;
+      height: 40px;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    footer small {
+      display: block;
+      margin-top: .5rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <!-- Logo SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 
+        224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 
+        80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/>
+      </svg>
+      <span><strong>PorkInvest</strong></span>
+    </div>
+    <nav>
+      <a href="#vision">Visión</a>
+      <a href="#mision">Misión</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Invierte con Confianza en el Futuro del Agro</h1>
+    <p>Un modelo claro, respaldado y sostenible para que tu inversión crezca junto a la producción real.</p>
+  </section>
+
+  <section id="vision">
+    <h2>Visión</h2>
+    <p>Convertirnos en la plataforma líder de inversión agropecuaria en Colombia y Latinoamérica, siendo un puente transparente entre el campo productivo y los inversionistas que buscan seguridad, confianza y crecimiento sostenible.</p>
+  </section>
+
+  <section id="mision">
+    <h2>Misión</h2>
+    <p>Nuestra misión es democratizar la inversión en el sector porcicultor, brindando oportunidades de participación en proyectos reales, con procesos claros, legales y orientados al bienestar animal y el desarrollo del agro.</p>
+  </section>
+
+  <section id="beneficios">
+    <h2>Beneficios para Inversionistas</h2>
+    <div class="benefits">
+      <div class="card">
+        <h3>✔ Transparencia</h3>
+        <p>Acceso a reportes periódicos y trazabilidad en cada etapa del proceso.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Respaldo Productivo</h3>
+        <p>Tu inversión está vinculada a lotes reales de producción porcícola.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Rentabilidad Estimada</h3>
+        <p>Proyecciones claras y retornos atractivos en ciclos de 6 meses.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Seguridad Legal</h3>
+        <p>Modelo basado en contratos transparentes, evitando esquemas de captación.</p>
+      </div>
+      <div class="card">
+        <h3>✔ Impacto Social</h3>
+        <p>Impulso al desarrollo rural y fortalecimiento de la economía agropecuaria.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Right: Trust panel / numbers / calculator -->
-    <aside style="width:360px;min-width:260px;background:#ffffff;border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(2,6,23,0.06);align-self:flex-start;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div>
-          <div style="font-size:13px;color:#6B7280">Ciclo típico</div>
-          <div style="font-weight:800;font-size:20px;color:#0F172A">6 meses</div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:13px;color:#6B7280">Inversión mínima</div>
-          <div style="font-weight:800;font-size:20px;color:#0F172A">COP 500.000</div>
-        </div>
-      </div>
-
-      <div style="border-radius:10px;padding:10px;background:#F8FAFC;margin-bottom:12px">
-        <div style="font-size:13px;color:#6B7280">Rendimiento proyectado (estimado)</div>
-        <div style="font-weight:800;font-size:18px;color:#059669">10% — NO garantizado</div>
-        <div style="font-size:12px;color:#94A3B8;margin-top:6px">Valor estimado sujeto a mercado y desempeño operativo. Consulta el apartado de riesgos.</div>
-      </div>
-
-      <!-- Mini calculator -->
-      <label for="benef_amount" style="font-size:13px;color:#6B7280">Simula tu inversión</label>
-      <input id="benef_amount" type="number" value="500000" min="100000" step="50000" style="width:100%;padding:8px;margin-top:8px;border-radius:8px;border:1px solid #E6EEF5;font-size:15px">
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <button id="benef_calc" style="flex:1;background:#1E3A8A;color:white;padding:10px;border-radius:8px;border:0;font-weight:700">Calcular</button>
-      </div>
-      <p id="benef_output" style="margin-top:10px;color:#0F172A;font-weight:700"></p>
-
-      <!-- Quick trust signals -->
-      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-        <div style="padding:8px 10px;border-radius:8px;background:#ECFDF5;font-weight:700;color:#059669;font-size:13px">Contratos</div>
-        <div style="padding:8px 10px;border-radius:8px;background:#EFF6FF;font-weight:700;color:#1E3A8A;font-size:13px">Informes mensuales</div>
-        <div style="padding:8px 10px;border-radius:8px;background:#FEF3C7;font-weight:700;color:#92400E;font-size:13px">Política KYC</div>
-      </div>
-    </aside>
-
-  </div>
-
-  <!-- Transparency / Risk panel -->
-  <div style="margin-top:20px;background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.04)">
-    <h3 style="margin-top:0;color:#0F172A">Transparencia y Riesgos</h3>
-    <p style="color:#475569;max-width:86ch">
-      Invertir implica riesgos. Los rendimientos proyectados NO son garantizados. Entre los riesgos principales se encuentran: fluctuaciones del mercado de precios, mortalidad y enfermedades en animales, costos operativos imprevistos y problemas logísticos. Antes de invertir revise: contrato privado, política de manejo sanitario y el informe de trazabilidad del lote. 
-    </p>
-    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-      <a href="/politica-privacidad.html" style="color:#0F172A;text-decoration:underline;font-weight:600">Política de privacidad</a>
-      <a href="/terminos.html" style="color:#0F172A;text-decoration:underline;font-weight:600">Términos y condiciones</a>
-      <a href="/docs/contrato-modelo.pdf" download style="color:#0F172A;text-decoration:underline;font-weight:600">Contrato modelo (descargar)</a>
+  <section id="simulador">
+    <h2>Simulador de Inversión</h2>
+    <div class="simulador">
+      <p>Ingresa un monto y estima tu retorno en un ciclo de 6 meses.</p>
+      <input type="number" id="monto" placeholder="Monto en COP">
+      <select id="rendimiento">
+        <option value="0.1">10% (Estándar)</option>
+        <option value="0.12">12% (Plus)</option>
+        <option value="0.15">15% (Premium)</option>
+      </select>
+      <br>
+      <button onclick="calcular()">Calcular</button>
+      <p id="resultado"></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Script para la mini-calculadora ===== -->
-<script>
-  (function(){
-    const btn = document.getElementById('benef_calc');
-    const input = document.getElementById('benef_amount');
-    const out = document.getElementById('benef_output');
-    btn.addEventListener('click', ()=>{
-      const v = Number(input.value) || 0;
-      const projected = Math.round(v * 1.10);
-      out.textContent = 'Proyección: COP ' + new Intl.NumberFormat('es-CO').format(projected) + ' (estimado)';
-    });
-  })();
-</script>
+  <section id="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="benefits">
+      <div class="card">
+        <h3>¿Cómo se respalda mi inversión?</h3>
+        <p>Tu aporte se asocia a proyectos reales de producción y se formaliza mediante contrato.</p>
+      </div>
+      <div class="card">
+        <h3>¿Qué pasa si hay riesgos en el mercado?</h3>
+        <p>Contamos con seguros y estrategias de mitigación que reducen el impacto en el rendimiento.</p>
+      </div>
+      <div class="card">
+        <h3>¿Es un esquema de captación?</h3>
+        <p>No. Es un modelo de inversión productiva, basado en proyectos tangibles, bajo la normatividad colombiana.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p style="text-align:center;">¿Tienes dudas o quieres más información? Contáctanos directamente:</p>
+    <p style="text-align:center;"><strong>Email:</strong> contacto@porkinvest.com</p>
+    <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 000 0000</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+    <small>Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
+  </footer>
+
+  <!-- Botón WhatsApp -->
+  <a href="https://wa.me/573000000000" class="whatsapp" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    function calcular() {
+      const monto = document.getElementById('monto').value;
+      const rendimiento = document.getElementById('rendimiento').value;
+      if(monto && monto > 0){
+        const total = monto * (1 + parseFloat(rendimiento));
+        document.getElementById('resultado').innerText = 
+          "Tu retorno estimado en 6 meses será de: $" + total.toLocaleString();
+      } else {
+        document.getElementById('resultado').innerText = "Por favor ingresa un monto válido.";
+      }
+    }
+  </script>
+
+</body>
+</html>
