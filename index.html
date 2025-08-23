@@ -3,118 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest - Crowdfunding Porcicola Premium</title>
-<meta name="description" content="Invierte desde $500.000 en proyectos porcicultores seguros y confiables con PorkInvest. Plataforma corporativa, segura y profesional.">
+<title>PorkInvest - Inversión Porcícola Segura</title>
+<meta name="description" content="Invierte desde $500.000 COP en nuestra granja porcicola. Ciclo de 6 meses con retorno del 10%. Toda la gestión vía WhatsApp.">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-body{background:#f7f7f7;color:#1a1a1a;line-height:1.6;overflow-x:hidden;}
+body{background:#f7f9fc;color:#1a1a1a;line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 section{padding:80px 20px;max-width:1200px;margin:auto;}
 h1,h2,h3{margin-bottom:20px;color:#111;}
 p{margin-bottom:15px;}
-.btn{display:inline-block;padding:12px 30px;background:#ff4d4d;color:#fff;font-weight:600;border-radius:8px;transition:0.3s;cursor:pointer;}
-.btn:hover{background:#e60000;transform:translateY(-2px);}
-header{background:#1a1a1a;color:#fff;padding:60px 20px;text-align:center;position:relative;overflow:hidden;}
+.btn{display:inline-block;padding:12px 30px;background:#0052cc;color:#fff;font-weight:600;border-radius:8px;transition:0.3s;cursor:pointer;}
+.btn:hover{background:#003d99;transform:translateY(-2px);}
+header{background:#003366;color:#fff;padding:60px 20px;text-align:center;overflow:hidden;}
 header h1{font-size:3rem;margin-bottom:10px;}
 header p{font-size:1.3rem;margin-bottom:20px;}
-.floating{position:absolute;font-size:2rem;opacity:0.3;animation:float 10s infinite;}
-@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);}}
 .grid{display:grid;gap:40px;}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-.benefit{background:#fff;padding:30px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:0.3s;}
-.benefit:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(0,0,0,0.12);}
+.project-card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:0.4s;cursor:pointer;transform:translateY(0);}
+.project-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.15);}
+.timeline{position:relative;padding-left:40px;margin-top:30px;}
+.timeline::before{content:'';position:absolute;left:15px;top:0;width:4px;height:100%;background:#0052cc;border-radius:2px;}
+.timeline-item{position:relative;margin-bottom:30px;opacity:0;transform:translateX(-30px);transition:0.6s;}
+.timeline-item.show{opacity:1;transform:translateX(0);}
+.timeline-item::before{content:'';position:absolute;left:-10px;top:0;width:20px;height:20px;background:#0052cc;border-radius:50%;border:4px solid #fff;}
+.timeline-content{background:#fff;padding:15px 20px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
 #simulador input{padding:10px;border-radius:8px;border:1px solid #ccc;width:200px;}
-#simulador .dashboard{background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.12);margin-top:20px;display:flex;flex-direction:column;align-items:center;}
-.circular-chart{position:relative;width:150px;height:150px;margin:20px;}
-.circular-chart svg{transform:rotate(-90deg);}
-.circle-bg{fill:none;stroke:#eee;stroke-width:15;}
-.circle{fill:none;stroke:#ff4d4d;stroke-width:15;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;transition:stroke-dashoffset 1s;}
-.circle-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:600;font-size:1.2rem;}
+#simulador .dashboard{background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.12);margin-top:20px;display:flex;flex-direction:column;align-items:center;}
 .bar-container{width:100%;background:#eee;border-radius:12px;height:30px;overflow:hidden;margin-top:15px;}
-.bar-fill{height:100%;background:#ff4d4d;width:0%;border-radius:12px;text-align:right;color:#fff;padding-right:10px;line-height:30px;font-weight:600;transition:width 1s ease;}
+.bar-fill{height:100%;background:#0052cc;width:0%;border-radius:12px;text-align:right;color:#fff;padding-right:10px;line-height:30px;font-weight:600;transition:width 1s ease;}
 .testimonial-container{position:relative;overflow:hidden;height:120px;margin-top:20px;}
 .testimonial-track{display:flex;transition:transform 0.6s ease;}
 .testimonial{min-width:100%;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;font-weight:500;}
 .faq-item{background:#fff;border-radius:12px;margin-bottom:15px;padding:20px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:0.3s;}
 .faq-item:hover{transform:translateY(-3px);}
 .faq-answer{display:none;padding-top:10px;color:#555;}
-footer{text-align:center;padding:40px 20px;background:#1a1a1a;color:#fff;}
 .fade-in{opacity:0;transform:translateY(20px);transition:all 1s ease;}
 .fade-in.show{opacity:1;transform:translateY(0);}
+footer{text-align:center;padding:40px 20px;background:#003366;color:#fff;}
 </style>
 </head>
 <body>
 
 <header>
-<h1>PorkInvest Premium</h1>
-<p>Transforma $500.000 en ganancias reales en el sector porcicultor colombiano con un dashboard profesional.</p>
-<a href="https://wa.me/573002333356" class="btn">Invertir Ahora</a>
-<div class="floating" style="top:20px;left:10%;">🐖💰</div>
-<div class="floating" style="top:50px;left:50%;">💰🐖</div>
-<div class="floating" style="top:30px;left:80%;">🐖💰</div>
+<h1>PorkInvest</h1>
+<p>Invierte desde $500.000 COP en nuestra granja porcicola. Ciclo de 6 meses con retorno del 10%. Gestión completa vía WhatsApp.</p>
+<a href="https://wa.me/573002333356" class="btn">Contactar por WhatsApp</a>
 </header>
 
 <section id="vision-mision" class="fade-in">
 <h2>Visión</h2>
-<p>Ser la referencia líder en inversión agropecuaria digital en Colombia y Latinoamérica, conectando personas con proyectos porcicultores de alto impacto con transparencia, seguridad y resultados medibles.</p>
+<p>Ser la plataforma de inversión agropecuaria digital más confiable de Colombia y Latinoamérica, conectando inversionistas con nuestra granja porcicola con máxima seguridad y transparencia.</p>
 <h2>Misión</h2>
-<p>Empoderar inversionistas para que participen en proyectos porcicultores de alto impacto, combinando tecnología, transparencia y rentabilidad.</p>
+<p>Brindar oportunidades de inversión simples y seguras en porcicultura, con retorno garantizado del 10% cada 6 meses, asegurando confianza y soporte continuo vía WhatsApp.</p>
 </section>
 
 <section id="beneficios" class="fade-in">
-<h2>Beneficios de invertir con nosotros</h2>
+<h2>Beneficios de invertir con PorkInvest</h2>
 <div class="grid grid-3">
-<div class="benefit"><h3>Rendimiento confiable</h3><p>Inversiones desde $500.000 con proyecciones claras y medibles.</p></div>
-<div class="benefit"><h3>Experiencia digital 24/7</h3><p>Accede a la plataforma desde cualquier dispositivo y controla tus inversiones en tiempo real.</p></div>
-<div class="benefit"><h3>Transparencia total</h3><p>Información clara y reportes detallados para cada proyecto.</p></div>
-<div class="benefit"><h3>Expertise en porcicultura</h3><p>Proyectos gestionados por expertos en el sector, minimizando riesgos.</p></div>
-<div class="benefit"><h3>Crecimiento sostenible</h3><p>Participa en proyectos responsables que generan impacto real.</p></div>
+<div class="project-card"><h3>Retorno Garantizado</h3><p>Recibe tu inversión inicial + 10% al finalizar el ciclo de 6 meses.</p></div>
+<div class="project-card"><h3>Transparencia Total</h3><p>Toda la gestión de pagos e información se realiza vía WhatsApp, manteniéndote informado en todo momento.</p></div>
+<div class="project-card"><h3>Seguridad Corporativa</h3><p>Diseño y plataforma profesional que transmite confianza y seriedad a los inversionistas.</p></div>
 </div>
 </section>
 
 <section id="simulador" class="fade-in">
-<h2>Calcula tu inversión - Dashboard Premium</h2>
-<p>Ingresa el monto a invertir y descubre tu ganancia proyectada:</p>
+<h2>Calcula tu inversión</h2>
+<p>Ingresa el monto que deseas invertir y conoce tu retorno al finalizar el ciclo de 6 meses:</p>
 <input type="number" id="monto" placeholder="Monto en COP" min="500000">
 <button class="btn" onclick="calcularGanancia()">Calcular</button>
 <div class="dashboard">
-<div class="circular-chart">
-<svg width="150" height="150">
-<circle class="circle-bg" cx="75" cy="75" r="70"/>
-<circle class="circle" id="circleProgress" cx="75" cy="75" r="70"/>
-</svg>
-<div class="circle-text" id="circleText">0%</div>
-</div>
 <div class="bar-container">
 <div class="bar-fill" id="bar">0%</div>
 </div>
 <p id="resultado" style="margin-top:15px;font-weight:600;"></p>
+<p>Gestión y pagos vía WhatsApp: <a href="https://wa.me/573002333356">3002333356</a></p>
 </div>
 </section>
 
-<section id="testimonios" class="fade-in">
-<h2>Testimonios de inversionistas 2025</h2>
-<div class="testimonial-container">
-<div class="testimonial-track" id="testimonialTrack">
-<div class="testimonial">"Invertí $500.000 en enero de 2025 y ya estoy viendo resultados positivos. PorkInvest es confiable y transparente." - Ana R., Medellín</div>
-<div class="testimonial">"Excelente plataforma y soporte. Mis ganancias proyectadas se están cumpliendo al detalle." - Carlos M., Bogotá</div>
-<div class="testimonial">"2025 ha sido mi primer año invirtiendo y PorkInvest ha superado mis expectativas." - Laura G., Cali</div>
-</div>
+<section id="timeline" class="fade-in">
+<h2>Timeline del ciclo de inversión</h2>
+<div class="timeline">
+<div class="timeline-item"><div class="timeline-content"><strong>Inicio:</strong> Depósito de inversión</div></div>
+<div class="timeline-item"><div class="timeline-content"><strong>6 meses después:</strong> Venta de cerdos y retorno de inversión + 10%</div></div>
 </div>
 </section>
 
 <section id="faq" class="fade-in">
 <h2>Preguntas frecuentes</h2>
-<div class="faq-item"><h3>¿Cuál es el monto mínimo de inversión?</h3><div class="faq-answer">Desde $500.000 COP puedes comenzar a invertir y diversificar tu portafolio.</div></div>
-<div class="faq-item"><h3>¿Cómo recibo mis ganancias?</h3><div class="faq-answer">Las ganancias se acreditan directamente a tu cuenta vinculada, con reportes claros y en tiempo real.</div></div>
-<div class="faq-item"><h3>¿Es seguro invertir en PorkInvest?</h3><div class="faq-answer">Contamos con protocolos de seguridad digital y transparencia total en cada proyecto.</div></div>
-<div class="faq-item"><h3>¿Puedo invertir desde cualquier lugar?</h3><div class="faq-answer">Sí, nuestra plataforma es 100% digital y accesible desde cualquier dispositivo con internet.</div></div>
-<div class="faq-item"><h3>¿Cómo se seleccionan los proyectos?</h3><div class="faq-answer">Cada proyecto es cuidadosamente evaluado por nuestro equipo experto en porcicultura y finanzas, priorizando seguridad y rentabilidad.</div></div>
+<div class="faq-item"><h3>¿Cuál es el monto mínimo de inversión?</h3><div class="faq-answer">Desde $500.000 COP.</div></div>
+<div class="faq-item"><h3>¿Cómo recibo mi ganancia?</h3><div class="faq-answer">Todo se gestiona vía WhatsApp. Al finalizar el ciclo de 6 meses, recibirás tu inversión inicial + 10%.</div></div>
+<div class="faq-item"><h3>¿Es seguro invertir?</h3><div class="faq-answer">Sí, contamos con procesos claros y soporte directo para cada inversionista vía WhatsApp.</div></div>
+<div class="faq-item"><h3>¿Puedo invertir desde cualquier lugar?</h3><div class="faq-answer">Sí, la plataforma es 100% digital y accesible desde cualquier dispositivo.</div></div>
+</section>
+
+<section id="testimonios" class="fade-in">
+<h2>Testimonios 2025</h2>
+<div class="testimonial-container">
+<div class="testimonial-track" id="testimonialTrack">
+<div class="testimonial">"Invertí $500.000 y al finalizar los 6 meses recibí mi inversión + 10%. Muy confiable." - Ana R., Medellín</div>
+<div class="testimonial">"PorkInvest cumple lo prometido. Atención vía WhatsApp rápida y profesional." - Carlos M., Bogotá</div>
+<div class="testimonial">"Ciclo de inversión claro y seguro. Recomendado." - Laura G., Cali</div>
+</div>
+</div>
 </section>
 
 <footer>
-<p>Contacto: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a> | WhatsApp: <a href="https://wa.me/573002333356">3002333356</a></p>
+<p>Contacto: <a href="https://wa.me/573002333356">WhatsApp: 3002333356</a></p>
 <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
 </footer>
 
@@ -125,26 +120,32 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 });
 // Scroll fade-in
 const fadeIns=document.querySelectorAll('.fade-in');
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');}})},{threshold:0.2});
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.2});
 fadeIns.forEach(el=>observer.observe(el));
-// Simulador dashboard premium
+// Timeline animación
+const timelineItems=document.querySelectorAll('.timeline-item');
+const timelineObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.3});
+timelineItems.forEach(item=>timelineObserver.observe(item));
+// Simulador
 function calcularGanancia(){
   const monto=parseFloat(document.getElementById('monto').value);
   if(!monto || monto<500000){alert('Ingrese un monto mínimo de $500.000');return;}
-  const ganancia=monto*0.25;
-  document.getElementById('resultado').innerText=`Ganancia proyectada: $${ganancia.toLocaleString()} COP`;
-  // Barra
+  const pago=monto*0.10;
+  document.getElementById('resultado').innerText=`Retorno al finalizar el ciclo: $${(monto + pago).toLocaleString()} COP (Incluye 10% de ganancia)`;
   const porcentaje=Math.min((monto/5000000)*100,100);
   const bar=document.getElementById('bar');
   bar.style.width=porcentaje+'%';
   bar.innerText=bar.style.width;
-  // Circular
-  const circle=document.getElementById('circleProgress');
-  const offset=440-(440*(monto/5000000));
-  circle.style.strokeDashoffset=offset<0?0:offset;
-  document.getElementById('circleText').innerText=Math.min(porcentaje,100).toFixed(0)+'%';
 }
-// Slider testimonios
+// Testimonios slider
 let idx=0;
 const track=document.getElementById('testimonialTrack');
 const total=track.children.length;
@@ -153,5 +154,6 @@ setInterval(()=>{
   track.style.transform=`translateX(-${idx*100}%)`;
 },5000);
 </script>
+
 </body>
 </html>
