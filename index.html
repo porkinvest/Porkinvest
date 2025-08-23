@@ -10,9 +10,8 @@
 <link rel="icon" type="image/png" href="https://ejemplo.com/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
 <style>
-/* Colores y tipografía personalizados */
+/* --- VARIABLES Y ESTILOS BASE --- */
 :root {
     --color-primary: #1b263b; /* Azul oscuro */
     --color-secondary: #2ecc71; /* Verde esmeralda */
@@ -22,25 +21,456 @@
     --font-family: 'Montserrat', sans-serif;
 }
 
-/* Base global */
 body {
     font-family: var(--font-family);
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
-/* Header */
+a { text-decoration: none; }
+h1, h2, h3 { color: var(--color-primary); }
+
+/* --- HEADER --- */
 .header-sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     transition: all 0.4s ease;
+    background-color: var(--color-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .header-sticky.scrolled {
     background-color: rgba(27, 38, 59, 0.95);
     backdrop-filter: blur(10px);
 }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-accent);
+}
+.logo span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.header-nav { display: flex; gap: 2rem; }
+.header-nav a {
+    color: white;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.header-nav a:hover { color: var(--color-secondary); }
 
-/* Animaciones */
+.mobile-menu-button { display: none; }
+@media (max-width: 768px) {
+    .header-nav { display: none; }
+    .mobile-menu-button { display: block; }
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: 40;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.5rem;
+    transition: transform 0.5s;
+    transform: translateX(100%);
+}
+.mobile-menu.open { transform: translateX(0); display: flex; }
+.mobile-menu a { color: white; }
+.mobile-menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* --- SECCIONES GENERALES --- */
+section {
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
+    margin: auto;
+    position: relative;
+}
+h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* --- HERO --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(to right, var(--color-primary), #1e7049);
+    overflow: hidden;
+}
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1.25;
+    animation: pulse 2s infinite;
+}
+.hero-text {
+    font-size: 1.25rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: auto;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.5s;
+}
+.hero-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: bold;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
+}
+.hero-cta:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+/* --- VISION Y MISION --- */
+.vision-mision-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+@media (min-width: 768px) {
+    .vision-mision-grid {
+        flex-direction: row;
+    }
+}
+.vision-mision-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    border-top: 4px solid var(--color-secondary);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+.vision-mision-card.accent {
+    border-top-color: var(--color-accent);
+}
+.vision-mision-card:hover {
+    transform: rotateY(5deg) rotateX(5deg) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+.vision-mision-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.vision-mision-card p {
+    font-size: 1.125rem;
+    color: #6b7280;
+}
+
+/* --- BENEFICIOS --- */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.benefit-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--color-secondary);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+.benefit-card.accent { border-left-color: var(--color-accent); }
+.benefit-card:hover {
+    transform: rotateY(5deg) rotateX(5deg) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+.benefit-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+.benefit-card-header svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-secondary);
+}
+.benefit-card-header h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.benefit-card p { color: #6b7280; }
+
+/* --- SIMULADOR --- */
+.simulador-container {
+    max-width: 800px;
+    margin: auto;
+}
+.simulador-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    transition: transform 0.5s;
+}
+.simulador-card:hover {
+    transform: scale(1.02);
+}
+.simulador-card label {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.simulador-card input {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+}
+.simulador-card input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3);
+}
+.simulador-card button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-secondary);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.simulador-card button:hover {
+    background-color: #27ae60;
+    transform: scale(1.02);
+}
+.simulador-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+.simulador-results p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.progress-bar-container {
+    width: 100%;
+    background-color: #e5e7eb;
+    height: 0.625rem;
+    border-radius: 9999px;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-secondary);
+    border-radius: 9999px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+.simulador-canvas {
+    margin-top: 1rem;
+}
+
+/* --- FAQ --- */
+.faq-container {
+    max-width: 900px;
+    margin: auto;
+}
+.faq-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--color-accent);
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.faq-card:hover { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-header h3 { font-size: 1.25rem; font-weight: 600; }
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+.faq-answer {
+    color: #6b7280;
+    margin-top: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.faq-card.open .faq-answer { max-height: 200px; }
+.faq-card.open .faq-icon { transform: rotate(45deg); }
+
+/* --- CONTACTO --- */
+.contact-section {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+}
+.contact-container {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .contact-info { flex-direction: row; }
+}
+.contact-info a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    transition: color 0.3s;
+}
+.contact-info a:hover { color: var(--color-secondary); }
+.contact-info svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: var(--color-primary);
+    padding: 2rem;
+    text-align: center;
+    color: #9ca3af;
+    border-top: 1px solid #374151;
+}
+.footer-text { margin-bottom: 0.5rem; }
+.footer-small {
+    display: block;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* --- BOTON DE WHATSAPP FLOTANTE --- */
+.whatsapp-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    padding: 0.75rem;
+    background-color: #25D366;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+    transition: transform 0.3s;
+    animation: bounce-slow 4s infinite;
+}
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+.whatsapp-button:active {
+    transform: scale(0.95);
+}
+.whatsapp-button svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: white;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 @keyframes fadeInSlideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -54,92 +484,71 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Efecto de carta 3D */
-.card-3d {
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
-    will-change: transform;
-}
-.card-3d:hover {
-    transform: rotateY(5deg) rotateX(5deg) translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
-/* Simulador */
-.simulador-card {
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-.simulador-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-#progress-bar-fill {
-    transition: width 1s ease-in-out;
-}
 </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
 
-<header class="header-sticky fixed w-full top-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-500 bg-primary-dark shadow-lg"
-    style="--tw-bg-opacity: 0.95; background-color: var(--color-primary);">
-    <div class="logo flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-accent" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
-        <span class="text-white text-2xl font-bold">PorkInvest</span>
+<header class="header-sticky">
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
+        <span>PorkInvest</span>
     </div>
-    <nav class="hidden md:flex space-x-8">
-        <a href="#vision" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Nuestra Visión</a>
-        <a href="#beneficios" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Beneficios Clave</a>
-        <a href="#simulador" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Simulador</a>
-        <a href="#faq" class="text-white font-semibold hover:text-secondary transition-colors duration-300">FAQ</a>
-        <a href="#contacto" class="text-white font-semibold hover:text-secondary transition-colors duration-300">Contacto</a>
+    <nav class="header-nav">
+        <a href="#vision">Nuestra Visión</a>
+        <a href="#beneficios">Beneficios Clave</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
     </nav>
-    <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+    <button id="mobile-menu-button" class="mobile-menu-button">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
     </button>
 </header>
 
-<div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-primary-dark z-40 flex flex-col items-center justify-center space-y-8 text-2xl transition-all duration-500 transform -translate-x-full">
-    <a href="#vision" class="text-white hover:text-secondary" onclick="closeMenu()">Visión</a>
-    <a href="#beneficios" class="text-white hover:text-secondary" onclick="closeMenu()">Beneficios</a>
-    <a href="#simulador" class="text-white hover:text-secondary" onclick="closeMenu()">Simulador</a>
-    <a href="#faq" class="text-white hover:text-secondary" onclick="closeMenu()">FAQ</a>
-    <a href="#contacto" class="text-white hover:text-secondary" onclick="closeMenu()">Contacto</a>
-    <button class="absolute top-8 right-8 text-white text-4xl" onclick="closeMenu()">&times;</button>
+<div id="mobile-menu" class="mobile-menu">
+    <a href="#vision" onclick="closeMenu()">Visión</a>
+    <a href="#beneficios" onclick="closeMenu()">Beneficios</a>
+    <a href="#simulador" onclick="closeMenu()">Simulador</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#contacto" onclick="closeMenu()">Contacto</a>
+    <button class="mobile-menu-close" onclick="closeMenu()">&times;</button>
 </div>
 
-<section class="relative h-screen flex items-center justify-center text-white text-center p-6 md:p-12 overflow-hidden" 
-    style="background: linear-gradient(to right, var(--color-primary), #1e7049);">
-    <div class="absolute inset-0 z-0">
-        <canvas id="hero-canvas" class="w-full h-full"></canvas>
+<section class="hero">
+    <div class="canvas-container" style="position: absolute; inset: 0; z-index: 0;">
+        <canvas id="hero-canvas" style="width: 100%; height: 100%;"></canvas>
     </div>
-    <div class="relative z-10 space-y-6 max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-pulse" id="hero-title">
+    <div class="hero-content">
+        <h1 class="hero-title" id="hero-title">
             Tu Capital Crece en Tierra Firme.
         </h1>
-        <p class="text-lg md:text-xl lg:text-2xl font-light max-w-2xl mx-auto opacity-0 animate-fadeIn" style="animation-delay: 0.5s;">
+        <p class="hero-text" style="animation-delay: 0.5s;">
             Invierte en proyectos productivos y legales, donde cada centavo se transforma en un **impacto tangible** y un futuro más sólido.
         </p>
-        <a href="#simulador" class="inline-block mt-8 px-8 py-4 bg-accent text-primary-dark font-bold rounded-full text-lg shadow-lg hover:bg-white hover:scale-105 transition-all duration-300 transform-gpu opacity-0 animate-fadeIn" style="animation-delay: 1s;">
+        <a href="#simulador" class="hero-cta" style="animation-delay: 1s;">
             Simula Tu Inversión Hoy
         </a>
     </div>
 </section>
 
-<section id="vision" class="fade-in-section py-20 px-6 max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-primary-dark mb-4">Nuestra Visión & Misión</h2>
-    <div class="flex flex-col md:flex-row gap-8 mt-12">
-        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-secondary text-center space-y-4 card-3d">
-            <h3 class="text-2xl font-bold text-primary-dark">Visión: El Futuro del Agro</h3>
-            <p class="text-lg text-gray-600">
+<section id="vision" class="fade-in-section">
+    <h2>Nuestra Visión & Misión</h2>
+    <div class="vision-mision-grid">
+        <div class="vision-mision-card">
+            <h3>Visión: El Futuro del Agro</h3>
+            <p>
                 Ser la **puerta de entrada** a un futuro financiero y sostenible, uniendo capitales con proyectos del sector agropecuario que generen **crecimiento, seguridad y prosperidad** para nuestros inversionistas y las comunidades rurales.
             </p>
         </div>
-        <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-accent text-center space-y-4 card-3d">
-            <h3 class="text-2xl font-bold text-primary-dark">Misión: Invertir con Propósito</h3>
-            <p class="text-lg text-gray-600">
+        <div class="vision-mision-card accent">
+            <h3>Misión: Invertir con Propósito</h3>
+            <p>
                 Empoderar a cada persona para que su inversión se convierta en un **acto de propósito**. Transformamos tu capital en **impacto real y medible**, construyendo un puente de confianza entre el inversionista y la tierra que produce.
             </p>
         </div>
@@ -148,186 +557,92 @@ body {
 
 ---
 
-<section id="beneficios" class="fade-in-section py-20 px-6 max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-primary-dark mb-12">Beneficios que te Hacen Sentir Seguro</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-secondary card-3d">
-            <div class="flex items-center gap-4 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-secondary" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
-                <h3 class="text-xl font-bold text-primary-dark">Seguridad & Legalidad</h3>
+<section id="beneficios" class="fade-in-section">
+    <h2>Beneficios que te Hacen Sentir Seguro</h2>
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <div class="benefit-card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
+                <h3>Seguridad & Legalidad</h3>
             </div>
-            <p class="text-gray-600">Cada inversión está respaldada por un contrato legal y transparente, ofreciendo un marco de total confianza y protección.</p>
+            <p>Cada inversión está respaldada por un contrato legal y transparente, ofreciendo un marco de total confianza y protección.</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-accent card-3d">
-            <div class="flex items-center gap-4 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 16h2a2 2 0 1 0 0 -4h-2v-4h4m-2 4h-2" /><path d="M12 21a9 9 0 1 1 0 -18 9 9 0 0 1 0 18z" /></svg>
-                <h3 class="text-xl font-bold text-primary-dark">Rentabilidad Sostenible</h3>
+        <div class="benefit-card accent">
+            <div class="benefit-card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 16h2a2 2 0 1 0 0 -4h-2v-4h4m-2 4h-2" /><path d="M12 21a9 9 0 1 1 0 -18 9 9 0 0 1 0 18z" /></svg>
+                <h3>Rentabilidad Sostenible</h3>
             </div>
-            <p class="text-gray-600">Obtén retornos atractivos del 10% en ciclos de 6 meses, basados en la productividad real y auditada del sector.</p>
+            <p>Obtén retornos atractivos del 10% en ciclos de 6 meses, basados en la productividad real y auditada del sector.</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-secondary card-3d">
-            <div class="flex items-center gap-4 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-secondary" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
-                <h3 class="text-xl font-bold text-primary-dark">Inversión Tangible</h3>
+        <div class="benefit-card">
+            <div class="benefit-card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.19 3.25 1.18 -6.87 -5 -4.87 6.9 -1 3.09 -6.26 3.09 6.26 6.9 1 -5 4.87 1.18 6.87z" /></svg>
+                <h3>Inversión Tangible</h3>
             </div>
-            <p class="text-gray-600">Tu capital no está en un "esquema". Está vinculado directamente a proyectos productivos auditables y reales. No es papel, ¡es vida!</p>
+            <p>Tu capital no está en un "esquema". Está vinculado directamente a proyectos productivos auditables y reales. ¡No es papel, es vida!</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xl border-l-4 border-accent card-3d">
-            <div class="flex items-center gap-4 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-accent" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M12 8a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /><path d="M12 16a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /></svg>
-                <h3 class="text-xl font-bold text-primary-dark">Impacto Real</h3>
+        <div class="benefit-card accent">
+            <div class="benefit-card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M12 8a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /><path d="M12 16a2 2 0 1 0 0 4 2 2 0 1 0 0 -4z" /></svg>
+                <h3>Impacto Real</h3>
             </div>
-            <p class="text-gray-600">Contribuye al desarrollo rural, genera empleo y fortalece la economía local. ¡Invierte con propósito y ve el cambio!</p>
+            <p>Contribuye al desarrollo rural, genera empleo y fortalece la economía local. ¡Invierte con propósito y ve el cambio!</p>
         </div>
     </div>
 </section>
 
 ---
 
-<section id="simulador" class="fade-in-section py-20 px-6 max-w-3xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-primary-dark mb-4">Simulador de Inversión</h2>
-    <p class="text-center text-gray-600 mb-8">Descubre el potencial de tu capital en solo segundos. ¡Un futuro rentable te espera!</p>
-    <div class="simulador-card bg-white p-8 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center gap-8">
-        <div class="flex-1 space-y-4">
-            <div class="flex flex-col">
-                <label for="monto" class="text-lg font-semibold mb-2">Monto a Invertir (COP)</label>
-                <input type="number" id="monto" placeholder="Ej: 5.000.000" class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-300">
-            </div>
-            <button onclick="calcularSimulacion()" class="w-full py-4 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300 transform-gpu hover:scale-105">
-                Calcular
-            </button>
+<section id="simulador" class="fade-in-section simulador-container">
+    <h2>Simulador de Inversión</h2>
+    <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Descubre el potencial de tu capital en solo segundos. ¡Un futuro rentable te espera!</p>
+    <div class="simulador-card">
+        <div style="flex: 1; width: 100%;">
+            <label for="monto" style="display: block; margin-bottom: 0.5rem;">Monto a Invertir (COP)</label>
+            <input type="number" id="monto" placeholder="Ej: 5.000.000" style="width: 100%; padding: 0.75rem;">
+            <button onclick="calcularSimulacion()">Calcular</button>
         </div>
-        <div class="flex-1 w-full space-y-4 text-center">
-            <div id="resultado" class="text-2xl font-bold text-primary-dark opacity-0 transition-opacity duration-500"></div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                <div id="progress-bar-fill" class="bg-secondary h-2.5 rounded-full" style="width: 0%;"></div>
+        <div class="simulador-results">
+            <p id="resultado"></p>
+            <div class="progress-bar-container">
+                <div id="progress-bar-fill" class="progress-bar-fill"></div>
             </div>
-            <canvas id="miniGraph" class="mt-4 w-full" style="display:none;"></canvas>
+            <canvas id="miniGraph" style="margin-top: 1rem;"></canvas>
         </div>
     </div>
 </section>
 
 ---
 
-<section id="faq" class="fade-in-section py-20 px-6 max-w-4xl mx-auto">
-    <h2 class="text-4xl font-bold text-center text-primary-dark mb-12">Preguntas Frecuentes</h2>
-    <div class="space-y-4">
-        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-primary-dark">¿Cómo se respalda mi inversión?</h3>
-                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+<section id="faq" class="fade-in-section faq-container">
+    <h2>Preguntas Frecuentes</h2>
+    <div style="margin-bottom: 1rem;">
+        <div class="faq-card" onclick="toggleFAQ(this)">
+            <div class="faq-header">
+                <h3>¿Cómo se respalda mi inversión?</h3>
+                <span class="faq-icon">+</span>
             </div>
-            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                Tu aporte se vincula a proyectos productivos auditables y se formaliza mediante un contrato de colaboración con respaldo legal.
-            </p>
+            <p class="faq-answer">Tu aporte se vincula a proyectos productivos auditables y se formaliza mediante un contrato de colaboración con respaldo legal.</p>
         </div>
-        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-primary-dark">¿Qué pasa si hay riesgos en el mercado?</h3>
-                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+        <div class="faq-card" onclick="toggleFAQ(this)">
+            <div class="faq-header">
+                <h3>¿Qué pasa si hay riesgos en el mercado?</h3>
+                <span class="faq-icon">+</span>
             </div>
-            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                Contamos con estrategias de mitigación y un modelo de inversión tangible que reduce la exposición a la volatilidad del mercado, garantizando transparencia constante.
-            </p>
+            <p class="faq-answer">Contamos con estrategias de mitigación y un modelo de inversión tangible que reduce la exposición a la volatilidad del mercado, garantizando transparencia constante.</p>
         </div>
-        <div class="faq-card bg-white p-6 rounded-2xl shadow-lg border-l-4 border-accent cursor-pointer transition-all duration-300 hover:shadow-xl" onclick="toggleFAQ(this)">
-            <div class="flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-primary-dark">¿Es un esquema de captación de dinero?</h3>
-                <span class="text-2xl text-accent transform transition-transform duration-300">+</span>
+        <div class="faq-card" onclick="toggleFAQ(this)">
+            <div class="faq-header">
+                <h3>¿Es un esquema de captación de dinero?</h3>
+                <span class="faq-icon">+</span>
             </div>
-            <p class="faq-answer text-gray-600 mt-2 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                No. Nuestro modelo es 100% de inversión productiva, basado en proyectos reales y auditables, operando bajo un marco legal establecido en Colombia.
-            </p>
+            <p class="faq-answer">No. Nuestro modelo es 100% de inversión productiva, basado en proyectos reales y auditables, operando bajo un marco legal establecido en Colombia.</p>
         </div>
     </div>
 </section>
 
 ---
 
-<section id="contacto" class="fade-in-section py-20 px-6 bg-primary-dark text-white text-center">
-    <div class="max-w-4xl mx-auto space-y-6">
-        <h2 class="text-4xl font-bold">¿Listo para Ver tu Dinero Crecer?</h2>
-        <p class="text-lg font-light">Contáctanos directamente y transforma tu visión en acción. Estamos aquí para resolver todas tus dudas.</p>
-        <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-xl font-semibold">
-            <a href="mailto:inversionporkinvest@gmail.com" class="flex items-center gap-2 hover:text-secondary transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M3 7l9 6 9 -6" /></svg>
-                inversionporkinvest@gmail.com
-            </a>
-            <a href="tel:+573002333356" class="flex items-center gap-2 hover:text-secondary transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5 5 2v4a2 2 0 0 1 -2 2h-13a4 4 0 0 1 -4 -4v-13a2 2 0 0 1 2 -2z" /></svg>
-                +57 300 233 3356
-            </a>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-primary-dark py-8 px-6 text-center text-gray-400 border-t border-gray-700">
-    <div class="max-w-6xl mx-auto">
-        <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-        <small class="mt-2 block">Inversión con Propósito. Creciendo Juntos.</small>
-    </div>
-</footer>
-
-<a href="https://wa.me/573002333356" target="_blank" class="fixed bottom-6 right-6 z-50 p-3 bg-green-500 rounded-full shadow-lg transform transition-transform hover:scale-110 active:scale-95 animate-bounce-slow" title="Chatea con nosotros en WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-white" viewBox="0 0 448 512"><path d="M380.9 97.4C339.4 53.9 283.4 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L1 416l103.1-30.1c-15.1-16.1-26.6-34.9-33.8-54.3L15.3 416 1 416l31.7-92.2C10.2 284.7 0 246.5 0 207.4c0-123.7 100.3-224 224-224s224 100.3 224 224c0 39.1-10.2 77.3-29.6 111L447 416l-103.1-30.1c15.1 16.1 26.6 34.9 33.8 54.3L447 416 415.3 323.8C436.8 285.3 448 246.1 448 207.4c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 39.1 10.2 77.3 29.6 111L1 416l103.1-30.1c-15.1-16.1-26.6-34.9-33.8-54.3L15.3 416 1 416l31.7-92.2C10.2 284.7 0 246.5 0 207.4c0-123.7 100.3-224 224-224s224 100.3 224 224c0 39.1-10.2 77.3-29.6 111L447 416l-103.1-30.1c15.1 16.1 26.6 34.9 33.8 54.3L447 416 415.3 323.8C436.8 285.3 448 246.1 448 207.4z" /></svg>
-</a>
-<style>
-@keyframes bounce-slow {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-}
-.animate-bounce-slow {
-    animation: bounce-slow 4s infinite;
-}
-</style>
-
-<script>
-// JavaScript para el menú móvil
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    setTimeout(() => {
-        mobileMenu.classList.add('transform', 'translate-x-0');
-    }, 10);
-});
-
-function closeMenu() {
-    mobileMenu.classList.remove('transform', 'translate-x-0');
-    setTimeout(() => {
-        mobileMenu.classList.add('hidden');
-    }, 500);
-}
-
-// JavaScript para animar la barra de progreso
-function animateProgressBar(progress) {
-    const progressBar = document.getElementById('progress-bar-fill');
-    progressBar.style.width = '0%';
-    setTimeout(() => {
-        progressBar.style.width = progress + '%';
-    }, 100);
-}
-
-// JavaScript para la simulación y gráfico
-function calcularSimulacion() {
-    const montoInput = document.getElementById('monto');
-    const resultadoDiv = document.getElementById('resultado');
-    const miniGraph = document.getElementById('miniGraph');
-    
-    let monto = parseFloat(montoInput.value);
-
-    if (isNaN(monto) || monto <= 0) {
-        resultadoDiv.textContent = 'Por favor, ingresa un monto válido.';
-        resultadoDiv.style.color = '#e74c3c';
-        resultadoDiv.style.opacity = '1';
-        animateProgressBar(0);
-        return;
-    }
-
-    const rentabilidad = 0.10; // 10%
-    const
+<section id="contacto" class="fade-in-section contact-section">
+    <div class="contact-container">
+        <h2>¿Listo para Ver tu Dinero 
