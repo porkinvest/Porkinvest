@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PorkInvest - Inversiones Inteligentes con Respaldo Real</title>
-  <meta name="description" content="PorkInvest: Una alternativa segura y transparente para invertir con respaldo real en Colombia. Invierte en proyectos productivos y haz crecer tu dinero de forma sostenible.">
+  <title>PorkInvest - Inversiones Inteligentes</title>
+  <meta name="description" content="PorkInvest: una alternativa segura y transparente en el sector agropecuario. Invierte en un modelo real con respaldo productivo.">
+  <meta name="keywords" content="inversiones, agronegocios, porkinvest, inversión segura, agro, rendimientos">
   <meta name="author" content="PorkInvest">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="PorkInvest - Inversiones Inteligentes">
+  <meta property="og:description" content="Invierte en el sector agropecuario con confianza, transparencia y respaldo productivo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/logo.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
   <style>
     :root {
       --azul: #1b263b;
-      --verde: #2ecc71;
+      --verde: #27ae60;
       --dorado: #f1c40f;
       --gris: #f5f6fa;
       --blanco: #ffffff;
+      --hover-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'roboto', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: var(--gris);
       color: var(--azul);
       line-height: 1.6;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     header {
@@ -35,12 +54,18 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     header .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    header .logo svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--dorado);
     }
 
     nav a {
@@ -48,7 +73,7 @@
       text-decoration: none;
       margin: 0 1rem;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
     nav a:hover {
       color: var(--verde);
@@ -56,7 +81,7 @@
 
     section {
       padding: 4rem 1.5rem;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
     }
 
@@ -66,70 +91,70 @@
     }
 
     .hero {
-      background: linear-gradient(to right, var(--azul), var(--verde));
+      position: relative;
+      background: linear-gradient(135deg, var(--azul), var(--verde));
       color: var(--blanco);
       padding: 6rem 2rem;
-      text-align: center;
       border-radius: 0 0 50px 50px;
-      position: relative;
+      text-align: center;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    #particles-js {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
 
-    @keyframes rotate {
-      from {transform: rotate(0deg);}
-      to {transform: rotate(360deg);}
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
-    .benefits {
+    .benefits, .faq-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
+
     .card {
       background: var(--blanco);
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
     }
+
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: var(--hover-shadow);
     }
 
     .simulador {
       text-align: center;
       background: var(--blanco);
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 20px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      margin-top: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 500px;
+      margin: 2rem auto;
     }
-    input {
-      padding: .7rem;
+
+    input, select {
+      padding: .5rem;
       border-radius: 8px;
       border: 1px solid #ccc;
-      margin: .5rem 0;
-      width: 80%;
-      font-size: 1rem;
+      margin: .5rem;
+      width: 180px;
     }
+
     button {
-      padding: .8rem 2rem;
+      padding: .7rem 1.5rem;
       border: none;
       border-radius: 10px;
       background: var(--verde);
@@ -138,7 +163,6 @@
       cursor: pointer;
       margin-top: 1rem;
       transition: 0.3s;
-      font-size: 1rem;
     }
     button:hover {
       background: var(--dorado);
@@ -152,139 +176,206 @@
       padding: 2rem;
       margin-top: 2rem;
     }
+
     footer small {
       display: block;
       margin-top: .5rem;
       font-size: 0.8rem;
     }
 
+    /* Animación de números */
+    .counter {
+      font-weight: 700;
+      color: var(--verde);
+      font-size: 2rem;
+    }
+
+    /* Animación scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* WhatsApp flotante */
     .whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #25d366;
+      background: #25D366;
       border-radius: 50%;
       padding: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-    .whatsapp:hover {
-      transform: scale(1.1);
+      z-index: 999;
+      animation: pulse 2s infinite;
     }
     .whatsapp img {
       width: 40px;
       height: 40px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">PorkInvest</div>
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 
+        224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 
+        80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/>
+      </svg>
+      <span><strong>PorkInvest</strong></span>
+    </div>
     <nav>
       <a href="#vision">Visión</a>
       <a href="#mision">Misión</a>
       <a href="#beneficios">Beneficios</a>
       <a href="#simulador">Simulador</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Invierte con Confianza en el Futuro del Agro Colombiano</h1>
-    <p>Un modelo de inversión claro, respaldado y sostenible, diseñado para que tu dinero crezca junto a resultados tangibles en el sector agropecuario.</p>
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h1>Tu inversión, respaldada y transparente</h1>
+      <p>Un modelo real, seguro y sostenible que permite a cada inversor participar con claridad y confianza en proyectos productivos.</p>
+    </div>
   </section>
 
-  <section id="vision">
+  <section id="vision" class="fade-in">
     <h2>Visión</h2>
-    <p>Ser la plataforma líder y de referencia en Colombia para inversiones seguras, transparentes y con crecimiento sostenible en el sector agro, conectando inversionistas con proyectos productivos que generan valor real.</p>
+    <p>Nuestra visión es ser la plataforma de inversión agropecuaria más confiable y transparente de Colombia y Latinoamérica, conectando inversión real con producción tangible.</p>
   </section>
 
-  <section id="mision">
+  <section id="mision" class="fade-in">
     <h2>Misión</h2>
-    <p>Facilitar el acceso a oportunidades de inversión en proyectos agropecuarios con alto potencial de rentabilidad, gestionando los recursos de manera ética, transparente y responsable, contribuyendo al desarrollo económico y social del país.</p>
+    <p>Democratizar la inversión en proyectos productivos, con procesos legales, trazabilidad completa y enfoque en resultados sostenibles, generando confianza y crecimiento a nuestros inversores.</p>
   </section>
 
-  <section id="beneficios">
-    <h2>Beneficios de Invertir con Nosotros</h2>
+  <section id="beneficios" class="fade-in">
+    <h2>Beneficios de invertir con nosotros</h2>
     <div class="benefits">
       <div class="card">
-        <h3>Rentabilidad Estimada Atractiva</h3>
-        <p>Proyección de rentabilidad competitiva, buscando un retorno estimado del 10% por ciclo de inversión de 6 meses.</p>
+        <h3>Transparencia</h3>
+        <p>Acceso a reportes periódicos y trazabilidad de cada etapa de la inversión.</p>
       </div>
       <div class="card">
-        <h3>Máxima Transparencia en la Operación</h3>
-        <p>Acceso continuo a reportes detallados y seguimiento riguroso del progreso de tu inversión en los proyectos.</p>
+        <h3>Respaldo Real</h3>
+        <p>Tu inversión está vinculada a proyectos productivos reales y medibles.</p>
       </div>
       <div class="card">
-        <h3>Seguridad Jurídica y Contractual</h3>
-        <p>Inversiones formalizadas a través de contratos claros y legales, garantizando la protección de tu capital y excluyendo cualquier esquema de captación ilegal.</p>
+        <h3>Rentabilidad Estimada</h3>
+        <p>Proyecciones claras con retorno de 10% por ciclo de inversión de 6 meses.</p>
       </div>
       <div class="card">
-        <h3>Impacto Socioeconómico Positivo</h3>
-        <p>Tu inversión contribuye directamente al desarrollo de las zonas rurales y al fortalecimiento económico del sector agropecuario en Colombia.</p>
+        <h3>Seguridad Legal</h3>
+        <p>Operamos bajo contratos privados y la normatividad vigente, sin esquemas de captación.</p>
+      </div>
+      <div class="card">
+        <h3>Impacto Social</h3>
+        <p>Contribución al desarrollo rural y fortalecimiento de la economía productiva.</p>
       </div>
     </div>
   </section>
 
-  <section id="simulador">
-    <h2>Simulador de Inversión</h2>
+  <section id="simulador" class="fade-in">
+    <h2>Simulador de inversión</h2>
     <div class="simulador">
-      <p>Ingresa el monto que deseas invertir en COP y descubre tu retorno estimado en un ciclo de 6 meses (10%).</p>
+      <p>Ingresa tu monto y estima tu retorno en un ciclo de 6 meses.</p>
       <input type="number" id="monto" placeholder="Monto en COP">
-      <br>
       <button onclick="calcular()">Calcular</button>
       <p id="resultado"></p>
     </div>
   </section>
 
-  <section id="contacto">
+  <section id="faq" class="fade-in">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-cards">
+      <div class="card">
+        <h3>¿Cómo se respalda mi inversión?</h3>
+        <p>Mediante proyectos productivos reales y contratos claros.</p>
+      </div>
+      <div class="card">
+        <h3>¿Hay riesgos en el mercado?</h3>
+        <p>Se implementan estrategias de mitigación para reducir impactos en el rendimiento.</p>
+      </div>
+      <div class="card">
+        <h3>¿Es un esquema de captación?</h3>
+        <p>No. Es un modelo de inversión productiva bajo la normatividad colombiana.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="fade-in">
     <h2>Contacto</h2>
+    <p style="text-align:center;">¿Tienes dudas o quieres más información? Contáctanos:</p>
     <p style="text-align:center;"><strong>Email:</strong> inversionporkinvest@gmail.com</p>
-    <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 233 3356</p>
+    <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 000 0000</p>
   </section>
 
   <footer>
     <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-    <small>Este sitio web no constituye una oferta pública de valores ni una actividad de captación masiva de recursos. Todas las oportunidades de inversión se realizan a través de contratos privados y dentro del marco legal colombiano.</small>
+    <small>Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados y marco legal colombiano.</small>
   </footer>
 
-  <a href="https://wa.me/573002333356" class="whatsapp" target="_blank">
+  <a href="https://wa.me/573000000000" class="whatsapp" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
   <script>
+    // Particles.js config
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {"value": 50},
+        "color": {"value": "#ffffff"},
+        "shape": {"type": "circle"},
+        "opacity": {"value": 0.3},
+        "size": {"value": 3},
+        "line_linked": {"enable": true, "distance": 150, "color": "#ffffff", "opacity":0.1, "width":1},
+        "move": {"enable": true, "speed":2, "direction":"none"}
+      },
+      "interactivity": {"events":{"onhover":{"enable":true,"mode":"repulse"}}}
+    });
+
+    // Simulador
     function calcular() {
-      const montoInput = document.getElementById('monto');
-      const resultadoP = document.getElementById('resultado');
-      const monto = parseFloat(montoInput.value);
-
-      if (monto && monto > 0) {
-        const retornoEstimado = monto * 0.10;
-        const totalEstimado = monto + retornoEstimado;
-        const duracionAnimacion = 1500;
-        const cuadrosPorSegundo = 60;
-        const incrementoPorCuadro = totalEstimado / (duracionAnimacion / (1000 / cuadrosPorSegundo));
-        let valorActual = 0;
-        let contador = 0;
-
-        function animarResultado() {
-          valorActual += incrementoPorCuadro;
-          contador++;
-          resultadoP.textContent = "Tu retorno estimado en 6 meses será de: $" + Math.min(valorActual, totalEstimado).toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-
-          if (valorActual < totalEstimado) {
-            requestAnimationFrame(animarResultado);
-          }
-        }
-
-        requestAnimationFrame(animarResultado);
+      const monto = document.getElementById('monto').value;
+      const rendimiento = 0.1; // 10% fijo
+      if(monto && monto > 0){
+        const total = monto * (1 + parseFloat(rendimiento));
+        document.getElementById('resultado').innerText = 
+          "Tu retorno estimado en 6 meses será de: $" + total.toLocaleString();
       } else {
-        resultadoP.textContent = "Por favor, ingresa un monto válido.";
+        document.getElementById('resultado').innerText = "Por favor ingresa un monto válido.";
       }
     }
+
+    // Animación scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const options = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+    faders.forEach(fader => observer.observe(fader));
   </script>
 
 </body>
-  </html>
-  
+</html>
