@@ -3,290 +3,180 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PorkInvest - Inversiones Inteligentes</title>
-  <meta name="description" content="PorkInvest: una alternativa segura y transparente en el sector porcicultor. Invierte en un modelo real con respaldo productivo.">
-  <meta name="keywords" content="inversiones, porcicultura, agronegocios, porkinvest, inversión segura, ganadería, agro">
-  <meta name="author" content="PorkInvest">
-  <!-- Open Graph -->
-  <meta property="og:title" content="PorkInvest - Inversiones Inteligentes">
-  <meta property="og:description" content="Invierte en el sector porcicultor con confianza, transparencia y respaldo productivo.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
-  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/logo.png">
-
+  <meta name="description" content="PorkInvest - Invierte en porcicultura de forma segura, rentable y confiable. Transparencia total en cada inversión.">
+  <title>PorkInvest - Inversión Segura</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <style>
-    /* Paleta corporativa */
-    :root {
-      --azul: #1b263b;
-      --verde: #2ecc71;
-      --dorado: #f1c40f;
-      --gris: #f5f6fa;
-      --blanco: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      background: var(--gris);
-      color: var(--azul);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--azul);
-      color: var(--blanco);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    header .logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
-    header .logo svg {
-      width: 40px;
-      height: 40px;
-      fill: var(--dorado);
-    }
-
-    nav a {
-      color: var(--blanco);
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 600;
-    }
-    nav a:hover {
-      color: var(--verde);
-    }
-
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .hero {
-      background: linear-gradient(to right, var(--azul), var(--verde));
-      color: var(--blanco);
-      padding: 5rem 2rem;
-      text-align: center;
-      border-radius: 0 0 50px 50px;
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background: var(--blanco);
-      padding: 1.5rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform .2s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* Simulador */
-    .simulador {
-      text-align: center;
-      background: var(--blanco);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    input, select {
-      padding: .5rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin: .5rem;
-      width: 200px;
-    }
-    button {
-      padding: .7rem 1.5rem;
-      border: none;
-      border-radius: 10px;
-      background: var(--verde);
-      color: var(--blanco);
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: var(--dorado);
-      color: var(--azul);
-    }
-
-    /* WhatsApp flotante */
-    .whatsapp {
+    /* Botón WhatsApp */
+    .whatsapp-float {
       position: fixed;
+      width: 60px;
+      height: 60px;
       bottom: 20px;
       right: 20px;
-      background: #25D366;
+      background-color: #25d366;
+      color: #fff;
       border-radius: 50%;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 5px #999;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
     }
-    .whatsapp img {
-      width: 40px;
-      height: 40px;
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1ebe57;
     }
 
-    footer {
-      text-align: center;
-      background: var(--azul);
-      color: var(--blanco);
-      padding: 2rem;
-      margin-top: 2rem;
+    /* Efecto tarjetas */
+    .flip-card {
+      perspective: 1000px;
     }
-    footer small {
-      display: block;
-      margin-top: .5rem;
-      font-size: 0.8rem;
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+    .flip-card-front {
+      background: #f9fafb;
+    }
+    .flip-card-back {
+      background: #1e3a8a;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    /* Efecto CTA */
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-  <header>
-    <div class="logo">
-      <!-- Logo SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 
-        224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 
-        80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/>
-      </svg>
-      <span><strong>PorkInvest</strong></span>
-    </div>
-    <nav>
-      <a href="#vision">Visión</a>
-      <a href="#mision">Misión</a>
-      <a href="#beneficios">Beneficios</a>
-      <a href="#simulador">Simulador</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+  <!-- Banner con partículas -->
+  <div id="particles-js" class="h-screen w-full flex flex-col justify-center items-center text-center relative bg-gradient-to-r from-blue-900 to-blue-600 text-white">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-bounce">Bienvenido a PorkInvest</h1>
+    <p class="text-lg md:text-2xl mb-8">Invierte en porcicultura con seguridad, confianza y transparencia</p>
+    <a href="#beneficios" class="pulse bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-full font-bold text-lg transition">Descubre Más</a>
+  </div>
 
-  <section class="hero">
-    <h1>Invierte con Confianza en el Futuro del Agro</h1>
-    <p>Un modelo claro, respaldado y sostenible para que tu inversión crezca junto a la producción real.</p>
-  </section>
-
-  <section id="vision">
-    <h2>Visión</h2>
-    <p>Convertirnos en la plataforma líder de inversión agropecuaria en Colombia y Latinoamérica, siendo un puente transparente entre el campo productivo y los inversionistas que buscan seguridad, confianza y crecimiento sostenible.</p>
-  </section>
-
-  <section id="mision">
-    <h2>Misión</h2>
-    <p>Nuestra misión es democratizar la inversión en el sector porcicultor, brindando oportunidades de participación en proyectos reales, con procesos claros, legales y orientados al bienestar animal y el desarrollo del agro.</p>
-  </section>
-
-  <section id="beneficios">
-    <h2>Beneficios para Inversionistas</h2>
-    <div class="benefits">
-      <div class="card">
-        <h3>✔ Transparencia</h3>
-        <p>Acceso a reportes periódicos y trazabilidad en cada etapa del proceso.</p>
+  <!-- Sección beneficios -->
+  <section id="beneficios" class="py-20 bg-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">Beneficios de Invertir con Nosotros</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front flex flex-col justify-center">
+            <h3 class="text-xl font-bold">Rentabilidad</h3>
+          </div>
+          <div class="flip-card-back flex flex-col justify-center">
+            <p>Obtén hasta un 10% de rendimiento por ciclo de inversión.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>✔ Respaldo Productivo</h3>
-        <p>Tu inversión está vinculada a lotes reales de producción porcícola.</p>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front flex flex-col justify-center">
+            <h3 class="text-xl font-bold">Transparencia</h3>
+          </div>
+          <div class="flip-card-back flex flex-col justify-center">
+            <p>Reportes claros y actualizaciones constantes sobre tu inversión.</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>✔ Rentabilidad Estimada</h3>
-        <p>Proyecciones claras y retornos atractivos en ciclos de 6 meses.</p>
-      </div>
-      <div class="card">
-        <h3>✔ Seguridad Legal</h3>
-        <p>Modelo basado en contratos transparentes, evitando esquemas de captación.</p>
-      </div>
-      <div class="card">
-        <h3>✔ Impacto Social</h3>
-        <p>Impulso al desarrollo rural y fortalecimiento de la economía agropecuaria.</p>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front flex flex-col justify-center">
+            <h3 class="text-xl font-bold">Seguridad</h3>
+          </div>
+          <div class="flip-card-back flex flex-col justify-center">
+            <p>Tu dinero se respalda en activos reales: porcicultura en crecimiento.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="simulador">
-    <h2>Simulador de Inversión</h2>
-    <div class="simulador">
-      <p>Ingresa un monto y estima tu retorno en un ciclo de 6 meses.</p>
-      <input type="number" id="monto" placeholder="Monto en COP">
-      <select id="rendimiento">
-        <option value="0.1">10% (Estándar)</option>
-        <option value="0.12">12% (Plus)</option>
-        <option value="0.15">15% (Premium)</option>
-      </select>
-      <br>
-      <button onclick="calcular()">Calcular</button>
-      <p id="resultado"></p>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="benefits">
-      <div class="card">
-        <h3>¿Cómo se respalda mi inversión?</h3>
-        <p>Tu aporte se asocia a proyectos reales de producción y se formaliza mediante contrato.</p>
+  <!-- Sección contador -->
+  <section class="py-20 bg-gray-100 text-center">
+    <h2 class="text-3xl font-bold mb-12">Nuestras Cifras</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div>
+        <span id="inversionistas" class="text-5xl font-bold text-blue-600">0</span>
+        <p class="mt-2">Inversionistas Activos</p>
       </div>
-      <div class="card">
-        <h3>¿Qué pasa si hay riesgos en el mercado?</h3>
-        <p>Contamos con seguros y estrategias de mitigación que reducen el impacto en el rendimiento.</p>
+      <div>
+        <span id="retorno" class="text-5xl font-bold text-green-600">0%</span>
+        <p class="mt-2">Rendimiento Promedio</p>
       </div>
-      <div class="card">
-        <h3>¿Es un esquema de captación?</h3>
-        <p>No. Es un modelo de inversión productiva, basado en proyectos tangibles, bajo la normatividad colombiana.</p>
+      <div>
+        <span id="proyectos" class="text-5xl font-bold text-yellow-600">0</span>
+        <p class="mt-2">Proyectos Completados</p>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p style="text-align:center;">¿Tienes dudas o quieres más información? Contáctanos directamente:</p>
-    <p style="text-align:center;"><strong>Email:</strong> contacto@porkinvest.com</p>
-    <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 000 0000</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-    <small>Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
-  </footer>
-
-  <!-- Botón WhatsApp -->
-  <a href="https://wa.me/573000000000" class="whatsapp" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/573002333356" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
 
   <script>
-    function calcular() {
-      const monto = document.getElementById('monto').value;
-      const rendimiento = document.getElementById('rendimiento').value;
-      if(monto && monto > 0){
-        const total = monto * (1 + parseFloat(rendimiento));
-        document.getElementById('resultado').innerText = 
-          "Tu retorno estimado en 6 meses será de: $" + total.toLocaleString();
-      } else {
-        document.getElementById('resultado').innerText = "Por favor ingresa un monto válido.";
-      }
+    // Contador animado
+    function animateValue(id, start, end, duration, suffix="") {
+      let obj = document.getElementById(id);
+      let range = end - start;
+      let minTimer = 50;
+      let stepTime = Math.max(Math.floor(duration / range), minTimer);
+      let startTime = new Date().getTime();
+      let endTime = startTime + duration;
+      let timer = setInterval(function() {
+        let now = new Date().getTime();
+        let remaining = Math.max((endTime - now) / duration, 0);
+        let value = Math.round(end - (remaining * range));
+        obj.innerHTML = value + suffix;
+        if (value == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
     }
+    animateValue("inversionistas", 0, 125, 2000);
+    animateValue("retorno", 0, 10, 2000, "%");
+    animateValue("proyectos", 0, 36, 2000);
+
+    // Partículas
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {"value": 50},
+        "size": {"value": 3},
+        "move": {"speed": 2},
+        "line_linked": {"enable": true}
+      }
+    });
   </script>
 
 </body>
