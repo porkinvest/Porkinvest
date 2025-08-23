@@ -1,169 +1,371 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PorkInvest - Inversiones Inteligentes</title>
-  <meta name="description" content="Invierte de manera segura en PorkInvest desde $500.000 y obtén rendimientos reales en el sector porcicultor colombiano.">
-  <meta name="author" content="PorkInvest" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-  <style>
-    body { scroll-behavior: smooth; }
-    .fade-in { animation: fadeIn 2s ease-in-out; }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    .counter { font-size: 2rem; font-weight: bold; color: #16a34a; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorkInvest - Inversiones con Respaldo Real</title>
+<meta name="description" content="Invierte con respaldo real en proyectos productivos. Transparencia, seguridad y claridad para los inversionistas.">
+<meta name="keywords" content="inversiones, porkinvest, agro, inversión segura, proyecto real, transparencia">
+<meta name="author" content="PorkInvest">
+<style>
+:root {
+  --azul: #0f1c2e;
+  --verde: #2ecc71;
+  --dorado: #f1c40f;
+  --gris: #0a0a0a;
+  --blanco: #ffffff;
+  --neon: #00ffe0;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--gris);
+  color: var(--blanco);
+  overflow-x:hidden;
+}
+
+header{
+  background: rgba(15,28,46,0.95);
+  color: var(--blanco);
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter: blur(10px);
+}
+
+header .logo{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+header .logo svg{
+  width:45px;
+  height:45px;
+  fill: var(--dorado);
+}
+
+nav a{
+  color: var(--blanco);
+  text-decoration:none;
+  margin:0 1rem;
+  font-weight:600;
+  position:relative;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  width:0;
+  height:2px;
+  display:block;
+  background: var(--neon);
+  transition: width .3s;
+  bottom:-3px;
+  left:0;
+}
+nav a:hover::after{
+  width:100%;
+}
+
+.hero{
+  position:relative;
+  background: linear-gradient(270deg,#0f1c2e,#002233,#004466,#0f1c2e);
+  background-size: 400% 400%;
+  color: var(--blanco);
+  padding:6rem 2rem;
+  text-align:center;
+  overflow:hidden;
+  animation: gradientMove 15s ease infinite;
+}
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+  text-shadow:0 0 10px var(--neon);
+}
+.hero p{
+  font-size:1.2rem;
+  text-shadow:0 0 8px #00ffe0;
+}
+
+.pig{
+  position:absolute;
+  width:60px;
+  pointer-events:none;
+  transition: transform .1s linear;
+}
+
+section{
+  padding:3rem 1.5rem;
+  max-width:1100px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:1rem;
+  font-size:2rem;
+  color: var(--neon);
+  text-shadow:0 0 10px var(--neon);
+}
+
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.card{
+  background: rgba(15,28,46,0.8);
+  padding:1.5rem;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(0,255,224,0.3);
+  transition: transform .4s ease, box-shadow .4s ease, opacity .6s;
+  cursor:pointer;
+  opacity:0;
+  transform: translateY(50px);
+}
+.card.visible{
+  opacity:1;
+  transform: translateY(0);
+}
+.card:hover{
+  transform: translateY(-10px) scale(1.05);
+  box-shadow:0 0 30px var(--neon);
+}
+.card h3::before{
+  content:"🐷 ";
+}
+
+.simulador{
+  text-align:center;
+  background: rgba(0,0,0,0.7);
+  padding:2rem;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(0,255,224,0.4);
+  transition: transform .3s;
+}
+.simulador:hover{
+  transform: translateY(-5px);
+}
+
+input{
+  padding:.5rem;
+  border-radius:8px;
+  border:1px solid var(--neon);
+  margin:.5rem;
+  width:200px;
+  background:#111;
+  color: var(--blanco);
+}
+input:focus{
+  outline:none;
+  border-color: var(--verde);
+  box-shadow:0 0 10px var(--verde);
+}
+
+button{
+  padding:.7rem 1.5rem;
+  border:none;
+  border-radius:10px;
+  background: var(--verde);
+  color: var(--blanco);
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:1rem;
+  transition:.3s;
+  box-shadow:0 0 10px var(--verde);
+}
+button:hover{
+  background: var(--dorado);
+  color: var(--azul);
+  box-shadow:0 0 20px var(--dorado);
+}
+
+#resultado{
+  font-weight:bold;
+  font-size:1.2rem;
+  margin-top:1rem;
+  transition: color .3s, transform .3s;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background: var(--verde);
+  border-radius:50%;
+  padding:15px;
+  box-shadow:0 0 15px var(--verde);
+  animation: neonBounce 2s infinite;
+  z-index:1000;
+}
+.whatsapp img{
+  width:45px;
+  height:45px;
+}
+@keyframes neonBounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+footer{
+  text-align:center;
+  background: rgba(15,28,46,0.95);
+  color: var(--blanco);
+  padding:2rem;
+  margin-top:2rem;
+  text-shadow:0 0 5px var(--neon);
+}
+footer small{
+  display:block;
+  margin-top:.5rem;
+  font-size:.8rem;
+}
+
+/* Parallax simple */
+[data-parallax]{
+  transform: translateY(0);
+  transition: transform .2s;
+}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
 
-  <!-- NAV -->
-  <nav class="bg-white shadow-md fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <h1 class="text-2xl font-extrabold text-green-600">PorkInvest</h1>
-      <div class="space-x-6 hidden md:flex">
-        <a href="#beneficios" class="hover:text-green-600">Beneficios</a>
-        <a href="#seguridad" class="hover:text-green-600">Seguridad</a>
-        <a href="#contacto" class="hover:text-green-600">Contacto</a>
-      </div>
-      <a href="https://wa.me/573002333356" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">WhatsApp</a>
-    </div>
+<header>
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 64c44.2 0 80 35.8 80 80s-35.8 80-80 80-80-35.8-80-80 35.8-80 80-80z"/></svg>
+    <span><strong>PorkInvest</strong></span>
+  </div>
+  <nav>
+    <a href="#vision">Visión</a>
+    <a href="#mision">Misión</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
   </nav>
+</header>
 
-  <!-- HERO + ANIMACIÓN -->
-  <header class="h-screen relative overflow-hidden flex flex-col justify-center items-center text-center bg-gradient-to-r from-green-700 to-green-500 text-white">
-    
-    <!-- Lottie animación de pantallas con cerdos y dinero -->
-    <lottie-player 
-      src="https://assets10.lottiefiles.com/packages/lf20_3cerditos.json" 
-      background="transparent" 
-      speed="1" 
-      style="width: 80%; max-width: 1200px; height: 80%; z-index:10;" 
-      loop 
-      autoplay>
-    </lottie-player>
+<section class="hero">
+  <h1>Invierte con Respaldo Real</h1>
+  <p>Proyectos claros, transparentes y respaldados por resultados tangibles.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig1" style="top:20%; left:10%;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig2" style="top:50%; left:20%;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Pig_icon.svg" class="pig" id="pig3" style="top:30%; left:70%;">
+</section>
 
-    <!-- Three.js Partículas de dinero flotando -->
-    <canvas id="particlesCanvas" class="absolute inset-0 z-0"></canvas>
+<section id="vision" data-parallax>
+  <h2>Visión</h2>
+  <p>Ser un referente de inversión segura y transparente en proyectos productivos reales, conectando a los inversionistas con resultados tangibles.</p>
+</section>
 
-    <div class="relative z-20 fade-in">
-      <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Invierte en el Futuro con <span class="text-yellow-300">PorkInvest</span></h2>
-      <p id="typed" class="text-xl md:text-2xl"></p>
-      <a href="#beneficios" class="mt-6 inline-block bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-500">Conoce más</a>
-    </div>
-  </header>
+<section id="mision" data-parallax>
+  <h2>Misión</h2>
+  <p>Brindar oportunidades de participación claras y legales, fomentando confianza y transparencia en cada paso del proceso de inversión.</p>
+</section>
 
-  <!-- BENEFICIOS -->
-  <section id="beneficios" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-12 text-gray-800">Beneficios de Invertir con Nosotros</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
-          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
-          <h4 class="text-xl font-semibold mt-4">Inversión Accesible</h4>
-          <p class="mt-2">Desde $500.000 puedes iniciar tu inversión en un sector real y productivo.</p>
-        </div>
-        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
-          <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_touohxv0.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
-          <h4 class="text-xl font-semibold mt-4">Rendimiento Estable</h4>
-          <p class="mt-2">Tus recursos trabajan en ciclos de producción porcina con alta demanda nacional.</p>
-        </div>
-        <div class="p-6 bg-gray-100 rounded-xl shadow hover:shadow-lg transition">
-          <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_3rwasyjy.json" background="transparent" speed="1" style="width:100px;height:100px;margin:auto;" loop autoplay></lottie-player>
-          <h4 class="text-xl font-semibold mt-4">Transparencia</h4>
-          <p class="mt-2">Recibe información clara, sin letras pequeñas ni compromisos ocultos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="beneficios" data-parallax>
+  <h2>Beneficios para Inversionistas</h2>
+  <div class="benefits">
+    <div class="card"><h3>Transparencia</h3><p>Reportes claros y trazabilidad en cada etapa del proyecto.</p></div>
+    <div class="card"><h3>Respaldo Real</h3><p>Tu inversión se asocia a proyectos concretos y verificables.</p></div>
+    <div class="card"><h3>Rentabilidad Estimada</h3><p>Retorno estimado del 10% en ciclos definidos, sin promesas exageradas.</p></div>
+    <div class="card"><h3>Seguridad Legal</h3><p>Operamos bajo contratos claros, sin captación masiva ni esquemas ilegales.</p></div>
+    <div class="card"><h3>Impacto Positivo</h3><p>Contribución a proyectos productivos que generan valor real.</p></div>
+  </div>
+</section>
 
-  <!-- SEGURIDAD -->
-  <section id="seguridad" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-3xl font-bold mb-12">Confianza y Seguridad</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold">Sector Real</h4>
-          <p class="mt-2">Tu inversión está respaldada por producción porcina tangible y creciente.</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold">Control y Seguimiento</h4>
-          <p class="mt-2">Recibe reportes periódicos de cómo avanza tu inversión.</p>
-        </div>
-        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold">Confianza</h4>
-          <p class="mt-2">Construimos relaciones duraderas con cada inversionista.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="simulador" data-parallax>
+  <h2>Simulador de Inversión</h2>
+  <div class="simulador">
+    <p>Ingresa un monto para estimar el retorno en un ciclo.</p>
+    <input type="number" id="monto" placeholder="Monto en COP">
+    <br>
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-20 bg-green-700 text-white text-center">
-    <h3 class="text-3xl font-bold mb-6">Contáctanos</h3>
-    <p class="mb-4">📧 inversionporkinvest@gmail.com</p>
-    <a href="https://wa.me/573002333356" target="_blank" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-500">Escríbenos por WhatsApp</a>
-  </section>
+<section id="faq" data-parallax>
+  <h2>Preguntas Frecuentes</h2>
+  <div class="benefits">
+    <div class="card"><h3>¿Cómo se respalda mi inversión?</h3><p>Se vincula a proyectos reales y se formaliza mediante contratos claros.</p></div>
+    <div class="card"><h3>¿Hay riesgos?</h3><p>Como toda inversión, existen riesgos; nuestro modelo busca transparencia y mitigación realista.</p></div>
+    <div class="card"><h3>¿Es un esquema de captación?</h3><p>No. Se trata de inversión en proyectos productivos bajo la ley.</p></div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-gray-400 text-center py-6">
-    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-  </footer>
+<section id="contacto" data-parallax>
+  <h2>Contacto</h2>
+  <p style="text-align:center;">Para información, contáctanos directamente:</p>
+  <p style="text-align:center;"><strong>Email:</strong> inversionporkinvest@gmail.com</p>
+  <p style="text-align:center;"><strong>Teléfono:</strong> +57 300 123 4567</p>
+</section>
 
-  <!-- Scripts -->
-  <script>
-    // Typed.js
-    new Typed("#typed", {
-      strings: ["Invierte desde $500.000", "Apoya el campo colombiano", "Obtén rendimientos confiables"],
-      typeSpeed: 50,
-      backSpeed: 25,
-      loop: true
-    });
+<footer>
+  <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+  <small>Contacto: inversionporkinvest@gmail.com | Este sitio no constituye una oferta pública de valores ni captación masiva. Todas las inversiones se realizan bajo contratos privados en el marco de la ley colombiana.</small>
+</footer>
 
-    // Three.js partículas de dinero
-    const canvas = document.getElementById('particlesCanvas');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({canvas, alpha:true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.position.z = 5;
+<a href="https://wa.me/573001234567" class="whatsapp" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
-    const geometry = new THREE.BoxGeometry(0.1, 0.05, 0.01);
-    const material = new THREE.MeshStandardMaterial({color: 0xffd700});
-    const particles = [];
-    for(let i=0; i<50; i++){
-      const particle = new THREE.Mesh(geometry, material);
-      particle.position.set((Math.random()-0.5)*10, Math.random()*5, (Math.random()-0.5)*5);
-      scene.add(particle);
-      particles.push(particle);
+<script>
+function calcular(){
+  const monto = document.getElementById('monto').value;
+  const resultadoEl = document.getElementById('resultado');
+  if(monto && monto > 0){
+    const total = monto * 1.1; // 10% fijo
+    resultadoEl.innerText = "Retorno estimado en ciclo: $" + total.toLocaleString();
+    resultadoEl.style.color = "#2ecc71";
+    resultadoEl.style.transform="scale(1.1)";
+    setTimeout(()=>resultadoEl.style.transform="scale(1)",300);
+  } else {
+    resultadoEl.innerText = "Por favor ingresa un monto válido.";
+    resultadoEl.style.color="#e74c3c";
+  }
+}
+
+// Cerdos siguen cursor
+const pigs = [document.getElementById('pig1'),document.getElementById('pig2'),document.getElementById('pig3')];
+document.addEventListener('mousemove',(e)=>{
+  pigs.forEach((pig,i)=>{
+    const offsetX = (e.clientX/window.innerWidth - 0.5)*(50*(i+1));
+    const offsetY = (e.clientY/window.innerHeight - 0.5)*(30*(i+1));
+    pig.style.transform = `translate(${offsetX}px,${offsetY}px)`;
+  });
+});
+
+// Cards animadas al scroll
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
     }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.card').forEach(card=>observer.observe(card));
 
-    const ambient = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(ambient);
-
-    function animate() {
-      requestAnimationFrame(animate);
-      particles.forEach(p=>{
-        p.position.y -= 0.01 + Math.random()*0.02;
-        if(p.position.y < -3) p.position.y = 5;
-        p.rotation.y += 0.01;
-        p.rotation.x += 0.01;
-      });
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', ()=>{
-      camera.aspect = window.innerWidth/window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
-
+// Parallax simple
+window.addEventListener('scroll',()=>{
+  document.querySelectorAll('[data-parallax]').forEach(section=>{
+    const offset = window.scrollY*0.1;
+    section.style.transform = `translateY(${offset}px)`;
+  });
+});
+</script>
 </body>
 </html>
