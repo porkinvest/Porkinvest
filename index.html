@@ -1,192 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Invierte de manera segura y rentable en PorkInvest: participa en el ciclo completo de producción porcícola en Colombia y recibe tu inversión más rendimientos.">
-  <meta name="keywords" content="inversión porcícola, PorkInvest, inversión segura, cerdos, Colombia, rendimientos garantizados">
-  <meta name="author" content="PorkInvest">
-  <title>PorkInvest - Inversiones Inteligentes en Cerdos</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
-  
-  <!-- CSS -->
-  <style>
-    /* Reset y base */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Open Sans', sans-serif;}
-    body {background:#f9f9f9; color:#333;}
-    a {text-decoration:none; color:inherit;}
-    img {max-width:100%; height:auto;}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Invierte de manera segura y rentable en PorkInvest: participa en el ciclo completo de producción porcícola en Colombia y recibe tu inversión más rendimientos.">
+<meta name="keywords" content="inversión porcícola, PorkInvest, inversión segura, cerdos, Colombia, rendimientos garantizados">
+<meta name="author" content="PorkInvest">
+<title>PorkInvest - Inversiones Inteligentes en Cerdos</title>
 
-    /* Colores */
-    :root {
-      --primary-color: #2C7A4B; /* Verde oscuro */
-      --secondary-color: #F5B700; /* Amarillo dorado */
-      --light-bg: #ffffff;
-      --dark-text: #333333;
-    }
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
 
-    /* Contenedor */
-    .container {max-width:1200px; margin:0 auto; padding:20px;}
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Open Sans', sans-serif;}
+body {background:#f9f9f9; color:#333;}
+a {text-decoration:none; color:inherit;}
+img {max-width:100%; height:auto;}
+:root {
+  --primary-color:#2C7A4B;
+  --secondary-color:#F5B700;
+  --light-bg:#ffffff;
+  --dark-text:#333333;
+}
+.container {max-width:1200px; margin:0 auto; padding:20px;}
 
-    /* Header */
-    header {background:var(--primary-color); color:white; padding:20px 0; position:sticky; top:0; z-index:1000;}
-    header .container {display:flex; justify-content:space-between; align-items:center;}
-    header h1 {font-family:'Montserrat', sans-serif; font-size:1.8rem;}
-    nav a {margin-left:20px; font-weight:600; color:white; transition:color 0.3s;}
-    nav a:hover {color:var(--secondary-color);}
+/* Header */
+header {background:var(--primary-color); color:white; padding:20px 0; position:sticky; top:0; z-index:1000;}
+header .container {display:flex; justify-content:space-between; align-items:center;}
+header h1 {font-family:'Montserrat', sans-serif; font-size:1.8rem;}
+nav a {margin-left:20px; font-weight:600; color:white; transition:color 0.3s;}
+nav a:hover {color:var(--secondary-color);}
 
-    /* Hero Section */
-    .hero {background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; color:white; text-align:center; padding:100px 20px;}
-    .hero h2 {font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:20px;}
-    .hero p {font-size:1.2rem; margin-bottom:30px;}
-    .hero .btn {background:var(--secondary-color); color:#333; padding:15px 30px; font-weight:bold; border-radius:8px; transition:transform 0.3s;}
-    .hero .btn:hover {transform:scale(1.05);}
+/* Hero */
+.hero {background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; color:white; text-align:center; padding:100px 20px; position:relative; overflow:hidden;}
+.hero h2 {font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:20px;}
+.hero p {font-size:1.2rem; margin-bottom:30px;}
+.hero .btn {background:var(--secondary-color); color:#333; padding:15px 30px; font-weight:bold; border-radius:8px; transition:transform 0.3s;}
+.hero .btn:hover {transform:scale(1.05);}
 
-    /* Secciones */
-    section {padding:80px 20px; background:var(--light-bg);}
-    section:nth-child(even){background:#f0f0f0;}
-    section h2 {text-align:center; font-family:'Montserrat', sans-serif; font-size:2rem; margin-bottom:40px; color:var(--primary-color);}
-    .cards {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-    .card {background:white; border-radius:12px; padding:30px; flex:1 1 250px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:transform 0.3s;}
-    .card:hover {transform:translateY(-5px);}
-    .card h3 {margin-bottom:15px; color:var(--primary-color); font-family:'Montserrat', sans-serif;}
-    .card p {font-size:1rem; line-height:1.5;}
+/* Floating pigs animation */
+.pig-container {position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;}
+.pig {width:50px; position:absolute; transition: transform 1s ease-in-out;}
 
-    /* Simulador */
-    .simulador {max-width:600px; margin:0 auto; text-align:center; background:white; padding:40px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-    .simulador input {padding:10px; width:150px; font-size:1rem; border-radius:6px; border:1px solid #ccc; margin-right:10px;}
-    .simulador button {padding:10px 20px; font-weight:bold; background:var(--primary-color); color:white; border:none; border-radius:6px; cursor:pointer; transition:background 0.3s;}
-    .simulador button:hover {background:var(--secondary-color); color:#333;}
-    .resultado {margin-top:20px; font-size:1.2rem; font-weight:bold; color:var(--primary-color);}
+/* Sections */
+section {padding:80px 20px; background:var(--light-bg);}
+section:nth-child(even){background:#f0f0f0;}
+section h2 {text-align:center; font-family:'Montserrat', sans-serif; font-size:2rem; margin-bottom:40px; color:var(--primary-color);}
+.cards {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+.card {background:white; border-radius:12px; padding:30px; flex:1 1 250px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:transform 0.3s;}
+.card:hover {transform:translateY(-5px);}
+.card h3 {margin-bottom:15px; color:var(--primary-color); font-family:'Montserrat', sans-serif;}
+.card p {font-size:1rem; line-height:1.5;}
 
-    /* Contacto */
-    .contacto p {margin:10px 0; font-size:1rem;}
-    .contacto a {color:var(--primary-color); font-weight:bold; transition:color 0.3s;}
-    .contacto a:hover {color:var(--secondary-color);}
+/* Simulador */
+.simulador {max-width:600px; margin:0 auto; text-align:center; background:white; padding:40px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.simulador input {padding:10px; width:150px; font-size:1rem; border-radius:6px; border:1px solid #ccc; margin-right:10px;}
+.simulador button {padding:10px 20px; font-weight:bold; background:var(--primary-color); color:white; border:none; border-radius:6px; cursor:pointer; transition:background 0.3s;}
+.simulador button:hover {background:var(--secondary-color); color:#333;}
+.resultado {margin-top:20px; font-size:1.2rem; font-weight:bold; color:var(--primary-color);}
+.pig-growth {display:flex; justify-content:center; margin-top:20px; gap:10px; flex-wrap:wrap;}
+.pig-growth img {width:50px; transition: all 0.3s ease-in-out;}
 
-    /* Footer */
-    footer {background:var(--primary-color); color:white; text-align:center; padding:30px 20px;}
-    footer a {color:var(--secondary-color); margin:0 5px; transition:color 0.3s;}
-    footer a:hover {color:white;}
-    footer p {margin-top:10px; font-size:0.9rem;}
+/* Contacto */
+.contacto p {margin:10px 0; font-size:1rem;}
+.contacto a {color:var(--primary-color); font-weight:bold; transition:color 0.3s;}
+.contacto a:hover {color:var(--secondary-color);}
 
-    /* Responsive */
-    @media(max-width:768px){ .cards {flex-direction:column; align-items:center;} header .container {flex-direction:column;} nav a {margin:10px 0 0;} }
-  </style>
+/* Footer */
+footer {background:var(--primary-color); color:white; text-align:center; padding:30px 20px;}
+footer a {color:var(--secondary-color); margin:0 5px; transition:color 0.3s;}
+footer a:hover {color:white;}
+footer p {margin-top:10px; font-size:0.9rem;}
+
+/* Responsive */
+@media(max-width:768px){ .cards {flex-direction:column; align-items:center;} header .container {flex-direction:column;} nav a {margin:10px 0 0;} .pig-container {display:none;} }
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>PorkInvest</h1>
-      <nav>
-        <a href="#mision">Misión</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#simulador">Simulador</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
+<!-- Header -->
+<header>
+<div class="container">
+  <h1>PorkInvest</h1>
+  <nav>
+    <a href="#mision">Misión</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Multiplica tu inversión con seguridad en PorkInvest</h2>
-    <p>Participa en el ciclo completo de producción porcícola en Colombia y recibe tu capital más rendimientos garantizados.</p>
-    <a href="#simulador" class="btn">Simula tu inversión</a>
-  </section>
+<!-- Hero -->
+<section class="hero">
+<h2>Multiplica tu inversión con seguridad en PorkInvest</h2>
+<p>Participa en el ciclo completo de producción porcícola en Colombia y recibe tu capital más rendimientos garantizados.</p>
+<a href="#simulador" class="btn">Simula tu inversión</a>
+<div class="pig-container" id="floating-pigs"></div>
+</section>
 
-  <!-- Misión y Visión -->
-  <section id="mision">
-    <div class="container">
-      <h2>Misión y Visión</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Misión</h3>
-          <p>Facilitar inversiones inteligentes en el sector porcicultor colombiano, ofreciendo seguridad, transparencia y rendimientos confiables para todos nuestros inversionistas.</p>
-        </div>
-        <div class="card">
-          <h3>Visión</h3>
-          <p>Ser la plataforma líder de inversión porcícola en Colombia, reconocida por su innovación, transparencia y experiencia de usuario inigualable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Misión y Visión -->
+<section id="mision">
+<div class="container">
+<h2>Misión y Visión</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Misión</h3>
+    <p>Facilitar inversiones inteligentes en el sector porcicultor colombiano, ofreciendo seguridad, transparencia y rendimientos confiables para todos nuestros inversionistas.</p>
+  </div>
+  <div class="card">
+    <h3>Visión</h3>
+    <p>Ser la plataforma líder de inversión porcícola en Colombia, reconocida por su innovación, transparencia y experiencia de usuario inigualable.</p>
+  </div>
+</div>
+</div>
+</section>
 
-  <!-- Beneficios -->
-  <section id="beneficios">
-    <div class="container">
-      <h2>Beneficios de invertir con PorkInvest</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Rentabilidad Garantizada</h3>
-          <p>Recupera tu inversión más rendimientos reales al finalizar el ciclo porcícola.</p>
-        </div>
-        <div class="card">
-          <h3>Seguridad y Transparencia</h3>
-          <p>Control total del ciclo de inversión con seguimiento completo de tu lote de cerdos.</p>
-        </div>
-        <div class="card">
-          <h3>Fácil Acceso</h3>
-          <p>Invierte desde cualquier lugar de Colombia con montos accesibles desde $500.000.</p>
-        </div>
-        <div class="card">
-          <h3>Educación y Apoyo</h3>
-          <p>Aprende sobre la inversión porcícola mientras crece tu dinero con nuestro soporte experto.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Beneficios -->
+<section id="beneficios">
+<div class="container">
+<h2>Beneficios de invertir con PorkInvest</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Rentabilidad Garantizada</h3>
+    <p>Recupera tu inversión más rendimientos reales al finalizar el ciclo porcícola.</p>
+  </div>
+  <div class="card">
+    <h3>Seguridad y Transparencia</h3>
+    <p>Control total del ciclo de inversión con seguimiento completo de tu lote de cerdos.</p>
+  </div>
+  <div class="card">
+    <h3>Fácil Acceso</h3>
+    <p>Invierte desde cualquier lugar de Colombia con montos accesibles desde $500.000.</p>
+  </div>
+  <div class="card">
+    <h3>Educación y Apoyo</h3>
+    <p>Aprende sobre la inversión porcícola mientras crece tu dinero con nuestro soporte experto.</p>
+  </div>
+</div>
+</div>
+</section>
 
-  <!-- Simulador Interactivo -->
-  <section id="simulador">
-    <div class="container">
-      <h2>Simula tu inversión</h2>
-      <div class="simulador">
-        <p>Ingresa el monto que deseas invertir:</p>
-        <input type="number" id="inversion" placeholder="500000" min="500000">
-        <button onclick="calcularRendimiento()">Calcular</button>
-        <div class="resultado" id="resultado"></div>
-      </div>
-    </div>
-  </section>
+<!-- Simulador Interactivo -->
+<section id="simulador">
+<div class="container">
+<h2>Simula tu inversión</h2>
+<div class="simulador">
+<p>Ingresa el monto que deseas invertir:</p>
+<input type="number" id="inversion" placeholder="500000" min="500000">
+<button onclick="calcularRendimiento()">Calcular</button>
+<div class="resultado" id="resultado"></div>
+<div class="pig-growth" id="pig-growth"></div>
+</div>
+</div>
+</section>
 
-  <!-- Contacto -->
-  <section id="contacto">
-    <div class="container contacto">
-      <h2>Contacto</h2>
-      <p>Correo electrónico: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a></p>
-      <p>WhatsApp: <a href="https://wa.me/573002333356" target="_blank">+57 300 233 3356</a></p>
-    </div>
-  </section>
+<!-- Contacto -->
+<section id="contacto">
+<div class="container contacto">
+<h2>Contacto</h2>
+<p>Correo electrónico: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a></p>
+<p>WhatsApp: <a href="https://wa.me/573002333356" target="_blank">+57 300 233 3356</a></p>
+</div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-      <p>
-        <a href="mailto:inversionporkinvest@gmail.com">Correo</a> | 
-        <a href="https://wa.me/573002333356" target="_blank">WhatsApp</a> | 
-        <a href="#mision">Volver arriba</a>
-      </p>
-    </div>
-  </footer>
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+<p>
+<a href="mailto:inversionporkinvest@gmail.com">Correo</a> | 
+<a href="https://wa.me/573002333356" target="_blank">WhatsApp</a> | 
+<a href="#mision">Volver arriba</a>
+</p>
+</div>
+</footer>
 
-  <!-- JavaScript -->
-  <script>
-    function calcularRendimiento() {
-      const inversion = parseFloat(document.getElementById('inversion').value);
-      if (!inversion || inversion < 500000) {
-        document.getElementById('resultado').innerText = "Por favor ingresa un monto válido (mínimo $500.000).";
-        return;
-      }
-      const rendimiento = inversion * 0.10;
-      const total = inversion + rendimiento;
-      document.getElementById('resultado').innerText = `Tu inversión de $${inversion.toLocaleString()} generará un rendimiento de $${rendimiento.toLocaleString()}, totalizando $${total.toLocaleString()}.`;
-    }
-  </script>
+<script>
+// Floating pigs hero animation
+const floatingPigsContainer = document.getElementById('floating-pigs');
+for (let i = 0; i < 8; i++) {
+  const pig = document.createElement('img');
+  pig.src = 'https://i.postimg.cc/5tQz2VtT/pig-icon.png';
+  pig.classList.add('pig');
+  pig.style.top = Math.random()*80 + '%';
+  pig.style.left = Math.random()*90 + '%';
+  floatingPigsContainer.appendChild(pig);
+
+  let direction = Math.random() > 0.5 ? 1 : -1;
+  setInterval(() => {
+    const currentTop = parseFloat(pig.style.top);
+    if(currentTop > 80) direction = -1;
+    if(currentTop < 0) direction = 1;
+    pig.style.top = (currentTop + direction*0.3) + '%';
+  }, 50);
+}
+
+// Simulador con cerdos animados
+function calcularRendimiento() {
+  const inversion = parseFloat(document.getElementById('inversion').value);
+  const pigGrowth = document.getElementById('pig-growth');
+  pigGrowth.innerHTML = '';
+  if (!inversion || inversion < 500000) {
+    document.getElementById('resultado').innerText = "Por favor ingresa un monto válido (mínimo $500.000).";
+    return;
+  }
+  const rendimiento = inversion * 0.10;
+  const total = inversion + rendimiento;
+  document.getElementById('resultado').innerText = `Tu inversión de $${inversion.toLocaleString()} generará un rendimiento de $${rendimiento.toLocaleString()}, totalizando $${total.toLocaleString()}.`;
+
+  const numPigs = Math.min(Math.floor(inversion / 500000), 10);
+  for (let i = 0; i < numPigs; i++) {
+    const pig = document.createElement('img');
+    pig.src = 'https://i.postimg.cc/5tQz2VtT/pig-icon.png';
+    pig.style.width = '50px';
+    pig.style.transform = 'scale(0.5)';
+    pigGrowth.appendChild(pig);
+
+    setTimeout(() => {
+      pig.style.transform = 'scale(1) translateY(-20px)';
+      setTimeout(() => pig.style.transform = 'scale(1) translateY(0)', 300);
+    }, 50);
+  }
+}
+</script>
 
 </body>
 </html>
