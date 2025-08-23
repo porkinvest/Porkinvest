@@ -75,7 +75,6 @@
       overflow: hidden;
     }
 
-    /* animación de fondo futurista */
     .hero::before {
       content: '';
       position: absolute;
@@ -103,14 +102,13 @@
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: transform .3s ease, box-shadow .3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.1);
     }
 
-    /* simulador */
     .simulador {
       text-align: center;
       background: var(--blanco);
@@ -257,13 +255,32 @@
 
   <script>
     function calcular() {
-      const monto = document.getElementById('monto').value;
-      if(monto && monto > 0){
-        const total = parseFloat(monto) * 1.1;
-        document.getElementById('resultado').textContent =
-          "Tu retorno estimado en 6 meses será de: $" + total.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      const montoInput = document.getElementById('monto');
+      const resultadoP = document.getElementById('resultado');
+      const monto = parseFloat(montoInput.value);
+
+      if (monto && monto > 0) {
+        const retornoEstimado = monto * 0.10;
+        const totalEstimado = monto + retornoEstimado;
+        const duracionAnimacion = 1500;
+        const cuadrosPorSegundo = 60;
+        const incrementoPorCuadro = totalEstimado / (duracionAnimacion / (1000 / cuadrosPorSegundo));
+        let valorActual = 0;
+        let contador = 0;
+
+        function animarResultado() {
+          valorActual += incrementoPorCuadro;
+          contador++;
+          resultadoP.textContent = "Tu retorno estimado en 6 meses será de: $" + Math.min(valorActual, totalEstimado).toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+          if (valorActual < totalEstimado) {
+            requestAnimationFrame(animarResultado);
+          }
+        }
+
+        requestAnimationFrame(animarResultado);
       } else {
-        document.getElementById('resultado').textContent = "Por favor, ingresa un monto válido.";
+        resultadoP.textContent = "Por favor, ingresa un monto válido.";
       }
     }
   </script>
