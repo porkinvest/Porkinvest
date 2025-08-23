@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
   <style>
     body { scroll-behavior: smooth; }
     .fade-in { animation: fadeIn 2s ease-in-out; }
@@ -34,12 +35,23 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-r from-green-700 to-green-500 text-white relative overflow-hidden">
-    <div class="absolute inset-0">
-      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qp1q7mct.json" background="transparent" speed="0.5" style="width:100%; height:100%;" loop autoplay></lottie-player>
-    </div>
-    <div class="relative z-10">
+  <!-- HERO + ANIMACIÓN -->
+  <header class="h-screen relative overflow-hidden flex flex-col justify-center items-center text-center bg-gradient-to-r from-green-700 to-green-500 text-white">
+    
+    <!-- Lottie animación de pantallas con cerdos y dinero -->
+    <lottie-player 
+      src="https://assets10.lottiefiles.com/packages/lf20_3cerditos.json" 
+      background="transparent" 
+      speed="1" 
+      style="width: 80%; max-width: 1200px; height: 80%; z-index:10;" 
+      loop 
+      autoplay>
+    </lottie-player>
+
+    <!-- Three.js Partículas de dinero flotando -->
+    <canvas id="particlesCanvas" class="absolute inset-0 z-0"></canvas>
+
+    <div class="relative z-20 fade-in">
       <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Invierte en el Futuro con <span class="text-yellow-300">PorkInvest</span></h2>
       <p id="typed" class="text-xl md:text-2xl"></p>
       <a href="#beneficios" class="mt-6 inline-block bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-500">Conoce más</a>
@@ -105,11 +117,51 @@
 
   <!-- Scripts -->
   <script>
+    // Typed.js
     new Typed("#typed", {
       strings: ["Invierte desde $500.000", "Apoya el campo colombiano", "Obtén rendimientos confiables"],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true
+    });
+
+    // Three.js partículas de dinero
+    const canvas = document.getElementById('particlesCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({canvas, alpha:true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.z = 5;
+
+    const geometry = new THREE.BoxGeometry(0.1, 0.05, 0.01);
+    const material = new THREE.MeshStandardMaterial({color: 0xffd700});
+    const particles = [];
+    for(let i=0; i<50; i++){
+      const particle = new THREE.Mesh(geometry, material);
+      particle.position.set((Math.random()-0.5)*10, Math.random()*5, (Math.random()-0.5)*5);
+      scene.add(particle);
+      particles.push(particle);
+    }
+
+    const ambient = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambient);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.forEach(p=>{
+        p.position.y -= 0.01 + Math.random()*0.02;
+        if(p.position.y < -3) p.position.y = 5;
+        p.rotation.y += 0.01;
+        p.rotation.x += 0.01;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
 
