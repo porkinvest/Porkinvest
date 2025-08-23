@@ -1,168 +1,84 @@
-<!doctype html>
-
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>PorkInvest — Inversión responsable en porcicultura</title>
-  <meta name="description" content="PorkInvest - Plataforma informativa y operativa para inversión responsable en lotes de cerdos. Transparencia, cumplimiento y rendimientos proyectados.">
-  <link rel="canonical" href="https://porkinvest.github.io/Porkinvest/">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#b64f39">  <!-- Open Graph & Twitter -->  <meta property="og:title" content="PorkInvest — Inversión responsable en porcicultura">
-  <meta property="og:description" content="Plataforma informativa y transparente de inversión en porcicultura en Colombia.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest | Inversiones Seguras en el Sector Porcícola</title>
+  <meta name="description" content="PorkInvest ofrece inversiones seguras y transparentes en el sector porcícola colombiano, con rentabilidad estable y confianza garantizada.">
+  <meta name="keywords" content="inversiones porcicultura, invertir en cerdos, PorkInvest, inversiones rentables Colombia">
+  <meta name="author" content="PorkInvest">  <!-- Open Graph -->  <meta property="og:title" content="PorkInvest | Inversiones Seguras">
+  <meta property="og:description" content="Invierte con confianza en el sector porcícola colombiano con PorkInvest.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://porkinvest.github.io/Porkinvest/">
-  <meta property="og:image" content="/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">  <!-- Prefetch / Performance -->  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">  <!-- Structured data -->  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"PorkInvest","url":"https://porkinvest.github.io/Porkinvest/","logo":"https://porkinvest.github.io/Porkinvest/assets/logo.png","sameAs":[]}
-  </script>  <style>
-    :root{--accent:#b64f39;--bg:#fff;--muted:#6b7280;--card:#f8fafc}
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#111}
-    .wrap{max-width:1200px;margin:0 auto;padding:18px}
-    header{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid #eef3f6}
-    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffd6c2);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    nav{margin-left:auto}
-    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:22px;margin-top:22px}
-    .card{background:var(--card);padding:18px;border-radius:12px}
-    h1{font-size:30px;margin:0 0 8px}
-    p.lead{color:var(--muted);margin-top:0}
-    input,textarea,button{font-family:inherit}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}} 
-  </style></head>
+  <meta property="og:image" content="https://porkinvest.github.io/Porkinvest/img/og-image.jpg">  <!-- Twitter Card -->  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PorkInvest | Inversiones Seguras">
+  <meta name="twitter:description" content="Inversiones porcinas con confianza y rentabilidad estable.">  <!-- Styles -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {font-family: 'Poppins', sans-serif; margin:0; padding:0; background:#F3F4F6; color:#1E3A8A;}
+    header {background:#1E3A8A; color:white; padding:1.5rem; text-align:center;}
+    header svg {height:60px; margin-bottom:10px;}
+    h1,h2,h3 {font-family:'Merriweather', serif; margin:0.5em 0;}
+    nav {margin-top:1rem;}
+    nav a {color:white; margin:0 1rem; text-decoration:none; font-weight:600;}
+    nav a:hover {color:#059669;}
+    .btn {display:inline-block; background:#059669; color:white; padding:0.75rem 1.5rem; border-radius:8px; text-decoration:none; font-weight:600; transition:0.3s;}
+    .btn:hover {background:#1E3A8A;}
+    section {padding:3rem 1.5rem; text-align:center;}
+    .vision-mision {background:white; padding:2rem; margin:2rem auto; border-radius:12px; max-width:800px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+    footer {background:#1E3A8A; color:white; text-align:center; padding:2rem;}
+    footer a {color:#059669; text-decoration:none;}
+  </style>  <!-- Schema.org -->  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InvestmentOrLoanBusiness",
+    "name": "PorkInvest",
+    "url": "https://porkinvest.github.io/Porkinvest/",
+    "logo": "https://porkinvest.github.io/Porkinvest/img/logo.svg",
+    "description": "Inversiones seguras y transparentes en el sector porcícola colombiano.",
+    "foundingDate": "2025",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Colombia"
+    }
+  }
+  </script></head>
 <body>
-  <a class="sr-only" href="#main">Saltar al contenido</a>
-  <div class="wrap">
-    <header>
-      <div class="logo">PI</div>
-      <div>
-        <div style="font-weight:700">PorkInvest</div>
-        <div style="font-size:13px;color:var(--muted)">Inversión responsable en porcicultura</div>
-      </div>
-      <nav aria-label="Principal">
-        <a href="#about">Sobre</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#legal">Legal</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-    </header><main id="main">
-  <section class="hero">
-    <article>
-      <h1>PorkInvest — Transparencia y cumplimiento en cada ciclo</h1>
-      <p class="lead">Ciclos de inversión en lotes porcinos con contratos claros, proyecciones responsables y seguimiento operativo. Información educativa y modelos de contrato disponibles.</p>
-
-      <h2 id="about">Misión y visión</h2>
-      <p><strong>Misión:</strong> Facilitar inversiones privadas en porcicultura con cumplimiento legal y comunicación transparente.</p>
-      <p><strong>Visión:</strong> Ser la referencia en inversión agro en Colombia, generando impacto social y ambiental positivo.</p>
-
-      <h3>Valores</h3>
-      <ul>
-        <li>Transparencia</li>
-        <li>Cumplimiento legal</li>
-        <li>Bienestar animal</li>
-        <li>Sostenibilidad</li>
-      </ul>
-    </article>
-
-    <aside class="card" aria-labelledby="projTitle">
-      <h3 id="projTitle">Propuesta destacada</h3>
-      <p class="lead">Ciclo: 6 meses — Lote: 50 cerdos — Rendimiento estimado: 10%</p>
-      <dl>
-        <dt>Inversión mínima</dt><dd>COP 500.000</dd>
-        <dt>Garantías</dt><dd>Contrato privado y reporte mensual</dd>
-      </dl>
-      <p style="font-size:13px;color:var(--muted)"><strong>Nota:</strong> No somos entidad financiera ni captamos recursos masivamente.</p>
-    </aside>
-  </section>
-
-  <section id="projects" style="margin-top:20px">
-    <div class="card">
-      <h2>Cómo funcionan los ciclos</h2>
-      <ol>
-        <li>Compra y documentación del lote</li>
-        <li>Gestión operativa y reportes</li>
-        <li>Venta, liquidación y distribución proporcional</li>
-      </ol>
-      <h3>Documentos</h3>
-      <ul>
-        <li>Modelo de contrato (descarga)</li>
-        <li>Informe mensual</li>
-      </ul>
-    </div>
-
-    <div class="card" style="margin-top:14px">
-      <h2>Calculadora</h2>
-      <label for="amount">Monto (COP)</label>
-      <input id="amount" type="number" value="500000" min="100000" style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #e6eef5">
-      <p style="margin-top:8px">Proyección 10%: <strong id="estReturn">COP 550,000</strong></p>
-      <button id="calc" style="width:100%;padding:10px;border-radius:8px;background:#b64f39;color:#fff;border:0">Calcular</button>
-    </div>
-  </section>
-
-  <section id="legal" style="margin-top:20px">
-    <div class="card">
-      <h2>Legal y cumplimiento (Colombia)</h2>
-      <p style="color:var(--muted)">PorkInvest NO capta recursos del público de forma masiva. Recomendamos asesoría legal para estructurar vehículos si se desea recibir recaudo o constituir una oferta.</p>
-      <h3>Buenas prácticas</h3>
-      <ul>
-        <li>Contratos privados y documentación</li>
-        <li>Política KYC y prevención de lavado (SARLAFT)</li>
-        <li>Asesoría legal especializada</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="contact" style="margin-top:20px">
-    <div class="card">
-      <h2>Contacto</h2>
-      <form id="contactForm" action="https://formspree.io/f/yourformid" method="post" aria-label="Contacto PorkInvest">
-        <label for="name">Nombre</label>
-        <input id="name" name="name" required style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #e6eef5">
-        <label for="email" style="margin-top:8px;display:block">Email</label>
-        <input id="email" type="email" name="email" required style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #e6eef5">
-        <label for="message" style="margin-top:8px;display:block">Mensaje</label>
-        <textarea id="message" name="message" rows="4" style="width:100%;padding:8px;margin-top:6px;border-radius:8px;border:1px solid #e6eef5"></textarea>
-        <button type="submit" style="margin-top:10px;padding:10px;width:100%;border-radius:8px;background:#b64f39;color:#fff;border:0">Enviar</button>
-        <div id="formStatus" class="sr-only" aria-live="polite"></div>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer style="margin-top:28px;text-align:center;color:#6b7280;font-size:13px;padding-bottom:18px">
-  <div>© 2025 PorkInvest — Medellín, Colombia</div>
-  <div style="margin-top:6px">Política de privacidad · Términos · Aviso legal</div>
-</footer>
-
-  </div>  <script>
-    // Calculator
-    document.getElementById('calc').addEventListener('click', function(){
-      const amount = Number(document.getElementById('amount').value) || 0;
-      const projected = Math.round(amount * 1.10);
-      document.getElementById('estReturn').textContent = 'COP ' + new Intl.NumberFormat('es-CO').format(projected);
-    });
-
-    // Formspree progressive enhancement
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', function(e){
-      const status = document.getElementById('formStatus');
-      status.classList.remove('sr-only');
-      status.textContent = 'Enviando...';
-    });
-
-    // Minimal cookie consent
-    (function(){
-      if(!localStorage.getItem('pork_cookie')){
-        const d=document.createElement('div');d.style.position='fixed';d.style.bottom='12px';d.style.left='12px';d.style.right='12px';d.style.background='#fff';d.style.border='1px solid #eef3f6';d.style.padding='12px';d.style.borderRadius='10px';d.style.zIndex=9999;d.innerHTML='<div style="display:flex;gap:12px;align-items:center"><div style="flex:1">Usamos cookies. Revisa nuestra Política de Privacidad.</div><div><button id="pAccept" style="background:#b64f39;color:#fff;border:0;padding:8px 12px;border-radius:8px">Aceptar</button></div></div>';
-        document.body.appendChild(d);document.getElementById('pAccept').addEventListener('click',function(){localStorage.setItem('pork_cookie','1');d.remove();});
-      }
-    })();
-  </script><noscript><p style="text-align:center;color:#6b7280">Activa JavaScript para una mejor experiencia.</p></noscript>
-
+  <header>
+    <!-- Logo SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="white">
+      <circle cx="32" cy="32" r="30" stroke="#059669" stroke-width="4" fill="none"/>
+      <path d="M20 40 Q32 20 44 40" stroke="#059669" stroke-width="4" fill="none"/>
+      <circle cx="32" cy="32" r="6" fill="#059669"/>
+    </svg>
+    <h1>PorkInvest</h1>
+    <p>Inversiones Seguras en el Sector Porcícola</p>
+    <nav>
+      <a href="#vision">Visión</a>
+      <a href="#mision">Misión</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>  <section id="vision" class="vision-mision">
+    <h2>Visión</h2>
+    <p>Ser la plataforma líder de inversión en el sector porcícola en Colombia, reconocida por su transparencia, confianza y generación de rentabilidad estable para nuestros inversionistas.</p>
+  </section>  <section id="mision" class="vision-mision">
+    <h2>Misión</h2>
+    <p>Conectar a los inversionistas con oportunidades reales en la porcicultura colombiana, gestionando los recursos de manera ética y responsable para garantizar seguridad, confianza y crecimiento sostenible.</p>
+  </section>  <section id="beneficios">
+    <h2>Beneficios de Invertir con Nosotros</h2>
+    <ul style="list-style:none; padding:0; max-width:700px; margin:2rem auto; text-align:left;">
+      <li>✔ Rentabilidad estable y proyectada.</li>
+      <li>✔ Inversión respaldada en activos reales (sector porcícola).</li>
+      <li>✔ Transparencia y reportes periódicos.</li>
+      <li>✔ Modelo sostenible con visión a largo plazo.</li>
+    </ul>
+    <a href="#contacto" class="btn">Quiero Invertir</a>
+  </section>  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Listo para dar el siguiente paso? Escríbenos y recibe toda la información personalizada sobre tu inversión.</p>
+    <a href="mailto:info@porkinvest.com" class="btn">Contáctanos</a>
+  </section>  <footer>
+    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+    <p><a href="/politica-privacidad.html">Política de Privacidad</a> | <a href="/terminos.html">Términos y Condiciones</a></p>
+  </footer>
 </body>
 </html>
