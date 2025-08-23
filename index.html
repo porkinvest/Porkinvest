@@ -7,31 +7,29 @@
 <meta name="description" content="Invierte en proyectos porcicolas en Colombia desde $500.000 COP y participa en el crecimiento del sector.">
 <meta name="keywords" content="PorkInvest, crowdfunding porcicola, inversión porcicola, Colombia, proyectos rurales, inversión accesible">
 <meta name="robots" content="index, follow">
-<link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- Favicon vacío para no requerir archivo -->
-
 <style>
 /* Reset y tipografía */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-body{background:#050518;color:#e0e0e0;line-height:1.6;overflow-x:hidden;scroll-behavior:smooth;}
-a{color:#ff9f1c;text-decoration:none;transition:0.3s;}
+body{background:#0f0f1a;color:#f0f0f0;line-height:1.6;overflow-x:hidden;scroll-behavior:smooth;}
+a{color:#ff6f61;text-decoration:none;transition:0.3s;}
 a:hover{color:#fff;}
-header{background:linear-gradient(90deg,#050518,#1a1a2e);padding:25px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.7);}
-header h1{font-size:3em;color:#ff9f1c;text-shadow:0 0 15px #ff9f1c;letter-spacing:2px;transition:0.5s;}
+header{background:linear-gradient(90deg,#0f0f1a,#1a1a2e);padding:25px 0;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(0,0,0,0.7);}
+header h1{font-size:3em;color:#ff6f61;text-shadow:0 0 20px #ff6f61;letter-spacing:2px;}
 nav{margin-top:15px;}
 nav a{margin:0 20px;font-weight:bold;position:relative;}
-nav a::after{content:'';position:absolute;width:0;height:2px;background:#ff9f1c;bottom:-5px;left:0;transition:0.3s;}
+nav a::after{content:'';position:absolute;width:0;height:2px;background:#ff6f61;bottom:-5px;left:0;transition:0.3s;}
 nav a:hover::after{width:100%;}
 
 section{padding:100px 20px;max-width:1200px;margin:auto;position:relative;z-index:1;}
-h2{margin-bottom:40px;color:#ff9f1c;font-size:2.4em;text-align:center;position:relative;}
-h2::after{content:'';display:block;width:100px;height:4px;background:#ff9f1c;margin:10px auto;border-radius:2px;box-shadow:0 0 20px #ff9f1c;}
-h3{margin-bottom:15px;color:#ff9f1c;}
+h2{margin-bottom:40px;color:#ff6f61;font-size:2.4em;text-align:center;position:relative;}
+h2::after{content:'';display:block;width:100px;height:4px;background:#ff6f61;margin:10px auto;border-radius:2px;box-shadow:0 0 20px #ff6f61;}
+h3{margin-bottom:15px;color:#ff6f61;}
 
 .card{
-  background:linear-gradient(145deg,#1a1a2e,#11111f);
+  background:linear-gradient(145deg,#1e1e3f,#12122a);
   padding:30px;
   border-radius:25px;
-  box-shadow:0 0 25px rgba(255,159,28,0.7);
+  box-shadow:0 0 35px rgba(255,111,97,0.6);
   flex:1 1 calc(33% - 25px);
   min-width:280px;
   transition:transform 0.6s, box-shadow 0.6s, opacity 0.6s;
@@ -41,75 +39,105 @@ h3{margin-bottom:15px;color:#ff9f1c;}
 .card.visible{
   opacity:1;
   transform: translateY(0);
+  box-shadow:0 10px 50px rgba(255,111,97,0.8);
+}
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 15px 60px rgba(255,111,97,0.9);
 }
 
 .benefits,.faqs{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
 
 button{
-  background:linear-gradient(45deg,#ff9f1c,#ffb84c);
-  color:#050518;
+  background:linear-gradient(45deg,#ff6f61,#ffb86c);
+  color:#0f0f1a;
   border:none;
   padding:15px 35px;
   border-radius:15px;
   font-weight:bold;
   font-size:1.1em;
   cursor:pointer;
-  box-shadow:0 0 20px #ff9f1c;
+  box-shadow:0 0 25px #ff6f61;
   transition:0.5s;
 }
 button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 40px #ffb84c;
+  transform:scale(1.08) rotate(-1deg);
+  box-shadow:0 0 50px #ffb86c;
 }
 button:active{
   transform:scale(0.95);
 }
 
 .simulator{
-  background:linear-gradient(145deg,#1a1a2e,#11111f);
+  background:linear-gradient(145deg,#1e1e3f,#12122a);
   padding:40px;
   border-radius:25px;
-  box-shadow:0 0 30px rgba(255,159,28,0.7);
+  box-shadow:0 0 40px rgba(255,111,97,0.7);
   text-align:center;
   margin-top:40px;
   position:relative;
   overflow:hidden;
+  transition:transform 0.5s;
 }
+.simulator:hover{transform:scale(1.02);}
 .simulator input{
   padding:15px;
   border-radius:12px;
   border:1px solid #555;
   margin-right:15px;
   width:160px;
-  background:#050518;
-  color:#e0e0e0;
+  background:#0f0f1a;
+  color:#f0f0f0;
   font-size:1.1em;
 }
 
 .progress-container{
-  background:#11111f;
+  background:#12122a;
   border-radius:25px;
   margin-top:30px;
   height:30px;
   width:100%;
   overflow:hidden;
-  box-shadow:0 0 15px rgba(255,159,28,0.5);
+  box-shadow:0 0 20px rgba(255,111,97,0.5);
 }
 .progress-bar{
   height:100%;
   width:0%;
-  background:linear-gradient(90deg,#ff9f1c,#ffb84c);
+  background:linear-gradient(90deg,#ff6f61,#ffb86c);
   border-radius:25px;
   transition:width 1.5s ease-in-out;
-  box-shadow:0 0 20px #ff9f1c inset;
+  box-shadow:0 0 25px #ff6f61 inset;
 }
 
-footer{background:#11111f;color:#aaa;text-align:center;padding:30px;font-size:0.9em;}
+#whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 0 25px rgba(37,211,102,0.7);
+  cursor:pointer;
+  animation: float 2s infinite ease-in-out;
+  z-index:999;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+footer{background:#12122a;color:#aaa;text-align:center;padding:30px;font-size:0.9em;}
 @media(max-width:900px){.benefits,.faqs{flex-direction:column;}}
 </style>
+</head>
 <body>
-
-<header>
+  <header>
   <h1>PorkInvest</h1>
   <nav>
     <a href="#mision">Misión & Visión</a>
@@ -171,6 +199,10 @@ footer{background:#11111f;color:#aaa;text-align:center;padding:30px;font-size:0.
   <p>&copy; 2025 PorkInvest - Plataforma de crowdfunding porcicola</p>
 </footer>
 
+<!-- Botón flotante de WhatsApp -->
+<div id="whatsapp-float" onclick="window.open('https://wa.me/573002333356','_blank')">
+  &#128241;
+</div>
 <script>
 // Función del simulador de inversión con barra animada
 function calcularRetorno(){
@@ -207,7 +239,19 @@ buttons.forEach(btn => {
   btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.95)'; });
   btn.addEventListener('mouseup', () => { btn.style.transform = 'scale(1.05)'; });
 });
-</script>
 
-</body>
-</html>
+// Efecto flotante dinámico para botón de WhatsApp
+const whatsapp = document.getElementById('whatsapp-float');
+let direction = 1;
+setInterval(()=>{
+  let current = parseFloat(window.getComputedStyle(whatsapp).bottom);
+  if(current >= 35) direction = -1;
+  if(current <= 25) direction = 1;
+  whatsapp.style.bottom = (current + 0.3*direction) + 'px';
+}, 30);
+
+// Efecto de hover sutil para simulador
+const simulator = document.querySelector('.simulator');
+simulator.addEventListener('mouseenter', ()=>{ simulator.style.transform='scale(1.03)'; });
+simulator.addEventListener('mouseleave', ()=>{ simulator.style.transform='scale(1)'; });
+</script>
