@@ -1,159 +1,142 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorkInvest - Inversión Porcícola Profesional</title>
-<meta name="description" content="Invierte desde $500.000 en nuestra granja porcicola. Ciclo de inversión de medio año con retorno garantizado del 10%. Gestión confiable y directa.">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-body{background:#f7f9fc;color:#1a1a1a;line-height:1.6;overflow-x:hidden;}
-a{text-decoration:none;color:inherit;}
-section{padding:80px 20px;max-width:1200px;margin:auto;}
-h1,h2,h3{margin-bottom:20px;color:#111;}
-p{margin-bottom:15px;}
-.btn{display:inline-block;padding:12px 30px;background:#0052cc;color:#fff;font-weight:600;border-radius:8px;transition:0.3s;cursor:pointer;}
-.btn:hover{background:#003d99;transform:translateY(-2px);}
-header{background:#003366;color:#fff;padding:60px 20px;text-align:center;overflow:hidden;}
-header h1{font-size:3rem;margin-bottom:10px;}
-header p{font-size:1.3rem;margin-bottom:20px;}
-.grid{display:grid;gap:40px;}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-.project-card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:0.4s;cursor:pointer;transform:translateY(0);}
-.project-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.15);}
-.timeline{position:relative;padding-left:40px;margin-top:30px;}
-.timeline::before{content:'';position:absolute;left:15px;top:0;width:4px;height:100%;background:#0052cc;border-radius:2px;}
-.timeline-item{position:relative;margin-bottom:30px;opacity:0;transform:translateX(-30px);transition:0.6s;}
-.timeline-item.show{opacity:1;transform:translateX(0);}
-.timeline-item::before{content:'';position:absolute;left:-10px;top:0;width:20px;height:20px;background:#0052cc;border-radius:50%;border:4px solid #fff;}
-.timeline-content{background:#fff;padding:15px 20px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
-#simulador input{padding:10px;border-radius:8px;border:1px solid #ccc;width:200px;}
-#simulador .dashboard{background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.12);margin-top:20px;display:flex;flex-direction:column;align-items:center;}
-.bar-container{width:100%;background:#eee;border-radius:12px;height:30px;overflow:hidden;margin-top:15px;}
-.bar-fill{height:100%;background:#0052cc;width:0%;border-radius:12px;text-align:right;color:#fff;padding-right:10px;line-height:30px;font-weight:600;transition:width 1s ease;}
-.testimonial-container{position:relative;overflow:hidden;height:120px;margin-top:20px;}
-.testimonial-track{display:flex;transition:transform 0.6s ease;}
-.testimonial{min-width:100%;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;font-weight:500;}
-.faq-item{background:#fff;border-radius:12px;margin-bottom:15px;padding:20px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:0.3s;}
-.faq-item:hover{transform:translateY(-3px);}
-.faq-answer{display:none;padding-top:10px;color:#555;}
-.fade-in{opacity:0;transform:translateY(20px);transition:all 1s ease;}
-.fade-in.show{opacity:1;transform:translateY(0);}
-footer{text-align:center;padding:40px 20px;background:#003366;color:#fff;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PorkInvest - Invierte en el Futuro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif;}
+    body {background: #f8f9fa; color: #333;}header {position: fixed; top: 0; width: 100%; background: #111; color: #fff; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 15px 30px;}
+header h1 {font-size: 1.5rem;}
+nav ul {list-style: none; display: flex; gap: 20px;}
+nav ul li a {color: #fff; text-decoration: none; font-weight: 500;}
+
+/* Menú hamburguesa */
+.menu-toggle {display: none; flex-direction: column; cursor: pointer;}
+.menu-toggle span {height: 3px; width: 25px; background: #fff; margin: 4px 0; transition: 0.4s;}
+nav ul.active {display: block; position: absolute; top: 60px; right: 0; background: #111; width: 200px; padding: 20px;}
+nav ul.active li {margin: 10px 0;}
+
+/* Hero */
+.hero {height: 100vh; background: linear-gradient(270deg, #ff416c, #ff4b2b, #ff416c); background-size: 600% 600%; display: flex; justify-content: center; align-items: center; text-align: center; color: white; animation: gradientBG 12s ease infinite; padding: 20px;}
+@keyframes gradientBG {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero h2 {font-size: 2.5rem; margin-bottom: 15px;}
+.hero p {font-size: 1.2rem; max-width: 600px; margin: auto;}
+
+/* Secciones */
+section {padding: 60px 20px; max-width: 1200px; margin: auto;}
+h2.section-title {text-align: center; margin-bottom: 40px; font-size: 2rem;}
+
+/* Beneficios */
+.benefits {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
+.benefit {background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s;}
+.benefit:hover {transform: translateY(-5px);}
+
+/* Simulador */
+.simulator {background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 600px; margin: auto; text-align: center;}
+.simulator input {width: 100%; padding: 10px; margin: 15px 0; border-radius: 8px; border: 1px solid #ccc;}
+.simulator button {padding: 10px 20px; background: #ff416c; color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s;}
+.simulator button:hover {background: #ff4b2b;}
+
+/* FAQ */
+.faq {max-width: 700px; margin: auto;}
+.faq-item {margin-bottom: 15px; border-bottom: 1px solid #ddd;}
+.faq-question {cursor: pointer; padding: 15px; background: #eee; border-radius: 8px; font-weight: 500;}
+.faq-answer {display: none; padding: 10px 15px;}
+
+/* WhatsApp */
+.whatsapp-btn {position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; border-radius: 50%; padding: 15px; font-size: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); text-decoration: none;}
+
+footer {background: #111; color: #fff; text-align: center; padding: 20px; margin-top: 40px;}
+
+/* Responsive */
+@media(max-width: 768px){
+  nav ul {display: none; flex-direction: column;}
+  .menu-toggle {display: flex;}
+  .hero h2 {font-size: 2rem;}
+}
+
+  </style>
 </head>
 <body>
+  <header>
+    <h1>PorkInvest</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="menu">
+        <li><a href="#benefits">Beneficios</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>  <section class="hero">
+    <div data-aos="fade-up">
+      <h2>Invierte en el Futuro de la Porcicultura</h2>
+      <p>PorkInvest conecta inversionistas con proyectos sostenibles y rentables en el sector porcícola colombiano.</p>
+    </div>
+  </section>  <section id="benefits">
+    <h2 class="section-title">Beneficios de Invertir</h2>
+    <div class="benefits">
+      <div class="benefit" data-aos="zoom-in">✔️ Rentabilidad atractiva y estable</div>
+      <div class="benefit" data-aos="zoom-in">🌱 Proyectos sostenibles y responsables</div>
+      <div class="benefit" data-aos="zoom-in">🤝 Transparencia y confianza</div>
+    </div>
+  </section>  <section id="simulador">
+    <h2 class="section-title">Simula tu Inversión</h2>
+    <div class="simulator" data-aos="fade-up">
+      <input type="number" id="monto" placeholder="Ingresa el monto en USD">
+      <button onclick="simular()">Calcular</button>
+      <p id="resultado"></p>
+    </div>
+  </section>  <section id="faq">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <div class="faq">
+      <div class="faq-item" data-aos="fade-right">
+        <div class="faq-question">¿Cuál es la rentabilidad promedio?</div>
+        <div class="faq-answer">La rentabilidad promedio estimada es del 15% anual.</div>
+      </div>
+      <div class="faq-item" data-aos="fade-right">
+        <div class="faq-question">¿Es seguro invertir en PorkInvest?</div>
+        <div class="faq-answer">Sí, trabajamos con transparencia y proyectos verificados.</div>
+      </div>
+      <div class="faq-item" data-aos="fade-right">
+        <div class="faq-question">¿Cómo inicio mi inversión?</div>
+        <div class="faq-answer">Puedes simular tu inversión y contactarnos por WhatsApp.</div>
+      </div>
+    </div>
+  </section><a href="https://wa.me/573002333356" class="whatsapp-btn" target="_blank">💬</a>
 
-<header>
-<h1>PorkInvest</h1>
-<p>Invierte en nuestra granja porcicola desde $500.000 COP y obtén un retorno del 10% por ciclo de inversión. Gestionamos todo de manera directa y confiable.</p>
-<a href="https://wa.me/573002333356" class="btn">Contacta con un asesor</a>
-</header>
+  <footer>
+    <p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
+  </footer>  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
+    AOS.init();
 
-<section id="vision-mision" class="fade-in">
-<h2>Visión</h2>
-<p>Ser la plataforma de inversión agropecuaria líder en Colombia, ofreciendo oportunidades rentables y transparentes que generen confianza y crecimiento sostenible.</p>
-<h2>Misión</h2>
-<p>Facilitar inversiones seguras en porcicultura, con procesos claros, seguimiento constante y atención personalizada, asegurando que cada inversionista obtenga su retorno sin complicaciones.</p>
-</section>
+    function simular(){
+      let monto = document.getElementById('monto').value;
+      if(monto && monto > 0){
+        let ganancia = monto * 0.15;
+        document.getElementById('resultado').innerText = `Tu ganancia estimada anual es de $${ganancia.toFixed(2)} USD.`;
+      } else {
+        document.getElementById('resultado').innerText = 'Por favor ingresa un monto válido.';
+      }
+    }
 
-<section id="beneficios" class="fade-in">
-<h2>Por qué elegir PorkInvest</h2>
-<div class="grid grid-3">
-<div class="project-card"><h3>Rentabilidad Segura</h3><p>Recibe tu capital inicial más un 10% de ganancia al completar cada ciclo de inversión.</p></div>
-<div class="project-card"><h3>Transparencia Total</h3><p>Monitorea tu inversión con reportes claros y asesoría directa en todo momento.</p></div>
-<div class="project-card"><h3>Confianza Corporativa</h3><p>Plataforma profesional, confiable y con atención personalizada para cada inversionista.</p></div>
-</div>
-</section>
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
 
-<section id="simulador" class="fade-in">
-<h2>Calcula tu retorno</h2>
-<p>Introduce el monto que deseas invertir y conoce tu ganancia al finalizar el ciclo:</p>
-<input type="number" id="monto" placeholder="Monto en COP" min="500000">
-<button class="btn" onclick="calcularGanancia()">Calcular</button>
-<div class="dashboard">
-<div class="bar-container">
-<div class="bar-fill" id="bar">0%</div>
-</div>
-<p id="resultado" style="margin-top:15px;font-weight:600;"></p>
-<p>Todo el proceso de inversión y retorno se gestiona directamente con nuestro equipo: <a href="https://wa.me/573002333356">300233335356</a></p>
-</div>
-</section>
-
-<section id="timeline" class="fade-in">
-<h2>Ciclo de inversión</h2>
-<div class="timeline">
-<div class="timeline-item"><div class="timeline-content"><strong>Inicio:</strong> Depósito de la inversión</div></div>
-<div class="timeline-item"><div class="timeline-content"><strong>Finalización:</strong> Venta de los cerdos y recepción de la inversión + 10%</div></div>
-</div>
-</section>
-
-<section id="faq" class="fade-in">
-<h2>Preguntas frecuentes</h2>
-<div class="faq-item"><h3>¿Cuál es la inversión mínima?</h3><div class="faq-answer">Desde $500.000 COP puedes participar en la granja.</div></div>
-<div class="faq-item"><h3>¿Cómo se recibe la ganancia?</h3><div class="faq-answer">Nuestro equipo coordina todo directamente contigo y asegura que recibas tu capital más la rentabilidad al finalizar el ciclo.</div></div>
-<div class="faq-item"><h3>¿Es seguro invertir?</h3><div class="faq-answer">Sí, contamos con procesos claros, seguimiento constante y atención personalizada para cada inversionista.</div></div>
-<div class="faq-item"><h3>¿Puedo invertir desde cualquier lugar?</h3><div class="faq-answer">Sí, nuestra plataforma digital permite invertir desde cualquier dispositivo sin complicaciones.</div></div>
-</section>
-
-<section id="testimonios" class="fade-in">
-<h2>Testimonios 2025</h2>
-<div class="testimonial-container">
-<div class="testimonial-track" id="testimonialTrack">
-<div class="testimonial">"Invertí $500.000 y al concluir el ciclo recibí mi inversión + 10%. Totalmente confiable." - Ana R., Medellín</div>
-<div class="testimonial">"Atención rápida y profesional. La plataforma cumple lo prometido." - Carlos M., Bogotá</div>
-<div class="testimonial">"Proceso claro y seguro. Recomiendo PorkInvest a todos mis contactos." - Laura G., Cali</div>
-</div>
-</div>
-</section>
-
-<footer>
-<p>Contacto: <a href="https://wa.me/573002333356">Asesoría directa: 300233335356</a></p>
-<p>&copy; 2025 PorkInvest. Todos los derechos reservados.</p>
-</footer>
-
-<script>
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{const ans=item.querySelector('.faq-answer');ans.style.display=(ans.style.display==='block')?'none':'block';});
-});
-// Scroll fade-in
-const fadeIns=document.querySelectorAll('.fade-in');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('show');}
-  });
-},{threshold:0.2});
-fadeIns.forEach(el=>observer.observe(el));
-// Timeline animación
-const timelineItems=document.querySelectorAll('.timeline-item');
-const timelineObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('show');}
-  });
-},{threshold:0.3});
-timelineItems.forEach(item=>timelineObserver.observe(item));
-// Simulador
-function calcularGanancia(){
-  const monto=parseFloat(document.getElementById('monto').value);
-  if(!monto || monto<500000){alert('Ingrese un monto mínimo de $500.000');return;}
-  const pago=monto*0.10;
-  document.getElementById('resultado').innerText=`Retorno proyectado: $${(monto + pago).toLocaleString()} COP`;
-  const porcentaje=Math.min((monto/5000000)*100,100);
-  const bar=document.getElementById('bar');
-  bar.style.width=porcentaje+'%';
-  bar.innerText=bar.style.width;
-}
-// Testimonios slider
-let idx=0;
-const track=document.getElementById('testimonialTrack');
-const total=track.children.length;
-setInterval(()=>{
-  idx=(idx+1)%total;
-  track.style.transform=`translateX(-${idx*100}%)`;
-},5000);
-</script>
-
-</body>
+    // FAQ acordeón
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script></body>
 </html>
