@@ -3,669 +3,1652 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porkinvest - Inversiones Inteligentes</title>
+    <title>PorkInvest - Inversión Porcina Premium</title>
+    <meta name="description" content="Invierte en porcicultura de alto rendimiento con rentabilidad del 10% semestral respaldada por genética Pietrain">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== VARIABLES Y RESET ===== */
         :root {
-            --primary: #2c3e50;
-            --secondary: #e67e22;
-            --accent: #3498db;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --danger: #e74c3c;
+            --bg: #0f172a;
+            --panel: #111827;
+            --card: #1f2937;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #22c55e;
+            --accent-2: #facc15;
+            --ring: rgba(34, 197, 94, 0.35);
+            --maxw: 1200px;
         }
-        
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
+
+        html, body {
+            height: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
         }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        
-        /* Header */
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin-inline: auto;
+            padding: 0 1.25rem;
+        }
+
+        /* ===== NAVEGACIÓN ===== */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.92);
+            border-bottom: 1px solid rgba(250, 204, 21, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
-        
-        .header-content {
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .links a {
+            padding: 0.6rem 1rem;
+            border-radius: 0.6rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            background: rgba(34, 197, 94, 0.1);
+            transform: translateY(-2px);
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-btn span {
+            width: 26px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #14532d 100%);
+            isolation: isolate;
+            padding: 2rem 0;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -30%;
+            background: radial-gradient(60% 60% at 30% 40%, rgba(34, 197, 94, 0.25), transparent 60%),
+                        radial-gradient(50% 50% at 80% 20%, rgba(250, 204, 21, 0.22), transparent 60%),
+                        radial-gradient(40% 40% at 70% 80%, rgba(34, 197, 94, 0.18), transparent 70%);
+            animation: float 18s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-12px) rotate(2deg) scale(1.03); }
+        }
+
+        .hero-wrap {
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 8rem 0 6rem;
+        }
+
+        .kicker {
+            color: var(--accent-2);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 720px;
+            margin-inline: auto;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            line-height: 1.6;
+        }
+
+        .cta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent), #16a34a);
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 0.8rem;
+            padding: 1rem 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 0 0 0 var(--ring);
+            transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-sec {
+            background: transparent;
+            color: var(--accent-2);
+            border: 2px solid rgba(250, 204, 21, 0.6);
+        }
+
+        .btn-sec:hover {
+            background: rgba(250, 204, 21, 0.1);
+            box-shadow: 0 10px 25px rgba(250, 204, 21, 0.2);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .muted {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ===== CARDS ===== */
+        .grid {
+            display: grid;
+            gap: 1.8rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== TWO COLUMN LAYOUT ===== */
+        .twocol {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-member {
+            text-align: center;
+        }
+
+        .team-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--accent-2));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .team-role {
+            color: var(--accent-2);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== FARM SECTION ===== */
+        #farm-map {
+            height: 400px;
+            width: 100%;
+            border-radius: 1.2rem;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cost-breakdown {
+            margin-top: 2rem;
+        }
+
+        .cost-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.1);
+            transition: background 0.3s ease;
         }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
+
+        .cost-item:hover {
+            background: rgba(34, 197, 94, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
         }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #d35400;
-            transform: translateY(-2px);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        /* Features */
-        .features {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            color: #777;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        /* Investment Plans */
-        .investment-plans {
-            background-color: #f1f8ff;
-            padding: 5rem 0;
-        }
-        
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .plan-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-        
-        .plan-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .plan-header {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-        }
-        
-        .plan-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-        }
-        
-        .plan-features {
-            padding: 2rem;
-            list-style: none;
-        }
-        
-        .plan-features li {
-            padding: 0.7rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .plan-button {
-            padding: 1.5rem;
-            border-top: 1px solid #eee;
-        }
-        
-        /* Testimonials */
+
+        /* ===== TESTIMONIALS ===== */
         .testimonials {
-            padding: 5rem 0;
+            margin: 5rem 0;
         }
-        
-        .testimonials-grid {
+
+        .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-        
+
         .testimonial-card {
-            background: white;
-            border-radius: 8px;
+            background: linear-gradient(145deg, var(--card), #192742);
+            border-radius: 1.2rem;
             padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1.5rem;
-            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent-2);
         }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin-right: 1rem;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #777;
-        }
-        
-        .author-info h4 {
-            color: var(--primary);
-        }
-        
-        .author-info p {
-            color: #777;
-            font-size: 0.9rem;
-        }
-        
-        /* FAQ */
-        .faq {
-            background-color: #f1f8ff;
-            padding: 5rem 0;
-        }
-        
-        .faq-item {
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .faq-question {
-            padding: 1.5rem;
             font-weight: 600;
+            color: var(--accent-2);
+        }
+
+        /* ===== SIMULATOR ===== */
+        .simu {
+            background: var(--panel);
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .field {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            max-width: 300px;
+            background: #0b1221;
+            color: var(--text);
+            border: 1px solid rgba(250, 204, 21, 0.2);
+            border-radius: 0.8rem;
+            padding: 0.8rem 1rem;
+            outline: none;
+            font-size: 1.1rem;
+        }
+
+        input[type="number"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent);
+            height: 8px;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+
+        .kpi {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .kpi .tile {
+            background: linear-gradient(145deg, #0b1221, #0a162c);
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .kpi .tile b {
+            display: block;
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+            color: var(--accent-2);
+        }
+
+        .bar {
+            height: 16px;
+            background: #0b1221;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .bar > span {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), #86efac);
+            transition: width 0.7s ease;
+        }
+
+        /* ===== FAQ ===== */
+        details {
+            background: var(--panel);
+            border: 1px solid rgba(250, 204, 21, 极.1);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            background: rgba(34, 197, 94, 0.05);
+            border-color: var(--accent);
+        }
+
+        details + details {
+            margin-top: 0.8rem;
+        }
+
+        summary {
             cursor: pointer;
+            font-weight: 700;
+            color: #f3f4f6;
+            font-size: 1.1rem;
+        }
+
+        details p {
+            color: var(--muted);
+            padding: 0.8rem 0.2rem 0.2rem;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            background: #0b1221;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(250, 204, 21, 0.1);
+            padding: 3rem 0;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            color: #555;
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
         }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 3rem 0 1.5rem;
+
+        .footer-links a {
+            transition: color 极.3s ease;
         }
-        
-        .footer-content {
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(145deg, var(--card), #192742);
+            border-radius: 1.2rem;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== NEW STYLES FOR IMPROVEMENTS ===== */
+        
+        /* Comparador educativo */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--card);
+            border-radius: 1rem;
+            overflow: hidden;
         }
         
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(250, 204, 21, 0.1);
         }
         
-        .footer-column ul {
-            list-style: none;
+        .comparison-table th {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--accent);
         }
         
-        .footer-column ul li {
-            margin-bottom: 0.7rem;
+        .comparison-table tr:nth-child(even) {
+            background: rgba(15, 23, 42, 0.3);
         }
         
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
+        .comparison-table .highlight {
+            background: rgba(250, 204, 21, 0.1);
+            font-weight: 700;
+            color: var(--accent-2);
         }
         
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .social-links {
+        /* Simulador de reinversión compuesta */
+        .compound-controls {
             display: flex;
             gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
         }
         
-        .social-links a {
-            display: inline-flex;
+        .compound-control {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .compound-results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 1rem;
+        }
+        
+        .compound-chart {
+            height: 200px;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: rgba(15, 23, 42, 0.3);
+            border-radius: 0.8rem;
+        }
+        
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--accent), #16a34a);
+            border-radius: 0.4rem 0.4rem 0 0;
+            position: relative;
+            min-width: 20px;
+        }
+        
+        .chart-bar span {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+        
+        /* Historias de éxito */
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .story-card {
+            background: linear-gradient(145deg, var(--card), #192742);
+            border-radius: 1.2rem;
+            padding: 2rem;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--accent-2));
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            font-size: 1.5rem;
             color: white;
-            text-decoration: none;
-            transition: all 0.3s;
         }
         
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
+        .story-growth {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 0.8rem;
             text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+        /* CTA estratégicos */
+        .section-cta {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #14532d 100%);
+            border-radius: 1.2rem;
+            border: 1px solid rgba(250, 204, 21, 0.1);
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 1000px) {
+            .twocol {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
             }
             
-            nav ul {
-                margin-top: 1rem;
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                right: 1rem;
+                background: var(--panel);
+                border: 1px solid rgba(250, 204, 21, 0.1);
+                border-radius: 1rem;
+                padding: 1rem;
+                width: min(92vw, 320px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                backdrop-filter: blur(10px);
+            }
+            
+            .links.open {
+                display: flex;
+        flex-direction: column;
+            }
+            
+            .menu-btn {
+                display: flex;
+            }
+            
+            .menu-btn.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .menu-btn.open span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-btn.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .compound-controls {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .footer-links {
                 flex-wrap: wrap;
                 justify-content: center;
             }
             
-            nav ul li {
-                margin: 0.5rem;
+            .kpi {
+                grid-template-columns: 1fr;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .section-cta {
+                padding: 1.5rem;
+                margin: 2rem 0;
             }
             
-            .hero p {
-                font-size: 1rem;
+            .section-cta h3 {
+                font-size: 1.4rem;
             }
+            
+            /* Ajustes específicos para móviles */
+            .hero-wrap {
+                padding: 6rem 0 4rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .testimonials {
+                margin: 3rem 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .comparison-table {
+                font-size: 0.8rem;
+            }
+            
+            .comparison-table th, .comparison-table td {
+                padding: 0.8rem 0.5rem;
+            }
+            
+            .section-cta {
+                padding: 1.2rem;
+                margin: 1.5rem 0;
+            }
+            
+            .section-cta h3 {
+                font-size: 1.2rem;
+            }
+            
+            .section-cta p {
+                font-size: 0.95rem;
+            }
+            
+            /* Ajustes adicionales para móviles pequeños */
+            .twocol {
+                gap: 1.5rem;
+            }
+            
+            .team-img {
+                width: 140px;
+                height: 140px;
+                font-size: 2.8rem;
+            }
+            
+            #farm-map {
+                height: 300px;
+            }
+            
+            .simu {
+                padding: 1.5rem;
+            }
+            
+            .compound-control {
+                min-width: 100%;
+            }
+        }
+        
+        /* Optimizaciones de rendimiento */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- ========= NAVEGACIÓN ========= -->
     <header>
-        <div class="container header-content">
-            <a href="#" class="logo">Pork<span>Invest</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Planes</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
+        <div class="container nav">
+            <div class="brand">PorkInvest</div>
+            <nav class="links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#sobre">Sobre Nosotros</a>
+                <a href="#granja">Nuestra Granja</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#modelo">Modelo</a>
+                <a href="#simulador">Simulador</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto">Contacto</a>
             </nav>
-            <a href="#" class="btn">Invertir Ahora</a>
+            <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Invierte de forma inteligente</h1>
-            <p>Obtén rendimientos consistentes con nuestros planes de inversión diseñados para maximizar tus ganancias y minimizar riesgos.</p>
-            <a href="#" class="btn">Comenzar ahora</a>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>¿Por qué elegirnos?</h2>
-                <p>Ofrecemos las mejores condiciones para que tu dinero trabaje para ti</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Inversiones Seguras</h3>
-                    <p>Nuestras estrategias están diseñadas para proteger tu capital mientras generas rendimientos.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Altos Rendimientos</h3>
-                    <p>Disfruta de rendimientos competitivos que superan ampliamente las opciones tradicionales.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>Retiros Rápidos</h3>
-                    <p>Accede a tu dinero cuando lo necesites con procesamiento de retiros en menos de 24 horas.</p>
-                </div>
+    <!-- ========= HERO SECTION ========= -->
+    <section class="hero" id="inicio" aria-label="Sección principal">
+        <div class="container hero-wrap">
+            <div class="kicker">Inversión Premium en Porcicultura</div>
+            <h1>Rentabilidad del <span style="color:var(--accent-2)">10% semestral</span> con respaldo en activos reales</h1>
+            <p>Conecta tu capital con la porcicultura de alta gama en Colombia. Modelo transparente, trazabilidad completa y impacto social real. Tu dinero trabaja en activos tangibles con genética superior.</p>
+            <div class="cta">
+                <a class="btn" href="#simulador">Simular inversión</a>
+                <a class="btn btn-sec" href="https://wa.me/573002333356" target="_blank" rel="noopener">WhatsApp Inmediato</a>
             </div>
         </div>
     </section>
 
-    <!-- Investment Plans -->
-    <section class="investment-plans">
+    <!-- ========= ESTADÍSTICAS ========= -->
+    <section>
         <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Planes de Inversión</h2>
-                <p>Elige el plan que mejor se adapte a tus objetivos financieros</p>
-            </div>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Plan Básico</h3>
-                        <div class="plan-price">5% mensual</div>
-                        <p>Inversión mínima: $100</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li>Duración: 6 meses</li>
-                        <li>Retiros diarios</li>
-                        <li>Soporte prioritario</li>
-                        <li>Capital garantizado</li>
-                    </ul>
-                    <div class="plan-button">
-                        <a href="#" class="btn">Seleccionar Plan</a>
-                    </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">10%</div>
+                    <div class="stat-label">Rendimiento Semestral</div>
                 </div>
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Plan Premium</h3>
-                        <div class="plan-price">8% mensual</div>
-                        <p>Inversión mínima: $500</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li>Duración: 12 meses</li>
-                        <li>Retiros inmediatos</li>
-                        <li>Soporte 24/7</li>
-                        <li>Capital garantizado</li>
-                    </ul>
-                    <div class="plan-button">
-                        <a href="#" class="btn">Seleccionar Plan</a>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Respaldo en Activos</div>
                 </div>
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Plan VIP</h3>
-                        <div class="plan-price">12% mensual</div>
-                        <p>Inversión mínima: $1000</p>
-                    </div>
-                    <ul class="plan-features">
-                        <li>Duración: 24 meses</li>
-                        <li>Retiros instantáneos</li>
-                        <li>Asesor personal</li>
-                        <li>Capital garantizado</li>
-                    </ul>
-                    <div class="plan-button">
-                        <a href="#" class="btn">Seleccionar Plan</a>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-number">700K</div>
+                    <div class="stat-label">Costo Controlado Por Cerdo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0%</div>
+                    <div class="stat-label">Comisiones Ocultas</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Opiniones de nuestros inversionistas</h2>
-                <p>Descubre qué dicen quienes ya confían en nosotros</p>
+    <!-- ========= COMPARADOR EDUCATIVO ========= -->
+    <section>
+        <div class="container reveal">
+            <h2 class="section-title">PorkInvest vs. Inversiones Tradicionales</h2>
+            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Compara el rendimiento de tu inversión con otras alternativas del mercado</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>PorkInvest</th>
+                        <th>CDT Bancario</th>
+                        <th>Fondos de Inversión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rentabilidad Anual</td>
+                        <td class="highlight">20%</td>
+                        <td>8-12%</td>
+                        <td>10-15%</td>
+                    </tr>
+                    <tr>
+                        <td>Periodo de Liquidación</td>
+                        <td class="highlight">Semestral</td>
+                        <td>Mensual/Trimestral</td>
+                        <td>Trimestral/Anual</td>
+                    </tr>
+                    <tr>
+                        <td>Respaldo Tangible</td>
+                        <td class="highlight">Activos Físicos</td>
+                        <td>Garantía Bancaria</td>
+                        <td>Valores en Cartera</td>
+                    </tr>
+                    <tr>
+                        <td>Transparencia</td>
+                        <td class="highlight">Trazabilidad Completa</td>
+                        <td>Estado de Cuenta</td>
+                        <td>Reportes Periódicos</td>
+                    </tr>
+                    <tr>
+                        <td>Impacto Social</td>
+                        <td class="highlight">Alto</td>
+                        <td>Nulo</td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td>Monto Mínimo</td>
+                        <td class="highlight">$500.000 COP</td>
+                        <td>$1.000.000 COP</td>
+                        <td>$2.000.000 COP</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="section-cta">
+                <h3>¿Listo para obtener mejores rendimientos?</h3>
+                <p style="margin: 1rem 0;">Invierte en porcicultura premium con rentabilidad del 10% semestral</p>
+                <a class="btn" href="#simulador">Simular Inversión</a>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Llevo 8 meses invirtiendo con PorkInvest y los rendimientos han sido consistentes. Los retiros siempre son rápidos y sin problemas."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MJ</div>
-                        <div class="author-info">
-                            <h4>Miguel Juárez</h4>
-                            <p>Inversionista desde 2022</p>
+        </div>
+    </section>
+     <!-- ========= BENEFICIOS ========= -->
+    <section id="beneficios">
+        <div class="container reveal">
+            <h2 class="section-title">Ventajas Exclusivas PorkInvest</h2>
+            <p class="muted" style="margin-bottom:2rem; text-align: center;">Diseñado para inversionistas exigentes que buscan equilibrio entre rentabilidad premium y seguridad tangible.</p>
+            <div class="grid grid-3">
+                <article class="card">
+                    <h3>💰 10% cada 6 meses</h3>
+                    <p class="muted">Retorno fijo semestral (20% anual). Previsibilidad absoluta con pagos puntuales sin sorpresas.</p>
+                </article>
+                <article class="card">
+                    <h3>🐖 Genética Pietrain Premium</h3>
+                    <p class="muted">Trabajamos exclusivamente con raza superior que garantiza mayor rendimiento y valor comercial.</p>
+                </article>
+                <article class="card">
+                    <h3>🌱 Impacto con Propósito</h3>
+                    <p class="muted">Generamos empleo rural digno, bienestar animal certificado y desarrollo local sostenible.</p>
+                </article>
+            </div>
+            
+            <div class="section-cta">
+                <h3>¿Te interesa conocer más beneficios?</h3>
+                <a class="btn" href="#contacto">Solicitar Asesoría</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= SOBRE NOSOTROS ========= -->
+    <section id="sobre">
+        <div class="container reveal">
+            <h2 class="section-title">El Futuro de la Inversión Agropecuaria</h2>
+            <div class="twocol">
+                <div>
+                    <p class="muted" style="margin-bottom:1.2rem">
+                        En <strong style="color:var(--accent)">PorkInvest</strong> revolucionamos la inversión agropecuaria combinando tradición porcina con tecnología financiera de vanguardia. Transformamos la porcicultura en una plataforma de investión transparente, medible y de alto impacto.
+                    </p>
+                    <p class="muted">
+                        Nuestro equipo multidisciplinario integra décadas de experiencia en producción porcina, administración de agronegocios y estrategias de inversión institucional para ofrecerte confianza y crecimiento sustentable.
+                    </p>
+                    <div class="grid grid-2" style="margin-top:2rem">
+                        <article class="card">
+                            <h3>Misión</h3>
+                            <p class="muted">Democratizar la inversión agropecuaria con un modelo rentable, accesible y regenerativo que transforme el campo colombiano.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Visión 2030</h3>
+                            <p class="muted">Liderar la transformación digital del sector porcícola en LATAM y expandir el modelo a otras verticales del agronegocio de alto valor.</p>
+                        </article>
+                    </div>
+                </div>
+                <aside>
+                    <div class="card">
+                        <h3>Valores Corporativos</h3>
+                        <ul class="muted" style="margin-top:1rem; padding-left:1.2rem; display:grid; gap:.5rem;">
+                            <li><strong>Transparencia Radical:</strong> Datos verificables en tiempo real y reportes periódicos detallados.</li>
+                            <li><strong>Innovación Disruptiva:</strong> Tecnología blockchain para trazabilidad total y conexión campo-finanzas.</li>
+                            <li><strong>Sostenibilidad Regenerativa:</strong> Prácticas responsables, bienestar animal certificado y huella de carbono positiva.</li>
+                            <li><strong>Impacto Exponential:</strong> Empleo rural de calidad, desarrollo comunitario y seguridad alimentaria nacional.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Equipo -->
+            <div style="margin-top: 4rem;">
+                <h3 class="section-title">Liderazgo de Clase Mundial</h3>
+                <div class="grid grid-2">
+                    <div class="team-member card">
+                        <div class="team-img">👨‍💼</div>
+                        <h4>Yercisten Moreno</h4>
+                        <div class="team-role">CEO & Fundador</div>
+                        <p class="muted">Visionario con más de 12 años de experiencia en porcicultura de alta gama y gestión de agronegocios. Ex-consultor de transformación digital para multinacionales del sector alimenticio. Su pasión es conectar el campo colombiano con oportunidades de inversión globales mediante tecnología de punta.</p>
+                    </div>
+                    <div class="team-member card">
+                        <div class="team-img">👨‍🌾</div>
+                        <h4>Equipo de Excelencia Operativa</h4>
+                        <div class="team-role">Operaciones & Bienestar Animal</div>
+                        <p class="muted">Equipo multidisciplinario de profesionales locales con certificaciones internacionales en producción porcina sostenible, genética superior y bienestar animal. Garantizan los más altos estándares de calidad y trazabilidad en cada etapa del proceso productivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= GRANJA ========= -->
+    <section id="granja" style="background: var(--panel);">
+        <div class="container reveal">
+            <h2 class="section-title">Operación de Excelencia</h2>
+            <div class="twocol">
+                <div>
+                    <p class="muted">Nuestra operación de clase mundial está estratégicamente ubicada en <strong>Santa Rosa del Sur, Bolívar</strong>, región bioclimáticamente ideal para la porcicultura premium. Contamos con instalaciones de última generación y protocolos de bioseguridad nivel EU.</p>
+                    
+                    <h3 style="margin: 2rem 0 1.2rem;">Especialización en Raza Pietrain Elite</h3>
+                    <p class="muted">Trabajamos exclusivamente con genética <strong>Pietrain</strong>, reconocida mundialmente por su excelente conformación de canal, alto porcentaje de magro y eficiencia alimenticia superior. Esta raza premium nos permite garantizar:</p>
+                    <ul class="muted" style="margin-top:.8rem; padding-left:1.2rem; display:grid; gap:.5rem;">
+                        <li>Rendimientos superiores al 80% en canal</li>
+                        <li>Carne premium para mercados exigentes y exportación</li>
+                        <li>Mayor valor comercial y margen operativo</li>
+                        <li>Eficiencia alimenticia optimizada (menor costo por kilo)</li>
+                    </ul>
+
+                    <h3 style="margin: 2rem 0 1.2rem;">Estructura de Costos Controlados</h3>
+                    <p class="muted">Hemos revolucionado la eficiencia operativa manteniendo un costo máximo de <strong>$700.000 por cerdo</strong>, lo que nos permite garantizar la rentabilidad prometida:</p>
+                    <div class="cost-breakdown">
+                        <div class="cost-item">
+                            <span class="muted">Alimentación Premium</span>
+                            <span>60% - $420.000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="muted">Salud y Bioseguridad</span>
+                            <span>10% - $70.000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="muted">Mano de Obra Especializada</span>
+                            <span>15% - $105.000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="muted">Logística y Tecnología</span>
+                            <span>10% - $极.000</span>
+                        </div>
+                        <div class="cost-item">
+                            <span class="muted">Innovación e I+D</span>
+                            <span>5% - $35.000</span>
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div id="farm-map"></div>
+                    <p class="muted" style="text-align: center; margin-top: 0.8rem;">Ubicación estratégica: Santa Rosa del Sur, Bolívar, Colombia</p>
+                    
+                    <div class="card" style="margin-top: 2rem;">
+                        <h3>Compromiso con el Bienestar Animal</h3>
+                        <p class="muted">Implementamos prácticas que superan los estándares internacionales más exigentes:</p>
+                        <ul class="muted" style="margin-top:.8rem; padding-left:1.2rem; display:grid; gap:.5rem;">
+                            <li>Espacios amplios con enriquecimiento ambiental</li>
+                            <li>Control veterinario 24/7 con telemedicina</li>
+                            <li>Alimentación balanceada sin antibióticos promotores</li>
+                            <li>Manejo ético certificado por terceros independientes</li>
+                            <li>Trazabilidad blockchain desde nacimiento hasta venta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-cta">
+                <h3>¿Quieres conocer más sobre nuestra operación?</h3>
+                <a class="btn" href="#contacto">Agendar Visita Virtual</a>
+            </div>
+        </div>
+    </section>
+      <!-- ========= TESTIMONIOS ========= -->
+    <section id="testimonios" class="testimonials">
+        <div class="container reveal">
+            <h2 class="section-title">Confianza de Inversionistas</h2>
+            <p class="muted" style="text-align: center; margin-bottom: 3rem;">La experiencia de quienes ya invirtieron en nuestro modelo de excelencia</p>
+            
+            <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Empecé con el plan básico y ahora tengo el VIP. La escalabilidad de las inversiones es real y el soporte siempre está disponible para ayudar."</p>
+                    <div class="testimonial-text">
+                        "Invertí $5 millones hace un año y he recibido mis rendimientos puntualmente cada 6 meses. La transparencia del proceso y la calidad de la información me dan total confianza para seguir reinvirtiendo."
+                    </div>
                     <div class="testimonial-author">
-                        <div class="author-avatar">CR</div>
-                        <div class="author-info">
-                            <h4>Carolina Reyes</h4>
-                            <p>Inversionista VIP</p>
+                        ⭐⭐⭐⭐⭐ Carlos Rodríguez, Inversionista desde 2024
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Como ingeniera agrónoma, valoro especialmente el enfoque técnico y profesional de PorkInvest. La genética Pietrain y los protocolos de bioseguridad están a nivel de las mejores operaciones que he visto."
+                    </div>
+                    <div class="testimonial-author">
+                        ⭐⭐⭐⭐⭐ Dra. María González, PhD en Producción Animal
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Después de malas experiencias con otras inversiones, PorkInvest ha sido un respiro de profesionalismo. Los reportes detallados y la comunicación constante me hacen sentir mi dinero 100% seguro."
+                    </div>
+                    <div class="testimonial-author">
+                        ⭐⭐⭐⭐⭐ Jorge Silva, Inversionista Recurrente
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Historias de éxito extendidas -->
+            <div style="margin-top: 4rem;">
+                <h3 class="section-title">Historias de Éxito</h3>
+                <div class="success-stories">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">JM</div>
+                            <div>
+                                <h4>Juan Manuel Restrepo</h4>
+                                <p class="muted">Inversionista desde 2023</p>
+                            </div>
+                        </div>
+                        <p class="muted">"Comencé con $2 millones y he reinvertido mis ganancias por tres ciclos consecutivos. Hoy mi capital inicial se ha multiplicado por 1.7 gracias al interés compuesto."</p>
+                        <div class="story-growth">
+                            <p><strong>Crecimiento de inversión:</strong> $2.000.000 → $3.400.000</p>
+                            <p><strong>Tiempo:</strong> 18 meses</p>
+                        </div>
+                    </div>
+                    
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-avatar">EC</div>
+                            <div>
+                                <h4>Elena Cortés</h4>
+                                <p class="muted">Jubilada, inversionista</p>
+                            </div>
+                        </div>
+                        <p class="muted">"Buscaba una inversión estable para complementar mi pensión. PorkInvest me da mayor rentabilidad que cualquier CDT y me permite dormir tranquila sabiendo que mi dinero está respaldado por activos reales."</p>
+                        <div class="story-growth">
+                            <p><strong>Rentabilidad anual:</strong> 20% fijo</p>
+                            <p><strong>Experiencia:</strong> 2 años invirtiendo</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Comparado con otros sitios de inversión, PorkInvest ofrece los mejores rendimientos y la interfaz más fácil de usar. ¡Totalmente recomendado!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AR</div>
-                        <div class="author-info">
-                            <h4>Andrés Ramírez</h4>
-                            <p>Inversionista desde 2021</p>
-                        </div>
+            </div>
+            
+            <div class="section-cta">
+                <h3>¿Listo para crear tu propia historia de éxito?</h3>
+                <a class="btn" href="#simulador">Comenzar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= MODELO ========= -->
+    <section id="modelo">
+        <div class="container reveal">
+            <h2 class="section-title">Innovación en Agronegocios</h2>
+            <div class="grid grid-3" style="margin-bottom:2rem">
+                <article class="card"><h3>El Problema Traditional</h3><p class="muted">Productores sin acceso a capital competitivo y ahorradores sin opciones confiables más allá del sistema financiero tradicional.</p></article>
+                <article class="card"><h3>Nuestra Solución</h3><p class="muted">Invertir en porcicultura premium con retorno fijo del <b>10% semestral</b>, gestión profesional y trazabilidad total.</p></article>
+                <article class="card"><h3>Impacto Generado</h3><p class="muted">Rentabilidad superior para inversionistas y desarrollo regenerativo para el campo colombiano.</p></article>
+            </div>
+
+            <h3 style="margin:1.5rem 0 1rem; text-align: center;">Mercado en Crecimiento</h3>
+            <p class="muted" style="text-align: center;">Demanda creciente de proteína premium en Colombia (+8% anual) y potencial de exportación a mercados internacionales.</p>
+
+            <h3 style="margin:2.5rem 0 1.2rem; text-align: center;">Cómo Funciona: Simplicidad y Transparencia</h3>
+            <div class="grid grid-3">
+                <article class="card"><h4>1) Inviertes</h4><p class="极">Desde <b>$500.000 COP</b> hasta el monto que desees. Sin complicaciones.</p></article>
+                <article class极card"><h4>2) Producimos</h4><p class="muted">Capital → animales de genética superior + insumos premium + operación de clase mundial.</p></article>
+                <article class="card"><h4>3) Recibes</h4><p class="muted">Retorno fijo del <b>10% por semestre</b>. Puedes retirar o reinvertir automáticamente.</p></article>
+            </div>
+            
+            <div class="section-cta">
+                <h3>¿Quieres conocer todos los detalles de nuestro modelo?</h3>
+                <a class="btn" href="#contacto">Descargar Dossier Completo</a>
+            </div>
+        </极>
+    </section>
+
+    <!-- ========= SIMULADOR ========= -->
+    <section id="simulador" aria-label="Simulador de inversión">
+        <div class="container reveal">
+            <h2 class="section-title">Simula tu Inversión</h2>
+            <p class="muted" style="text-align: center;">Mínimo de inversión: <b>$500.000 COP</极>. Rentabilidad: <b>10% en 6 meses</b> (equivalente a 20% anual).</p>
+
+            <div class="simu" style="margin-top:2rem">
+                <div class="field">
+                    <label for="monto" class="form-label">Monto a Invertir (COP):</label>
+                    <input type="number" id="monto" min="500000" step="50000" value="2000000" inputmode="numeric" />
+                </div>
+                <div class="field">
+                    <input type="range" id极slider" min="500000" max="50000000" step="50000" value="2000000" />
+                </div>
+                <p class="note">Desliza para ajustar tu inversión. Todos los cálculos son referenciales y proyectados.</p>
+
+                <div class="kpi">
+                    <div class="tile">
+                        <small class="muted">Capital Invertido</small>
+                        <b id="kpi-capital">$2.000.000</b>
                     </div>
+                    <div class="tile">
+                        <small class="muted">Utilidad a 6 meses (10%)</small>
+                        <b id="kpi-semestre">+$200.000</b>
+                    </div>
+                    <div class="tile">
+                        <small class="muted">Utilidad a 12 meses (20%)</small>
+                        <b id="kpi-anual">+$400.000</b>
+                    </div>
+                </div>
+
+                <div class="bar" aria-hidden="true"><span id="barfill"></span></div>
+
+                <!-- Simulador de reinversión compuesta -->
+                <h3 style="margin: 2.5rem 0 1rem;">Simulador de Reinversión Compuesta</h3>
+                <p class="muted">Calcula cómo crece tu capital si reinviertes tus ganancias cada semestre:</p>
+                
+                <div class="compound-controls">
+                    <div class="compound-control">
+                        <label for="compoundYears" class="form-label">Período de inversión (años):</label>
+                        <input type="number" id="compoundYears" min="1" max="10" value="3" class="form-input">
+                    </div>
+                    <div class="compound-control">
+                        <label for="compoundReinvest" class="form-label">¿Reinvertir ganancias?</label>
+                        <select id="compoundReinvest" class="form-input">
+                            <option value="yes">Sí, reinvertir todo</option>
+                            <option value="no">No, retirar ganancias</option>
+                            <option value="partial">Reinvertir parcialmente</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn" id="calculateCompound">Calcular Proyección</button>
+                
+                <div class="compound-results" id="compoundResults" style="display: none;">
+                    <h4>Proyección de tu inversión</h4>
+                    <p class="muted">Capital final estimado después de <span id="yearsResult">3</span> años: <b id="finalAmount">$3.200.000</b></p>
+                    <p class="muted">Ganancias totales proyectadas: <b id="totalEarnings">$1.200.000</b></p>
+                    
+                    <div class="compound-chart" id="compoundChart">
+                        <!-- Barras del gráfico se generarán con JavaScript -->
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content: center;">
+                    <a class="btn" href="https://wa.me/573002333356?text=Hola%20PorkInvest,%20quiero%20invertir%20$2.000.000%20COP%20en%20su%20modelo%20premium." target="_blank" rel="noopener" id="investBtn">Invertir Ahora</a>
+                    <a class="btn btn-sec" href="#faq">Preguntas Frecuentes</a>
+                    <a class="btn btn-sec" href="#contacto">Asesoría Personalizada</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Preguntas Frecuentes</h2>
-                <p>Resolvemos tus dudas sobre nuestros servicios</p>
+    <!-- ========= FAQ ========= -->
+    <section id="faq">
+        <div class="container reveal">
+            <h2 class="section-title">Transparencia Radical</h2>
+            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Respondemos todas tus preguntas con honestidad y datos concretos.</p>
+
+            <details>
+                <summary>¿Cuál es el monto mínimo de inversión?</summary>
+                <p>El monto mínimo es de <b>$500.000 COP</b>. Puedes aumentar tu posición con reinversiones automáticas cada ciclo o haciendo aportes adicionales.</p>
+            </details>
+            <details>
+                <summary>¿La rentabilidad del 10% semestral está garantizada?</summary>
+                <p>Sí, es un <b>retorno fijo contractual</b> (equivalente a <b>20% anual</b>). Está respaldado por nuestro modelo de eficiencia operativa, genética superior y control estricto de costos.</极>
+            </details>
+            <details>
+                <summary>¿Qué respaldo tangible tiene mi inversión?</summary>
+                <p>Tu capital se asigna directamente a <b>activos productivos específicos</b> (cerdos de raza Pietrain), con trazabilidad completa, pólizas de seguro y gestión profesional certificada.</p>
+            </details>
+            <details>
+                <summary>¿Puedo retirar mi dinero cuando quiera?</summary>
+                <p>El capital se compromete por <b>ciclos productivos de ~6 meses</b>. Al finalizar cada ciclo, puedes retirar utilidades y/o capital, o reinvertir automáticamente.</p>
+            </details>
+            <details>
+                <summary>¿Cómo garantizan el bienestar animal?</summary>
+                <p>Seguimos <b>protocolos que superan los estándares internacionales</b>: espacios amplios, alimentación premium, control veterinario 24/7 y manejo ético certificado.</p>
+            </details>
+            
+            <div class="section-cta">
+                <h3>¿Tienes más preguntas?</h3>
+                <a class="btn" href="#contacto">Contactar a un Asesor</a>
             </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Cómo puedo comenzar a invertir?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Regístrate en nuestra plataforma, elige un plan de inversión, realiza tu depósito y comienza a obtener rendimientos desde el primer día.</p>
-                    </div>
+        </div>
+    </section>
+
+    <!-- ========= CONTACTO ========= -->
+    <section id="contacto">
+        <div class="container reveal">
+            <h2 class="section-title">Inicia tu Inversión</h2>
+            <p class="muted" style="text-align: center;">¿Listo para comenzar o tienes preguntas específicas? Nuestro equipo de especialistas te acompañará.</p>
+            
+            <div class="twocol" style="margin-top: 3rem;">
+                <div class="card">
+                    <h极>Solicita Asesoría Personalizada</h3>
+                    <form id="contactForm" style="margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nombre completo *</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo electrónico *</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">WhatsApp (para contacto inmediato)</label>
+                            <input type="tel" id="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Tu mensaje o preguntas *</label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Solicitar Asesoría</button>
+                    </form>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Cuándo recibo mis ganancias?
-                        <span>+</span>
+                
+                <div>
+                    <div class="card">
+                        <h3>Contacto Directo</h3>
+                        <div style="margin-top: 1.5rem; display: grid; gap: 1.2rem;">
+                            <a class="btn" href="mailto:inversionporkinvest@gmail.com" style="text-align: center;">
+                                <span style="display: block;">📧 Email Oficial</span>
+                                <small>inversionporkinvest@gmail.com</small>
+                            </a>
+                            <a class="btn btn-sec" href="https://wa.me/573002333356" target="_blank" rel="noopener" style="text-align: center;">
+                                <span style="display: block;">💬 WhatsApp Priority</span>
+                                <small>+57 300 233 3356</small>
+                            </a>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>Las ganancias se acumulan diariamente y puedes retirarlas según el plan que elijas (diariamente, semanalmente o mensualmente).</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Es seguro invertir con PorkInvest?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Utilizamos tecnología de encriptación avanzada y seguimos estrictos protocolos de seguridad para proteger tus fondos y datos personales.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        ¿Puedo retirar mi inversión inicial?
-                        <span>+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, según el plan elegido, puedes retirar tu inversión inicial al finalizar el período contratado con las ganancias generadas.</p>
+                    
+                    <div class="card" style="margin-top: 2rem;">
+                        <h3>Horario de Atención</h3>
+                        <p class="muted" style="margin-top: 1rem;">
+                            <strong>Lunes a Viernes:</strong> 7:00 AM - 8:00 PM<br>
+                            <strong>Sábados:</strong> 9:00 AM - 4:00 PM<br>
+                            <strong>Domingos:</strong> Cerrado (operación animal)
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
+      <!-- ========= FOOTER ========= -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>PorkInvest</h3>
-                    <p>Plataforma de inversiones confiable con altos rendimientos y seguridad para tus fondos.</p>
+            <div class极footer-content">
+                <div>
+                    © 2025 PorkInvest · Rentabilidad 10% semestral · Inversión mínima $500.000 COP
                 </div>
-                <div class="footer-column">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Planes</a></li>
-                        <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="#">Términos y Condiciones</a></li>
-       <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Política de Cookies</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li>Email: info@porkinvest.com</li>
-                        <li>Teléfono: +1 (234) 567-8900</li>
-                        <li>
-                            <div class="social-links">
-                                <a href="#">FB</a>
-                                <a href="#">TW</a>
-                                <a href="#">IG</a>
-                                <a href="#">IN</a>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contacto">Contacto</a>
+                    <a href="mailto:inversionporkinvest@gmail.com">Email</a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 PorkInvest. Todos los derechos reservados.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="#inicio" style="color: var(--accent-2); font-weight: 500;">Volver arriba ↑</a>
             </div>
         </div>
     </footer>
 
+    <!-- ========= WHATSAPP BUTTON ========= -->
+    <a href="https://wa.me/573002333356" target="_blank" rel="noopener"
+       aria-label="Escríbenos por WhatsApp"
+       style="position:fixed; bottom:24px; right:24px; width:64px; height:64px; border-radius:50%;
+              background:#25D366; display:grid; place-items:center; color:#051b0f; font-size:28px;
+              box-shadow:0 12px 25px rgba(0,0,0,.4); z-index:60; transition: transform 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <span style="margin-top: 2px;">💬</span>
+    </a>
+
+    <!-- ========= SCRIPTS ========= -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Simple FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-                question.querySelector('span').textContent = answer.style.display === 'block' ? '-' : '+';
+        // Menu móvil
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn?.addEventListener('click', ()=> {
+            navLinks.classList.toggle('open');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuBtn.classList.remove('open');
             });
+        });
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+        },{threshold:.10});
+        revealEls.forEach(el=> io.observe(el));
+
+        // Simulador
+        const $ = (id)=> document.getElementById(id);
+        const fCOP = new Intl.NumberFormat('es-CO', { style:'currency', currency:'COP', maximumFractionDigits:0 });
+
+        const monto = $('monto');
+        const slider = $('slider');
+        const kCapital = $('kpi-capital');
+        const kSem = $('kpi-semestre');
+        const kAnual = $('kpi-anual');
+        const bar = $('barfill');
+        const investBtn = $('investBtn');
+
+        function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+        function update(val){
+            const base = clamp(Number(val)||0, 500000, 50000000);
+            monto.value = base;
+            slider.value = base;
+
+            const utilSem = Math.round(base * 0.10);
+            const utilAnual = Math.round(base * 0.20);
+
+            kCapital.textContent = fCOP.format(base);
+            kSem.textContent = '+' + fCOP.format(utilSem);
+            kAnual.textContent = '+' + fCOP.format(utilAnual);
+
+            const pct = Math.min(100, Math.round(utilSem / (base * 0.5) * 100));
+            bar.style.width = pct + '%';
+            
+            // Actualizar el enlace de WhatsApp con el monto actual
+            if (investBtn) {
+                investBtn.href = `https://wa.me/573002333356?text=Hola%20PorkInvest,%20quiero%20invertir%20${fCOP.format(base).replace(/\s/g, '%20')}%20COP%20en%20su%20modelo%20premium.`;
+            }
+        }
+
+        monto.addEventListener('input', (e)=> update(e.target.value));
+        slider.addEventListener('input', (e)=> update(e.target.value));
+        update(monto.value);
+
+        // Simulador de reinversión compuesta
+        const calculateCompound = $('calculateCompound');
+        const compoundResults = $('compoundResults');
+        const compoundChart = $('compoundChart');
+        const yearsResult = $('yearsResult');
+        const finalAmount = $('finalAmount');
+        const totalEarnings = $('totalEarnings');
+        
+        if (calculateCompound && compoundResults) {
+            calculateCompound.addEventListener('click', () => {
+                const initialAmount = Number(monto.value);
+                const years = Number($('compoundYears').value);
+                const reinvestOption = $('compoundReinvest').value;
+                
+                // Calcular proyección
+                let amounts = [];
+                let currentAmount = initialAmount;
+                
+                for (let i = 1; i <= years * 2; i++) {
+                    const earnings = currentAmount * 0.10;
+                    
+                    if (reinvestOption === 'yes') {
+                        currentAmount += earnings;
+                    } else if (reinvestOption === 'partial') {
+                        currentAmount += earnings * 0.5; // Reinvertir la mitad
+                    }
+                    // Si es 'no', currentAmount se mantiene igual
+                    
+                    amounts.push(currentAmount);
+                }
+                
+                // Mostrar resultados
+                yearsResult.textContent = years;
+                finalAmount.textContent = fCOP.format(currentAmount);
+                totalEarnings.textContent = fCOP.format(currentAmount - initialAmount);
+                
+                // Generar gráfico
+                compoundChart.innerHTML = '';
+                const maxAmount = Math.max(...amounts);
+                
+                amounts.forEach((amount, index) => {
+                    if (index % 2 === 0) { // Mostrar solo cada 6 meses (cada 2 periodos)
+                        const barHeight = (amount / maxAmount) * 100;
+                        const bar = document.createElement('div');
+                        bar.className = 'chart-bar';
+                        bar.style.height = `${barHeight}%`;
+                        
+                        const label = document.createElement极span');
+                        label.textContent = fCOP.format(amount);
+                        bar.appendChild(label);
+                        
+                        compoundChart.appendChild(bar);
+                    }
+                });
+                
+                compoundResults.style.display = 'block';
+            });
+        }
+
+        // Mapa
+        function initMap() {
+            const map = L.map('farm-map').setView([7.9644, -74.0544], 13);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{极}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            const pigIcon = L.divIcon({
+                html: '🐖',
+                className: 'pig-marker',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40]
+            });
+            
+            L.marker([7.9644, -74.0544], {icon: pigIcon})
+                .addTo(map)
+                .bindPopup('<strong>PorkInvest</strong><br>Santa Rosa del Sur, Bolívar<br>Centro de Excelencia Porcina')
+                .openPopup();
+        }
+
+        window.addEventListener('load', initMap);
+
+        // Formulario
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('¡Gracias por tu interés en PorkInvest! Nuestro equipo se contactará contigo pronto.');
+                contactForm.reset();
+            });
+        }
+
+        // Efecto hover WhatsApp
+        const whatsappBtn = document.querySelector('a[aria-label="Escríbenos por WhatsApp"]');
+        if (whatsappBtn) {
+            whatsappBtn.addEventListener('mouseenter', () => {
+                whatsappBtn.style.transform = 'scale(1.15)';
+            });
+            whatsappBtn.addEventListener('mouseleave', () => {
+                whatsappBtn.style.transform = 'scale(1)';
+            });
+        }
+        
+        // Lazy loading para imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback para navegadores que no soportan IntersectionObserver
+                lazyImages.forEach(img => {
+                    img.classList.add('loaded');
+                });
+            }
         });
     </script>
 </body>
