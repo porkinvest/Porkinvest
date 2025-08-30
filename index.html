@@ -568,59 +568,6 @@
 
         /* ===== NEW STYLES FOR IMPROVEMENTS ===== */
         
-        /* Dashboard para inversores */
-        .dashboard-section {
-            background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #14532d 100%);
-            border-radius: 1.2rem;
-            padding: 2rem;
-            margin: 3rem 0;
-            border: 1px solid rgba(250, 204, 21, 0.1);
-        }
-        
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .dashboard-card {
-            background: rgba(15, 23, 42, 0.7);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            border: 1px solid rgba(250, 204, 21, 0.1);
-        }
-        
-        .dashboard-card h4 {
-            color: var(--accent-2);
-            margin-bottom: 0.5rem;
-        }
-        
-        .dashboard-card p {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        .dashboard-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .dashboard-image {
-            border-radius: 0.8rem;
-            overflow: hidden;
-            height: 150px;
-            background: #1f2937;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-        }
-        
         /* Comparador educativo */
         .comparison-table {
             width: 100%;
@@ -736,71 +683,10 @@
         
         .story-growth {
             margin-top: 1rem;
-              padding: 1rem;
+            padding: 1rem;
             background: rgba(34, 197, 94, 0.1);
             border-radius: 0.8rem;
             text-align: center;
-        }
-        
-        /* Blog/Contenido educativo */
-        .blog-section {
-            margin: 4rem 0;
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .blog-card {
-            background: var(--card);
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 1px solid rgba(250, 204, 21, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .blog-image {
-            height: 160px;
-            background: #1f2937;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-        }
-        
-        .blog-content {
-            padding: 1.5rem;
-        }
-        
-        .blog-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .blog-card h3 {
-            margin-bottom: 0.8rem;
-        }
-        
-        .blog-card p {
-            color: var(--muted);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-        
-        .blog-link {
-            color: var(--accent-2);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
         
         /* CTA estratégicos */
@@ -811,41 +697,6 @@
             background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #14532d 100%);
             border-radius: 1.2rem;
             border: 1px solid rgba(250, 204, 21, 0.1);
-        }
-        
-        /* Login modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--panel);
-            border-radius: 1.2rem;
-            padding: 2rem;
-            width: 90%;
-            max-width: 450px;
-            border: 1px solid rgba(250, 204, 21, 0.1);
-            position: relative;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1.5rem;
-            cursor: pointer;
         }
         
         /* Responsive improvements */
@@ -884,7 +735,7 @@
             
             .links.open {
                 display: flex;
-                flex-direction: column;
+     flex-direction: column;
             }
             
             .menu-btn {
@@ -924,10 +775,6 @@
             }
             
             .kpi {
-                grid-template-columns: 1fr;
-            }
-            
-            .dashboard-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -972,7 +819,7 @@
     </style>
 </head>
 <body>
-     <!-- ========= NAVEGACIÓN ========= -->
+    <!-- ========= NAVEGACIÓN ========= -->
     <header>
         <div class="container nav">
             <div class="brand">PorkInvest</div>
@@ -984,11 +831,8 @@
                 <a href="#testimonios">Testimonios</a>
                 <a href="#modelo">Modelo</a>
                 <a href="#simulador">Simulador</a>
-                <a href="#dashboard">Dashboard</a>
-                <a href="#blog">Blog</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contacto">Contacto</a>
-                <a href="#" id="loginBtn">Acceso Inversores</a>
             </nav>
             <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
                 <span></span>
@@ -1034,8 +878,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ========= COMPARADOR EDUCATIVO ========= -->
+       <!-- ========= COMPARADOR EDUCATIVO ========= -->
     <section>
         <div class="container reveal">
             <h2 class="section-title">PorkInvest vs. Inversiones Tradicionales</h2>
@@ -1124,66 +967,6 @@
             </div>
         </div>
     </section>
-     <!-- ========= DASHBOARD PARA INVERSORES ========= -->
-    <section id="dashboard" style="background: var(--panel);">
-        <div class="container reveal">
-            <h2 class="section-title">Dashboard para Inversores</h2>
-            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Accede en tiempo real al estado de tu inversión (requiere autenticación)</p>
-            
-            <div class="dashboard-section">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3>Panel de Control de Inversiones</h3>
-                    <p class="muted">Monitorea el progreso de tus lotes en tiempo real</p>
-                    <button class="btn" id="showDemoBtn" style="margin-top: 1rem;">Ver Demo del Dashboard</button>
-                </div>
-                
-                <div id="demoDashboard" style="display: none;">
-                    <div class="dashboard-grid">
-                        <div class="dashboard-card">
-                            <h4>Inversión Total</h4>
-                            <p>$5.000.000</p>
-                        </div>
-                        <div class="dashboard-card">
-                            <h4>Rentabilidad Acumulada</h4>
-                            <p>$1.200.000</p>
-                        </div>
-                        <div class="dashboard-card">
-                            <h4>Próximo Pago</h4>
-                            <p>45 días</p>
-                        </div>
-                        <div class="dashboard-card">
-                            <h4>Animales Asignados</h4>
-                            <p>7 Cerdos</p>
-                        </div>
-                    </div>
-                    
-                    <h4 style="margin-top: 2rem;">Progreso del Lote Actual</h4>
-                    <div class="bar"><span style="width: 65%"></span></div>
-                    <p class="muted" style="text-align: center; margin-top: 0.5rem;">65% completado - 92 días restantes</p>
-                    
-                    <h4 style="margin-top: 2rem;">Galería del Lote</h4>
-                    <div class="dashboard-images">
-                        <div class="dashboard-image">
-                            <i class="fas fa-piggy-bank" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="dashboard-image">
-                            <i class="fas fa-piggy-bank" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="dashboard-image">
-                            <i class="fas fa-piggy-bank" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="dashboard-image">
-                            <i class="fas fa-piggy-bank" style="font-size: 2rem;"></i>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 2rem; text-align: center;">
-                        <a class="btn btn-sec" href="#contacto">Solicitar Acceso</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ========= SOBRE NOSOTROS ========= -->
     <section id="sobre">
@@ -1241,7 +1024,6 @@
             </div>
         </div>
     </section>
-
     <!-- ========= GRANJA ========= -->
     <section id="granja" style="background: var(--panel);">
         <div class="container reveal">
@@ -1386,12 +1168,13 @@
             </div>
         </div>
     </section>
-      <!-- ========= MODELO ========= -->
+
+    <!-- ========= MODELO ========= -->
     <section id="modelo">
         <div class="container reveal">
             <h2 class="section-title">Innovación en Agronegocios</h2>
             <div class="grid grid-3" style="margin-bottom:2rem">
-                <article class="card"><h3>El Problema Traditional</h3><p class="muted">Productores sin acceso a capital competitivo y ahorradores sin opciones confiables más allá del sistema financiero tradicional.</p></article>
+                <article class="card"><h3>El Problema Traditional</h3><p class="muted">Productores sin acceso à capital competitivo y ahorradores sin opciones confiables más allá del sistema financiero tradicional.</p></article>
                 <article class="card"><h3>Nuestra Solución</h3><p class="muted">Invertir en porcicultura premium con retorno fijo del <b>10% semestral</b>, gestión profesional y trazabilidad total.</p></article>
                 <article class="card"><h3>Impacto Generado</h3><p class="muted">Rentabilidad superior para inversionistas y desarrollo regenerativo para el campo colombiano.</p></article>
             </div>
@@ -1485,57 +1268,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ========= BLOG/CONTENIDO EDUCATIVO ========= -->
-    <section id="blog" style="background: var(--panel);">
-        <div class="container reveal">
-            <h2 class="section-title">Conocimiento Porcino Premium</h2>
-            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Artículos educativos sobre porcicultura, inversiones y sostenibilidad</p>
-            
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-seedling" style="font-size: 2.5rem;"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">15 Mayo, 2025</div>
-                        <h3>Ventajas de la Genética Pietrain en Inversiones Porcícolas</h3>
-                        <p>Descubre por qué la raza Pietrain ofrece mayor rentabilidad y mejores rendimientos para inversionistas exigentes.</p>
-                        <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-chart-line" style="font-size: 2.5rem;"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">2 Mayo, 2025</div>
-                        <h3>Inversiones Agropecuarias vs. Tradicionales: Análisis Comparativo</h3>
-                        <p>Estudio detallado de rendimientos, riesgos y oportunidades en el sector agropecuario colombiano.</p>
-                        <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-leaf" style="font-size: 2.5rem;"></i>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">24 Abril, 2025</div>
-                        <h3>Bienestar Animal y Rentabilidad: La Conexión Directa</h3>
-                        <p>Cómo nuestras prácticas de bienestar animal impactan positivamente en los resultados financieros.</p>
-                        <a href="#" class="blog-link">Leer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="#" class="btn">Ver Todos los Artículos</a>
-            </div>
-        </div>
-    </section>
-     <!-- ========= FAQ ========= -->
+      <!-- ========= FAQ ========= -->
     <section id="faq">
         <div class="container reveal">
             <h2 class="section-title">Transparencia Radical</h2>
@@ -1637,7 +1370,6 @@
                 <div class="footer-links">
                     <a href="#inicio">Inicio</a>
                     <a href="#faq">FAQ</a>
-                    <a href="#blog">Blog</a>
                     <a href="#contacto">Contacto</a>
                     <a href="mailto:inversionporkinvest@gmail.com">Email</a>
                 </div>
@@ -1647,6 +1379,7 @@
             </div>
         </div>
     </footer>
+
     <!-- ========= WHATSAPP BUTTON ========= -->
     <a href="https://wa.me/573002333356" target="_blank" rel="noopener"
        aria-label="Escríbenos por WhatsApp"
@@ -1656,34 +1389,6 @@
               onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <span style="margin-top: 2px;">💬</span>
     </a>
-
-    <!-- ========= LOGIN MODAL ========= -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <h2>Acceso para Inversores</h2>
-            <p class="muted" style="margin: 1rem 0;">Ingresa a tu dashboard para ver el estado de tu inversión en tiempo real</p>
-            
-            <form id="loginForm" style="margin-top: 1.5rem;">
-                <div class="form-group">
-                    <label for="loginEmail" class="form-label">Correo electrónico</label>
-                    <input type="email" id="loginEmail" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword" class="form-label">Contraseña</label>
-                    <input type="password" id="loginPassword" class="form-input" required>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Iniciar Sesión</button>
-            </form>
-            
-            <p class="muted" style="text-align: center; margin-top: 1.5rem;">
-                ¿Olvidaste tu contraseña? <a href="#contacto" style="color: var(--accent);">Contactarnos</a>
-            </p>
-            <p class="muted" style="text-align: center; margin-top: 0.5rem;">
-                ¿No tienes cuenta? <a href="#simulador" style="color: var(--accent);">Regístrate aquí</a>
-            </p>
-        </div>
-    </div>
 
     <!-- ========= SCRIPTS ========= -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1839,48 +1544,6 @@
                 e.preventDefault();
                 alert('¡Gracias por tu interés en PorkInvest! Nuestro equipo se contactará contigo pronto.');
                 contactForm.reset();
-            });
-        }
-
-        // Login modal
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const closeModal = document.getElementById('closeModal');
-        const loginForm = document.getElementById('loginForm');
-        
-        if (loginBtn && loginModal) {
-            loginBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                loginModal.style.display = 'flex';
-            });
-            
-            closeModal.addEventListener('click', () => {
-                loginModal.style.display = 'none';
-            });
-            
-            window.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    loginModal.style.display = 'none';
-                }
-            });
-            
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    alert('Funcionalidad de login en desarrollo. Pronto tendrás acceso a tu dashboard personalizado.');
-                    loginModal.style.display = 'none';
-                });
-            }
-        }
-        
-        // Dashboard demo
-        const showDemoBtn = document.getElementById('showDemoBtn');
-        const demoDashboard = document.getElementById('demoDashboard');
-        
-        if (showDemoBtn && demoDashboard) {
-            showDemoBtn.addEventListener('click', () => {
-                demoDashboard.style.display = demoDashboard.style.display === 'none' ? 'block' : 'none';
-                showDemoBtn.textContent = demoDashboard.style.display === 'none' ? 'Ver Demo del Dashboard' : 'Ocultar Demo';
             });
         }
 
