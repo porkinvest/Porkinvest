@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PorkInvest - Inversión Porcina Premium</title>
-    <meta name="description" content="Invierte en porcicultura de alto rendimiento con rentabilidad del 10% semestral respaldada por genética Pietrain">
+    <title>PorkInvest - Inversión Porcina Premium con Rentabilidad 10% Semestral</title>
+    <meta name="description" content="Invierte en porcicultura de alto rendimiento en Colombia. Rentabilidad del 10% semestral (20% anual) con respaldo en genética Pietrain y activos reales.">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <style>
         /* ===== VARIABLES Y RESET ===== */
@@ -42,6 +42,7 @@
         img {
             max-width: 100%;
             display: block;
+            border-radius: 1.2rem;
         }
 
         .container {
@@ -362,6 +363,16 @@
             color: var(--muted);
             line-height: 1.6;
         }
+        
+        .disclaimer-text {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px dashed rgba(250, 204, 21, 0.1);
+            border-radius: 0.8rem;
+        }
 
         /* ===== CARDS ===== */
         .grid {
@@ -644,6 +655,18 @@
             color: var(--muted);
             text-align: center;
         }
+        
+        .legal-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .legal-links a {
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-decoration: underline;
+        }
 
         .footer-content {
             display: flex;
@@ -836,6 +859,50 @@
         .story-content.active {
             display: block;
         }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent);
+            border-radius: 50%;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            border: 2px solid var(--accent);
+        }
+        
+        .step-text {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+        
+        .accordion-group {
+            display: grid;
+            gap: 1.2rem;
+        }
+        
+        .accordion-title {
+            color: var(--accent-2);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1000px) {
@@ -962,8 +1029,7 @@
     </style>
 </head>
 <body>
-     <!-- ========= NAVEGACIÓN ========= -->
-    <header>
+     <header>
         <div class="container nav">
             <div class="brand">
                 <div class="pig-logo">
@@ -985,13 +1051,13 @@
             <nav class="links" id="navLinks">
                 <a href="#inicio">Inicio</a>
                 <a href="#beneficios">Beneficios</a>
-                <a href="#comparador">Comparador</a>
                 <a href="#sobre">Sobre Nosotros</a>
+                <a href="#modelo">Modelo</a>
+                <a href="#comparador">Comparador</a>
                 <a href="#granja">Nuestra Granja</a>
                 <a href="#testimonios">Testimonios</a>
-                <a href="#modelo">Modelo</a>
-                <a href="#simulador">Simulador</a>
                 <a href="#faq">FAQ</a>
+                <a href="#simulador">Simulador</a>
                 <a href="#contacto">Contacto</a>
             </nav>
             <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
@@ -1002,8 +1068,7 @@
         </div>
     </header>
 
-    <!-- ========= HERO SECTION ========= -->
-    <section class="hero" id="inicio" aria-label="Sección principal">
+    <section class="hero" id="inicio" aria-label="Sección principal de inversión">
         <div class="container hero-wrap">
             <div class="kicker">Inversión Premium en Porcicultura</div>
             <h1>Rentabilidad del <span style="color:var(--accent-2)">10% semestral</span> con respaldo en activos reales</h1>
@@ -1015,10 +1080,9 @@
         </div>
     </section>
 
-    <!-- ========= ESTADÍSTICAS ========= -->
     <section>
         <div class="container">
-            <div class="stats-grid">
+            <div class="stats-grid reveal">
                 <div class="stat-card">
                     <div class="stat-number">10%</div>
                     <div class="stat-label">Rendimiento Semestral</div>
@@ -1038,7 +1102,48 @@
             </div>
         </div>
     </section>
-    <!-- ========= BENEFICIOS ========= -->
+
+    <section id="sobre" style="background: var(--panel);">
+        <div class="container reveal">
+            <h2 class="section-title">El Futuro de la Inversión Agropecuaria</h2>
+            <div class="twocol">
+                <div>
+                    <p class="muted" style="margin-bottom:1.2rem">
+                        En <strong style="color:var(--accent)">PorkInvest</strong> revolucionamos la inversión agropecuaria combinando tradición porcina con tecnología financiera de vanguardia. Transformamos la porcicultura en una plataforma de inversión transparente, medible y de alto impacto.
+                    </p>
+                    <p class="muted">
+                        Nuestro equipo multidisciplinario integra décadas de experiencia en producción porcina, administración de agronegocios y estrategias de inversión institucional para ofrecerte confianza y crecimiento sustentable.
+                    </p>
+                    <div class="grid grid-2" style="margin-top:2rem">
+                        <article class="card">
+                            <h3>Misión</h3>
+                            <p class="muted">Democratizar la inversión agropecuaria con un modelo rentable, accesible y regenerativo que transforme el campo colombiano.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Visión 2030</h3>
+                            <p class="muted">Liderar la transformación digital del sector porcícola en LATAM y expandir el modelo a otras verticales del agronegocio de alto valor.</p>
+                        </article>
+                    </div>
+                </div>
+                <aside>
+                    <div class="card">
+                        <h3>Valores Corporativos</h3>
+                        <ul class="muted" style="margin-top:1rem; padding-left:1.2rem; display:grid; gap:.5rem;">
+                            <li><strong>Transparencia Radical:</strong> Datos verificables en tiempo real y reportes periódicos detallados.</li>
+                            <li><strong>Innovación Disruptiva:</strong> Tecnología blockchain para trazabilidad total y conexión campo-finanzas.</li>
+                            <li><strong>Sostenibilidad Regenerativa:</strong> Prácticas responsables, bienestar animal certificado y huella de carbono positiva.</li>
+                            <li><strong>Impacto Exponential:</strong> Empleo rural de calidad, desarrollo comunitario y seguridad alimentaria nacional.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a class="btn" href="#beneficios">Ver ventajas exclusivas</a>
+            </div>
+        </div>
+    </section>
+    
     <section id="beneficios">
         <div class="container reveal">
             <h2 class="section-title">Ventajas Exclusivas PorkInvest</h2>
@@ -1058,15 +1163,46 @@
                 </article>
             </div>
             
-            <!-- CTA Estratégico -->
             <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#simulador">Calcular mi rentabilidad</a>
+                <a class="btn" href="#modelo">Entender el modelo de negocio</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="modelo" style="background: var(--panel);">
+        <div class="container reveal">
+            <h2 class="section-title">Innovación en Agronegocios</h2>
+            <p class="muted" style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Nuestro modelo simple y transparente conecta el campo con tu capital, maximizando la rentabilidad y el impacto social.</p>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-icon">1️⃣</div>
+                    <h3>Inviertes</h3>
+                    <p class="step-text">Desde <b>$500.000 COP</b>. Tu capital se asigna a activos productivos (cerdos de genética superior).</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">2️⃣</div>
+                    <h3>Producimos</h3>
+                    <p class="step-text">Gestionamos todo el ciclo de crecimiento de los cerdos en nuestra granja con altos estándares de calidad.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">3️⃣</div>
+                    <h3>Comercializamos</h3>
+                    <p class="step-text">Una vez listos, los cerdos se venden a mercados nacionales e internacionales, garantizando el valor del activo.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">4️⃣</div>
+                    <h3>Recibes tu Retorno</h3>
+                    <p class="step-text">Obtienes una rentabilidad fija del <b>10% semestral</b>. Puedes retirar o reinvertir para potenciar tus ganancias.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a class="btn" href="#comparador">Compara con otras opciones</a>
             </div>
         </div>
     </section>
 
-    <!-- ========= COMPARADOR EDUCATIVO ========= -->
-    <section id="comparador" style="background: var(--panel);">
+    <section id="comparador">
         <div class="container reveal">
             <h2 class="section-title">Compara tus opciones de inversión</h2>
             <p class="muted" style="text-align: center; margin-bottom: 2rem;">Toma decisiones informadas: PorkInvest vs opciones tradicionales</p>
@@ -1120,115 +1256,30 @@
                 </table>
             </div>
             
-            <!-- CTA Estratégico -->
             <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#contacto">Asesorarme sobre PorkInvest</a>
+                <a class="btn" href="#granja">Conoce nuestra operación</a>
             </div>
         </div>
     </section>
 
-    <!-- ========= SOBRE NOSOTROS ========= -->
-    <section id="sobre">
-        <div class="container reveal">
-            <h2 class="section-title">El Futuro de la Inversión Agropecuaria</h2>
-            <div class="twocol">
-                <div>
-                    <p class="muted" style="margin-bottom:1.2rem">
-                        En <strong style="color:var(--accent)">PorkInvest</strong> revolucionamos la inversión agropecuaria combinando tradición porcina con tecnología financiera de vanguardia. Transformamos la porcicultura en una plataforma de inversión transparente, medible y de alto impacto.
-                    </p>
-                    <p class="muted">
-                        Nuestro equipo multidisciplinario integra décadas de experiencia en producción porcina, administración de agronegocios y estrategias de inversión institucional para ofrecerte confianza y crecimiento sustentable.
-                    </p>
-                    <div class="grid grid-2" style="margin-top:2rem">
-                        <article class="card">
-                            <h3>Misión</h3>
-                            <p class="muted">Democratizar la inversión agropecuaria con un modelo rentable, accesible y regenerativo que transforme el campo colombiano.</p>
-                        </article>
-                        <article class="card">
-                            <h3>Visión 2030</h3>
-                            <p class="muted">Liderar la transformación digital del sector porcícola en LATAM y expandir el modelo a otras verticales del agronegocio de alto valor.</p>
-                        </article>
-                    </div>
-                </div>
-                <aside>
-                    <div class="card">
-                        <h3>Valores Corporativos</h3>
-                        <ul class="muted" style="margin-top:1rem; padding-left:1.2rem; display:grid; gap:.5rem;">
-                            <li><strong>Transparencia Radical:</strong> Datos verificables en tiempo real y reportes periódicos detallados.</li>
-                            <li><strong>Innovación Disruptiva:</strong> Tecnología blockchain para trazabilidad total y conexión campo-finanzas.</li>
-                            <li><strong>Sostenibilidad Regenerativa:</strong> Prácticas responsables, bienestar animal certificado y huella de carbono positiva.</li>
-                            <li><strong>Impacto Exponential:</strong> Empleo rural de calidad, desarrollo comunitario y seguridad alimentaria nacional.</li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-
-            <!-- Equipo -->
-            <div style="margin-top: 4rem;">
-                <h3 class="section-title">Liderazgo de Clase Mundial</h3>
-                <div class="grid grid-2">
-                    <div class="team-member card">
-                        <div class="team-img">👨‍💼</div>
-                        <h4>Yercisten Moreno</h4>
-                        <div class="team-role">CEO & Fundador</div>
-                        <p class="muted">Visionario con más de 12 años de experiencia en porcicultura de alta gama y gestión de agronegocios. Ex-consultor de transformación digital para multinacionales del sector alimenticio. Su pasión es conectar el campo colombiano con oportunidades de inversión globales mediante tecnología de punta.</p>
-                    </div>
-                    <div class="team-member card">
-                        <div class="team-img">👨‍🌾</div>
-                        <h4>Equipo de Excelencia Operativa</h4>
-                        <div class="team-role">Operaciones & Bienestar Animal</div>
-                        <p class="muted">Equipo multidisciplinario de profesionales locales con certificaciones internacionales en producción porcina sostenible, genética superior y bienestar animal. Garantizan los más altos estándares de calidad y trazabilidad en cada etapa del proceso productivo.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- CTA Estratégico -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#granja">Conocer nuestra operación</a>
-            </div>
-        </div>
-    </section>
-      <!-- ========= GRANJA ========= -->
-    <section id="granja" style="background: var(--panel);">
+      <section id="granja" style="background: var(--panel);">
         <div class="container reveal">
             <h2 class="section-title">Operación de Excelencia</h2>
             <div class="twocol">
                 <div>
                     <p class="muted">Nuestra operación de clase mundial está estratégicamente ubicada en <strong>Santa Rosa del Sur, Bolívar</strong>, región bioclimáticamente ideal para la porcicultura premium. Contamos con instalaciones de última generación y protocolos de bioseguridad nivel EU.</p>
-                    
+                    <figure style="margin-top: 1.5rem;">
+                        <img src="https://via.placeholder.com/600x400" alt="Vista de nuestra granja porcina moderna" loading="lazy">
+                        <figcaption class="muted" style="text-align: center; font-size: 0.9rem; margin-top: 0.5rem;">Instalaciones de última generación en Santa Rosa del Sur, Bolívar.</figcaption>
+                    </figure>
                     <h3 style="margin: 2rem 0 1.2rem;">Especialización en Raza Pietrain Elite</h3>
-                    <p class="muted">Trabajamos exclusivamente con genética <strong>Pietrain</strong>, reconocida mundialmente por su excelente conformación de canal, alto porcentaje de magro y eficiencia alimenticia superior. Esta raza premium nos permite garantizar:</p>
+        <p class="muted">Trabajamos exclusivamente con genética <strong>Pietrain</strong>, reconocida mundialmente por su excelente conformación de canal, alto porcentaje de magro y eficiencia alimenticia superior. Esta raza premium nos permite garantizar:</p>
                     <ul class="muted" style="margin-top:.8rem; padding-left:1.2rem; display:grid; gap:.5rem;">
                         <li>Rendimientos superiores al 80% en canal</li>
                         <li>Carne premium para mercados exigentes y exportación</li>
                         <li>Mayor valor comercial y margen operativo</li>
                         <li>Eficiencia alimenticia optimizada (menor costo por kilo)</li>
                     </ul>
-
-                    <h3 style="margin: 2rem 0 1.2rem;">Estructura de Costos Controlados</h3>
-                    <p class="muted">Hemos revolucionado la eficiencia operativa manteniendo un costo máximo de <strong>$700.000 por cerdo</strong>, lo que nos permite garantizar la rentabilidad prometida:</p>
-                    <div class="cost-breakdown">
-                        <div class="cost-item">
-                            <span class="muted">Alimentación Premium</span>
-                            <span>60% - $420.000</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="muted">Salud y Bioseguridad</span>
-                            <span>10% - $70.000</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="muted">Mano de Obra Especializada</span>
-                            <span>15% - $105.000</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="muted">Logística y Tecnología</span>
-                            <span>10% - $70.000</span>
-                        </div>
-                        <div class="cost-item">
-                            <span class="muted">Innovación e I+D</span>
-                            <span>5% - $35.000</span>
-                        </div>
-                    </div>
                 </div>
                 <div>
                     <div id="farm-map"></div>
@@ -1248,14 +1299,12 @@
                 </div>
             </div>
             
-            <!-- CTA Estratégico -->
             <div style="text-align: center; margin-top: 3rem;">
                 <a class="btn" href="#testimonios">Ver experiencias reales</a>
             </div>
         </div>
     </section>
 
-    <!-- ========= TESTIMONIOS ========= -->
     <section id="testimonios" class="testimonials">
         <div class="container reveal">
             <h2 class="section-title">Confianza de Inversionistas</h2>
@@ -1290,7 +1339,6 @@
                 </div>
             </div>
             
-            <!-- Historias de éxito con pestañas -->
             <div style="margin-top: 4rem;">
                 <h3 class="section-title">Historias de Éxito</h3>
                 
@@ -1325,46 +1373,75 @@
                 </div>
             </div>
             
-            <!-- CTA Estratégico -->
             <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#modelo">Entender el modelo</a>
+                <a class="btn" href="#faq">Tengo una duda...</a>
             </div>
         </div>
     </section>
 
-    <!-- ========= MODELO ========= -->
-    <section id="modelo">
+    <section id="faq" style="background: var(--panel);">
         <div class="container reveal">
-            <h2 class="section-title">Innovación en Agronegocios</h2>
-            <div class="grid grid-3" style="margin-bottom:2rem">
-                <article class="card"><h3>El Problema Traditional</h3><p class="muted">Productores sin acceso to capital competitivo y ahorradores sin opciones confiables más allá del sistema financiero tradicional.</p></article>
-                <article class="card"><h3>Nuestra Solución</h3><p class="muted">Invertir en porcicultura premium con retorno fijo del <b>10% semestral</b>, gestión profesional y trazabilidad total.</p></article>
-                <article class="card"><h3>Impacto Generado</h3><p class="muted">Rentabilidad superior para inversionistas y desarrollo regenerativo para el campo colombiano.</p></article>
-            </div>
-
-            <h3 style="margin:1.5rem 0 1rem; text-align: center;">Mercado en Crecimiento</h3>
-            <p class="muted" style="text-align: center;">Demanda creciente de proteína premium en Colombia (+8% anual) y potencial de exportación a mercados internacionales.</p>
-
-            <h3 style="margin:2.5rem 0 1.2rem; text-align: center;">Cómo Funciona: Simplicidad y Transparencia</h3>
-            <div class="grid grid-3">
-                <article class="card"><h4>1) Inviertes</h4><p class="muted">Desde <b>$500.000 COP</b> hasta el monto que desees. Sin complicaciones.</p></article>
-                <article class="card"><h4>2) Producimos</h4><p class="muted">Capital → animales de genética superior + insumos premium + operación de clase mundial.</p></article>
-                <article class="card"><h4>3) Recibes</h4><p class="muted">Retorno fijo del <b>10% por semestre</b>. Puedes retirar o reinvertir automáticamente.</p></article>
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Respondemos las preguntas más comunes para que inviertas con total confianza.</p>
+            
+            <div class="twocol accordion-group">
+                <div class="card">
+                    <h3 class="accordion-title">Preguntas Generales</h3>
+                    <details>
+                        <summary>¿Qué tipo de sociedad es PorkInvest? ¿Es una pirámide?</summary>
+                        <p>PorkInvest es una sociedad legalmente constituida que opera en el sector agropecuario colombiano. No somos una pirámide; nuestra rentabilidad no depende de la captación de nuevos inversionistas, sino del <b>retorno real y comprobable</b> de la cría y venta de cerdos de alta genética.</p>
+                    </details>
+                    <details>
+                        <summary>¿Cómo sé que mi inversión es segura y no es una estafa?</summary>
+                        <p>Tu inversión está respaldada por <b>activos productivos tangibles</b> (los cerdos). Recibes un contrato que detalla las condiciones, se puede verificar nuestra operación y te damos informes periódicos sobre el progreso de los animales a los que se asignó tu capital. Nuestra reputación se basa en la <b>transparencia radical</b>.</p>
+                    </details>
+                    <details>
+                        <summary>¿PorkInvest está regulada por alguna entidad financiera?</summary>
+                        <p>Operamos bajo el marco legal del Código de Comercio colombiano, ya que nuestra actividad principal es la producción y venta de bienes tangibles (porcicultura). No constituimos una oferta pública de valores, por lo que no estamos regulados por la Superintendencia Financiera de Colombia. Te invitamos a leer nuestro aviso legal para más detalles.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué documentos legales me entregan al invertir?</summary>
+                        <p>Al formalizar tu inversión, recibirás un <b>Contrato de Inversión en Producción Porcina</b>, donde se especifican tus derechos y obligaciones, la rentabilidad, la duración del ciclo y el respaldo de tu capital. Todos los documentos son claros, sencillos y verificables.</p>
+                    </details>
+                </div>
+                <div class="card">
+                    <h3 class="accordion-title">Condiciones de Inversión</h3>
+                    <details>
+                        <summary>¿Cuál es el monto mínimo de inversión?</summary>
+                        <p>El monto mínimo es de <b>$500.000 COP</b>. Puedes aumentar tu posición con reinversiones automáticas cada ciclo o haciendo aportes adicionales.</p>
+                    </details>
+                    <details>
+                        <summary>¿La rentabilidad del 10% semestral está garantizada?</summary>
+                        <p>Sí, es un <b>retorno fijo contractual</b> (equivalente a <b>20% anual</b>). Está respaldado por nuestro modelo de eficiencia operativa, genética superior y control estricto de costos.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué respaldo tangible tiene mi inversión?</summary>
+                        <p>Tu capital se asigna directamente a <b>activos productivos específicos</b> (cerdos de raza Pietrain), con trazabilidad completa, pólizas de seguro y gestión profesional certificada.</p>
+                    </details>
+                    <details>
+                        <summary>¿Puedo retirar mi dinero cuando quiera?</summary>
+                        <p>El capital se compromete por <b>ciclos productivos de ~6 meses</b>. Al finalizar cada ciclo, puedes retirar utilidades y/o capital, o reinvertir automáticamente.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué riesgos tiene esta inversión?</summary>
+                        <p>Aunque minimizamos los riesgos con protocolos de bioseguridad avanzados, los riesgos inherentes a la actividad agropecuaria incluyen enfermedades, variaciones de mercado y eventos de fuerza mayor. Contamos con pólizas de seguro para proteger tu capital de eventos catastróficos. La rentabilidad del 10% es fija, por lo que no estás expuesto a la fluctuación del precio de la carne. Más detalles en nuestro aviso legal.</p>
+                    </details>
+                </div>
             </div>
             
-            <!-- CTA Estratégico -->
             <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#simulador">Probar simulador</a>
+                <a class="btn" href="#simulador">Calcular mis ganancias ahora</a>
             </div>
         </div>
     </section>
 
-    <!-- ========= SIMULADOR ========= -->
     <section id="simulador" aria-label="Simulador de inversión">
         <div class="container reveal">
             <h2 class="section-title">Simula tu Inversión</h2>
             <p class="muted" style="text-align: center;">Mínimo de inversión: <b>$500.000 COP</b>. Rentabilidad: <b>10% en 6 meses</b> (equivalente a 20% anual).</p>
-
+            <div class="disclaimer-text">
+                <b>Aviso Legal:</b> PorkInvest no constituye una oferta pública de valores. Toda inversión implica riesgos que pueden afectar el capital y los rendimientos esperados.
+            </div>
             <div class="simu" style="margin-top:2rem">
                 <div class="field">
                     <label for="monto" class="form-label">Monto a Invertir (COP):</label>
@@ -1392,7 +1469,6 @@
 
                 <div class="bar" aria-hidden="true"><span id="barfill"></span></div>
 
-                <!-- Simulador de reinversión compuesta -->
                 <h3 style="margin: 2.5rem 0 1rem;">Simulador de Reinversión Compuesta</h3>
                 <p class="muted">Calcula cómo crecería tu capital si reinviertes tus ganancias cada ciclo:</p>
                 
@@ -1426,41 +1502,7 @@
             </div>
         </div>
       </section>
-       <!-- ========= FAQ ========= -->
-    <section id="faq">
-        <div class="container reveal">
-            <h2 class="section-title">Transparencia Radical</h2>
-            <p class="muted" style="text-align: center; margin-bottom: 2rem;">Respondemos todas tus preguntas con honestidad y datos concretos.</p>
 
-            <details>
-                <summary>¿Cuál es el monto mínimo de inversión?</summary>
-                <p>El monto mínimo es de <b>$500.000 COP</b>. Puedes aumentar tu posición con reinversiones automáticas cada ciclo o haciendo aportes adicionales.</p>
-            </details>
-            <details>
-                <summary>¿La rentabilidad del 10% semestral está garantizada?</summary>
-                <p>Sí, es un <b>retorno fijo contractual</b> (equivalente a <b>20% anual</b>). Está respaldado por nuestro modelo de eficiencia operativa, genética superior y control estricto de costos.</p>
-            </details>
-            <details>
-                <summary>¿Qué respaldo tangible tiene mi inversión?</summary>
-                <p>Tu capital se asigna directamente a <b>activos productivos específicos</b> (cerdos de raza Pietrain), con trazabilidad completa, pólizas de seguro y gestión profesional certificada.</p>
-            </details>
-            <details>
-                <summary>¿Puedo retirar mi dinero cuando quiera?</summary>
-                <p>El capital se compromete por <b>ciclos productivos de ~6 meses</b>. Al finalizar cada ciclo, puedes retirar utilidades y/o capital, o reinvertir automáticamente.</p>
-            </details>
-            <details>
-                <summary>¿Cómo garantizan el bienestar animal?</summary>
-                <p>Seguimos <b>protocolos que superan los estándares internacionales</b>: espacios amplios, alimentación premium, control veterinario 24/7 y manejo ético certificado.</p>
-            </details>
-            
-            <!-- CTA Estratégico -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <a class="btn" href="#contacto">Resolver dudas personalmente</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========= CONTACTO ========= -->
     <section id="contacto">
         <div class="container reveal">
             <h2 class="section-title">Inicia tu Inversión</h2>
@@ -1518,12 +1560,16 @@
         </div>
     </section>
 
-    <!-- ========= FOOTER ========= -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div>
                     © 2025 PorkInvest · Rentabilidad 10% semestral · Inversión mínima $500.000 COP
+                    <div class="legal-links">
+                        <a href="terminos.html" target="_blank">Términos y Condiciones</a>
+                        <a href="privacidad.html" target="_blank">Política de Privacidad</a>
+                        <a href="disclaimer.html" target="_blank">Aviso Legal Completo</a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <a href="#inicio">Inicio</a>
@@ -1537,7 +1583,7 @@
             </div>
         </div>
     </footer>
-       <!-- ========= WHATSAPP BUTTON ========= -->
+    
     <a href="https://wa.me/573002333356" target="_blank" rel="noopener"
        aria-label="Escríbenos por WhatsApp"
        style="position:fixed; bottom:24px; right:24px; width:64px; height:64px; border-radius:50%;
@@ -1547,7 +1593,6 @@
         <span style="margin-top: 2px;">💬</span>
     </a>
 
-    <!-- ========= SCRIPTS ========= -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Menu móvil
@@ -1681,7 +1726,7 @@
             
             // Crear gráfico
             const maxAmount = Math.max(...data.map(d => d.amount));
-            const barWidth = 100 / data.length;
+            const barWidth = 100 / (years + 1);
             
             data.forEach((item, index) => {
                 if (index % 2 === 0) { // Mostrar solo cada año (cada 2 semestres)
