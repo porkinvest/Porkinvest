@@ -2,79 +2,76 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PorkInvest – Inversión Porcina Premium</title>
-  <meta name="description" content="Invierte desde $500.000 COP en porcicultura premium con retorno del 10% semestral. Transparencia y respaldo en activos reales." />
-  <meta property="og:title" content="PorkInvest – 10% semestral" />
-  <meta property="og:description" content="Invierte desde $500.000 COP. Modelo claro: inviertes, producimos, comercializamos y recibes tu retorno." />
-  <style>
-    :root{--bg:#0f172a;--panel:#0b1221;--card:#111827;--text:#e6eef1;--muted:#9aa4a1;--accent:#22c55e;--accent-2:#facc15;--glass:rgba(255,255,255,0.03);--radius:14px}
+  <title>PorkInvest · Invierte desde $500.000 COP</title>
+  <meta name="description" content="Invierte desde $500.000 COP en porcicultura premium con objetivo 10% semestral. Transparencia, trazabilidad y gestión profesional." />
+  <meta name="keywords" content="inversión, porcicultura, porkinvest, inversión colombia, Pietrain" />
+  <meta name="author" content="PorkInvest" />
+  <meta property="og:title" content="PorkInvest · Invierte desde $500.000 COP" />
+  <meta property="og:description" content="Invierte en porcicultura premium con respaldo en activos reales. Retorno objetivo 10% semestral." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />  <style>
+    :root{--bg:#071018;--panel:#0b1221;--card:#111827;--text:#e6eef1;--muted:#9aa4a1;--accent:#22c55e;--gold:#facc15;--glass:rgba(255,255,255,0.02);--radius:14px}
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071018 0%,#0f172a 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,-apple-system,'Helvetica Neue',Arial}
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:28px}
-    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(7,16,24,0.0),rgba(7,16,24,0.85));backdrop-filter:blur(6px);z-index:20;border-bottom:1px solid rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#041018 0%,#071018 60%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1180px;margin:0 auto;padding:28px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(4,16,24,0.0),rgba(4,16,24,0.9));backdrop-filter:blur(6px);z-index:50;border-bottom:1px solid rgba(255,255,255,0.02)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .logo-pill{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#16a34a);display:grid;place-items:center;font-size:22px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#16a34a);display:grid;place-items:center;font-size:22px}
     .links{display:flex;gap:12px}
-    .links a{padding:8px 12px;border-radius:10px;font-weight:600}
+    .links a{padding:8px 12px;border-radius:10px;font-weight:700;color:var(--muted)}
     .menu-btn{display:none}
     .hero{padding:64px 0;text-align:center}
-    .kicker{color:var(--accent-2);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(28px,4.2vw,44px);margin:8px 0 12px}
-    p.lead{color:var(--muted);max-width:900px;margin:0 auto;font-size:18px}
-    .cta{margin-top:22px;display:flex;gap:12px;justify-content:center}
+    .kicker{color:var(--gold);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(28px,4.4vw,48px);margin:8px 0 12px;line-height:1.01}
+    p.lead{color:var(--muted);max-width:960px;margin:0 auto;font-size:18px}
+    .cta{margin-top:20px;display:flex;gap:12px;justify-content:center}
     .btn{background:linear-gradient(180deg,var(--accent),#16a34a);border:none;color:#052017;padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer}
-    .btn-outline{background:transparent;border:2px solid rgba(250,204,21,0.12);color:var(--accent-2)}
+    .btn-ghost{background:transparent;border:2px solid rgba(250,204,21,0.08);color:var(--gold)}
     section{padding:48px 0}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .card{background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.02)}
     .muted{color:var(--muted)}
     .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .stat{background:var(--panel);padding:18px;border-radius:12px;text-align:center}
-    .stat b{display:block;font-size:20px}/* SIMULADOR */
-.simu{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.025)}
-.field{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-input[type=range]{width:100%;accent-color:var(--accent)}
-input[type=number]{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:#071018;color:var(--text);width:200px}
-.kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.tile{background:var(--panel);padding:14px;border-radius:10px;flex:1;min-width:160px}
-.bar{height:14px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:12px}
-.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#86efac);transition:width .6s}
 
-/* PIG GROW (animación simple) */
-.pig-wrap{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:18px}
-.pig{width:120px;height:90px;border-radius:16px;background:linear-gradient(135deg,#ff9dc3,#ff7eb3);display:flex;align-items:center;justify-content:center;font-size:40px;transition:transform .25s ease}
+    /* Interactive elements */
+    .simu{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .field{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    input[type=range]{width:100%;accent-color:var(--accent)}
+    input[type=number]{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:#041018;color:var(--text);width:200px}
+    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .tile{background:var(--panel);padding:14px;border-radius:10px;flex:1;min-width:160px}
+    .bar{height:14px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden;margin-top:12px}
+    .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#86efac);transition:width .6s}
 
-/* COMPARADOR */
-table{width:100%;border-collapse:collapse;margin-top:12px}
-th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left}
-.pork{background:rgba(34,197,94,0.06)}
+    /* pig growth */
+    .pig-wrap{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:18px}
+    .pig{width:140px;height:100px;border-radius:18px;background:linear-gradient(135deg,#ff9dc3,#ff7eb3);display:flex;align-items:center;justify-content:center;font-size:46px;transition:transform .2s ease, box-shadow .2s ease}
 
-/* FAQ */
-details{background:var(--panel);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);margin-bottom:8px}
+    /* Dashboard mock */
+    .dash{display:grid;grid-template-columns:1fr 380px;gap:18px}
+    .mini-metric{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(145deg,#071018,#0b1221);border:1px solid rgba(255,255,255,0.02)}
+    .chart{height:120px;background:linear-gradient(180deg,#06121a,#0b1620);border-radius:10px;padding:8px}
 
-/* CONTACT */
-form .form-input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:#071018;color:var(--text)}
+    /* compound chart bars */
+    .compound-chart{display:flex;gap:8px;align-items:end;height:180px}
+    .chart-bar{flex:1;background:linear-gradient(to top,var(--accent),#16a34a);border-radius:6px;position:relative}
+    .chart-bar span{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:12px}
 
-footer{padding:28px 0;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:14px;text-align:center}
-
-@media(max-width:900px){.grid-3{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.links{display:none}.menu-btn{display:block}}
-
-  </style>
-</head>
+    /* small responsive */
+    @media(max-width:1000px){.grid-3{grid-template-columns:1fr}.dash{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.links{display:none}.menu-btn{display:block}}
+  </style></head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
-        <div class="logo-pill" aria-hidden>🐷</div>
-        <div>PorkInvest</div>
-      </div>
-      <nav class="links" aria-label="Navegación principal">
+      <div class="brand"><div class="logo" aria-hidden>🐷</div><div>PorkInvest</div></div>
+      <nav class="links" aria-label="Navegación">
         <a href="#inicio">Inicio</a>
         <a href="#beneficios">Beneficios</a>
         <a href="#simulador">Simulador</a>
-        <a href="#faq">FAQ</a>
+        <a href="#dashboard">Transparencia</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <button class="menu-btn" aria-label="Abrir menú" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
@@ -82,54 +79,52 @@ footer{padding:28px 0;border-top:1px solid rgba(255,255,255,0.02);color:var(--mu
   </header>  <main>
     <section id="inicio" class="hero">
       <div class="container">
-        <div class="kicker">Inversión Porcina Premium</div>
-        <h1>Invierte desde <span style="color:var(--accent-2)">$500.000 COP</span> en porcicultura con <strong>10% semestral</strong></h1>
-        <p class="lead">Tu capital se respalda en activos reales: producción porcina premium con genética Pietrain, gestión profesional y trazabilidad. Un único plan flexible (mínimo $500k) diseñado para inversionistas que buscan rendimiento y tangibilidad.</p>
-        <div class="cta">
-          <a class="btn" href="#simulador">Simula tu rentabilidad</a>
-          <a class="btn btn-outline" href="https://wa.me/573002333356" target="_blank" rel="noopener">Habla por WhatsApp</a>
-        </div>
-      </div>
-    </section><section aria-labelledby="stats">
-  <div class="container">
-    <div class="stat-grid">
-      <div class="stat"><small class="muted">Rendimiento</small><b>10% / 6 meses</b></div>
-      <div class="stat"><small class="muted">Respaldo</small><b>Activos reales</b></div>
-      <div class="stat"><small class="muted">Costo por cerdo</small><b>$700.000</b></div>
-      <div class="stat"><small class="muted">Comisiones</small><b>0% ocultas</b></div>
+        <div class="kicker">Inversión porcina premium</div>
+        <h1>Invierte desde <span style="color:var(--gold)">$500.000 COP</span> · <strong>10% semestral</strong></h1>
+        <p class="lead">Tu capital se respalda en activos reales: genética Pietrain, manejo profesional y trazabilidad. Un único plan flexible —sin paquetes confusos— diseñado para inversionistas que buscan rendimiento y seguridad.</p><div class="cta">
+      <a class="btn" href="#simulador">Simula tu rentabilidad</a>
+      <a class="btn-ghost" href="https://wa.me/573002333356?text=Hola%20PorkInvest,%20quiero%20informaci%C3%B3n" target="_blank">Habla por WhatsApp</a>
+    </div>
+
+    <!-- Micro-immersive intro: animated stats -->
+    <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <div class="stat" style="min-width:160px"><small class="muted">Rendimiento</small><b>10% / 6m</b></div>
+      <div class="stat" style="min-width:160px"><small class="muted">Inversión mínima</small><b>$500.000</b></div>
+      <div class="stat" style="min-width:160px"><small class="muted">Respaldo</small><b>Activos reales</b></div>
     </div>
   </div>
 </section>
 
 <section id="beneficios">
   <div class="container">
-    <h2 class="section-title" id="beneficios">Ventajas de PorkInvest</h2>
-    <p class="muted" style="text-align:center;max-width:840px;margin:0 auto 18px">Un único plan flexible, accesible desde $500.000 COP. Tecnología + operación + trazabilidad para maximizar la rentabilidad y reducir riesgos.</p>
-    <div class="grid-3" style="margin-top:18px">
-      <div class="card"><h3>🔒 Respaldo real</h3><p class="muted">Tu inversión se asigna a activos productivos con trazabilidad. No es especulación.</p></div>
-      <div class="card"><h3>📊 Transparencia</h3><p class="muted">Reportes por ciclo, seguimiento y comunicación constante con los inversionistas.</p></div>
-      <div class="card"><h3>🌱 Impacto</h3><p class="muted">Generamos empleo rural y promovemos prácticas sustentables.</p></div>
+    <h2 class="section-title">Por qué PorkInvest</h2>
+    <p class="muted" style="text-align:center;max-width:900px;margin:0 auto 18px">Combinamos producción premium, trazabilidad y tecnología para generar retorno real y confianza. Diseño simple: un plan, múltiples montos desde $500k.</p>
+    <div class="grid-3">
+      <div class="card"><h3>🔒 Respaldo real</h3><p class="muted">Activos productivos (cerdos) con trazabilidad por lote.</p></div>
+      <div class="card"><h3>📊 Transparencia</h3><p class="muted">Reportes por ciclo y panel de métricas reales (próximamente con datos verificados).</p></div>
+      <div class="card"><h3>🌱 Impacto</h3><p class="muted">Empleo rural, bienestar animal y prácticas sostenibles.</p></div>
     </div>
   </div>
 </section>
 
 <section id="simulador">
   <div class="container">
-    <h2 class="section-title">Simulador de inversión</h2>
-    <p class="muted" style="text-align:center">Mínimo $500.000 COP. Tasa objetivo: 10% cada 6 meses. Los resultados son referenciales.</p>
+    <h2 class="section-title">Simula tu inversión</h2>
+    <p class="muted" style="text-align:center">Mínimo $500.000 COP. Tasa objetivo: 10% cada 6 meses (20% anual si reinviertes).</p>
 
     <div class="simu">
-      <div class="field">
-        <label for="inputMonto" class="muted">Monto a invertir (COP)</label>
-        <input id="inputMonto" type="number" min="500000" step="50000" value="500000" inputmode="numeric" aria-label="Monto a invertir" />
-      </div>
-      <div style="margin-top:12px">
-        <input id="rangeMonto" type="range" min="500000" max="50000000" step="50000" value="500000" aria-label="Ajustar monto" />
+      <div class="field" style="align-items:flex-end">
+        <div style="flex:1">
+          <label class="muted" for="inputMonto">Monto a invertir (COP)</label>
+          <input id="inputMonto" type="number" min="500000" step="50000" value="500000" inputmode="numeric" aria-label="Monto a invertir" />
+        </div>
+        <div style="width:42%">
+          <label class="muted">Ajustar</label>
+          <input id="rangeMonto" type="range" min="500000" max="50000000" step="50000" value="500000" aria-label="Ajustar monto" />
+        </div>
       </div>
 
-      <div class="pig-wrap">
-        <div class="pig" id="pigEmoji" aria-hidden>🐖</div>
-      </div>
+      <div class="pig-wrap"><div class="pig" id="pigEmoji" aria-hidden>🐖</div></div>
 
       <div class="kpis">
         <div class="tile"><small class="muted">Capital</small><b id="capitalTxt">$500.000</b></div>
@@ -139,24 +134,61 @@ footer{padding:28px 0;border-top:1px solid rgba(255,255,255,0.02);color:var(--mu
 
       <div class="bar" aria-hidden><span id="barFill"></span></div>
 
-      <div style="margin-top:14px">
-        <h3 style="margin:8px 0">Comparador rápido</h3>
-        <table>
-          <thead>
-            <tr><th>Alternativa</th><th>Rentabilidad anual</th><th>Retorno con tu monto</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Cuenta de ahorro</td><td class="muted">1–2%</td><td id="compAhorro" class="muted">---</td></tr>
-            <tr><td>CDT promedio</td><td class="muted">7%</td><td id="compCdt" class="muted">---</td></tr>
-            <tr><td class="pork">PorkInvest</td><td class="pork"><b>~20% anual</b></td><td id="compPork" class="pork">---</td></tr>
-          </tbody>
-        </table>
+      <!-- Compound simulator -->
+      <div style="margin-top:20px" class="card">
+        <h3>Proyección con reinversión</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <label class="muted">Años</label>
+            <input id="compoundYears" type="number" min="1" max="10" value="3" class="form-input" />
+          </div>
+          <div style="min-width:200px">
+            <label class="muted">Reinvertir</label>
+            <select id="compoundMode" class="form-input"><option value="yes">Sí, todo</option><option value="partial">50%</option><option value="no">No</option></select>
+          </div>
+          <div style="display:flex;align-items:end"><button id="calcCompound" class="btn">Calcular</button></div>
+        </div>
+
+        <div class="compound-chart" id="compoundChart" style="margin-top:12px"></div>
+        <div id="compoundSummary" style="margin-top:12px" class="muted"></div>
       </div>
 
-      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;justify-content:center">
-        <a id="ctaWh" class="btn" href="https://wa.me/573002333356" target="_blank" rel="noopener">Invertir ahora (WhatsApp)</a>
-        <button class="btn-outline" id="btnEmail">Recibir info por correo</button>
+      <div style="display:flex;gap:12px;margin-top:14px;justify-content:center;flex-wrap:wrap">
+        <a id="ctaInvest" class="btn" href="https://wa.me/573002333356" target="_blank">Invertir ahora (WhatsApp)</a>
+        <a class="btn-ghost" href="#dashboard">Ver panel de transparencia</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="container">
+    <h2 class="section-title">Panel de transparencia (mock en vivo)</h2>
+    <p class="muted" style="text-align:center;max-width:960px;margin:0 auto 18px">Muestra pública de métricas operativas para construir confianza. Cuando tengamos datos reales, se actualizará automáticamente.</p>
+
+    <div class="dash">
+      <div>
+        <div style="display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+          <div class="mini-metric"><div class="muted">Total invertido</div><div id="metric-total">$0</div></div>
+          <div class="mini-metric"><div class="muted">Inversionistas</div><div id="metric-count">0</div></div>
+          <div class="mini-metric"><div class="muted">Cerdos en ciclo</div><div id="metric-pigs">0</div></div>
+        </div>
+
+        <div class="card">
+          <h4>Actividad reciente</h4>
+          <ul id="activity" class="muted" style="margin-top:12px"></ul>
+        </div>
+      </div>
+      <aside>
+        <div class="card">
+          <h4>Progreso por ciclo</h4>
+          <div class="chart" id="cycleChart" style="margin-top:12px"></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <h4>Documentos</h4>
+          <p class="muted">Contratos y reportes se publicarán aquí (PDF) cuando estén listos.</p>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -164,102 +196,154 @@ footer{padding:28px 0;border-top:1px solid rgba(255,255,255,0.02);color:var(--mu
 <section id="faq">
   <div class="container">
     <h2 class="section-title">Preguntas frecuentes</h2>
-    <details><summary>¿Cuál es el monto mínimo?</summary><p class="muted">Desde <strong>$500.000 COP</strong>. Puedes aumentar tu posición en cualquier ciclo.</p></details>
-    <details><summary>¿La rentabilidad está garantizada?</summary><p class="muted">El modelo ofrece un retorno objetivo contractual de 10% por semestre. Toda inversión conlleva riesgos; la operación se gestiona para minimizar variabilidad.</p></details>
-    <details><summary>¿Puedo retirar antes de finalizar el ciclo?</summary><p class="muted">El capital se asigna por ciclos productivos (~6 meses). Los términos para retiro anticipado se definirán en el contrato.</p></details>
+    <details><summary>¿Cuál es el monto mínimo?</summary><p class="muted">Desde <b>$500.000 COP</b>. Puedes sumar más en cualquier ciclo.</p></details>
+    <details><summary>¿Es un plan único?</summary><p class="muted">Sí: un único modelo flexible. No vendemos múltiples paquetes —cada inversionista decide el monto desde $500k.</p></details>
+    <details><summary>¿Qué garantías hay?</summary><p class="muted">Respaldo en activos productivos, protocolos de bioseguridad y trazabilidad por lote. Los contratos detallarán las obligaciones.</p></details>
   </div>
 </section>
 
 <section id="contacto">
   <div class="container">
-    <h2 class="section-title">Contacto y asesoría</h2>
-    <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start">
+    <h2 class="section-title">Contacto</h2>
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
       <div class="card">
-        <p class="muted">Déjanos tus datos y te contactamos rápido. También puedes escribir directamente por WhatsApp al número disponible.</p>
         <form id="contactForm">
           <div style="margin-bottom:10px"><input id="name" class="form-input" placeholder="Nombre completo" required></div>
           <div style="margin-bottom:10px"><input id="email" type="email" class="form-input" placeholder="tu@correo.com" required></div>
           <div style="margin-bottom:10px"><input id="phone" class="form-input" placeholder="WhatsApp" ></div>
           <div style="margin-bottom:10px"><textarea id="msg" class="form-input" placeholder="Tu mensaje" rows="4" required></textarea></div>
-          <div style="display:flex;gap:8px"><button class="btn" type="submit">Solicitar asesoría</button><button type="button" class="btn-outline" onclick="window.open('https://wa.me/573002333356','_blank')">WhatsApp</button></div>
+          <div style="display:flex;gap:8px"><button class="btn" type="submit">Solicitar asesoría</button><button type="button" class="btn-ghost" onclick="window.open('https://wa.me/573002333356','_blank')">WhatsApp</button></div>
         </form>
       </div>
       <div>
-        <div class="card">
-          <h4>Contacto directo</h4>
-          <p class="muted">WhatsApp: <a href="https://wa.me/573002333356" target="_blank">+57 300 233 3356</a><br>Email: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a></p>
-          <p class="muted" style="margin-top:8px">Horario: Lun-Vie 7:00–20:00 · Sáb 9:00–16:00</p>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <h4>Aviso legal</h4>
-          <p class="muted">La información aquí presentada es con fines informativos y de mercadeo. No constituye asesoría financiera profesional. Toda inversión implica riesgos.</p>
-        </div>
+        <div class="card"><h4>Contacto directo</h4><p class="muted">WhatsApp: <a href="https://wa.me/573002333356" target="_blank">+57 300 233 3356</a><br>Email: <a href="mailto:inversionporkinvest@gmail.com">inversionporkinvest@gmail.com</a></p></div>
+        <div class="card" style="margin-top:12px"><h4>Aviso legal</h4><p class="muted">Información con fines informativos. No constituye asesoría financiera personalizada. Toda inversión implica riesgos.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-  </main>  <footer>
-    <div class="container">
-      © <span id="year"></span> PorkInvest · Inversión mínima $500.000 COP · 10% semestral
-    </div>
-  </footer><a href="https://wa.me/573002333356" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:20px;bottom:20px;background:#25D366;padding:12px;border-radius:999px;z-index:60;color:#052017;font-weight:800;text-decoration:none">💬</a>
+  </main>  <footer style="padding:28px 0;border-top:1px solid rgba(255,255,255,0.02)"><div class="container" style="text-align:center;color:var(--muted)">© <span id="year"></span> PorkInvest · Inversión mínima $500.000 COP · 10% semestral</div></footer><a href="https://wa.me/573002333356" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:20px;bottom:20px;background:#25D366;padding:12px;border-radius:999px;z-index:60;color:#052017;font-weight:800;text-decoration:none">💬</a>
 
   <script>
-    // Inicializaciones
-    const fCOP = new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
+    // Utils
+    const fCOP = v => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(Math.round(v));
+    const clamp = (v,min,max) => Math.max(min,Math.min(max,v));
+
+    // Elements
     const inputMonto = document.getElementById('inputMonto');
     const rangeMonto = document.getElementById('rangeMonto');
     const capitalTxt = document.getElementById('capitalTxt');
     const semTxt = document.getElementById('semTxt');
     const anualTxt = document.getElementById('anualTxt');
     const barFill = document.getElementById('barFill');
-    const compAhorro = document.getElementById('compAhorro');
-    const compCdt = document.getElementById('compCdt');
-    const compPork = document.getElementById('compPork');
     const pigEmoji = document.getElementById('pigEmoji');
-
-    function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+    const ctaInvest = document.getElementById('ctaInvest');
 
     function actualizar(valor){
       let v = Number(valor)||0; v = clamp(v,500000,50000000);
       inputMonto.value = v; rangeMonto.value = v;
       const sem = Math.round(v*0.10);
       const anual = Math.round(v*0.20);
-      capitalTxt.textContent = fCOP.format(v);
-      semTxt.textContent = '+'+fCOP.format(sem);
-      anualTxt.textContent = '+'+fCOP.format(anual);
-      // barra
+      capitalTxt.textContent = fCOP(v);
+      semTxt.textContent = '+'+fCOP(sem);
+      anualTxt.textContent = '+'+fCOP(anual);
       const pct = Math.min(100, Math.round((sem / (v*0.5))*100));
       barFill.style.width = pct + '%';
-      // comparador
-      compAhorro.textContent = fCOP.format(Math.round(v*0.015));
-      compCdt.textContent = fCOP.format(Math.round(v*0.07));
-      compPork.textContent = fCOP.format(Math.round(v*0.20));
-      // pig grow
-      const scale = 0.9 + Math.min(1.4, 0.0000005 * v); // escala suave
+      const scale = 0.9 + Math.min(1.5, v/50000000*1.5);
       pigEmoji.style.transform = `scale(${scale})`;
-      // actualizar CTA WhatsApp
-      const cta = document.getElementById('ctaWh');
-      if(cta) cta.href = `https://wa.me/573002333356?text=Hola%20PorkInvest,%20quiero%20invertir%20${encodeURIComponent(fCOP.format(v))}%20COP`;
+      if(ctaInvest) ctaInvest.href = `https://wa.me/573002333356?text=${encodeURIComponent('Hola PorkInvest, quiero invertir '+fCOP(v)+' COP')}`;
     }
 
     inputMonto.addEventListener('input', e=> actualizar(e.target.value));
     rangeMonto.addEventListener('input', e=> actualizar(e.target.value));
-    // inicial
     actualizar(inputMonto.value);
 
-    // Form contact
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e){
+    // Compound calc
+    const calcBtn = document.getElementById('calcCompound');
+    const compYears = document.getElementById('compoundYears');
+    const compMode = document.getElementById('compoundMode');
+    const compoundChart = document.getElementById('compoundChart');
+    const compoundSummary = document.getElementById('compoundSummary');
+
+    function calcCompound(){
+      const initial = Number(inputMonto.value);
+      const years = Number(compYears.value);
+      const mode = compMode.value;
+      if(initial<500000){alert('Monto mínimo $500.000 COP'); return}
+      let current = initial;
+      const data = [];
+      for(let i=0;i<years;i++){
+        // two semesters per year
+        for(let s=0;s<2;s++){
+          const profit = current*0.10;
+          let reinv = 0;
+          if(mode==='yes') reinv = profit;
+          if(mode==='partial') reinv = profit*0.5;
+          current += reinv;
+        }
+        data.push({year:i+1,amount:Math.round(current)});
+      }
+      // render chart
+      compoundChart.innerHTML='';
+      const maxA = Math.max(...data.map(d=>d.amount));
+      data.forEach(d=>{
+        const h = Math.round((d.amount/maxA)*100);
+        const bar = document.createElement('div'); bar.className='chart-bar'; bar.style.height=h+'%';
+        const lbl = document.createElement('span'); lbl.textContent=fCOP(d.amount);
+        bar.appendChild(lbl); compoundChart.appendChild(bar);
+      });
+      const final = data[data.length-1]?.amount||initial;
+      compoundSummary.innerHTML=`<div>Inicial: <b>${fCOP(initial)}</b> · Final (aprox): <b>${fCOP(final)}</b> · Ganancia: <b style="color:var(--accent)">${fCOP(final-initial)}</b></div>`;
+    }
+    calcBtn.addEventListener('click', calcCompound);
+
+    // Dashboard mock data (simula actividad)
+    const metricTotal = document.getElementById('metric-total');
+    const metricCount = document.getElementById('metric-count');
+    const metricPigs = document.getElementById('metric-pigs');
+    const activity = document.getElementById('activity');
+    const cycleChart = document.getElementById('cycleChart');
+
+    // Simular actividad para dar sensación viva (datos ficticios). Puedes reemplazar con real cuando los tengas.
+    const fake = {
+      total: 0,
+      count: 0,
+      pigs: 0
+    };
+    function addFakeInvestment(amount,name){
+      fake.total += amount; fake.count += 1; fake.pigs += Math.round(amount/700000);
+      metricTotal.textContent = fCOP(fake.total);
+      metricCount.textContent = fake.count;
+      metricPigs.textContent = fake.pigs;
+      const li = document.createElement('li'); li.textContent = `${name} invirtió ${fCOP(amount)} · ${new Date().toLocaleString()}`; activity.prepend(li);
+      renderCycleChart();
+    }
+    function renderCycleChart(){
+      cycleChart.innerHTML='';
+      const stages = [Math.max(1,Math.round(fake.pigs*0.2)), Math.max(1,Math.round(fake.pigs*0.5)), Math.max(1,Math.round(fake.pigs*0.3))];
+      const labels = ['Nacimiento','Engorde','Listos para venta'];
+      stages.forEach((s,i)=>{
+        const div = document.createElement('div'); div.style.display='flex'; div.style.justifyContent='space-between'; div.style.alignItems='center'; div.style.marginBottom='8px';
+        const left = document.createElement('div'); left.textContent=labels[i]; left.className='muted';
+        const right = document.createElement('div'); right.innerHTML=`<b>${s}</b> cerdos`;
+        div.appendChild(left); div.appendChild(right); cycleChart.appendChild(div);
+      });
+    }
+    // Añadir inversiones de ejemplo para que la página sea inmersiva
+    setTimeout(()=>{addFakeInvestment(2000000,'Inversionista A');},1200);
+    setTimeout(()=>{addFakeInvestment(500000,'Inversionista B');},2400);
+    setTimeout(()=>{addFakeInvestment(3500000,'Inversionista C');},3800);
+
+    // Contact form mailto
+    document.getElementById('contactForm').addEventListener('submit', function(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const msg = document.getElementById('msg').value.trim();
-      if(!name||!email||!msg){alert('Completa nombre, correo y mensaje.');return}
-      // creamos mailto con cuerpo resumido (sin backend)
-      const subject = encodeURIComponent('Solicitud de asesoría PorkInvest');
+      if(!name||!email||!msg){alert('Completa nombre, correo y mensaje');return}
+      const subject = encodeURIComponent('Contacto PorkInvest - '+name);
       const body = encodeURIComponent(`Nombre: ${name}
 Email: ${email}
 WhatsApp: ${phone}
@@ -271,5 +355,9 @@ ${msg}`);
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script></body>
+
+    // Accessibility: focus outlines
+    document.addEventListener('keyup', (e)=>{ if(e.key==='Tab') document.body.classList.add('show-focus'); });
+  </script>
+</body>
 </html>
